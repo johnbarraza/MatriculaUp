@@ -1,0 +1,292 @@
+{
+  "title": "FLUJOGRAMA DE LA CARRERA DE ECONOMÍA - PLAN DE ESTUDIO VIGENTE A PARTIR DEL SEMESTRE 2022-1",
+  "faculty": "FACULTAD DE ECONOMÍA Y FINANZAS",
+  "cycles": [
+    "CICLO CERO",
+    "PRIMER CICLO",
+    "SEGUNDO CICLO",
+    "TERCER CICLO",
+    "CUARTO CICLO",
+    "QUINTO CICLO",
+    "SEXTO CICLO",
+    "SÉPTIMO CICLO",
+    "OCTAVO CICLO",
+    "NOVENO CICLO",
+    "DÉCIMO CICLO"
+  ],
+  "courses": [
+    {
+      "name": "Nivelación en Matemáticas",
+      "code": "ECO",
+      "credits": "0",
+      "cycle_recommended": "CICLO CERO"
+    },
+    {
+      "name": "Nivelación en Informática",
+      "code": "ING",
+      "credits": "0",
+      "cycle_recommended": "CICLO CERO"
+    },
+    {
+      "name": "Nivelación en Lenguaje",
+      "code": "HUM",
+      "credits": "0",
+      "cycle_recommended": "CICLO CERO"
+    },
+    {
+      "name": "Economía General I",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "PRIMER CICLO"
+    },
+    {
+      "name": "Fundamentos de Contabilidad",
+      "code": "CON",
+      "credits": "4",
+      "cycle_recommended": "PRIMER CICLO"
+    },
+    {
+      "name": "Matemáticas I",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "PRIMER CICLO"
+    },
+    {
+      "name": "Lenguaje I",
+      "code": "HUM",
+      "credits": "4",
+      "cycle_recommended": "PRIMER CICLO"
+    },
+    {
+      "name": "Economía General II",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "SEGUNDO CICLO"
+    },
+    {
+      "name": "Matemáticas II",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "SEGUNDO CICLO"
+    },
+    {
+      "name": "Curso del bloque Ciencias Sociales",
+      "code": "CCSS",
+      "credits": "4",
+      "cycle_recommended": "SEGUNDO CICLO"
+    },
+    {
+      "name": "Lenguaje II",
+      "code": "HUM",
+      "credits": "4",
+      "cycle_recommended": "SEGUNDO CICLO"
+    },
+    {
+      "name": "Curso del bloque Introducción al quehacer científico",
+      "code": "HUM/ING",
+      "credits": "4",
+      "cycle_recommended": "SEGUNDO CICLO"
+    },
+    {
+      "name": "Microeconomía I",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "TERCER CICLO"
+    },
+    {
+      "name": "Macroeconomía I",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "TERCER CICLO"
+    },
+    {
+      "name": "Matemáticas III",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "TERCER CICLO"
+    },
+    {
+      "name": "Estadística I",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "TERCER CICLO"
+    },
+    {
+      "name": "Investigación Académica",
+      "code": "CCSS",
+      "credits": "3",
+      "cycle_recommended": "TERCER CICLO"
+    },
+    {
+      "name": "Microeconomía II",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "CUARTO CICLO"
+    },
+    {
+      "name": "Macroeconomía II",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "CUARTO CICLO"
+    },
+    {
+      "name": "Matemáticas IV",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "CUARTO CICLO"
+    },
+    {
+      "name": "Estadística II",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "CUARTO CICLO"
+    },
+    {
+      "name": "Curso 1 del bloque de Procesos Sociales",
+      "code": "CCSS/HUM",
+      "credits": "4",
+      "cycle_recommended": "CUARTO CICLO"
+    },
+    {
+      "name": "Teoría del Comercio Internacional",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "QUINTO CICLO"
+    },
+    {
+      "name": "Macroeconomía III",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "QUINTO CICLO"
+    },
+    {
+      "name": "Evaluación Privada de Proyectos",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "QUINTO CICLO"
+    },
+    {
+      "name": "Estadística Aplicada",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "QUINTO CICLO"
+    },
+    {
+      "name": "Curso 1 del bloque Pensamiento Crítico",
+      "code": "CCSS/HUM",
+      "credits": "4",
+      "cycle_recommended": "QUINTO CICLO"
+    },
+    {
+      "name": "Gestión de los Recursos Naturales",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "SEXTO CICLO"
+    },
+    {
+      "name": "Macroeconomía Internacional",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "SEXTO CICLO"
+    },
+    {
+      "name": "Economía Financiera I",
+      "code": "FIN",
+      "credits": "4",
+      "cycle_recommended": "SEXTO CICLO"
+    },
+    {
+      "name": "Econometría I",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "SEXTO CICLO"
+    },
+    {
+      "name": "Curso 2 del bloque de Procesos Sociales",
+      "code": "CCSS/HUM",
+      "credits": "4",
+      "cycle_recommended": "SEXTO CICLO"
+    },
+    {
+      "name": "Historia del Pensamiento Económico",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "SÉPTIMO CICLO"
+    },
+    {
+      "name": "Política Económica",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "SÉPTIMO CICLO"
+    },
+    {
+      "name": "Economía y Derecho",
+      "code": "DER",
+      "credits": "4",
+      "cycle_recommended": "SÉPTIMO CICLO"
+    },
+    {
+      "name": "Econometría II",
+      "code": "ECO",
+      "credits": "5",
+      "cycle_recommended": "SÉPTIMO CICLO"
+    },
+    {
+      "name": "Organización Industrial",
+      "code": "ECO",
+      "credits": "4",
+      "cycle_recommended": "OCTAVO CICLO"
+    },
+    {
+      "name": "Curso 2 del bloque Pensamiento Crítico",
+      "code": "CCSS/HUM",
+      "credits": "4",
+      "cycle_recommended": "OCTAVO CICLO"
+    },
+    {
+      "name": "Investigación Económica I",
+      "code": "ECO",
+      "credits": "2",
+      "cycle_recommended": "OCTAVO CICLO",
+      "note": "Requiere 160 créditos aprobados"
+    },
+    {
+      "name": "Investigación Económica II",
+      "code": "ECO",
+      "credits": "2",
+      "cycle_recommended": "NOVENO CICLO"
+    },
+    {
+      "name": "Proyección Social",
+      "code": "CCSS",
+      "credits": "4",
+      "cycle_recommended": "NOVENO CICLO",
+      "note": "Requiere 160 créditos aprobados"
+    },
+    {
+      "name": "Ética",
+      "code": "HUM",
+      "credits": "4",
+      "cycle_recommended": "NOVENO CICLO"
+    },
+    {
+      "name": "Curso del bloque Desarrollo Personal",
+      "code": "ADM/HUM",
+      "credits": "4",
+      "cycle_recommended": "DÉCIMO CICLO"
+    }
+  ],
+  "cycle_totals": [
+    "0/3 (Nivelación)",
+    "18/4",
+    "22/5",
+    "21/5",
+    "19/4",
+    "21/5",
+    "22/5",
+    "17/4",
+    "12/3",
+    "10/3",
+    "6/2"
+  ]
+}
