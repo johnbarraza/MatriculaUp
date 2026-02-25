@@ -1,18 +1,3 @@
-# AI & Agents
-.gsd/
-.gemini/
-.agent/
-.planning/
-
-# Python & Testing
-.pytest_cache/
-__pycache__/
-
-# Debugging Scripts & Outputs
-debug*.py
-*out*.txt
-inno_out.txt
-
 # OS Files
 .DS_Store
 Thumbs.db
