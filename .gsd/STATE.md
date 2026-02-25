@@ -1,7 +1,7 @@
 # MatriculaUp Project State
 
 **Last updated:** 2026-02-25
-**Current phase:** Phase 8 COMPLETE — all 3/3 plans done. Milestone v1.2 ready.
+**Current phase:** Phase 10 (IN PROGRESS) — Bug fixes from Phase 9 UI testing.
 
 ---
 
@@ -28,7 +28,7 @@
 - **Status**: Ready for execution
 
 **Progress:**
-[██████████] 100% (Phase 1) | [██████████] 100% (Phase 2) | [██████████] 100% (Phase 3) | [██████████] 100% (Phase 4) | [██████████] 100% (Phase 5) | [██████████] 100% (Phase 6) | [██████████] 100% (Phase 7) | [██████████] 100% (Phase 8)
+[██████████] 100% Phases 1-9 complete | [███░░░░░░░] 30% Phase 10 (in progress)
 - Phase 1 Plans complete: 4/4
 - Phase 2 Plans complete: 4/4
 - Phase 3 Plans complete: 2/2
@@ -37,6 +37,8 @@
 - Phase 6 Plans complete: 2/2 (06-01 Timetable Grid, 06-02 Validation)
 - Phase 7 Plans complete: 2/2 (Advanced Views, Desktop Build)
 - Phase 8 Plans complete: 3/3 (Professor Search, Credits, Multiple Schedules)
+- Phase 9 Plans complete: 1/1 (Search & Display Improvements — all UI tasks done)
+- Phase 10 Plans in progress: Extractor column bug fix (10-col rows), timetable rendering for new sections
 
 **Requirements Mapped:** 24/24 ✓
 

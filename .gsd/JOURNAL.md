@@ -1,3 +1,26 @@
+## Session: 2026-02-25 17:00
+
+### Objective
+Fix PDF extraction column alignment bug and implement Phase 9 UI improvements in the Flutter app.
+
+### Accomplished
+- ✅ **Phase 9 Complete**: IndexedStack for search tab persistence, conflict reason display ("Cruce con: Curso X"), session detail formatting (tipo/dia/hora), virtual room formatting ("Virtual"), Obligatorio/Electivo tags via optional Curriculum JSON.
+- ✅ **Extractor Fix (Phase 10)**: Diagnosed and fixed 10-col vs 11-col PDF row format. Sections G-M of "Religiones, Culturas y Economía" now extract with correct `dia` values.
+- ✅ **Session tipo display**: Fixed `SessionType.clase` enum display → `Clase` in the UI.
+- ✅ **JSON regenerated**: `courses_2026-1.json` re-extracted (253 cursos, 14 advertencias, schema validated).
+
+### Verification
+- [x] `flutter analyze` → No issues found.
+- [x] `flutter build windows` → Build successful.
+- [x] `python debug_religiones.py` → Religiones K/G/H/M have correct dia values.
+- [x] All changes committed and pushed to GitHub.
+
+### Next Steps
+- Test in the running Windows app: add sección K of Religiones and confirm it appears in the timetable.
+- Answer any remaining user questions about missing features.
+
+---
+
 ## Session: 2026-02-24 23:55
 
 ### Objective
