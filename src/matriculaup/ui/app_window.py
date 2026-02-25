@@ -2,6 +2,7 @@ import sys
 from PySide6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QTabWidget, QLabel
 )
+from src.matriculaup.ui.tabs.search_tab import SearchTab
 
 class AppWindow(QMainWindow):
     def __init__(self, courses=None, schedule_data=None):
@@ -27,9 +28,7 @@ class AppWindow(QMainWindow):
         
     def _setup_tabs(self):
         # Tab 1: Buscar Cursos
-        self.tab_search = QWidget()
-        search_layout = QVBoxLayout(self.tab_search)
-        search_layout.addWidget(QLabel("Tab: Buscar Cursos"))
+        self.tab_search = SearchTab(self.courses)
         self.tabs.addTab(self.tab_search, "Buscar Cursos")
         
         # Tab 2: Generar Horario
