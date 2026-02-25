@@ -155,3 +155,17 @@ class TimetableGrid(QWidget):
                     if block_x <= x <= block_x + col_width and y_start <= y <= y_end:
                         self.section_removed.emit(course, section)
                         return
+
+    def export_to_png(self, filepath: str) -> bool:
+        """
+        Renders the current timetable grid to a PNG file.
+        Uses self.grab() to capture the exact on-screen widget content.
+        Returns True on success, False on failure.
+        """
+        try:
+            pixmap = self.grab()
+            return pixmap.save(filepath, "PNG")
+        except Exception as e:
+            print(f"Export error: {e}")
+            return False
+
