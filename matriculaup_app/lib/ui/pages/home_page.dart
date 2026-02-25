@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../../data/data_loader.dart';
 import '../../models/course.dart';
 import '../../store/schedule_state.dart';
+import 'package:matriculaup_app/ui/components/course_search_list.dart';
+import 'package:matriculaup_app/ui/components/timetable_grid.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -36,30 +38,14 @@ class HomePage extends StatelessWidget {
                         child: const Text('Cargar Archivos JSON'),
                       ),
                     )
-                  : ListView.builder(
-                      itemCount: courses.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(courses[index].nombre),
-                          subtitle: Text(courses[index].codigo),
-                        );
-                      },
-                    ),
+                  : const CourseSearchList(),
             ),
           ),
 
           // Right Panel (70%)
           Expanded(
             flex: 7,
-            child: Container(
-              color: Colors.white,
-              child: const Center(
-                child: Text(
-                  'Timetable Grid Placeholder',
-                  style: TextStyle(fontSize: 24, color: Colors.grey),
-                ),
-              ),
-            ),
+            child: Container(color: Colors.white, child: const TimetableGrid()),
           ),
         ],
       ),

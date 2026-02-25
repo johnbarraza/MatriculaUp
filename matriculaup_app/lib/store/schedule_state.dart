@@ -1,6 +1,7 @@
 // matriculaup_app/lib/store/schedule_state.dart
 import 'package:flutter/foundation.dart';
 import '../models/course.dart';
+import '../utils/time_utils.dart';
 
 class CourseSelection {
   final Course course;
@@ -22,6 +23,11 @@ class ScheduleState extends ChangeNotifier {
   }
 
   void addSection(Course course, Section section) {
+    // Prevent adding the same course twice
+    if (_selectedSections.any((s) => s.course.codigo == course.codigo)) {
+      throw Exception('El curso ya está en el horario.');
+    }
+
     _selectedSections.add(CourseSelection(course: course, section: section));
     notifyListeners();
   }
@@ -33,5 +39,26 @@ class ScheduleState extends ChangeNotifier {
           selection.section.seccion == section.seccion,
     );
     notifyListeners();
+  }
+
+  /// Returns true if the given section overlaps with any already selected section.
+  bool conflictsWithSchedule(Section section) {
+    for (var currentSelection in _selectedSections) {
+      for (var newSession in section.sesiones) {
+        for (var currentSession in currentSelection.section.sesiones) {
+          if (newSession.dia == currentSession.dia) {
+            if (TimeUtils.hasOverlap(
+              newSession.horaInicio,
+              newSession.horaFin,
+              currentSession.horaInicio,
+              currentSession.horaFin,
+            )) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+    return false;
   }
 }
