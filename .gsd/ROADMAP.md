@@ -27,6 +27,12 @@
 
 ---
 
+## Milestone v1.2 (Advanced Filters & Constraints)
+
+- [ ] **Phase 8: Search & Constraint Engine** - Allow searching by professor, toggling a "Hide Conflicts" filter, blocking overlapping additions, enforcing a 25-credit limit, and defining free-time bounds.
+
+---
+
 ## Phase Details
 
 ### Phase 1: Extraction Pipeline Fix & Validation
