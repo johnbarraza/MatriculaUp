@@ -1,11 +1,15 @@
 from typing import List, Tuple
 from PySide6.QtWidgets import QWidget
 from PySide6.QtGui import QPainter, QColor, QFont, QPen, QBrush
-from PySide6.QtCore import Qt, QRectF
+from PySide6.QtCore import Qt, QRectF, Signal
 
 from src.matriculaup.models.course import Course, Section, Session
 
 class TimetableGrid(QWidget):
+    
+    # Emit when a block is middle-clicked or right-clicked for removal
+    section_removed = Signal(Course, Section)
+    
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setMinimumSize(600, 600)
@@ -121,3 +125,33 @@ class TimetableGrid(QWidget):
                 
                 info = f"{course.codigo}\nSec {section.seccion}\n{session.tipo.value}\n{session.aula}"
                 painter.drawText(text_rect, Qt.AlignTop | Qt.AlignLeft | Qt.TextWordWrap, info)
+
+    def mousePressEvent(self, event):
+        """Detect right-clicks to remove a course block."""
+        if event.button() == Qt.RightButton:
+            pos = event.position()
+            x = pos.x()
+            y = pos.y()
+            
+            # Recalculate dimensions identically to paintEvent
+            width = self.width()
+            height = self.height()
+            col_width = (width - self.time_col_width) / len(self.days)
+            total_hours = self.end_hour - self.start_hour
+            row_height = (height - self.header_height) / total_hours
+            
+            # Find which block was clicked
+            for course, section in self.selected_sections:
+                for session in section.sesiones:
+                    if session.dia not in self.days:
+                        continue
+                    
+                    day_idx = self.days.index(session.dia)
+                    block_x = self.time_col_width + (day_idx * col_width)
+                    y_start = self._time_to_y(session.hora_inicio, row_height)
+                    y_end = self._time_to_y(session.hora_fin, row_height)
+                    
+                    # Check if click is inside this session's block
+                    if block_x <= x <= block_x + col_width and y_start <= y <= y_end:
+                        self.section_removed.emit(course, section)
+                        return

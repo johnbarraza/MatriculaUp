@@ -72,7 +72,7 @@ Plans:
 - [x] 02-01-PLAN.md — Foundation & Data Layer (Data Models, Persistence Shell)
 - [x] 02-02-PLAN.md — Course Search UI (Search Layout, Tree View)
 - [x] 02-03-PLAN.md — Timetable Grid & Conflict Detection (Logic and Visual Grid)
-- [ ] 02-04-PLAN.md — Integration & State (Global State, Wiring, Auto-save)
+- [x] 02-04-PLAN.md — Integration & State (Global State, Wiring, Auto-save)
 
 ---
 

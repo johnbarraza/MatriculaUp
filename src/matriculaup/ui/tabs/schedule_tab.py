@@ -1,10 +1,14 @@
 from typing import List, Tuple
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel
+from PySide6.QtCore import Signal
 
 from src.matriculaup.models.course import Course, Section
 from src.matriculaup.ui.components.timetable_grid import TimetableGrid
 
 class ScheduleTab(QWidget):
+    # Pass the event upwards to the main AppWindow
+    section_removed = Signal(Course, Section)
+
     def __init__(self, parent=None):
         super().__init__(parent)
         
@@ -17,6 +21,7 @@ class ScheduleTab(QWidget):
         
         # Timetable Grid
         self.grid = TimetableGrid(self)
+        self.grid.section_removed.connect(self.section_removed.emit)
         layout.addWidget(self.grid)
 
     def update_schedule(self, selected: List[Tuple[Course, Section]], conflicts: List[Tuple[Course, Course]]):
