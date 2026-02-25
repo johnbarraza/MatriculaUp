@@ -24,7 +24,8 @@ class ScheduleState extends ChangeNotifier {
   int maxCredits = 25;
 
   int get currentCredits => selectedSections.fold(0, (sum, sel) {
-    return sum + (int.tryParse(sel.course.creditos) ?? 0);
+    final parsed = double.tryParse(sel.course.creditos) ?? 0.0;
+    return sum + parsed.round();
   });
 
   void setMaxCredits(int limit) {
@@ -100,6 +101,39 @@ class ScheduleState extends ChangeNotifier {
             }
           }
         }
+      }
+    }
+    return false;
+  }
+
+  // ── Free-Time Preferences ─────────────────────────────────────────────────
+  /// Optional preferred start/end bounds (in "HH:MM" format).
+  /// If set, sessions outside these hours count as conflicts.
+  String? preferredStart; // e.g. "09:00"
+  String? preferredEnd; // e.g. "17:00"
+
+  void setFreeTimePrefs(String? start, String? end) {
+    preferredStart = start;
+    preferredEnd = end;
+    notifyListeners();
+  }
+
+  /// Returns true if ANY session of [section] falls outside the preferred window.
+  bool conflictsWithFreeTimePrefs(Section section) {
+    final ps = preferredStart;
+    final pe = preferredEnd;
+    if (ps == null || pe == null) return false;
+
+    for (var session in section.sesiones) {
+      // Session starts before preferred window begins
+      if (TimeUtils.timeToMinutes(session.horaInicio) <
+          TimeUtils.timeToMinutes(ps)) {
+        return true;
+      }
+      // Session ends after preferred window ends
+      if (TimeUtils.timeToMinutes(session.horaFin) >
+          TimeUtils.timeToMinutes(pe)) {
+        return true;
       }
     }
     return false;

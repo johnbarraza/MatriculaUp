@@ -33,10 +33,13 @@ class _CourseSearchListState extends State<CourseSearchList> {
 
       if (!matchesQuery) return false;
 
-      // If "Hide Conflicts" is on, remove courses where ALL sections conflict.
-      if (_hideConflicts && state.selectedSections.isNotEmpty) {
+      // If "Hide Conflicts" is on, remove courses where ALL sections conflict
+      // with either the schedule OR the free-time preference window.
+      if (_hideConflicts) {
         final allConflict = c.secciones.every(
-          (s) => state.conflictsWithSchedule(s),
+          (s) =>
+              state.conflictsWithSchedule(s) ||
+              state.conflictsWithFreeTimePrefs(s),
         );
         if (allConflict) return false;
       }

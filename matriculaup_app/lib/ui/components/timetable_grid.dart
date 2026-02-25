@@ -193,13 +193,26 @@ class TimetableGrid extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      'Sec: ${selection.section.seccion}',
+                      'Sec ${selection.section.seccion} · ${session.tipo.value}',
                       style: const TextStyle(fontSize: 9, color: Colors.white),
                     ),
                     Text(
-                      '${session.tipo.value} - ${session.aula}',
-                      style: const TextStyle(fontSize: 9, color: Colors.white),
+                      '${session.horaInicio} – ${session.horaFin}',
+                      style: const TextStyle(
+                        fontSize: 9,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    if (session.aula.isNotEmpty)
+                      Text(
+                        session.aula,
+                        style: const TextStyle(
+                          fontSize: 8,
+                          color: Colors.white70,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                   ],
                 ),
               ),
