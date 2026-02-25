@@ -8,6 +8,8 @@ param(
 )
 
 $SetupPath = "dist\MatriculaUp_$($Tag)_Setup.exe"
+$ZipPath = "dist\MatriculaUp_$($Tag)_Portable.zip"
+$ReleaseDir = "matriculaup_app\build\windows\x64\runner\Release"
 $JsonPath = "input\courses_2026-1.json"
 
 $Notes = @"
@@ -30,11 +32,18 @@ Planificador de horarios universitarios para estudiantes de UP.
 3. Abre MatriculaUp desde el acceso directo en tu Escritorio
 
 > El JSON puede actualizarse desde dentro de la app (Configuración ⚙️) cuando salgan nuevos horarios.
+
+*Opcional: Si no quieres instalar nada, descarga la versión `_Portable.zip`, descomprímela y ejecuta el .exe de adentro.*
 "@
+
+Write-Host "Comprimiendo versión portable en $ZipPath..."
+if (Test-Path $ZipPath) { Remove-Item $ZipPath -Force }
+Compress-Archive -Force -Path @("$ReleaseDir\*", $JsonPath) -DestinationPath $ZipPath
 
 Write-Host "Creando release $Tag en GitHub..."
 gh release create $Tag `
     "$SetupPath" `
+    "$ZipPath" `
     "$JsonPath" `
     --title "$Title" `
     --notes "$Notes" `
