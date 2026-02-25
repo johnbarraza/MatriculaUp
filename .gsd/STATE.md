@@ -23,12 +23,12 @@
 **Active Phase:** Phase 1 — Extraction Pipeline Fix & Validation
 
 **Current Focus:**
-- Phase 2: Plan 2.2 Complete. Ready for 2.3 (Timetable Grid).
+- Phase 2: Plan 2.3 Complete. Ready for 2.4 (Integration & State).
 
 **Progress:**
-[██████████] 100% (Phase 1) | [████      ] 50% (Phase 2)
+[██████████] 100% (Phase 1) | [██████  ] 75% (Phase 2)
 - Phase 1 Plans complete: 4/4
-- Phase 2 Plans complete: 2/4 (02-01 Foundation, 02-02 Search UI)
+- Phase 2 Plans complete: 3/4 (01 Foundation, 02 Search UI, 03 Grid)
 
 **Requirements Mapped:** 20/20 ✓
 
