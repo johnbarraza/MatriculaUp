@@ -188,13 +188,41 @@ class _CourseSearchListState extends State<CourseSearchList> {
                               : FontWeight.normal,
                         ),
                       ),
-                      subtitle: Text(
-                        hasConflict
-                            ? 'Cruce con: $conflictReason\n\n$sessionDetails\nProf(s): $docentesStr'
-                            : '$sessionDetails\nProf(s): $docentesStr',
-                        style: TextStyle(
-                          color: hasConflict ? Colors.red.shade700 : null,
-                        ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (hasConflict)
+                            Text(
+                              'Cruce con: $conflictReason',
+                              style: TextStyle(
+                                color: Colors.red.shade700,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          Text(
+                            sessionDetails,
+                            style: TextStyle(
+                              color: hasConflict ? Colors.red.shade700 : null,
+                            ),
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: hasConflict
+                                    ? Colors.red.shade700
+                                    : Colors.black87,
+                              ),
+                              children: [
+                                const TextSpan(
+                                  text: 'Profs: ',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                TextSpan(text: docentesStr),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                       isThreeLine: true,
                       trailing: ElevatedButton(

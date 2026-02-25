@@ -1,6 +1,9 @@
 // matriculaup_app/lib/ui/pages/home_page.dart
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
+import 'package:file_picker/file_picker.dart';
 import '../../data/data_loader.dart';
 import '../../models/course.dart';
 import '../../store/schedule_state.dart';
@@ -19,6 +22,8 @@ class _HomePageState extends State<HomePage> {
   bool _showExams = false;
   // Left-panel tab: 0 = search, 1 = selected courses
   int _leftTab = 0;
+  // Key for PNG capture of the timetable grid
+  final GlobalKey _timetableKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +106,40 @@ class _HomePageState extends State<HomePage> {
                 const EdgeInsets.symmetric(horizontal: 6),
               ),
             ),
+          ),
+          // Weekly hours chip
+          if (state.selectedSections.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Tooltip(
+                message: 'Horas semanales de Clases y Prácticas',
+                child: Chip(
+                  avatar: const Icon(
+                    Icons.schedule,
+                    size: 14,
+                    color: Colors.white70,
+                  ),
+                  label: Text(
+                    '${state.weeklyHours.toStringAsFixed(1)} h/sem',
+                    style: const TextStyle(fontSize: 12, color: Colors.white),
+                  ),
+                  backgroundColor: Colors.blue.shade700,
+                  padding: EdgeInsets.zero,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+              ),
+            ),
+          // Settings button
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Configuración',
+            onPressed: () => _showSettingsSheet(context, state),
+          ),
+          // PNG Export button
+          IconButton(
+            icon: const Icon(Icons.camera_alt_outlined),
+            tooltip: 'Exportar horario como PNG',
+            onPressed: () => _exportAsPng(context),
           ),
           const SizedBox(width: 8),
         ],
@@ -265,12 +304,122 @@ class _HomePageState extends State<HomePage> {
                           setState(() => _showExams = s.first),
                     ),
                   ),
-                  Expanded(child: TimetableGrid(showExams: _showExams)),
+                  Expanded(
+                    child: RepaintBoundary(
+                      key: _timetableKey,
+                      child: TimetableGrid(showExams: _showExams),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  // ── PNG Export ────────────────────────────────────────────────────────────
+  Future<void> _exportAsPng(BuildContext context) async {
+    try {
+      final boundary =
+          _timetableKey.currentContext?.findRenderObject()
+              as RenderRepaintBoundary?;
+      if (boundary == null) return;
+      final image = await boundary.toImage(pixelRatio: 2.0);
+      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+      if (byteData == null) return;
+      final bytes = byteData.buffer.asUint8List();
+      final path = await FilePicker.platform.saveFile(
+        dialogTitle: 'Guardar horario como PNG',
+        fileName: 'horario_matriculaup.png',
+        type: FileType.image,
+        allowedExtensions: ['png'],
+        bytes: bytes,
+      );
+      if (path != null && context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Guardado en: $path')));
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error al exportar: $e')));
+      }
+    }
+  }
+
+  // ── Settings Bottom Sheet ─────────────────────────────────────────────────
+  Future<void> _showSettingsSheet(
+    BuildContext context,
+    ScheduleState state,
+  ) async {
+    await showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (ctx) => Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const Text(
+              'Configuración',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.upload_file),
+              label: const Text('Actualizar Horarios (JSON)'),
+              onPressed: () async {
+                Navigator.pop(ctx);
+                final loaded = await DataLoader.pickAndLoadCourses();
+                if (loaded != null && context.mounted) {
+                  context.read<ScheduleState>().setCourses(loaded);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Cargados ${loaded.length} cursos')),
+                  );
+                }
+              },
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              icon: const Icon(Icons.school),
+              label: const Text('Cargar Plan de Estudios (Opcional)'),
+              onPressed: () async {
+                Navigator.pop(ctx);
+                final curriculum = await DataLoader.pickAndLoadCurriculum();
+                if (curriculum != null && context.mounted) {
+                  context.read<ScheduleState>().setCurriculum(curriculum);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Plan "${curriculum.title}" cargado'),
+                    ),
+                  );
+                }
+              },
+            ),
+            if (state.curriculum != null) ...[
+              const SizedBox(height: 8),
+              TextButton.icon(
+                icon: const Icon(Icons.close, color: Colors.red),
+                label: const Text(
+                  'Quitar plan de estudios',
+                  style: TextStyle(color: Colors.red),
+                ),
+                onPressed: () {
+                  context.read<ScheduleState>().setCurriculum(null);
+                  Navigator.pop(ctx);
+                },
+              ),
+            ],
+            const SizedBox(height: 8),
+          ],
+        ),
       ),
     );
   }

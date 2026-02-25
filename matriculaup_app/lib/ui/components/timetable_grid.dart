@@ -265,10 +265,23 @@ class _TimetableGridState extends State<TimetableGrid> {
                     ),
                     if (session.aula.isNotEmpty)
                       Text(
-                        session.aula,
+                        session.aula.toUpperCase().contains('VIRTUAL')
+                            ? 'Virtual'
+                            : session.aula,
                         style: const TextStyle(
                           fontSize: 8,
                           color: Colors.white70,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    // Professor last name
+                    if (selection.section.docentes.isNotEmpty)
+                      Text(
+                        _formatProfName(selection.section.docentes),
+                        style: const TextStyle(
+                          fontSize: 8,
+                          color: Colors.white70,
+                          fontStyle: FontStyle.italic,
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -296,5 +309,28 @@ class _TimetableGridState extends State<TimetableGrid> {
         ),
       ),
     );
+  }
+
+  /// Returns a compact professor label, e.g. "Garcia" or "Garcia +2"
+  String _formatProfName(List<String> docentes) {
+    if (docentes.isEmpty) return '';
+    final first = docentes.first;
+    // Format: "APELLIDO, Nombre" — extract the part before the comma
+    final lastName = first.contains(',')
+        ? first.split(',').first.trim()
+        : first.trim();
+    // Title-case the last name
+    final formatted = lastName
+        .split(' ')
+        .map(
+          (w) => w.isNotEmpty
+              ? w[0].toUpperCase() + w.substring(1).toLowerCase()
+              : '',
+        )
+        .join(' ');
+    if (docentes.length > 1) {
+      return '$formatted +${docentes.length - 1}';
+    }
+    return formatted;
   }
 }

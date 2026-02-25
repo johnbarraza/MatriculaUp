@@ -38,6 +38,25 @@ class ScheduleState extends ChangeNotifier {
     return sum + parsed.round();
   });
 
+  /// Total weekly hours of CLASE + PRÁCTICA sessions in the current schedule.
+  /// Each session's duration is (horaFin - horaInicio) in hours, rounded to 0.5.
+  double get weeklyHours {
+    double total = 0;
+    final claseTypes = {SessionType.clase, SessionType.practica};
+    for (final sel in selectedSections) {
+      for (final session in sel.section.sesiones) {
+        if (claseTypes.contains(session.tipo)) {
+          final mins = TimeUtils.durationMinutes(
+            session.horaInicio,
+            session.horaFin,
+          );
+          total += mins / 60.0;
+        }
+      }
+    }
+    return total;
+  }
+
   void setMaxCredits(int limit) {
     maxCredits = limit;
     notifyListeners();
