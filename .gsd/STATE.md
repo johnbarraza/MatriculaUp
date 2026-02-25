@@ -23,12 +23,12 @@
 **Active Phase:** Phase 1 — Extraction Pipeline Fix & Validation
 
 **Current Focus:**
-- Phase 1 complete. Next: Phase 2 — PySide6 desktop app.
+- Phase 2: Plan 2.1 Complete. Ready for 2.2 (Course Search UI).
 
 **Progress:**
-[██████████] 100%
-- Phase 1 Plans complete: 4/4 (01-01 test scaffolding, 01-02 courses extractor, 01-03 curriculum extractor, 01-04 validation)
-- Phase 2 Pending: desktop app implementation
+[██████████] 100% (Phase 1) | [██        ] 25% (Phase 2)
+- Phase 1 Plans complete: 4/4
+- Phase 2 Plans complete: 1/4 (02-01 Foundation)
 
 **Requirements Mapped:** 20/20 ✓
 
