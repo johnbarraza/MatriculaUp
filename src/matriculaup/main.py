@@ -10,6 +10,7 @@ from PySide6.QtWidgets import QApplication
 from src.matriculaup.models.course import load_from_json
 from src.matriculaup.store.persistence import PersistenceManager
 from src.matriculaup.ui.app_window import AppWindow
+from src.matriculaup.models.curriculum import load_curriculum_from_json
 
 def main():
     app = QApplication(sys.path)
@@ -25,13 +26,22 @@ def main():
         print(f"Error loading courses JSON: {e}")
         courses = []
         
+    curriculum_path = Path(project_root) / "input" / "curricula_economia2017.json"
+    print(f"Loading curriculum from {curriculum_path}")
+    curriculum = None
+    try:
+        curriculum = load_curriculum_from_json(str(curriculum_path))
+        print(f"Loaded Curriculum: {curriculum.metadata.get('carrera')}")
+    except Exception as e:
+        print(f"Error loading curriculum JSON: {e}")
+        
     # 2. Setup Persistence
     pm = PersistenceManager()
     saved_schedule = pm.load_schedule()
     print(f"Loaded saved schedule with {len(saved_schedule)} items.")
     
     # 3. Start UI
-    window = AppWindow(courses=courses, schedule_data=saved_schedule)
+    window = AppWindow(courses=courses, schedule_data=saved_schedule, curriculum=curriculum)
     window.show()
     
     sys.exit(app.exec())

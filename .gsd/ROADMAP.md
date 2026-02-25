@@ -14,7 +14,7 @@
 
 - [x] **Phase 1: Extraction Pipeline Fix & Validation** - Fix PDF extraction bugs and validate data quality before app development (completed 2026-02-25)
 - [ ] **Phase 2: Desktop App Core (Search, Plan, Persist)** - Build PySide6 app with course search, schedule builder, conflict detection, and data persistence
-- [ ] **Phase 3: Curriculum Integration & Export** - Add curriculum filter and PNG schedule export
+- [x] **Phase 3: Curriculum Integration & Export** - Add curriculum filter and PNG schedule export (completed 2026-02-25)
 - [ ] **Phase 4: Windows Distribution** - Create installer and bundle app as standalone .exe
 
 ---
@@ -91,7 +91,13 @@ Plans:
 3. La app muestra qué cursos del plan de estudios están disponibles en la oferta actual del ciclo
 4. El usuario puede exportar su horario tentativo como imagen PNG con nombres de cursos, horarios y docentes, lista para compartir
 
-**Plans:** TBD
+**Status**: ✅ Complete
+
+**Plans:** 2/2 plans complete
+
+Plans:
+- [x] 03-01-PLAN.md — Curriculum Integration (Models, Filter UI Tab)
+- [x] 03-02-PLAN.md — Export to PNG (QPixmap Rendering, File Prompt)
 
 ---
 

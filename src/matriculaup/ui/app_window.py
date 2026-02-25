@@ -4,15 +4,17 @@ from PySide6.QtWidgets import (
 )
 from src.matriculaup.ui.tabs.search_tab import SearchTab
 from src.matriculaup.ui.tabs.schedule_tab import ScheduleTab
+from src.matriculaup.ui.tabs.curriculum_tab import CurriculumTab
 from src.matriculaup.store.state import ScheduleState
 from src.matriculaup.store.persistence import PersistenceManager
 
 class AppWindow(QMainWindow):
-    def __init__(self, courses=None, schedule_data=None):
+    def __init__(self, courses=None, schedule_data=None, curriculum=None):
         super().__init__()
         
         self.courses = courses or []
         self.schedule_data = schedule_data or []
+        self.curriculum = curriculum
         
         # 1. Initialize State
         self.state = ScheduleState(self)
@@ -89,7 +91,12 @@ class AppWindow(QMainWindow):
             lambda c, s: self.state.remove_section(c.codigo, s.seccion)
         )
         
-        # Tab 3: Horarios Guardados
+        # Tab 3: Avance Curricular
+        if self.curriculum:
+            self.tab_curriculum = CurriculumTab(self.curriculum, self.courses, self)
+            self.tabs.addTab(self.tab_curriculum, "Avance Curricular")
+        
+        # Tab 4: Horarios Guardados (Ex Tab 3)
         self.tab_saved = QWidget()
         saved_layout = QVBoxLayout(self.tab_saved)
         saved_layout.addWidget(QLabel("Tab: Horarios Guardados"))
