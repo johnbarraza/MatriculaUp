@@ -582,8 +582,16 @@ class CourseOfferingExtractor(BaseExtractor):
                     if not table:
                         continue
                     self.total_rows += len(table)
-                    page_courses = self._process_table(table)
-                    all_courses.extend(page_courses)
+                    # Pass the last course context into the table parser
+                    last_course = all_courses[-1] if all_courses else None
+                    page_courses = self._process_table(table, last_course)
+                    
+                    if page_courses:
+                        if all_courses and last_course and page_courses[0] is last_course:
+                            # The first course returned is the continuation of the last one
+                            all_courses.extend(page_courses[1:])
+                        else:
+                            all_courses.extend(page_courses)
 
         # Deduplicate: if a course spans pages, merge sections
         merged = self._merge_courses(all_courses)
@@ -633,11 +641,18 @@ class CourseOfferingExtractor(BaseExtractor):
 
         return data
 
-    def _process_table(self, table: list[list]) -> list[dict]:
-        """Process a single extracted table and return course list."""
+    def _process_table(self, table: list[list], ongoing_course: dict | None = None) -> list[dict]:
+        """Process a single extracted table and return course list.
+        
+        If ongoing_course is provided, rows without a new course header are 
+        added to ongoing_course.
+        """
         courses = []
-        current_course: dict | None = None
+        current_course: dict | None = ongoing_course
         prereq_parts: list[str] = []
+
+        if current_course is not None:
+             courses.append(current_course)
 
         session_kws = SESSION_KEYWORDS
 
@@ -656,7 +671,13 @@ class CourseOfferingExtractor(BaseExtractor):
                         current_course["prerequisitos"] = {"raw": merged_prereq, "parsed": False}
                     else:
                         current_course["prerequisitos"] = parse_prerequisite_tree(merged_prereq)
-            courses.append(current_course)
+            
+            # Special logic: if this was brought in from ongoing_course, it's ALREADY 
+            # in the courses list (added at line 655). 
+            # If it's a freshly encountered course, it hasn't been added yet.
+            if current_course not in courses:
+                courses.append(current_course)
+
             current_course = None
             prereq_parts = []
 
@@ -717,7 +738,13 @@ class CourseOfferingExtractor(BaseExtractor):
             if is_section:
                 section = self._parse_real_section_row(cells)
                 if section:
-                    current_course["secciones"].append(section)
+                    # Check if section already exists (page boundary continuation)
+                    existing_sec = next((s for s in current_course["secciones"] if s["seccion"] == section["seccion"]), None)
+                    if existing_sec:
+                        # Append the sessions from this continuation row instead of creating a duplicate section
+                        existing_sec["sesiones"].extend(section["sesiones"])
+                    else:
+                        current_course["secciones"].append(section)
                 continue
 
             # --- Session continuation row (None-leading) ---
@@ -796,7 +823,9 @@ class CourseOfferingExtractor(BaseExtractor):
     def _merge_courses(self, courses: list[dict]) -> list[dict]:
         """Merge duplicate course entries (when a course spans two pages).
 
-        Same course code appearing twice: merge their sections lists.
+        Same course code appearing twice: merge their sections lists, ensuring
+        that sections that are split across pages (e.g. section "A" on page 1 and page 2)
+        are themselves merged to avoid duplication.
         """
         seen: dict[str, dict] = {}
         result: list[dict] = []
@@ -804,8 +833,31 @@ class CourseOfferingExtractor(BaseExtractor):
         for course in courses:
             code = course["codigo"]
             if code in seen:
-                # Merge sections
-                seen[code]["secciones"].extend(course.get("secciones", []))
+                # Merge sections smartly
+                existing_sections = {s["seccion"]: s for s in seen[code]["secciones"]}
+                
+                for new_sec in course.get("secciones", []):
+                    sec_letter = new_sec["seccion"]
+                    if sec_letter in existing_sections:
+                        # Merge sessions into the existing section, deduplicating exactly identical sessions
+                        existing_sec = existing_sections[sec_letter]
+                        
+                        # Create a set of signatures for existing sessions to avoid duplicates
+                        # A signature is (tipo, dia, hora_inicio, hora_fin, aula)
+                        existing_sigs = {
+                            (s.get("tipo"), s.get("dia"), s.get("hora_inicio"), s.get("hora_fin"), s.get("aula")) 
+                            for s in existing_sec["sesiones"]
+                        }
+                        
+                        for s in new_sec.get("sesiones", []):
+                            sig = (s.get("tipo"), s.get("dia"), s.get("hora_inicio"), s.get("hora_fin"), s.get("aula"))
+                            if sig not in existing_sigs:
+                                existing_sec["sesiones"].append(s)
+                                existing_sigs.add(sig)
+                    else:
+                        # Append new section
+                        existing_sections[sec_letter] = new_sec
+                        seen[code]["secciones"].append(new_sec)
             else:
                 seen[code] = course
                 result.append(course)
