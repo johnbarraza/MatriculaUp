@@ -290,7 +290,7 @@ class CurriculumExtractor(BaseExtractor):
         if self.error_rate() > 0.01:
             print(f"  ADVERTENCIA: Tasa de error {self.error_rate():.1%} excede umbral 1%")
 
-        return {
+        data = {
             "metadata": {
                 "plan": "Economia 2017",
                 "carrera": "Economia",
@@ -299,3 +299,18 @@ class CurriculumExtractor(BaseExtractor):
             },
             "ciclos": ciclos,
         }
+
+        # Validate output against schema before saving
+        try:
+            from scripts.extractors.validators import validate_curriculum_json
+            errors = validate_curriculum_json(data)
+            if errors:
+                for e in errors[:5]:  # Show first 5 errors
+                    logger.warning("Schema error: %s", e)
+                print(f"[WARN] {len(errors)} schema validation errors")
+            else:
+                print("[OK] Schema validation passed")
+        except ImportError:
+            logger.debug("validators.py not available -- skipping schema validation")
+
+        return data

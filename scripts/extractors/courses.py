@@ -610,13 +610,28 @@ class CourseOfferingExtractor(BaseExtractor):
             f"{warning_count} advertencias"
         )
 
-        return {
+        data = {
             "metadata": {
                 "ciclo": self.cycle,
                 "fecha_extraccion": date.today().isoformat(),
             },
             "cursos": merged,
         }
+
+        # Validate output against schema before saving
+        try:
+            from scripts.extractors.validators import validate_courses_json
+            errors = validate_courses_json(data)
+            if errors:
+                for e in errors[:5]:  # Show first 5 errors
+                    logger.warning("Schema error: %s", e)
+                print(f"[WARN] {len(errors)} schema validation errors")
+            else:
+                print("[OK] Schema validation passed")
+        except ImportError:
+            logger.debug("validators.py not available — skipping schema validation")
+
+        return data
 
     def _process_table(self, table: list[list]) -> list[dict]:
         """Process a single extracted table and return course list."""
