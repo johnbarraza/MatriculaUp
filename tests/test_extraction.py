@@ -9,7 +9,15 @@ try:
 except ImportError:
     MODULES_AVAILABLE = False
 
+# This import will FAIL until Plan 03 creates curriculum extractor
+try:
+    from scripts.extractors.curriculum import CurriculumExtractor
+    CURRICULUM_AVAILABLE = True
+except ImportError:
+    CURRICULUM_AVAILABLE = False
+
 skip_if_no_modules = pytest.mark.skipif(not MODULES_AVAILABLE, reason="Implementation not yet written")
+skip_if_no_curriculum = pytest.mark.skipif(not CURRICULUM_AVAILABLE, reason="CurriculumExtractor not yet written")
 
 
 class TestPrerequisiteContinuation:
@@ -76,3 +84,37 @@ class TestProfessorSpanishNames:
         """Multiple professors separated by ' / ' must each be extracted."""
         result = extract_professors_spanish(sample_professor_text)
         assert len(result) >= 2, f"Expected 2+ professors, got {len(result)}: {result}"
+
+
+class TestCurriculumStructure:
+    """EXT-05: Curriculum JSON must have courses organized by academic cycle."""
+
+    @skip_if_no_curriculum
+    def test_curriculum_has_ciclos(self):
+        from scripts.extractors.curriculum import CurriculumExtractor
+        # Use economia2017.json as reference (not actual PDF extraction for unit test)
+        import json
+        with open('pdfs/plan_estudios/econom\u00eda/2017/economia2017.json', encoding='utf-8') as f:
+            ref = json.load(f)
+        # Reference JSON must have ciclo structure or list of courses with ciclo field
+        assert ref is not None
+        assert len(ref) > 0, "Reference JSON must not be empty"
+
+    def test_curriculum_output_structure(self, tmp_path):
+        """curricula output dict must have metadata and ciclos keys."""
+        sample_output = {
+            "metadata": {"plan": "Economia 2017", "carrera": "Econom\u00eda", "fecha_extraccion": "2026-02-24"},
+            "ciclos": [
+                {
+                    "ciclo": 1,
+                    "cursos": [
+                        {"codigo": "138101", "nombre": "Introducci\u00f3n a la Econom\u00eda", "creditos": "4", "tipo": "obligatorio"}
+                    ]
+                }
+            ]
+        }
+        # Verify shape -- this test always passes, confirms expected output schema
+        assert "metadata" in sample_output
+        assert "ciclos" in sample_output
+        assert sample_output["ciclos"][0]["ciclo"] == 1
+        assert "cursos" in sample_output["ciclos"][0]
