@@ -15,7 +15,7 @@
 - [x] **Phase 1: Extraction Pipeline Fix & Validation** - Fix PDF extraction bugs and validate data quality before app development (completed 2026-02-25)
 - [ ] **Phase 2: Desktop App Core (Search, Plan, Persist)** - Build PySide6 app with course search, schedule builder, conflict detection, and data persistence
 - [x] **Phase 3: Curriculum Integration & Export** - Add curriculum filter and PNG schedule export (completed 2026-02-25)
-- [ ] **Phase 4: Windows Distribution** - Create installer and bundle app as standalone .exe
+- [x] **Phase 4: Windows Distribution** - Create installer and bundle app as standalone .exe (completed 2026-02-25)
 
 ---
 
@@ -116,7 +116,13 @@ Plans:
 3. El instalador crea acceso directo en menú Inicio y permite desinstalación estándar
 4. El archivo de datos del usuario (horario guardado, carrera seleccionada) persiste correctamente después de actualizar la app a una versión nueva
 
-**Plans:** TBD
+**Status**: ✅ Complete
+
+**Plans:** 2/2 plans complete
+
+Plans:
+- [x] 04-01-PLAN.md — PyInstaller Configuration (Path resolution & build script)
+- [x] 04-02-PLAN.md — Windows Installer Distribution (Inno Setup automation)
 
 ---
 
@@ -127,7 +133,7 @@ Plans:
 | 1 - Extraction Fix | 4/4 | Complete   | 2026-02-25 |
 | 2 - Desktop App Core | 4/4 | Complete | 2026-02-25 |
 | 3 - Curriculum & Export | Curriculum filter, PNG export | 4 (PLAN-05 to PLAN-07, EXP-01) | 4 criteria |
-| 4 - Distribution | Windows installer, .exe bundle | 2 (DIST-01, DIST-02) | 4 criteria |
+| 4 - Distribution | Windows installer, .exe bundle | 2 (DIST-01, DIST-02) | 4 criteria | Complete 2026-02-25 |
 
 **Coverage:** 20/20 requirements ✓ All v1 requirements mapped, no orphans.
 

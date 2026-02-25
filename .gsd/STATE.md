@@ -20,16 +20,18 @@
 
 ## Current Position
 
-**Active Phase:** Phase 1 — Extraction Pipeline Fix & Validation
+**Active Phase:** All v1 Phases Complete
 
 **Current Focus:**
-- Phase 3: COMPLETE. Ready for Phase 4 (Windows Distribution).
+- Phase 4: COMPLETE. Milestone v1 achieved.
+- Ready to start planning v1.1 or v2 (Phase 5).
 
 **Progress:**
-[██████████] 100% (Phase 1) | [██████████] 100% (Phase 2) | [██████████] 100% (Phase 3)
+[██████████] 100% (Phase 1) | [██████████] 100% (Phase 2) | [██████████] 100% (Phase 3) | [██████████] 100% (Phase 4)
 - Phase 1 Plans complete: 4/4
 - Phase 2 Plans complete: 4/4
-- Phase 3 Plans complete: 2/2 (03-01 Curriculum, 03-02 Export PNG)
+- Phase 3 Plans complete: 2/2
+- Phase 4 Plans complete: 2/2
 
 **Requirements Mapped:** 20/20 ✓
 
@@ -140,7 +142,15 @@
 
 4. **PNG export quality:** Target DPI for PNG export? (96 DPI screen resolution sufficient; no print quality needed.)
 
-5. **Update strategy for future cycles:** v1 ships with 2026-1 data. When 2026-2 comes, do we release new .exe or add JSON update mechanism? (v1.1: Add JSON update from GitHub releases; v2+: Full multi-cycle support.)
+   (v1.1: Add JSON update from GitHub releases; v2+: Full multi-cycle support.)
+
+6. **User Requests for Next Milestone (v1.1 / Phase 5):**
+   - Ver horario semanal interactivo al mismo tiempo que se buscan/agregan cursos.
+   - Restricción: No permitir agregar la misma materia (aunque sea otra sección).
+   - Prevención de cruces visual: antes de agregar, que la lista de secciones indique si choca con el horario actual.
+   - Vistas separadas (Pestañas) para horario de CLASES/PRÁCTICAS vs horarios de EXÁMENES (FINAL/PARCIAL).
+   - En la grilla mostrar el nombre del curso, no solo el tipo de sesión.
+   - Opción para cargar un JSON externo desde la interfaz de la app.
 
 ---
 
