@@ -13,7 +13,6 @@ class CourseSearchList extends StatefulWidget {
 class _CourseSearchListState extends State<CourseSearchList> {
   String _searchQuery = '';
   bool _hideConflicts = false;
-  bool _showOnlyCurriculum = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +42,6 @@ class _CourseSearchListState extends State<CourseSearchList> {
               !state.fitsInSelectedTimeSlots(s),
         );
         if (allConflict) return false;
-      }
-
-      // If "Solo del plan" is on and a curriculum is loaded
-      if (_showOnlyCurriculum && state.curriculum != null) {
-        if (!state.curriculum!.isMandatory(c.codigo)) {
-          return false;
-        }
       }
 
       return true;
@@ -87,22 +79,6 @@ class _CourseSearchListState extends State<CourseSearchList> {
           ),
         ),
 
-        // ── Curriculum Filter (Only if active) ───────────────────────────
-        if (state.curriculum != null)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: SwitchListTile(
-              dense: true,
-              title: const Text(
-                'Solo cursos del plan',
-                style: TextStyle(fontSize: 13),
-              ),
-              secondary: const Icon(Icons.school_outlined, size: 18),
-              value: _showOnlyCurriculum,
-              onChanged: (v) => setState(() => _showOnlyCurriculum = v),
-            ),
-          ),
-
         const Divider(height: 1),
 
         // ── Courses List ─────────────────────────────────────────────────
@@ -112,19 +88,60 @@ class _CourseSearchListState extends State<CourseSearchList> {
             itemBuilder: (context, index) {
               final course = filteredCourses[index];
 
-              // Filter sections: if hide is on, skip fully-conflicting ones
               final visibleSections = _hideConflicts
                   ? course.secciones
                         .where((s) => !state.conflictsWithSchedule(s))
                         .toList()
                   : course.secciones;
 
+              // Curriculum Tag Logic
+              Widget? curriculumTag;
+              if (state.curriculum != null) {
+                final isMandatory = state.curriculum!.isMandatory(
+                  course.codigo,
+                );
+                curriculumTag = Container(
+                  margin: const EdgeInsets.only(top: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: isMandatory
+                        ? Colors.green.shade100
+                        : Colors.blue.shade100,
+                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(
+                      color: isMandatory
+                          ? Colors.green.shade400
+                          : Colors.blue.shade400,
+                    ),
+                  ),
+                  child: Text(
+                    isMandatory ? 'Obligatorio' : 'Electivo',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: isMandatory
+                          ? Colors.green.shade800
+                          : Colors.blue.shade800,
+                    ),
+                  ),
+                );
+              }
+
               return Card(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: ExpansionTile(
-                  title: Text(
-                    course.nombre,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        course.nombre,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      ?curriculumTag,
+                    ],
                   ),
                   subtitle: Text(
                     '${course.codigo} | Créditos: ${course.creditos}',
