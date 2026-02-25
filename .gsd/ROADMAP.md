@@ -119,7 +119,7 @@ Plans:
 | Phase | Goal | Requirements | Success Criteria |
 |-------|------|--------------|------------------|
 | 1 - Extraction Fix | 4/4 | Complete   | 2026-02-25 |
-| 2 - Desktop App Core | Search, plan, conflict detect, persist | 9 (NAV-01 to NAV-03, PLAN-01 to PLAN-04, PERS-01 to PERS-02) | 8 criteria |
+| 2 - Desktop App Core | 4/4 | Complete | 2026-02-25 |
 | 3 - Curriculum & Export | Curriculum filter, PNG export | 4 (PLAN-05 to PLAN-07, EXP-01) | 4 criteria |
 | 4 - Distribution | Windows installer, .exe bundle | 2 (DIST-01, DIST-02) | 4 criteria |
 
