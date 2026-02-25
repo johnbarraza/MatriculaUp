@@ -2,11 +2,11 @@ import sys
 from PySide6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QTabWidget, QLabel
 )
-from src.matriculaup.ui.tabs.search_tab import SearchTab
-from src.matriculaup.ui.tabs.schedule_tab import ScheduleTab
-from src.matriculaup.ui.tabs.curriculum_tab import CurriculumTab
-from src.matriculaup.store.state import ScheduleState
-from src.matriculaup.store.persistence import PersistenceManager
+from matriculaup.ui.tabs.search_tab import SearchTab
+from matriculaup.ui.tabs.schedule_tab import ScheduleTab
+from matriculaup.ui.tabs.curriculum_tab import CurriculumTab
+from matriculaup.store.state import ScheduleState
+from matriculaup.store.persistence import PersistenceManager
 
 class AppWindow(QMainWindow):
     def __init__(self, courses=None, schedule_data=None, curriculum=None):
@@ -78,7 +78,7 @@ class AppWindow(QMainWindow):
         self.tabs.addTab(self.tab_schedule, "Generar Horario")
         
         # Connect the state changes to update the visual grid
-        from src.matriculaup.core.conflict_detector import ConflictDetector
+        from matriculaup.core.conflict_detector import ConflictDetector
         
         def _update_schedule_tab(sections):
             conflicts = ConflictDetector.find_conflicts(sections)

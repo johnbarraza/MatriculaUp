@@ -1,7 +1,7 @@
 from typing import List, Tuple
 from PySide6.QtCore import QObject, Signal
 
-from src.matriculaup.models.course import Course, Section
+from matriculaup.models.course import Course, Section
 
 class ScheduleState(QObject):
     # This signal will trigger every time the state modifies

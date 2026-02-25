@@ -5,8 +5,8 @@ from PySide6.QtWidgets import (
 from PySide6.QtGui import QColor, QFont
 from PySide6.QtCore import Qt
 
-from src.matriculaup.models.curriculum import Curriculum
-from src.matriculaup.models.course import Course, Section
+from matriculaup.models.curriculum import Curriculum
+from matriculaup.models.course import Course, Section
 from typing import List
 
 class CurriculumTab(QWidget):

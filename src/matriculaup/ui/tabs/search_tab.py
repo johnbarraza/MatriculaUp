@@ -2,8 +2,8 @@ from typing import List
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QComboBox, QLabel, QPushButton
 from PySide6.QtCore import Qt, Signal
 
-from src.matriculaup.models.course import Course, Section
-from src.matriculaup.ui.components.course_tree import CourseTree
+from matriculaup.models.course import Course, Section
+from matriculaup.ui.components.course_tree import CourseTree
 
 class SearchTab(QWidget):
     

@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QWidget
 from PySide6.QtGui import QPainter, QColor, QFont, QPen, QBrush
 from PySide6.QtCore import Qt, QRectF, Signal
 
-from src.matriculaup.models.course import Course, Section, Session
+from matriculaup.models.course import Course, Section, Session
 
 class TimetableGrid(QWidget):
     

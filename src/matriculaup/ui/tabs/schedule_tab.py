@@ -4,8 +4,8 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Signal
 
-from src.matriculaup.models.course import Course, Section
-from src.matriculaup.ui.components.timetable_grid import TimetableGrid
+from matriculaup.models.course import Course, Section
+from matriculaup.ui.components.timetable_grid import TimetableGrid
 
 class ScheduleTab(QWidget):
     # Pass the event upwards to the main AppWindow

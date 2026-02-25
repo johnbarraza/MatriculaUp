@@ -1,7 +1,7 @@
 from typing import List, Tuple
 from datetime import datetime
 
-from src.matriculaup.models.course import Session, Section, Course
+from matriculaup.models.course import Session, Section, Course
 
 class ConflictDetector:
     def __init__(self):

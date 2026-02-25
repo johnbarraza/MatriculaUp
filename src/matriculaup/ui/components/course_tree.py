@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QTreeView, QMenu, QHeaderView
 from PySide6.QtGui import QStandardItemModel, QStandardItem, QAction
 from PySide6.QtCore import Qt, Signal
 
-from src.matriculaup.models.course import Course, Section
+from matriculaup.models.course import Course, Section
 
 class CourseTree(QTreeView):
     # Emit signal when a section is selected to be added to the schedule

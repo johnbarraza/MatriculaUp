@@ -5,18 +5,26 @@ from pathlib import Path
 project_root = str(Path(__file__).parent.parent.parent.absolute())
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
+    
+if getattr(sys, 'frozen', False):
+    # If the application is run as a bundle, the PyInstaller bootloader
+    # extends the sys module by a flag frozen=True and sets the app 
+    # path into variable _MEIPASS'.
+    base_path = Path(sys._MEIPASS)
+else:
+    base_path = Path(project_root)
 
 from PySide6.QtWidgets import QApplication
-from src.matriculaup.models.course import load_from_json
-from src.matriculaup.store.persistence import PersistenceManager
-from src.matriculaup.ui.app_window import AppWindow
-from src.matriculaup.models.curriculum import load_curriculum_from_json
+from matriculaup.models.course import load_from_json
+from matriculaup.store.persistence import PersistenceManager
+from matriculaup.ui.app_window import AppWindow
+from matriculaup.models.curriculum import load_curriculum_from_json
 
 def main():
     app = QApplication(sys.path)
     
     # 1. Load Data
-    json_path = Path(project_root) / "input" / "courses_2026-1.json"
+    json_path = base_path / "input" / "courses_2026-1.json"
     print(f"Loading data from {json_path}")
     
     try:
@@ -26,7 +34,7 @@ def main():
         print(f"Error loading courses JSON: {e}")
         courses = []
         
-    curriculum_path = Path(project_root) / "input" / "curricula_economia2017.json"
+    curriculum_path = base_path / "input" / "curricula_economia2017.json"
     print(f"Loading curriculum from {curriculum_path}")
     curriculum = None
     try:
