@@ -106,36 +106,52 @@ class ScheduleState extends ChangeNotifier {
     return false;
   }
 
-  // ── Free-Time Preferences ─────────────────────────────────────────────────
-  /// Optional preferred start/end bounds (in "HH:MM" format).
-  /// If set, sessions outside these hours count as conflicts.
-  String? preferredStart; // e.g. "09:00"
-  String? preferredEnd; // e.g. "17:00"
+  // ── Free-Time Selection (Grid Drag) ───────────────────────────────────────
+  /// Maps a day (e.g. 'LUN') to a set of hours (e.g. {9, 10, 11}) that the user
+  /// has selected on the grid as "preferred times".
+  final Map<String, Set<int>> selectedTimeSlots = {};
 
-  void setFreeTimePrefs(String? start, String? end) {
-    preferredStart = start;
-    preferredEnd = end;
+  void toggleTimeSlot(String day, int hour, bool isSelected) {
+    if (isSelected) {
+      selectedTimeSlots.putIfAbsent(day, () => {}).add(hour);
+    } else {
+      selectedTimeSlots[day]?.remove(hour);
+      if (selectedTimeSlots[day]?.isEmpty ?? false) {
+        selectedTimeSlots.remove(day);
+      }
+    }
     notifyListeners();
   }
 
-  /// Returns true if ANY session of [section] falls outside the preferred window.
-  bool conflictsWithFreeTimePrefs(Section section) {
-    final ps = preferredStart;
-    final pe = preferredEnd;
-    if (ps == null || pe == null) return false;
+  void clearTimeSlots() {
+    selectedTimeSlots.clear();
+    notifyListeners();
+  }
+
+  bool isTimeSlotSelected(String day, int hour) {
+    return selectedTimeSlots[day]?.contains(hour) ?? false;
+  }
+
+  /// Returns true if the user has at least one active time slot selection.
+  bool get hasTimeSlotSelection => selectedTimeSlots.isNotEmpty;
+
+  /// Returns true if ALL sessions of [section] fall entirely within the selected
+  /// time slots. If no slots are selected, returns true (no restriction).
+  bool fitsInSelectedTimeSlots(Section section) {
+    if (!hasTimeSlotSelection) return true;
 
     for (var session in section.sesiones) {
-      // Session starts before preferred window begins
-      if (TimeUtils.timeToMinutes(session.horaInicio) <
-          TimeUtils.timeToMinutes(ps)) {
-        return true;
-      }
-      // Session ends after preferred window ends
-      if (TimeUtils.timeToMinutes(session.horaFin) >
-          TimeUtils.timeToMinutes(pe)) {
-        return true;
+      final startHour = TimeUtils.timeToMinutes(session.horaInicio) ~/ 60;
+      final endHour =
+          (TimeUtils.timeToMinutes(session.horaFin) - 1) ~/
+          60; // -1 to not count exact end hour if it's :00
+
+      for (int h = startHour; h <= endHour; h++) {
+        if (!isTimeSlotSelected(session.dia, h)) {
+          return false; // Found an hour that wasn't selected
+        }
       }
     }
-    return false;
+    return true; // All hours across all sessions were selected
   }
 }

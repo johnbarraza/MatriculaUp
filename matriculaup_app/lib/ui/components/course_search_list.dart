@@ -39,7 +39,7 @@ class _CourseSearchListState extends State<CourseSearchList> {
         final allConflict = c.secciones.every(
           (s) =>
               state.conflictsWithSchedule(s) ||
-              state.conflictsWithFreeTimePrefs(s),
+              !state.fitsInSelectedTimeSlots(s),
         );
         if (allConflict) return false;
       }

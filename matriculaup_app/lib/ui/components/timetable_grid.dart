@@ -5,7 +5,7 @@ import '../../models/course.dart';
 import '../../store/schedule_state.dart';
 import '../../utils/time_utils.dart';
 
-class TimetableGrid extends StatelessWidget {
+class TimetableGrid extends StatefulWidget {
   final bool showExams;
 
   const TimetableGrid({super.key, this.showExams = false});
@@ -15,6 +15,13 @@ class TimetableGrid extends StatelessWidget {
   final double hourHeight = 60.0;
 
   final List<String> days = const ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'];
+
+  @override
+  State<TimetableGrid> createState() => _TimetableGridState();
+}
+
+class _TimetableGridState extends State<TimetableGrid> {
+  bool _isSelecting = true;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,7 @@ class TimetableGrid extends StatelessWidget {
         Row(
           children: [
             const SizedBox(width: 50), // Time column spacer
-            ...days.map(
+            ...widget.days.map(
               (day) => Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 8),
@@ -56,28 +63,33 @@ class TimetableGrid extends StatelessWidget {
                 // Time Column
                 SizedBox(
                   width: 50,
-                  height: (endHour - startHour + 1) * hourHeight,
+                  height:
+                      (widget.endHour - widget.startHour + 1) *
+                      widget.hourHeight,
                   child: Stack(
-                    children: List.generate((endHour - startHour + 1), (index) {
-                      return Positioned(
-                        top: index * hourHeight,
-                        left: 0,
-                        right: 0,
-                        child: Text(
-                          '${startHour + index}:00',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey.shade600,
+                    children: List.generate(
+                      (widget.endHour - widget.startHour + 1),
+                      (index) {
+                        return Positioned(
+                          top: index * widget.hourHeight,
+                          left: 0,
+                          right: 0,
+                          child: Text(
+                            '${widget.startHour + index}:00',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey.shade600,
+                            ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      },
+                    ),
                   ),
                 ),
 
                 // Days Columns
-                ...days.map((day) {
+                ...widget.days.map((day) {
                   // Find sessions for this day
                   final daySessions = <Widget>[];
 
@@ -87,7 +99,8 @@ class TimetableGrid extends StatelessWidget {
                         bool isExam =
                             session.tipo == SessionType.finalExam ||
                             session.tipo == SessionType.parcial;
-                        if ((showExams && isExam) || (!showExams && !isExam)) {
+                        if ((widget.showExams && isExam) ||
+                            (!widget.showExams && !isExam)) {
                           daySessions.add(
                             _buildSessionBlock(
                               context,
@@ -102,32 +115,78 @@ class TimetableGrid extends StatelessWidget {
                   }
 
                   return Expanded(
-                    child: Container(
-                      height: (endHour - startHour + 1) * hourHeight,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          left: BorderSide(color: Colors.grey.shade200),
-                          right: BorderSide(color: Colors.grey.shade200),
+                    child: GestureDetector(
+                      onPanStart: (details) {
+                        final hour =
+                            widget.startHour +
+                            (details.localPosition.dy ~/ widget.hourHeight);
+                        if (hour >= widget.startHour &&
+                            hour <= widget.endHour) {
+                          _isSelecting = !state.isTimeSlotSelected(day, hour);
+                          state.toggleTimeSlot(day, hour, _isSelecting);
+                        }
+                      },
+                      onPanUpdate: (details) {
+                        final hour =
+                            widget.startHour +
+                            (details.localPosition.dy ~/ widget.hourHeight);
+                        if (hour >= widget.startHour &&
+                            hour <= widget.endHour) {
+                          if (state.isTimeSlotSelected(day, hour) !=
+                              _isSelecting) {
+                            state.toggleTimeSlot(day, hour, _isSelecting);
+                          }
+                        }
+                      },
+                      child: Container(
+                        height:
+                            (widget.endHour - widget.startHour + 1) *
+                            widget.hourHeight,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            left: BorderSide(color: Colors.grey.shade200),
+                            right: BorderSide(color: Colors.grey.shade200),
+                          ),
                         ),
-                      ),
-                      child: Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          // Background grid lines
-                          ...List.generate((endHour - startHour + 1), (index) {
-                            return Positioned(
-                              top: index * hourHeight,
-                              left: 0,
-                              right: 0,
-                              child: Container(
-                                height: 1,
-                                color: Colors.grey.shade200,
-                              ),
-                            );
-                          }),
-                          // Session Blocks
-                          ...daySessions,
-                        ],
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            // Background grid lines and selected slots
+                            ...List.generate(
+                              (widget.endHour - widget.startHour + 1),
+                              (index) {
+                                final h = widget.startHour + index;
+                                final isSelected = state.isTimeSlotSelected(
+                                  day,
+                                  h,
+                                );
+
+                                return Positioned(
+                                  top: index * widget.hourHeight,
+                                  left: 0,
+                                  right: 0,
+                                  height: widget.hourHeight,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: isSelected
+                                          ? Colors.greenAccent.withValues(
+                                              alpha: 0.2,
+                                            )
+                                          : Colors.transparent,
+                                      border: Border(
+                                        top: BorderSide(
+                                          color: Colors.grey.shade200,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            // Session Blocks
+                            ...daySessions,
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -147,15 +206,15 @@ class TimetableGrid extends StatelessWidget {
     Session session,
   ) {
     int startMins = TimeUtils.timeToMinutes(session.horaInicio);
-    int gridStartMins = startHour * 60;
+    int gridStartMins = widget.startHour * 60;
 
     // Calculate offset from top of grid
-    double topOffset = ((startMins - gridStartMins) / 60.0) * hourHeight;
+    double topOffset = ((startMins - gridStartMins) / 60.0) * widget.hourHeight;
     double durationMins = TimeUtils.durationMinutes(
       session.horaInicio,
       session.horaFin,
     ).toDouble();
-    double blockHeight = (durationMins / 60.0) * hourHeight;
+    double blockHeight = (durationMins / 60.0) * widget.hourHeight;
 
     // Generate a consistent color based on course code
     final colorHash = selection.course.codigo.hashCode;

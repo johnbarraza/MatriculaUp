@@ -26,60 +26,44 @@ class _HomePageState extends State<HomePage> {
     final courses = state.allCourses;
     final credits = state.currentCredits;
     final maxCredits = state.maxCredits;
-    final hasFreeTime =
-        state.preferredStart != null && state.preferredEnd != null;
+    final hasFreeTime = state.hasTimeSlotSelection;
 
     return Scaffold(
       // ── AppBar ───────────────────────────────────────────────────────────
       appBar: AppBar(
         title: const Text('MatriculaUp'),
         actions: [
-          // Free-time bounds picker
-          Tooltip(
-            message: 'Filtro de horario preferido',
-            child: InkWell(
-              borderRadius: BorderRadius.circular(8),
-              onTap: () => _showFreeTimeDialog(context, state),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 8,
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.access_time,
-                      size: 16,
-                      color: hasFreeTime ? Colors.greenAccent : Colors.white70,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      hasFreeTime
-                          ? '${state.preferredStart} – ${state.preferredEnd}'
-                          : 'Horario libre',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: hasFreeTime
-                            ? Colors.greenAccent
-                            : Colors.white70,
+          // Clear time slots
+          if (hasFreeTime)
+            Tooltip(
+              message: 'Limpiar selección de horario',
+              child: InkWell(
+                borderRadius: BorderRadius.circular(8),
+                onTap: () => state.clearTimeSlots(),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.filter_alt,
+                        size: 16,
+                        color: Colors.greenAccent,
                       ),
-                    ),
-                    if (hasFreeTime) ...[
-                      const SizedBox(width: 4),
-                      InkWell(
-                        onTap: () => state.setFreeTimePrefs(null, null),
-                        child: const Icon(
-                          Icons.close,
-                          size: 14,
-                          color: Colors.white54,
+                      SizedBox(width: 4),
+                      Text(
+                        'Horario Filtrado',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.greenAccent,
                         ),
                       ),
+                      SizedBox(width: 4),
+                      Icon(Icons.close, size: 14, color: Colors.white54),
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
           // Credit counter
           InkWell(
             borderRadius: BorderRadius.circular(8),
@@ -242,81 +226,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  // ── Free-Time Picker Dialog ───────────────────────────────────────────────
-  Future<void> _showFreeTimeDialog(
-    BuildContext context,
-    ScheduleState state,
-  ) async {
-    final hours = List.generate(
-      16,
-      (i) => '${(i + 7).toString().padLeft(2, '0')}:00',
-    ); // 07:00-22:00
-
-    String start = state.preferredStart ?? '09:00';
-    String end = state.preferredEnd ?? '18:00';
-
-    await showDialog(
-      context: context,
-      builder: (ctx) => StatefulBuilder(
-        builder: (ctx2, setSt) => AlertDialog(
-          title: const Text('Horario Preferido'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                'Las secciones fuera de este rango se tratarán como cruces.',
-                style: TextStyle(fontSize: 12, color: Colors.grey),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  const Text('Desde: '),
-                  const SizedBox(width: 8),
-                  DropdownButton<String>(
-                    value: start,
-                    items: hours
-                        .map((h) => DropdownMenuItem(value: h, child: Text(h)))
-                        .toList(),
-                    onChanged: (v) => setSt(() => start = v!),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  const Text('Hasta: '),
-                  const SizedBox(width: 8),
-                  DropdownButton<String>(
-                    value: end,
-                    items: hours
-                        .map((h) => DropdownMenuItem(value: h, child: Text(h)))
-                        .toList(),
-                    onChanged: (v) => setSt(() => end = v!),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                state.setFreeTimePrefs(null, null);
-                Navigator.pop(ctx);
-              },
-              child: const Text('Quitar filtro'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                state.setFreeTimePrefs(start, end);
-                Navigator.pop(ctx);
-              },
-              child: const Text('Aplicar'),
-            ),
-          ],
-        ),
       ),
     );
   }
