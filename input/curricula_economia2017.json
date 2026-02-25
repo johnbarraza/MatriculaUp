@@ -1,0 +1,437 @@
+{
+  "metadata": {
+    "plan": "Economia 2017",
+    "carrera": "Economia",
+    "universidad": "Universidad del Pacifico",
+    "fecha_extraccion": "2026-02-24"
+  },
+  "ciclos": [
+    {
+      "ciclo": 0,
+      "cursos": [
+        {
+          "codigo": "170131",
+          "nombre": "NIVELACIÓN EN INFORMÁTICA",
+          "creditos": "0",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "120000",
+          "nombre": "NIVELACIÓN EN LENGUAJE",
+          "creditos": "0",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "134654",
+          "nombre": "NIVELACIÓN EN MATEMÁTICAS",
+          "creditos": "0",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 1,
+      "cursos": [
+        {
+          "codigo": "132641",
+          "nombre": "ECONOMÍA GENERAL I",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "160092",
+          "nombre": "FUNDAMENTOS DE CONTABILIDAD",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "120001",
+          "nombre": "LENGUAJE I",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "138649",
+          "nombre": "MATEMÁTICAS I",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 2,
+      "cursos": [
+        {
+          "codigo": "130642",
+          "nombre": "ECONOMÍA GENERAL II",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "120006",
+          "nombre": "LENGUAJE II",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "131650",
+          "nombre": "MATEMÁTICAS II",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "158109",
+          "nombre": "SOCIOLOGÍA",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 3,
+      "cursos": [
+        {
+          "codigo": "130224",
+          "nombre": "ESTADÍSTICA I",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "150140",
+          "nombre": "INVESTIGACIÓN ACADÉMICA",
+          "creditos": "3",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "130233",
+          "nombre": "MATEMÁTICAS III",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "138201",
+          "nombre": "MICROECONOMÍA I",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "120124",
+          "nombre": "HISTORIA ECONÓMICA Y EMPRESARIAL",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 4,
+      "cursos": [
+        {
+          "codigo": "130225",
+          "nombre": "ESTADÍSTICA II",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "135645",
+          "nombre": "GESTIÓN DE LOS RECURSOS NATURALES",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "134203",
+          "nombre": "MACROECONOMÍA I",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "130229",
+          "nombre": "MATEMÁTICAS IV",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "134427",
+          "nombre": "MICROECONOMÍA II",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 5,
+      "cursos": [
+        {
+          "codigo": "130223",
+          "nombre": "ESTADÍSTICA APLICADA",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "133016",
+          "nombre": "EVALUACIÓN PRIVADA DE PROYECTOS",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "132204",
+          "nombre": "MACROECONOMÍA II",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "130656",
+          "nombre": "TEORÍA DEL COMERCIO INTERNACIONAL",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "129007",
+          "nombre": "FILOSOFÍA",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 6,
+      "cursos": [
+        {
+          "codigo": "130424",
+          "nombre": "ECONOMETRÍA I",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "1F0228",
+          "nombre": "ECONOMÍA FINANCIERA I",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "130648",
+          "nombre": "MACROECONOMÍA III",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "134069",
+          "nombre": "ORGANIZACIÓN INDUSTRIAL",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "150004",
+          "nombre": "CIENCIA POLÍTICA",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 7,
+      "cursos": [
+        {
+          "codigo": "138425",
+          "nombre": "ECONOMETRÍA II",
+          "creditos": "5",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "186108",
+          "nombre": "ECONOMÍA Y DERECHO",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "135015",
+          "nombre": "HISTORIA DEL PENSAMIENTO ECONÓMICO",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "130227",
+          "nombre": "MACROECONOMÍA INTERNACIONAL",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "158059",
+          "nombre": "PENSAMIENTO SOCIAL CONTEMPORÁNEO",
+          "creditos": "3",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 8,
+      "cursos": [
+        {
+          "codigo": "132655",
+          "nombre": "POLÍTICA ECONÓMICA",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "150013",
+          "nombre": "PROYECCIÓN SOCIAL",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "120125",
+          "nombre": "TEOLOGÍA DE LAS RELIGIONES",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 9,
+      "cursos": [
+        {
+          "codigo": "120133",
+          "nombre": "ÉTICA",
+          "creditos": "4",
+          "tipo": "obligatorio"
+        },
+        {
+          "codigo": "131566",
+          "nombre": "INVESTIGACIÓN ECONÓMICA I",
+          "creditos": "2",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": 10,
+      "cursos": [
+        {
+          "codigo": "130567",
+          "nombre": "INVESTIGACIÓN ECONÓMICA II",
+          "creditos": "2",
+          "tipo": "obligatorio"
+        }
+      ]
+    },
+    {
+      "ciclo": "concentracion",
+      "nombre": "Obligatorias de Concentracion",
+      "cursos": [
+        {
+          "codigo": "130639",
+          "nombre": "Diseño y Evaluación Social de Proyectos",
+          "creditos": "4",
+          "tipo": "obligatorio_concentracion"
+        },
+        {
+          "codigo": "130043",
+          "nombre": "Economía Pública",
+          "creditos": "4",
+          "tipo": "obligatorio_concentracion"
+        },
+        {
+          "codigo": "130665",
+          "nombre": "Teoría del Desarrollo Económico",
+          "creditos": "4",
+          "tipo": "obligatorio_concentracion"
+        },
+        {
+          "codigo": "1F0229",
+          "nombre": "Economía Financiera II",
+          "creditos": "4",
+          "tipo": "obligatorio_concentracion"
+        },
+        {
+          "codigo": "130335",
+          "nombre": "Microeconomía del Comportamiento",
+          "creditos": "4",
+          "tipo": "obligatorio_concentracion"
+        },
+        {
+          "codigo": "135483",
+          "nombre": "Macroeconomía Avanzada I (M)",
+          "creditos": "5",
+          "tipo": "obligatorio_concentracion"
+        },
+        {
+          "codigo": "131485",
+          "nombre": "Matemáticas Avanzada (M)",
+          "creditos": "5",
+          "tipo": "obligatorio_concentracion"
+        },
+        {
+          "codigo": "133484",
+          "nombre": "Microeconomía Avanzada I (M)",
+          "creditos": "5",
+          "tipo": "obligatorio_concentracion"
+        }
+      ]
+    },
+    {
+      "ciclo": "electivos",
+      "nombre": "Cursos Electivos",
+      "cursos": [
+        {
+          "codigo": "130246",
+          "nombre": "Desarrollo Económico Comparativo de Latinoamérica y Europa",
+          "creditos": "2",
+          "tipo": "electivo"
+        },
+        {
+          "codigo": "134640",
+          "nombre": "Economía de los Recursos Naturales",
+          "creditos": "4",
+          "tipo": "electivo"
+        },
+        {
+          "codigo": "130112",
+          "nombre": "Economic Growth and Development in L.A.",
+          "creditos": "3",
+          "tipo": "electivo"
+        },
+        {
+          "codigo": "133663",
+          "nombre": "Política Fiscal",
+          "creditos": "3",
+          "tipo": "electivo"
+        },
+        {
+          "codigo": "130115",
+          "nombre": "Political Economy Seminar",
+          "creditos": "3",
+          "tipo": "electivo"
+        },
+        {
+          "codigo": "138358",
+          "nombre": "Sem. De Coyuntura Económica",
+          "creditos": "2",
+          "tipo": "electivo"
+        },
+        {
+          "codigo": "135743",
+          "nombre": "Sem. De Telecomunicaciones",
+          "creditos": "2",
+          "tipo": "electivo"
+        },
+        {
+          "codigo": "136586",
+          "nombre": "Sem. Introducción a la Economía del Comportamiento",
+          "creditos": "2",
+          "tipo": "electivo"
+        },
+        {
+          "codigo": "130190",
+          "nombre": "Sem. Minería y Desarrollo Económico",
+          "creditos": "2",
+          "tipo": "electivo"
+        },
+        {
+          "codigo": "130210",
+          "nombre": "Sem. Promoción de la Inversión Privada",
+          "creditos": "2",
+          "tipo": "electivo"
+        }
+      ]
+    }
+  ]
+}
