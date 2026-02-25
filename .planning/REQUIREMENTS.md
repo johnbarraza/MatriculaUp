@@ -75,26 +75,26 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EXT-01 | Phase 1 | Pending |
-| EXT-02 | Phase 1 | Pending |
-| EXT-03 | Phase 1 | Pending |
-| EXT-04 | Phase 1 | Pending |
-| EXT-05 | Phase 1 | Pending |
-| NAV-01 | Phase 2 | Pending |
-| NAV-02 | Phase 2 | Pending |
-| NAV-03 | Phase 2 | Pending |
-| PLAN-01 | Phase 2 | Pending |
-| PLAN-02 | Phase 2 | Pending |
-| PLAN-03 | Phase 2 | Pending |
-| PLAN-04 | Phase 2 | Pending |
-| PLAN-05 | Phase 3 | Pending |
-| PLAN-06 | Phase 3 | Pending |
-| PLAN-07 | Phase 3 | Pending |
-| PERS-01 | Phase 2 | Pending |
-| PERS-02 | Phase 2 | Pending |
-| EXP-01 | Phase 3 | Pending |
-| DIST-01 | Phase 4 | Pending |
-| DIST-02 | Phase 4 | Pending |
+| EXT-01 | Phase 1: Extraction | Pending |
+| EXT-02 | Phase 1: Extraction | Pending |
+| EXT-03 | Phase 1: Extraction | Pending |
+| EXT-04 | Phase 1: Extraction | Pending |
+| EXT-05 | Phase 1: Extraction | Pending |
+| NAV-01 | Phase 2: Desktop App Core | Pending |
+| NAV-02 | Phase 2: Desktop App Core | Pending |
+| NAV-03 | Phase 2: Desktop App Core | Pending |
+| PLAN-01 | Phase 2: Desktop App Core | Pending |
+| PLAN-02 | Phase 2: Desktop App Core | Pending |
+| PLAN-03 | Phase 2: Desktop App Core | Pending |
+| PLAN-04 | Phase 2: Desktop App Core | Pending |
+| PLAN-05 | Phase 3: Curriculum & Export | Pending |
+| PLAN-06 | Phase 3: Curriculum & Export | Pending |
+| PLAN-07 | Phase 3: Curriculum & Export | Pending |
+| PERS-01 | Phase 2: Desktop App Core | Pending |
+| PERS-02 | Phase 2: Desktop App Core | Pending |
+| EXP-01 | Phase 3: Curriculum & Export | Pending |
+| DIST-01 | Phase 4: Distribution | Pending |
+| DIST-02 | Phase 4: Distribution | Pending |
 
 **Coverage:**
 - v1 requirements: 20 total
@@ -102,5 +102,6 @@
 - Unmapped: 0 ✓
 
 ---
+
 *Requirements defined: 2026-02-24*
-*Last updated: 2026-02-24 after initial definition*
+*Traceability updated: 2026-02-24 after roadmap creation*
