@@ -11,41 +11,84 @@ class CourseSelection {
 }
 
 class ScheduleState extends ChangeNotifier {
+  // ── Course data ──────────────────────────────────────────────────────────
   List<Course> _allCourses = [];
-  final List<CourseSelection> _selectedSections = [];
-
   List<Course> get allCourses => _allCourses;
-  List<CourseSelection> get selectedSections => _selectedSections;
 
   void setCourses(List<Course> courses) {
     _allCourses = courses;
     notifyListeners();
   }
 
-  void addSection(Course course, Section section) {
-    // Prevent adding the same course twice
-    if (_selectedSections.any((s) => s.course.codigo == course.codigo)) {
-      throw Exception('El curso ya está en el horario.');
-    }
+  // ── Credit Limit ─────────────────────────────────────────────────────────
+  int maxCredits = 25;
 
-    _selectedSections.add(CourseSelection(course: course, section: section));
+  int get currentCredits => selectedSections.fold(0, (sum, sel) {
+    return sum + (int.tryParse(sel.course.creditos) ?? 0);
+  });
+
+  void setMaxCredits(int limit) {
+    maxCredits = limit;
     notifyListeners();
   }
 
-  void removeSection(Course course, Section section) {
-    _selectedSections.removeWhere(
-      (selection) =>
-          selection.course.codigo == course.codigo &&
-          selection.section.seccion == section.seccion,
+  // ── Multiple Schedules (Plan A / B / C) ──────────────────────────────────
+  /// 3 independent sections lists: index 0 = Plan A, 1 = Plan B, 2 = Plan C.
+  final List<List<CourseSelection>> _schedules = [[], [], []];
+  int _activeScheduleIndex = 0;
+
+  int get activeScheduleIndex => _activeScheduleIndex;
+
+  void switchSchedule(int index) {
+    assert(index >= 0 && index < _schedules.length);
+    _activeScheduleIndex = index;
+    notifyListeners();
+  }
+
+  List<CourseSelection> get selectedSections =>
+      _schedules[_activeScheduleIndex];
+
+  // ── Add / Remove ─────────────────────────────────────────────────────────
+  void addSection(Course course, Section section) {
+    // Prevent same course twice in active plan
+    if (selectedSections.any((s) => s.course.codigo == course.codigo)) {
+      throw Exception('El curso ya está en el horario.');
+    }
+
+    // Prevent time conflict
+    if (conflictsWithSchedule(section)) {
+      throw Exception('Esta sección tiene cruce de horarios.');
+    }
+
+    // Enforce credit limit
+    final newCredits = int.tryParse(course.creditos) ?? 0;
+    if (currentCredits + newCredits > maxCredits) {
+      throw Exception(
+        'Límite de créditos alcanzado ($currentCredits / $maxCredits).',
+      );
+    }
+
+    _schedules[_activeScheduleIndex].add(
+      CourseSelection(course: course, section: section),
     );
     notifyListeners();
   }
 
-  /// Returns true if the given section overlaps with any already selected section.
+  void removeSection(Course course, Section section) {
+    _schedules[_activeScheduleIndex].removeWhere(
+      (sel) =>
+          sel.course.codigo == course.codigo &&
+          sel.section.seccion == section.seccion,
+    );
+    notifyListeners();
+  }
+
+  // ── Conflict Check ───────────────────────────────────────────────────────
+  /// Returns true if the given section overlaps with any session in the current plan.
   bool conflictsWithSchedule(Section section) {
-    for (var currentSelection in _selectedSections) {
+    for (var currentSel in selectedSections) {
       for (var newSession in section.sesiones) {
-        for (var currentSession in currentSelection.section.sesiones) {
+        for (var currentSession in currentSel.section.sesiones) {
           if (newSession.dia == currentSession.dia) {
             if (TimeUtils.hasOverlap(
               newSession.horaInicio,
