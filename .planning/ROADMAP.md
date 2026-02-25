@@ -37,7 +37,7 @@
 4. El JSON cumple esquema validado: estructura curso → secciones → sesiones con todos los campos requeridos (horario 24h, aula, tipo de sesión)
 5. El extractor genera curricula.json (plan Economía 2017) con cursos organizados por ciclo académico y tipos (obligatorio, electivo)
 
-**Plans:** 2/4 plans executed
+**Plans:** 3/4 plans executed
 
 Plans:
 - [x] 01-01-PLAN.md — Test scaffolding (TDD Red phase): pytest fixtures, failing unit tests for prerequisite buffer and Spanish name regex
@@ -112,7 +112,7 @@ Plans:
 
 | Phase | Goal | Requirements | Success Criteria |
 |-------|------|--------------|------------------|
-| 1 - Extraction Fix | 2/4 | In Progress|  |
+| 1 - Extraction Fix | 3/4 | In Progress|  |
 | 2 - Desktop App Core | Search, plan, conflict detect, persist | 9 (NAV-01 to NAV-03, PLAN-01 to PLAN-04, PERS-01 to PERS-02) | 8 criteria |
 | 3 - Curriculum & Export | Curriculum filter, PNG export | 4 (PLAN-05 to PLAN-07, EXP-01) | 4 criteria |
 | 4 - Distribution | Windows installer, .exe bundle | 2 (DIST-01, DIST-02) | 4 criteria |

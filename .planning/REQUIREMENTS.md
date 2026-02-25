@@ -7,7 +7,7 @@
 
 ### Extractor
 
-- [ ] **EXT-01**: El extractor procesa el PDF de oferta académica y genera un `courses.json` con todos los cursos, secciones y sesiones del ciclo
+- [x] **EXT-01**: El extractor procesa el PDF de oferta académica y genera un `courses.json` con todos los cursos, secciones y sesiones del ciclo
 - [x] **EXT-02**: Los prerequisitos con lógica compuesta (Y/O multi-fila) se parsean completos sin truncar
 - [x] **EXT-03**: Los nombres de docentes con apellidos compuestos (Del, De La, De Los) se capturan completos
 - [ ] **EXT-04**: El JSON generado es validado contra un esquema definido (estructura completa: curso → secciones → sesiones)
@@ -75,7 +75,7 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EXT-01 | Phase 1: Extraction | Pending |
+| EXT-01 | Phase 1: Extraction | Complete |
 | EXT-02 | Phase 1: Extraction | Complete |
 | EXT-03 | Phase 1: Extraction | Complete |
 | EXT-04 | Phase 1: Extraction | Pending |

@@ -28,7 +28,7 @@
 - Build extraction test suite
 
 **Progress:**
-[█████░░░░░] 50%
+[████████░░] 75%
 - Phase 1 Plans complete: 2/4 (01-01 test scaffolding, 01-03 curriculum extractor)
 - Phase 1 Pending: 01-02 (courses extractor), 01-04 (validation)
 
@@ -183,7 +183,7 @@
 - PROFESSOR_COMPOUND_ROW stored as raw string (not list row) matching real pdfplumber cell text
 - Added tests/__init__.py for absolute import resolution from conftest.py
 
-**Stopped at:** Completed 01-03-PLAN.md — CurriculumExtractor + curricula_economia2017.json
+**Stopped at:** Completed 01-02-PLAN.md
 
 ### Session 3 (2026-02-25): Phase 1 Plan 03 Execution
 
@@ -205,12 +205,31 @@
 - Ciclo 0 detection: check if continuation row has its own code in Codigo column before falling back to pending_codes list
 
 **Next Steps:**
-- Execute 01-02-PLAN.md — Courses extractor (scripts/extractors/courses.py, input/courses_2026-1.json)
-- RED tests in test_extraction.py (TestPrerequisiteContinuation, TestProfessorSpanishNames) should turn GREEN after Plan 02
-- Run `pytest tests/ -v` after Plan 02 to confirm all tests pass
+- Execute 01-04-PLAN.md — Validation layer (scripts/extractors/validators.py)
+- test_validation.py currently 4 skipped — Plan 04 should make them GREEN
+
+### Session 4 (2026-02-25): Phase 1 Plan 02 Execution
+
+**Completed (01-02-PLAN.md — CourseOfferingExtractor + courses_2026-1.json):**
+- Implemented scripts/extractors/courses.py: is_truncated_prerequisite, extract_professors_spanish, extract_prerequisites_with_continuation, parse_prerequisite_tree, CourseOfferingExtractor
+- Fixed EXT-03: PROF_PATTERN regex alternation order bug (del before de) — "Del Rosario" now captured in full
+- Fixed EXT-02: real PDF prereqs are inline cells with \n (not continuation rows) — joined with space
+- Created pytest.ini to disable broken pytest-qt plugin in conda 'up' env
+- Updated scripts/extract.py CLI to use CourseOfferingExtractor
+- Generated input/courses_2026-1.json: 253 courses, 0 truncated prereqs, compound surnames captured
+- All 10 tests in test_extraction.py pass GREEN
+- Commits: 2a352a5 (extractor), a1684d2 (CLI + JSON output)
+
+**Key Decisions (this session):**
+- Real 2026-1 PDF prerequisites are inline in course header row column 4 (not separate continuation rows)
+- Regex alternation: [Dd]el must precede [Dd]e to avoid "Del" matching as just "De"
+- Cycle detection normalizes Roman numeral: "2026-I" -> "2026-1" for consistent JSON filenames
+- pytest.ini with addopts = -p no:qt required to unblock test collection in conda 'up' env
+
+**Stopped at:** Completed 01-02-PLAN.md — CourseOfferingExtractor + courses_2026-1.json
 
 ---
 
 *State file created: 2026-02-24*
 *Last updated: 2026-02-25*
-*Phase 1: 2/4 plans complete (01-01, 01-03)*
+*Phase 1: 3/4 plans complete (01-01, 01-02, 01-03)*
