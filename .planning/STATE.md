@@ -1,7 +1,7 @@
 # MatriculaUp Project State
 
 **Last updated:** 2026-02-25
-**Current phase:** Phase 1 (execution in progress — 2/4 plans complete)
+**Current phase:** Phase 1 COMPLETE — all 4/4 plans done. Ready for Phase 2.
 
 ---
 
@@ -23,14 +23,12 @@
 **Active Phase:** Phase 1 — Extraction Pipeline Fix & Validation
 
 **Current Focus:**
-- Fix pdfplumber extraction bugs (multi-line truncation, Spanish names, missing rows)
-- Generate validated courses.json, curricula.json for 2026-1
-- Build extraction test suite
+- Phase 1 complete. Next: Phase 2 — PySide6 desktop app.
 
 **Progress:**
-[████████░░] 75%
-- Phase 1 Plans complete: 2/4 (01-01 test scaffolding, 01-03 curriculum extractor)
-- Phase 1 Pending: 01-02 (courses extractor), 01-04 (validation)
+[██████████] 100%
+- Phase 1 Plans complete: 4/4 (01-01 test scaffolding, 01-02 courses extractor, 01-03 curriculum extractor, 01-04 validation)
+- Phase 2 Pending: desktop app implementation
 
 **Requirements Mapped:** 20/20 ✓
 
@@ -47,6 +45,8 @@
 | **v1 MVP features** | Search + Schedule + Conflict + Persist + Curriculum filter + PNG export; Prerequisite validation deferred to v1.1 | Locked |
 | **curricula_economia2017.json schema** | ciclos list with int (0-10) for regular cycles; string keys 'concentracion'/'electivos' for special groups | Locked |
 | **extract.py sys.path injection** | Project root added to sys.path at top of script to enable `python scripts/extract.py` direct invocation | Locked |
+| **validators.py schema reflects real data** | ciclo minimum=0 (ciclo cero exists), obligatorio_concentracion in tipo enum, oneOf int/str for ciclo field | Locked |
+| **Python 3.11 is test runtime** | Default Python 3.12 (miniconda base) has broken rpds package; jsonschema fails. Tests: Python311/python.exe -m pytest | Locked |
 
 ---
 
@@ -54,15 +54,12 @@
 
 ### Phase 1 (Extraction) Blockers
 
-**High Priority:**
-- Multi-line prerequisite truncation in pdfplumber (research shows incomplete expressions ending with "Y (" — must fix before JSON output)
-- Spanish compound surname parsing ("Del Rosario", "de la", etc. truncated by naive regex)
-- Missing table boundaries (first/last rows dropped if lines faint)
-
-**Validation Required:**
-- Prerequisite row count validation (ensure all prerequisites captured)
-- Professor name list cross-check (validate parsed names against known faculty)
-- Encoding checks (UTF-8 Spanish characters not mangled)
+**RESOLVED — Phase 1 Complete:**
+- EXT-01: courses_2026-1.json generated (253 cursos, full curso/seccion/sesion structure)
+- EXT-02: prerequisite truncation fixed (inline cell \n joining)
+- EXT-03: compound surnames fixed (regex alternation order)
+- EXT-04: JSON schema validation (validators.py, both files validate VALID)
+- EXT-05: curricula_economia2017.json generated (13 ciclos, 60 courses)
 
 ### Phase 2 (Desktop App) Blockers
 
@@ -228,8 +225,27 @@
 
 **Stopped at:** Completed 01-02-PLAN.md — CourseOfferingExtractor + courses_2026-1.json
 
+### Session 5 (2026-02-25): Phase 1 Plan 04 Execution
+
+**Completed (01-04-PLAN.md — JSON Schema Validators):**
+- Created scripts/extractors/validators.py with COURSES_SCHEMA and CURRICULUM_SCHEMA (Draft7Validator)
+- Adjusted schema from plan defaults: ciclo minimum=0, obligatorio_concentracion tipo, oneOf for string/int ciclo keys
+- Wired validate_courses_json into CourseOfferingExtractor.extract() before return
+- Wired validate_curriculum_json into CurriculumExtractor.extract() before return
+- Validated real input/courses_2026-1.json (253 cursos): VALID
+- Validated real input/curricula_economia2017.json (13 ciclos): VALID
+- All 14 tests pass GREEN (was 4 skipped before this plan)
+- Commits: 855de5f (validators.py + wiring)
+
+**Key Decisions (this session):**
+- Schema adjusted from plan defaults: ciclo minimum=0, obligatorio_concentracion tipo, oneOf int/str ciclo
+- Real data wins over schema assumptions: always inspect actual JSON before finalizing enum/type constraints
+- Python 3.11 is test runtime (miniconda base Python 3.12 has broken rpds package)
+
+**Stopped at:** Completed 01-04-PLAN.md — Phase 1 COMPLETE
+
 ---
 
 *State file created: 2026-02-24*
 *Last updated: 2026-02-25*
-*Phase 1: 3/4 plans complete (01-01, 01-02, 01-03)*
+*Phase 1: 4/4 plans complete (01-01, 01-02, 01-03, 01-04) — PHASE COMPLETE*
