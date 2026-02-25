@@ -11,7 +11,7 @@
 - [x] **EXT-02**: Los prerequisitos con lógica compuesta (Y/O multi-fila) se parsean completos sin truncar
 - [x] **EXT-03**: Los nombres de docentes con apellidos compuestos (Del, De La, De Los) se capturan completos
 - [ ] **EXT-04**: El JSON generado es validado contra un esquema definido (estructura completa: curso → secciones → sesiones)
-- [ ] **EXT-05**: El extractor procesa el PDF del plan de estudios Economía 2017 y genera `curriculum_economia2017.json` con cursos por ciclo académico
+- [x] **EXT-05**: El extractor procesa el PDF del plan de estudios Economía 2017 y genera `curriculum_economia2017.json` con cursos por ciclo académico
 
 ### App — Búsqueda y Navegación
 
@@ -79,7 +79,7 @@
 | EXT-02 | Phase 1: Extraction | Complete |
 | EXT-03 | Phase 1: Extraction | Complete |
 | EXT-04 | Phase 1: Extraction | Pending |
-| EXT-05 | Phase 1: Extraction | Pending |
+| EXT-05 | Phase 1: Extraction | Complete |
 | NAV-01 | Phase 2: Desktop App Core | Pending |
 | NAV-02 | Phase 2: Desktop App Core | Pending |
 | NAV-03 | Phase 2: Desktop App Core | Pending |

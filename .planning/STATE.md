@@ -1,7 +1,7 @@
 # MatriculaUp Project State
 
-**Last updated:** 2026-02-24
-**Current phase:** Phase 1 (planning complete, execution pending)
+**Last updated:** 2026-02-25
+**Current phase:** Phase 1 (execution in progress — 2/4 plans complete)
 
 ---
 
@@ -28,9 +28,9 @@
 - Build extraction test suite
 
 **Progress:**
-- Roadmap: Complete ✓
-- Phase 1 Plan: TBD (next: `/gsd:plan-phase 1`)
-- Phase 1 Execution: Not started
+[█████░░░░░] 50%
+- Phase 1 Plans complete: 2/4 (01-01 test scaffolding, 01-03 curriculum extractor)
+- Phase 1 Pending: 01-02 (courses extractor), 01-04 (validation)
 
 **Requirements Mapped:** 20/20 ✓
 
@@ -45,6 +45,8 @@
 | **JSON schema (courses → sections → sessions)** | Hierarchical prerequisite logic (AND/OR trees), normalized session types (CLASE, PRÁCTICA, etc.) | Locked |
 | **v1 scope: Single career, single cycle** | Economía 2017, 2026-1 only; multi-career deferred to v2 for rapid validation | Locked |
 | **v1 MVP features** | Search + Schedule + Conflict + Persist + Curriculum filter + PNG export; Prerequisite validation deferred to v1.1 | Locked |
+| **curricula_economia2017.json schema** | ciclos list with int (0-10) for regular cycles; string keys 'concentracion'/'electivos' for special groups | Locked |
+| **extract.py sys.path injection** | Project root added to sys.path at top of script to enable `python scripts/extract.py` direct invocation | Locked |
 
 ---
 
@@ -181,15 +183,34 @@
 - PROFESSOR_COMPOUND_ROW stored as raw string (not list row) matching real pdfplumber cell text
 - Added tests/__init__.py for absolute import resolution from conftest.py
 
-**Stopped at:** Completed Phase 1 Plan 01 (01-01-PLAN.md)
+**Stopped at:** Completed 01-03-PLAN.md — CurriculumExtractor + curricula_economia2017.json
+
+### Session 3 (2026-02-25): Phase 1 Plan 03 Execution
+
+**Completed (01-03-PLAN.md — CurriculumExtractor):**
+- Inspected curriculum PDF: 1 page, 3 tables (obligatorias/concentracion/electivos)
+- Discovered dual code-layout pattern: ciclo 0 has individual codes per row; ciclos 1-10 batch codes in header row
+- Added TestCurriculumStructure class to tests/test_extraction.py (2 tests)
+- Created scripts/extractors/curriculum.py (CurriculumExtractor with 3 private parse functions)
+- Created scripts/extract.py CLI entry point with sys.path fix
+- Created scripts/__init__.py, scripts/extractors/__init__.py packages
+- Included scripts/extractors/base.py (BaseExtractor ABC)
+- Generated input/curricula_economia2017.json: 11 ciclos (0-10), 60 total courses, 0 warnings
+- All TestCurriculumStructure tests pass (2/2)
+- Commits: 73cac8c (tests), 7d8a869 (extractor + output)
+
+**Key Decisions (this session):**
+- curricula_economia2017.json ciclos list uses int for regular cycles (0-10) and string for special groups ('concentracion', 'electivos')
+- sys.path injection in extract.py enables `python scripts/extract.py` direct invocation
+- Ciclo 0 detection: check if continuation row has its own code in Codigo column before falling back to pending_codes list
 
 **Next Steps:**
-- Execute 01-02-PLAN.md — Courses extractor implementation (scripts/extractors/courses.py)
-- RED tests in test_extraction.py should turn GREEN after Plan 02 implementation
-- Run `pytest tests/ -v` after Plan 02 to confirm transition
+- Execute 01-02-PLAN.md — Courses extractor (scripts/extractors/courses.py, input/courses_2026-1.json)
+- RED tests in test_extraction.py (TestPrerequisiteContinuation, TestProfessorSpanishNames) should turn GREEN after Plan 02
+- Run `pytest tests/ -v` after Plan 02 to confirm all tests pass
 
 ---
 
 *State file created: 2026-02-24*
 *Last updated: 2026-02-25*
-*Phase 1 Plan 1/4 complete*
+*Phase 1: 2/4 plans complete (01-01, 01-03)*
