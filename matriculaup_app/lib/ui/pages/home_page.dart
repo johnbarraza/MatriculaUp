@@ -7,8 +7,15 @@ import '../../store/schedule_state.dart';
 import 'package:matriculaup_app/ui/components/course_search_list.dart';
 import 'package:matriculaup_app/ui/components/timetable_grid.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool _showExams = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +52,35 @@ class HomePage extends StatelessWidget {
           // Right Panel (70%)
           Expanded(
             flex: 7,
-            child: Container(color: Colors.white, child: const TimetableGrid()),
+            child: Container(
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SegmentedButton<bool>(
+                      segments: const [
+                        ButtonSegment<bool>(
+                          value: false,
+                          label: Text('Semana Regular'),
+                        ),
+                        ButtonSegment<bool>(
+                          value: true,
+                          label: Text('Exámenes'),
+                        ),
+                      ],
+                      selected: <bool>{_showExams},
+                      onSelectionChanged: (Set<bool> newSelection) {
+                        setState(() {
+                          _showExams = newSelection.first;
+                        });
+                      },
+                    ),
+                  ),
+                  Expanded(child: TimetableGrid(showExams: _showExams)),
+                ],
+              ),
+            ),
           ),
         ],
       ),

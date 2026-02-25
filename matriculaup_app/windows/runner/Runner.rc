@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "matriculaup_app" "\0"
+            VALUE "FileDescription", "MatriculaUp" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "matriculaup_app" "\0"
+            VALUE "InternalName", "MatriculaUp" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "matriculaup_app.exe" "\0"
-            VALUE "ProductName", "matriculaup_app" "\0"
+            VALUE "OriginalFilename", "MatriculaUp.exe" "\0"
+            VALUE "ProductName", "MatriculaUp" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

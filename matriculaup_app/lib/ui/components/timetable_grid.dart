@@ -6,7 +6,9 @@ import '../../store/schedule_state.dart';
 import '../../utils/time_utils.dart';
 
 class TimetableGrid extends StatelessWidget {
-  const TimetableGrid({super.key});
+  final bool showExams;
+
+  const TimetableGrid({super.key, this.showExams = false});
 
   final int startHour = 7;
   final int endHour = 23;
@@ -82,14 +84,19 @@ class TimetableGrid extends StatelessWidget {
                   for (var selection in selections) {
                     for (var session in selection.section.sesiones) {
                       if (session.dia == day) {
-                        daySessions.add(
-                          _buildSessionBlock(
-                            context,
-                            state,
-                            selection,
-                            session,
-                          ),
-                        );
+                        bool isExam =
+                            session.tipo == SessionType.finalExam ||
+                            session.tipo == SessionType.parcial;
+                        if ((showExams && isExam) || (!showExams && !isExam)) {
+                          daySessions.add(
+                            _buildSessionBlock(
+                              context,
+                              state,
+                              selection,
+                              session,
+                            ),
+                          );
+                        }
                       }
                     }
                   }
