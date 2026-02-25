@@ -13,9 +13,16 @@
 ## Phases
 
 - [x] **Phase 1: Extraction Pipeline Fix & Validation** - Fix PDF extraction bugs and validate data quality before app development (completed 2026-02-25)
-- [ ] **Phase 2: Desktop App Core (Search, Plan, Persist)** - Build PySide6 app with course search, schedule builder, conflict detection, and data persistence
+- [x] **Phase 2: Desktop App Core (Search, Plan, Persist)** - Build PySide6 app with course search, schedule builder, conflict detection, and data persistence (completed 2026-02-25)
 - [x] **Phase 3: Curriculum Integration & Export** - Add curriculum filter and PNG schedule export (completed 2026-02-25)
 - [x] **Phase 4: Windows Distribution** - Create installer and bundle app as standalone .exe (completed 2026-02-25)
+
+---
+
+## Milestone v1.1 (UI/UX Refinements & Conflict Prevention)
+
+- [ ] **Phase 5: Interactive Schedule & Conflict Prevention** - Side-by-side interactive timetable during search, visual conflict warnings before adding, and duplicate course prevention.
+- [ ] **Phase 6: Advanced Views & Dynamic Data** - Break timetable into Regular (Mon-Sat) and Exam (Final/Parcial) views, improve grid labeling, and allow loading custom external JSON files from the UI.
 
 ---
 
@@ -123,6 +130,46 @@ Plans:
 Plans:
 - [x] 04-01-PLAN.md — PyInstaller Configuration (Path resolution & build script)
 - [x] 04-02-PLAN.md — Windows Installer Distribution (Inno Setup automation)
+
+---
+
+### Phase 5: Interactive Schedule & Conflict Prevention (v1.1)
+
+**Goal:** Enhance the core scheduling experience by merging search and timetable views, and actively preventing users from creating invalid schedules (crosses or duplicate courses).
+
+**Depends on:** Phase 4 (builds on v1 core)
+
+**Requirements:** NAV-04 (Side-by-side view), PLAN-08 (Duplicate prevention), PLAN-09 (Pre-selection conflict hints)
+
+**Success Criteria** (what must be TRUE when this phase completes):
+
+1. El usuario puede ver su horario semanal interactivo en la misma pantalla/vista mientras busca y explora cursos nuevos.
+2. Si el usuario intenta agregar una sección de un curso que ya tiene en su horario (incluso si es otra sección deferente), la app bloquea la acción y muestra un aviso.
+3. En la lista de resultados de búsqueda, las secciones que cruzan con el horario actual del usuario se marcan visualmente (ej. fondo rojo o ícono de alerta) antes de que el usuario intente agregarlas.
+
+**Status**: ⬜ Not Started
+
+**Plans:** TBD
+
+---
+
+### Phase 6: Advanced Views & Dynamic Data (v1.1)
+
+**Goal:** Improve timetable readability by separating exam weeks from regular classes, displaying full course names, and allowing users to load external cycle data.
+
+**Depends on:** Phase 5 (UI refactoring)
+
+**Requirements:** UI-01 (Exam views), UI-02 (Grid labels), DATA-01 (External JSON loading)
+
+**Success Criteria** (what must be TRUE when this phase completes):
+
+1. El horario semanal tiene pestañas/vistas independientes para "Clases y Prácticas" (Lun-Sab) y "Exámenes" (Parcial y Final). Las sesiones se distribuyen a sus respectivas vistas.
+2. Los bloques dibujados en la grilla visualizan el nombre corto/código del curso además del tipo de sesión, mejorando la legibilidad.
+3. La aplicación cuenta con un botón/opción en la interfaz que abre un diálogo de archivos para cargar un archivo `.json` de oferta académica (ej. 2026-2) sin necesidad de recompilar la app.
+
+**Status**: ⬜ Not Started
+
+**Plans:** TBD
 
 ---
 
