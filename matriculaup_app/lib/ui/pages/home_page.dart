@@ -305,9 +305,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Expanded(
-                    child: RepaintBoundary(
-                      key: _timetableKey,
-                      child: TimetableGrid(showExams: _showExams),
+                    child: TimetableGrid(
+                      showExams: _showExams,
+                      exportKey: _timetableKey,
                     ),
                   ),
                 ],
