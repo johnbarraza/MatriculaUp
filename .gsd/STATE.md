@@ -1,7 +1,7 @@
 # MatriculaUp Project State
 
 **Last updated:** 2026-02-25
-**Current phase:** Phase 10 (IN PROGRESS) — Bug fixes from Phase 9 UI testing.
+**Current phase:** MILESTONE v1.2 COMPLETE. Awaiting next user directive.
 
 ---
 
@@ -20,30 +20,24 @@
 
 ## Current Position
 
-**Active Phase:** Phase 8 (Milestone v1.2)
+**Active Phase:** None (Milestone Complete)
 
 **Current Focus:**
-- **Phase**: 8
-- **Task**: Planning complete
-- **Status**: Ready for execution
+- **Phase**: N/A
+- **Task**: Done
+- **Status**: Waiting for `/new-milestone` or next phase spec
 
 **Progress:**
-[██████████] 100% Phases 1-9 complete | [███░░░░░░░] 30% Phase 10 (in progress)
-- Phase 1 Plans complete: 4/4
-- Phase 2 Plans complete: 4/4
-- Phase 3 Plans complete: 2/2
-- Phase 4 Plans complete: 2/2
-- Phase 5 Plans complete: 2/2 (05-01 Interactive Schedule, 05-02 Duplicate Prevention)
-- Phase 6 Plans complete: 2/2 (06-01 Timetable Grid, 06-02 Validation)
-- Phase 7 Plans complete: 2/2 (Advanced Views, Desktop Build)
+[██████████] 100% Milestone v1.2 complete
 - Phase 8 Plans complete: 3/3 (Professor Search, Credits, Multiple Schedules)
-- Phase 9 Plans complete: 1/1 (Search & Display Improvements — all UI tasks done)
-- Phase 10 Plans in progress: Extractor column bug fix (10-col rows), timetable rendering for new sections
+- Phase 9 Plans complete: 1/1 (Search & Display Improvements)
+- Phase 10 Plans complete: 1/1 (Timetable Polish, PNG Export, Bug fixes)
+- Phase 11 Plans complete: 1/1 (Inno Setup single `.exe` installer)
 
 **Requirements Mapped:** 24/24 ✓
 
 ## Next Steps
-1. /complete-milestone
+1. /new-milestone
 
 ---
 

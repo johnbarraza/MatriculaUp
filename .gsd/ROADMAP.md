@@ -29,8 +29,7 @@
 
 ## Milestone v1.2 (Advanced Filters & Constraints)
 
-- [x] **Phase 8: Search & Constraint Engine** - Allow searching by professor, toggling a "Hide Conflicts" filter, blocking overlapping additions, enforcing a 25-credit limit, defining free-time bounds, and managing up to 3 alternate schedule plans (Plan A/B/C).
-- [x] **Phase 9: Search & Display Improvements** - Fix extraction boundaries, parse curriculums, persist search strings, and enhance Virtual Room displays.
+*(Milestone completed and archived 2026-02-25. See `.gsd/milestones/v1.2-SUMMARY.md` for details.)*
 
 ---
 
