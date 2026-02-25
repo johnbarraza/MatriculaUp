@@ -159,10 +159,16 @@ class _CourseSearchListState extends State<CourseSearchList> {
                     final sessionDetails = section.sesiones
                         .map((s) {
                           String aula = s.aula;
-                          if (aula.toUpperCase() == 'VIRTUAL - VIRTUAL') {
+                          if (aula.toUpperCase().contains('VIRTUAL')) {
                             aula = 'Virtual';
                           }
-                          return '${s.tipo}: ${s.dia} ${s.horaInicio}-${s.horaFin} ($aula)';
+                          // Human-readable session type (title-case the raw string)
+                          final tipoLabel =
+                              s.tipo.value[0] +
+                              s.tipo.value.substring(1).toLowerCase();
+                          final diaStr = s.dia.isNotEmpty ? s.dia : '—';
+                          final horaStr = '${s.horaInicio}-${s.horaFin}';
+                          return '$tipoLabel: $diaStr $horaStr${aula.isNotEmpty ? ' ($aula)' : ''}';
                         })
                         .join('\n');
 

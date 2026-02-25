@@ -760,8 +760,16 @@ class CourseOfferingExtractor(BaseExtractor):
         flush_course()
         return courses
 
+    VALID_DAYS = {"LUN", "MAR", "MIE", "JUE", "VIE", "SAB", "DOM"}
+
     def _parse_real_section_row(self, cells: list[str]) -> dict | None:
-        """Parse a section row from the real PDF format (11 cols)."""
+        """Parse a section row from the real PDF format.
+
+        The PDF can produce rows with 11 or 10 columns depending on how
+        pdfplumber splits cells at the page break. In the 11-column layout
+        column 5 contains the weekday (LUN/MAR/etc.); in the 10-column
+        layout that column is absent and hora_inicio is at column 5.
+        """
         if len(cells) < 4:
             return None
 
@@ -769,10 +777,23 @@ class CourseOfferingExtractor(BaseExtractor):
         obs = cells[1]
         prof_text = cells[2]
         tipo = cells[3] if len(cells) > 3 else ""
-        dia = cells[5] if len(cells) > 5 else ""
-        hora_inicio = cells[6] if len(cells) > 6 else ""
-        hora_fin = cells[7] if len(cells) > 7 else ""
-        aula = cells[10] if len(cells) > 10 else ""
+
+        # Detect whether dia column is present by checking if col[5] looks
+        # like a weekday abbreviation.
+        col5 = cells[5] if len(cells) > 5 else ""
+        if col5.upper() in self.VALID_DAYS:
+            # 11-col layout: [3]=tipo, [5]=dia, [6]=horaI, [7]=horaF, [10]=aula
+            dia = col5
+            hora_inicio = cells[6] if len(cells) > 6 else ""
+            hora_fin = cells[7] if len(cells) > 7 else ""
+            aula = cells[10] if len(cells) > 10 else ""
+        else:
+            # 10-col layout: [3]=tipo, [4]=dia, [5]=horaI, [6]=horaF, [9]=aula
+            # (the blank spacer column between tipo and dia is absent)
+            dia = cells[4] if len(cells) > 4 else ""
+            hora_inicio = col5
+            hora_fin = cells[6] if len(cells) > 6 else ""
+            aula = cells[9] if len(cells) > 9 else ""
 
         docentes = extract_professors_spanish(prof_text) if prof_text else []
 
@@ -783,8 +804,8 @@ class CourseOfferingExtractor(BaseExtractor):
             "sesiones": [],
         }
 
-        # Add the first session from this row
-        if tipo and dia:
+        # Add the first session from this row (only if we have useful time data)
+        if tipo and hora_inicio:
             session_kws = SESSION_KEYWORDS
             if tipo in session_kws or any(kw in tipo for kw in session_kws):
                 session = {
@@ -799,17 +820,30 @@ class CourseOfferingExtractor(BaseExtractor):
         return section
 
     def _parse_real_session_row(self, cells: list[str]) -> dict | None:
-        """Parse a continuation session row from the real PDF format."""
-        if len(cells) < 8:
+        """Parse a continuation session row from the real PDF format.
+
+        Same 10/11-column variant logic as `_parse_real_section_row`.
+        """
+        if len(cells) < 6:
             return None
 
         tipo = cells[3] if len(cells) > 3 else ""
-        dia = cells[5] if len(cells) > 5 else ""
-        hora_inicio = cells[6] if len(cells) > 6 else ""
-        hora_fin = cells[7] if len(cells) > 7 else ""
-        aula = cells[10] if len(cells) > 10 else ""
+        col5 = cells[5] if len(cells) > 5 else ""
 
-        if not tipo or not dia:
+        if col5.upper() in self.VALID_DAYS:
+            # 11-col layout
+            dia = col5
+            hora_inicio = cells[6] if len(cells) > 6 else ""
+            hora_fin = cells[7] if len(cells) > 7 else ""
+            aula = cells[10] if len(cells) > 10 else ""
+        else:
+            # 10-col layout: dia is at col[4], hora_inicio at col[5]
+            dia = cells[4] if len(cells) > 4 else ""
+            hora_inicio = col5
+            hora_fin = cells[6] if len(cells) > 6 else ""
+            aula = cells[9] if len(cells) > 9 else ""
+
+        if not tipo or not hora_inicio:
             return None
 
         return {
