@@ -523,17 +523,21 @@ class CourseOfferingExtractor(BaseExtractor):
         self._cycle = self._detect_cycle()
 
     def _detect_cycle(self) -> str:
-        """Extract cycle identifier from PDF filename, e.g. '2026-1'."""
+        """Extract cycle identifier from PDF filename, e.g. '2026-1'.
+
+        Converts Roman numeral cycle suffixes (I->1, II->2) to Arabic numerals.
+        Examples:
+          'Oferta-Academica-2026-I_v1' -> '2026-1'
+          'Oferta-Academica-2025-II' -> '2025-2'
+        """
         stem = self.pdf_path.stem
-        m = re.search(r'(\d{4}-[12I])', stem, re.IGNORECASE)
+        # Match YYYY-I, YYYY-II, YYYY-1, YYYY-2 patterns
+        m = re.search(r'(\d{4})[-_](I{1,2}|[12])(?=[-_\s]|$)', stem, re.IGNORECASE)
         if m:
-            return m.group(1)
-        # Second attempt: look for YYYY-I or YYYY-II pattern
-        m2 = re.search(r'(\d{4})[-_]([12]|I{1,2})', stem, re.IGNORECASE)
-        if m2:
-            suffix = m2.group(2).upper()
+            year = m.group(1)
+            suffix = m.group(2).upper()
             suffix = suffix.replace('II', '2').replace('I', '1')
-            return f"{m2.group(1)}-{suffix}"
+            return f"{year}-{suffix}"
         return "2026-1"
 
     @property
@@ -597,11 +601,11 @@ class CourseOfferingExtractor(BaseExtractor):
         # Report error rate
         rate = self.error_rate()
         if rate > 0.01:
-            print(f"\n⚠️  Error rate {rate:.1%} exceeds 1% threshold")
+            print(f"\n[WARN] Error rate {rate:.1%} exceeds 1% threshold")
 
         avg_sections = (section_count_total / len(merged)) if merged else 0
         print(
-            f"\n✅ courses.json: {len(merged)} cursos, "
+            f"\n[OK] courses.json: {len(merged)} cursos, "
             f"{avg_sections:.1f} secciones promedio, "
             f"{warning_count} advertencias"
         )

@@ -1,82 +1,50 @@
+#!/usr/bin/env python3
 """
-MatriculaUp extraction CLI.
-
+MatriculaUp PDF Extractor
 Usage:
-  python scripts/extract.py --type courses   --pdf pdfs/matricula/2026-1/regular/Oferta-Academica-2026-I_v1.pdf
-  python scripts/extract.py --type curriculum --pdf "pdfs/plan_estudios/econom\u00eda/2017/2017_Plan-de-Estudios-Economia-2017-Cursos_30.10.2020-1.pdf"
-
-Output is written to: input/
-  courses   -> input/courses_2026-1.json
-  curriculum -> input/curricula_economia2017.json
+  python scripts/extract.py --type courses --pdf <path>
+  python scripts/extract.py --type curriculum --pdf <path>
 """
 import argparse
 import sys
-import os
-import logging
+from pathlib import Path
 
-# Ensure the project root is in sys.path so 'scripts.extractors' resolves
-# when this file is invoked directly (python scripts/extract.py ...)
-_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _ROOT not in sys.path:
-    sys.path.insert(0, _ROOT)
+# Add project root to path so 'scripts.extractors' imports work
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(levelname)s %(name)s: %(message)s",
-)
-logger = logging.getLogger(__name__)
+from scripts.extractors.courses import CourseOfferingExtractor
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Extract structured JSON data from UP academic PDFs.",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=__doc__,
-    )
-    parser.add_argument(
-        "--type",
-        required=True,
-        choices=["courses", "curriculum"],
-        help="Extraction type: 'courses' for schedule PDF, 'curriculum' for plan de estudios PDF.",
-    )
-    parser.add_argument(
-        "--pdf",
-        required=True,
-        help="Path to the input PDF file.",
-    )
-    parser.add_argument(
-        "--output-dir",
-        default="input",
-        help="Directory where JSON output is written (default: input/).",
-    )
+    parser = argparse.ArgumentParser(description="MatriculaUp PDF Extractor")
+    parser.add_argument("--type", required=True, choices=["courses", "curriculum"],
+                        help="Type of PDF to extract")
+    parser.add_argument("--pdf", required=True, help="Path to PDF file")
+    parser.add_argument("--output-dir", default="input", help="Output directory (default: input/)")
     args = parser.parse_args()
 
-    if args.type == "courses":
-        try:
-            from scripts.extractors.courses import CoursesExtractor
-        except ImportError:
-            logger.error("CoursesExtractor not yet implemented. Run Plan 02 first.")
-            sys.exit(1)
-        extractor = CoursesExtractor(args.pdf, args.output_dir)
-
-    elif args.type == "curriculum":
-        from scripts.extractors.curriculum import CurriculumExtractor
-        extractor = CurriculumExtractor(args.pdf, args.output_dir)
-
-    else:
-        logger.error("Unknown extraction type: %s", args.type)
+    pdf_path = Path(args.pdf)
+    if not pdf_path.exists():
+        print(f"x PDF not found: {pdf_path}", file=sys.stderr)
         sys.exit(1)
 
-    data = extractor.extract()
-    output_path = extractor.save(data)
-    print(f"Output written to: {output_path}")
+    if args.type == "courses":
+        extractor = CourseOfferingExtractor(str(pdf_path), args.output_dir)
+    elif args.type == "curriculum":
+        # Plan 03 implements CurriculumExtractor -- import lazily to avoid import error
+        try:
+            from scripts.extractors.curriculum import CurriculumExtractor
+            extractor = CurriculumExtractor(str(pdf_path), args.output_dir)
+        except ImportError:
+            print("x Curriculum extractor not yet implemented", file=sys.stderr)
+            sys.exit(1)
 
-    error_rate = extractor.error_rate()
-    if error_rate > 0.01:
-        logger.warning(
-            "Error rate %.1f%% exceeds 1%% threshold -- review output carefully.",
-            error_rate * 100,
-        )
+    data = extractor.extract()
+    out_path = extractor.save(data)
+    print(f"Output written to {out_path}")
+
+    if extractor.error_rate() > 0.01:
+        print(f"  Error rate {extractor.error_rate():.1%} exceeds threshold", file=sys.stderr)
         sys.exit(1)
 
     sys.exit(0)
