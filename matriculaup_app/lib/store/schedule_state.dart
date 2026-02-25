@@ -1,6 +1,7 @@
 // matriculaup_app/lib/store/schedule_state.dart
 import 'package:flutter/foundation.dart';
 import '../models/course.dart';
+import '../models/curriculum.dart';
 import '../utils/time_utils.dart';
 
 class CourseSelection {
@@ -17,6 +18,15 @@ class ScheduleState extends ChangeNotifier {
 
   void setCourses(List<Course> courses) {
     _allCourses = courses;
+    notifyListeners();
+  }
+
+  // ── Curriculum (Plan de Estudios) ────────────────────────────────────────
+  Curriculum? _curriculum;
+  Curriculum? get curriculum => _curriculum;
+
+  void setCurriculum(Curriculum? curriculum) {
+    _curriculum = curriculum;
     notifyListeners();
   }
 
@@ -104,6 +114,28 @@ class ScheduleState extends ChangeNotifier {
       }
     }
     return false;
+  }
+
+  /// Checks if [section] conflicts with currently selected sections and returns
+  /// the name of the conflicting course, or null if there is no conflict.
+  String? getConflictReason(Section section) {
+    for (var currentSel in selectedSections) {
+      for (var newSession in section.sesiones) {
+        for (var currentSession in currentSel.section.sesiones) {
+          if (newSession.dia == currentSession.dia) {
+            if (TimeUtils.hasOverlap(
+              newSession.horaInicio,
+              newSession.horaFin,
+              currentSession.horaInicio,
+              currentSession.horaFin,
+            )) {
+              return currentSel.course.nombre;
+            }
+          }
+        }
+      }
+    }
+    return null;
   }
 
   // ── Free-Time Selection (Grid Drag) ───────────────────────────────────────

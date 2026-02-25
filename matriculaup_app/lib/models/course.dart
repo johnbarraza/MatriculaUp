@@ -15,10 +15,43 @@ enum SessionType {
   const SessionType(this.value);
 
   factory SessionType.fromString(String value) {
-    return SessionType.values.firstWhere(
-      (e) => e.value.toUpperCase() == value.toUpperCase(),
-      orElse: () => SessionType.unknown,
-    );
+    final upperValue = value.toUpperCase().trim();
+    // Use partial matching where possible for robustness
+    if (upperValue.contains("CLASE")) {
+      return SessionType.clase;
+    }
+    if (upperValue.contains("PRÁCTICA") || upperValue.contains("PRACTICA")) {
+      return SessionType.practica;
+    }
+    if (upperValue.contains("LABORATORIO")) {
+      return SessionType.laboratorio;
+    }
+    if (upperValue.contains("FINAL")) {
+      return SessionType.finalExam;
+    }
+    if (upperValue.contains("PARCIAL")) {
+      return SessionType.parcial;
+    }
+    if (upperValue.contains("CANCELADA")) {
+      return SessionType.cancelada;
+    }
+    if (upperValue.contains("PRACDIRIGIDA") ||
+        upperValue.contains("DIRIGIDA")) {
+      return SessionType.pracDirigida;
+    }
+    if (upperValue.contains("PRACCALIFICADA") ||
+        upperValue.contains("CALIFICADA")) {
+      return SessionType.pracCalificada;
+    }
+    if (upperValue.contains("EXSUSTITUTORIO") ||
+        upperValue.contains("SUSTITUTORIO")) {
+      return SessionType.exSustitutorio;
+    }
+    if (upperValue.contains("EXREZAGADO") || upperValue.contains("REZAGADO")) {
+      return SessionType.exRezagado;
+    }
+
+    return SessionType.unknown;
   }
 }
 

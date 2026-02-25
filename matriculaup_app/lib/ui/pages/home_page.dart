@@ -115,16 +115,57 @@ class _HomePageState extends State<HomePage> {
               color: Colors.grey[100],
               child: courses.isEmpty
                   ? Center(
-                      child: ElevatedButton.icon(
-                        icon: const Icon(Icons.upload_file),
-                        onPressed: () async {
-                          List<Course>? loaded =
-                              await DataLoader.pickAndLoadCourses();
-                          if (loaded != null && context.mounted) {
-                            context.read<ScheduleState>().setCourses(loaded);
-                          }
-                        },
-                        label: const Text('Cargar Archivos JSON'),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ElevatedButton.icon(
+                            icon: const Icon(Icons.upload_file),
+                            onPressed: () async {
+                              List<Course>? loaded =
+                                  await DataLoader.pickAndLoadCourses();
+                              if (loaded != null && context.mounted) {
+                                context.read<ScheduleState>().setCourses(
+                                  loaded,
+                                );
+                              }
+                            },
+                            label: const Text('Cargar Horarios JSON'),
+                          ),
+                          const SizedBox(height: 16),
+                          OutlinedButton.icon(
+                            icon: const Icon(Icons.school),
+                            onPressed: () async {
+                              final curriculum =
+                                  await DataLoader.pickAndLoadCurriculum();
+                              if (curriculum != null && context.mounted) {
+                                context.read<ScheduleState>().setCurriculum(
+                                  curriculum,
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Plan de estudios "${curriculum.title}" cargado (Opcional)',
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                            label: const Text(
+                              'Cargar Plan de Estudios (Opcional)',
+                            ),
+                          ),
+                          if (state.curriculum != null)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                'Plan activo: ${state.curriculum!.title}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green,
+                                ),
+                              ),
+                            ),
+                        ],
                       ),
                     )
                   : Column(
@@ -184,11 +225,15 @@ class _HomePageState extends State<HomePage> {
                         ),
                         // Tab content
                         Expanded(
-                          child: _leftTab == 0
-                              ? const CourseSearchList()
-                              : const SingleChildScrollView(
-                                  child: SelectedCoursesPanel(),
-                                ),
+                          child: IndexedStack(
+                            index: _leftTab,
+                            children: const [
+                              CourseSearchList(),
+                              SingleChildScrollView(
+                                child: SelectedCoursesPanel(),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

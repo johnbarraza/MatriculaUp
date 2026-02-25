@@ -13,6 +13,7 @@ class CourseSearchList extends StatefulWidget {
 class _CourseSearchListState extends State<CourseSearchList> {
   String _searchQuery = '';
   bool _hideConflicts = false;
+  bool _showOnlyCurriculum = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +43,13 @@ class _CourseSearchListState extends State<CourseSearchList> {
               !state.fitsInSelectedTimeSlots(s),
         );
         if (allConflict) return false;
+      }
+
+      // If "Solo del plan" is on and a curriculum is loaded
+      if (_showOnlyCurriculum && state.curriculum != null) {
+        if (!state.curriculum!.isMandatory(c.codigo)) {
+          return false;
+        }
       }
 
       return true;
@@ -79,6 +87,22 @@ class _CourseSearchListState extends State<CourseSearchList> {
           ),
         ),
 
+        // ── Curriculum Filter (Only if active) ───────────────────────────
+        if (state.curriculum != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: SwitchListTile(
+              dense: true,
+              title: const Text(
+                'Solo cursos del plan',
+                style: TextStyle(fontSize: 13),
+              ),
+              secondary: const Icon(Icons.school_outlined, size: 18),
+              value: _showOnlyCurriculum,
+              onChanged: (v) => setState(() => _showOnlyCurriculum = v),
+            ),
+          ),
+
         const Divider(height: 1),
 
         // ── Courses List ─────────────────────────────────────────────────
@@ -111,8 +135,24 @@ class _CourseSearchListState extends State<CourseSearchList> {
                           s.course.codigo == course.codigo &&
                           s.section.seccion == section.seccion,
                     );
-                    final hasConflict =
-                        !isSelected && state.conflictsWithSchedule(section);
+                    final conflictReason = state.getConflictReason(section);
+                    final hasConflict = !isSelected && conflictReason != null;
+
+                    // Build session detail strings
+                    final sessionDetails = section.sesiones
+                        .map((s) {
+                          String aula = s.aula;
+                          if (aula.toUpperCase() == 'VIRTUAL - VIRTUAL') {
+                            aula = 'Virtual';
+                          }
+                          return '${s.tipo}: ${s.dia} ${s.horaInicio}-${s.horaFin} ($aula)';
+                        })
+                        .join('\n');
+
+                    // Docentes string
+                    final docentesStr = section.docentes.isEmpty
+                        ? 'Sin asignar'
+                        : section.docentes.join(', ');
 
                     return ListTile(
                       tileColor: hasConflict ? Colors.red.shade50 : null,
@@ -127,12 +167,13 @@ class _CourseSearchListState extends State<CourseSearchList> {
                       ),
                       subtitle: Text(
                         hasConflict
-                            ? 'Cruce de horarios\n${section.docentes.join(', ')}'
-                            : section.docentes.join(', '),
+                            ? 'Cruce con: $conflictReason\n\n$sessionDetails\nProf(s): $docentesStr'
+                            : '$sessionDetails\nProf(s): $docentesStr',
                         style: TextStyle(
                           color: hasConflict ? Colors.red.shade700 : null,
                         ),
                       ),
+                      isThreeLine: true,
                       trailing: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: hasConflict
