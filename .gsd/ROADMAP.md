@@ -147,9 +147,13 @@ Plans:
 2. Si el usuario intenta agregar una sección de un curso que ya tiene en su horario (incluso si es otra sección deferente), la app bloquea la acción y muestra un aviso.
 3. En la lista de resultados de búsqueda, las secciones que cruzan con el horario actual del usuario se marcan visualmente (ej. fondo rojo o ícono de alerta) antes de que el usuario intente agregarlas.
 
-**Status**: ⬜ Not Started
+**Status**: 🏃 In Progress
 
-**Plans:** TBD
+**Plans:** 0/2 plans complete
+
+Plans:
+- [ ] 05-01-PLAN.md — Interactive Side-by-Side Schedule
+- [ ] 05-02-PLAN.md — Duplicate Prevention & Visual Conflict Hints
 
 ---
 
