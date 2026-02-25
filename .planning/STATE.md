@@ -165,12 +165,31 @@
 - Created STATE.md with project reference and decision log
 - Confirmed 100% requirement coverage (20/20 requirements mapped)
 
+### Session 2 (2026-02-25): Phase 1 Plan 01 Execution
+
+**Completed (01-01-PLAN.md — TDD Wave 0 Test Scaffolding):**
+- Created tests/fixtures/sample_rows.py with 5 named constants (COURSE_HEADER_ROW, PREREQ_ROW_TRUNCATED, PREREQ_ROW_CONTINUATION, SECTION_ROW_CLASE, PROFESSOR_COMPOUND_ROW)
+- Created tests/conftest.py with 4 shared pytest fixtures
+- Created tests/test_extraction.py (8 RED tests for EXT-02, EXT-03)
+- Created tests/test_validation.py (4 RED tests for EXT-04)
+- Updated requirements.txt with pytest>=8.0.0, pytest-cov>=5.0.0, pdfplumber>=0.11.8, jsonschema>=4.20.0
+- All 12 tests skip cleanly (correct RED baseline — no false greens)
+- Commits: 891b88a (fixtures + conftest), ea498be (RED tests)
+
+**Key Decisions (this session):**
+- Used try/except ImportError + pytest.mark.skipif so tests skip without implementation rather than error at collection
+- PROFESSOR_COMPOUND_ROW stored as raw string (not list row) matching real pdfplumber cell text
+- Added tests/__init__.py for absolute import resolution from conftest.py
+
+**Stopped at:** Completed Phase 1 Plan 01 (01-01-PLAN.md)
+
 **Next Steps:**
-- `/gsd:plan-phase 1` — Decompose Phase 1 extraction tasks into executable plans
-- Execute Phase 1 plans (fix extraction bugs, validate JSON)
-- Generate courses.json, curricula.json for 2026-1 Economía
+- Execute 01-02-PLAN.md — Courses extractor implementation (scripts/extractors/courses.py)
+- RED tests in test_extraction.py should turn GREEN after Plan 02 implementation
+- Run `pytest tests/ -v` after Plan 02 to confirm transition
 
 ---
 
 *State file created: 2026-02-24*
-*Ready for Phase 1 planning*
+*Last updated: 2026-02-25*
+*Phase 1 Plan 1/4 complete*

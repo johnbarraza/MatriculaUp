@@ -37,10 +37,10 @@
 4. El JSON cumple esquema validado: estructura curso → secciones → sesiones con todos los campos requeridos (horario 24h, aula, tipo de sesión)
 5. El extractor genera curricula.json (plan Economía 2017) con cursos organizados por ciclo académico y tipos (obligatorio, electivo)
 
-**Plans:** 4 plans
+**Plans:** 1/4 plans executed
 
 Plans:
-- [ ] 01-01-PLAN.md — Test scaffolding (TDD Red phase): pytest fixtures, failing unit tests for prerequisite buffer and Spanish name regex
+- [x] 01-01-PLAN.md — Test scaffolding (TDD Red phase): pytest fixtures, failing unit tests for prerequisite buffer and Spanish name regex
 - [ ] 01-02-PLAN.md — Courses extractor: migrate v6 notebook to scripts/extractors/courses.py, fix prerequisite truncation + Spanish surname regex, generate courses_2026-1.json
 - [ ] 01-03-PLAN.md — Curriculum extractor: implement scripts/extractors/curriculum.py, generate curricula_economia2017.json by academic cycle
 - [ ] 01-04-PLAN.md — Schema validation: implement validators.py with jsonschema, wire into both extractors, validate real output files
@@ -112,7 +112,7 @@ Plans:
 
 | Phase | Goal | Requirements | Success Criteria |
 |-------|------|--------------|------------------|
-| 1 - Extraction Fix | PDF extraction bugs, validated JSON | 5 (EXT-01 to EXT-05) | 5 criteria |
+| 1 - Extraction Fix | 1/4 | In Progress|  |
 | 2 - Desktop App Core | Search, plan, conflict detect, persist | 9 (NAV-01 to NAV-03, PLAN-01 to PLAN-04, PERS-01 to PERS-02) | 8 criteria |
 | 3 - Curriculum & Export | Curriculum filter, PNG export | 4 (PLAN-05 to PLAN-07, EXP-01) | 4 criteria |
 | 4 - Distribution | Windows installer, .exe bundle | 2 (DIST-01, DIST-02) | 4 criteria |
