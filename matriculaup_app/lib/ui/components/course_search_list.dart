@@ -17,7 +17,7 @@ class _CourseSearchListState extends State<CourseSearchList> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ScheduleState>();
-    final allCourses = state.allCourses;
+    final allCourses = state.allVisibleCourses;
 
     // Filter by name, code, or professor. Optionally hide fully-conflicting courses.
     final filteredCourses = allCourses.where((c) {

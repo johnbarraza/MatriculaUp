@@ -2,6 +2,7 @@
 import 'package:flutter/foundation.dart';
 import '../models/course.dart';
 import '../models/curriculum.dart';
+import '../models/calendar_event.dart';
 import '../utils/time_utils.dart';
 
 class CourseSelection {
@@ -22,6 +23,37 @@ class ScheduleState extends ChangeNotifier {
   void setCourses(List<Course> courses, {String? label}) {
     _allCourses = courses;
     _coursesLabel = label;
+    notifyListeners();
+  }
+
+  // ── EFE Course data ───────────────────────────────────────────────────────
+  List<Course> _efeCourses = [];
+  List<Course> get efeCourses => _efeCourses;
+
+  String? _efeCoursesLabel;
+  String? get efeCoursesLabel => _efeCoursesLabel;
+
+  void setEfeCourses(List<Course> courses, {String? label}) {
+    _efeCourses = courses;
+    _efeCoursesLabel = label;
+    notifyListeners();
+  }
+
+  void clearEfeCourses() {
+    _efeCourses = [];
+    _efeCoursesLabel = null;
+    notifyListeners();
+  }
+
+  /// Combined list of regular + EFE courses for search and display.
+  List<Course> get allVisibleCourses => [..._allCourses, ..._efeCourses];
+
+  // ── Academic Calendar ────────────────────────────────────────────────────
+  AcademicCalendar? _calendar;
+  AcademicCalendar? get calendar => _calendar;
+
+  void setCalendar(AcademicCalendar? cal) {
+    _calendar = cal;
     notifyListeners();
   }
 

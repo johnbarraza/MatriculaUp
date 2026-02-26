@@ -9,6 +9,9 @@ import '../../store/schedule_state.dart';
 import 'package:matriculaup_app/ui/components/course_search_list.dart';
 import 'package:matriculaup_app/ui/components/selected_courses_panel.dart';
 import 'package:matriculaup_app/ui/components/timetable_grid.dart';
+import 'package:matriculaup_app/ui/components/academic_calendar_sheet.dart';
+import 'package:matriculaup_app/ui/components/donation_dialog.dart';
+import 'package:matriculaup_app/ui/components/disclaimer_footer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,6 +41,10 @@ class _HomePageState extends State<HomePage> {
         label: result.label,
       );
     }
+    final calendar = await DataLoader.loadCalendar();
+    if (calendar != null && mounted) {
+      context.read<ScheduleState>().setCalendar(calendar);
+    }
   }
 
   @override
@@ -62,6 +69,11 @@ class _HomePageState extends State<HomePage> {
               Text(
                 state.coursesLabel!,
                 style: const TextStyle(fontSize: 11, color: Colors.white70),
+              ),
+            if (state.efeCoursesLabel != null)
+              Text(
+                'EFE: ${state.efeCoursesLabel!}',
+                style: const TextStyle(fontSize: 11, color: Colors.greenAccent),
               ),
           ],
         ),
@@ -157,6 +169,19 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+          // Donation button
+          IconButton(
+            icon: const Icon(Icons.coffee_outlined),
+            tooltip: 'Invítame un café ☕',
+            onPressed: () => DonationDialog.show(context),
+          ),
+          // Academic calendar button
+          if (state.calendar != null)
+            IconButton(
+              icon: const Icon(Icons.calendar_month_outlined),
+              tooltip: 'Calendario Académico 2026-I',
+              onPressed: () => _showCalendar(context, state),
+            ),
           // Settings button
           IconButton(
             icon: const Icon(Icons.settings),
@@ -173,7 +198,10 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
 
-      body: Row(
+      body: Column(
+        children: [
+          Expanded(
+            child: Row(
         children: [
           // ── Left Panel ─────────────────────────────────────────────────
           Expanded(
@@ -344,7 +372,25 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
+            ),
+          ),
+          // ── Disclaimer footer ────────────────────────────────────────────
+          const DisclaimerFooter(),
+        ],
       ),
+    );
+  }
+
+  // ── Academic Calendar ─────────────────────────────────────────────────────
+  void _showCalendar(BuildContext context, ScheduleState state) {
+    if (state.calendar == null) return;
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (_) => AcademicCalendarSheet(calendar: state.calendar!),
     );
   }
 
@@ -413,6 +459,19 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ],
+            if (state.efeCoursesLabel != null) ...[
+              const SizedBox(height: 4),
+              Row(
+                children: [
+                  const Icon(Icons.science_outlined, size: 14, color: Colors.green),
+                  const SizedBox(width: 6),
+                  Text(
+                    'EFEs activos: ${state.efeCoursesLabel}',
+                    style: const TextStyle(fontSize: 12, color: Colors.green),
+                  ),
+                ],
+              ),
+            ],
             const SizedBox(height: 16),
             ElevatedButton.icon(
               icon: const Icon(Icons.upload_file),
@@ -435,6 +494,62 @@ class _HomePageState extends State<HomePage> {
                 }
               },
             ),
+            const SizedBox(height: 8),
+            // ── EFE courses ──────────────────────────────────────────────
+            if (state.efeCoursesLabel != null) ...[
+              Row(
+                children: [
+                  const Icon(Icons.info_outline, size: 14, color: Colors.green),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      'EFEs activos: ${state.efeCoursesLabel}',
+                      style: const TextStyle(fontSize: 12, color: Colors.green),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 4),
+            ],
+            OutlinedButton.icon(
+              icon: const Icon(Icons.science_outlined),
+              label: Text(
+                state.efeCoursesLabel == null
+                    ? 'Cargar EFEs (JSON)'
+                    : 'Reemplazar EFEs (JSON)',
+              ),
+              onPressed: () async {
+                Navigator.pop(ctx);
+                final result = await DataLoader.pickAndLoadCourses();
+                if (result != null && context.mounted) {
+                  context.read<ScheduleState>().setEfeCourses(
+                    result.courses,
+                    label: result.label,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'EFEs cargados: ${result.courses.length} cursos · ${result.label}',
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+            if (state.efeCoursesLabel != null) ...[
+              const SizedBox(height: 4),
+              TextButton.icon(
+                icon: const Icon(Icons.close, color: Colors.orange, size: 16),
+                label: const Text(
+                  'Quitar EFEs',
+                  style: TextStyle(color: Colors.orange),
+                ),
+                onPressed: () {
+                  context.read<ScheduleState>().clearEfeCourses();
+                  Navigator.pop(ctx);
+                },
+              ),
+            ],
             const SizedBox(height: 8),
             OutlinedButton.icon(
               icon: const Icon(Icons.school),
@@ -466,6 +581,22 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ],
+            const Divider(height: 24),
+            // ── Donation ─────────────────────────────────────────────────
+            OutlinedButton.icon(
+              icon: const Icon(Icons.coffee_outlined, color: Color(0xFF6B0096)),
+              label: const Text(
+                'Invítame un café ☕',
+                style: TextStyle(color: Color(0xFF6B0096)),
+              ),
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: Color(0xFF6B0096)),
+              ),
+              onPressed: () {
+                Navigator.pop(ctx);
+                DonationDialog.show(context);
+              },
+            ),
             const SizedBox(height: 8),
           ],
         ),

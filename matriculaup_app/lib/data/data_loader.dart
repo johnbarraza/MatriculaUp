@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:file_picker/file_picker.dart';
 import '../models/course.dart';
 import '../models/curriculum.dart';
+import '../models/calendar_event.dart';
 
 /// Result of loading a courses JSON: the parsed courses plus a human-readable
 /// label describing the source (e.g. "2026-1 · v1 · 2026-02-25").
@@ -72,6 +73,18 @@ class DataLoader {
       debugPrint("Error loading courses: $e");
     }
     return null;
+  }
+
+  /// Loads the bundled academic calendar asset.
+  static Future<AcademicCalendar?> loadCalendar() async {
+    try {
+      final contents = await rootBundle.loadString('assets/calendar_2026-1.json');
+      final jsonData = jsonDecode(contents) as Map<String, dynamic>;
+      return AcademicCalendar.fromJson(jsonData);
+    } catch (e) {
+      debugPrint("Error loading calendar: $e");
+      return null;
+    }
   }
 
   static Future<Curriculum?> pickAndLoadCurriculum() async {
