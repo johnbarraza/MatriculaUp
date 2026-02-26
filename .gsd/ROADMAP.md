@@ -33,6 +33,12 @@
 
 ---
 
+## Milestone v1.3 (Web Deployment & Polish)
+
+*(Milestone completed and archived 2026-02-25. See `.gsd/milestones/v1.3-SUMMARY.md` for details.)*
+
+---
+
 ## Phase Details
 
 ### Phase 1: Extraction Pipeline Fix & Validation

@@ -28,11 +28,9 @@
 - **Status**: Waiting for `/new-milestone` or next phase spec
 
 **Progress:**
-[██████████] 100% Milestone v1.2 complete
-- Phase 8 Plans complete: 3/3 (Professor Search, Credits, Multiple Schedules)
-- Phase 9 Plans complete: 1/1 (Search & Display Improvements)
-- Phase 10 Plans complete: 1/1 (Timetable Polish, PNG Export, Bug fixes)
-- Phase 11 Plans complete: 1/1 (Inno Setup single `.exe` installer)
+[██████████] 100% Milestone v1.3 complete
+- Phase 12 Plans complete: 1/1 (GitHub Pages Automation)
+- Phase 13 Plans complete: 1/1 (Web Compatibility & Conflict Engine Bugfix)
 
 **Requirements Mapped:** 24/24 ✓
 
