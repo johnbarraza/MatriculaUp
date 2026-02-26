@@ -1,13 +1,10 @@
 // matriculaup_app/lib/ui/pages/home_page.dart
-import 'dart:convert';
 import 'dart:ui' as ui;
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:file_picker/file_picker.dart';
 import '../../data/data_loader.dart';
-import '../../models/course.dart';
 import '../../store/schedule_state.dart';
 import 'package:matriculaup_app/ui/components/course_search_list.dart';
 import 'package:matriculaup_app/ui/components/selected_courses_panel.dart';
@@ -34,18 +31,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _loadDefaultData() async {
-    try {
-      final String contents = await rootBundle.loadString(
-        'assets/default_courses.json',
+    final result = await DataLoader.loadDefaultCourses();
+    if (result != null && mounted) {
+      context.read<ScheduleState>().setCourses(
+        result.courses,
+        label: result.label,
       );
-      final Map<String, dynamic> jsonData = jsonDecode(contents);
-      final List<dynamic> coursesList = jsonData['cursos'] ?? [];
-      final courses = coursesList.map((c) => Course.fromJson(c)).toList();
-      if (mounted) {
-        context.read<ScheduleState>().setCourses(courses);
-      }
-    } catch (e) {
-      debugPrint("No default courses found or error loading: $e");
     }
   }
 
@@ -60,7 +51,20 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       // ── AppBar ───────────────────────────────────────────────────────────
       appBar: AppBar(
-        title: const Text('MatriculaUp'),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'MatriculaUp',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            if (state.coursesLabel != null)
+              Text(
+                state.coursesLabel!,
+                style: const TextStyle(fontSize: 11, color: Colors.white70),
+              ),
+          ],
+        ),
         actions: [
           // Clear time slots
           if (hasFreeTime)
@@ -184,11 +188,12 @@ class _HomePageState extends State<HomePage> {
                           ElevatedButton.icon(
                             icon: const Icon(Icons.upload_file),
                             onPressed: () async {
-                              List<Course>? loaded =
+                              final result =
                                   await DataLoader.pickAndLoadCourses();
-                              if (loaded != null && context.mounted) {
+                              if (result != null && context.mounted) {
                                 context.read<ScheduleState>().setCourses(
-                                  loaded,
+                                  result.courses,
+                                  label: result.label,
                                 );
                               }
                             },
@@ -395,17 +400,37 @@ class _HomePageState extends State<HomePage> {
               'Configuración',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+            if (state.coursesLabel != null) ...[
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  const Icon(Icons.info_outline, size: 14, color: Colors.grey),
+                  const SizedBox(width: 6),
+                  Text(
+                    'JSON activo: ${state.coursesLabel}',
+                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                  ),
+                ],
+              ),
+            ],
             const SizedBox(height: 16),
             ElevatedButton.icon(
               icon: const Icon(Icons.upload_file),
               label: const Text('Actualizar Horarios (JSON)'),
               onPressed: () async {
                 Navigator.pop(ctx);
-                final loaded = await DataLoader.pickAndLoadCourses();
-                if (loaded != null && context.mounted) {
-                  context.read<ScheduleState>().setCourses(loaded);
+                final result = await DataLoader.pickAndLoadCourses();
+                if (result != null && context.mounted) {
+                  context.read<ScheduleState>().setCourses(
+                    result.courses,
+                    label: result.label,
+                  );
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Cargados ${loaded.length} cursos')),
+                    SnackBar(
+                      content: Text(
+                        'Cargados ${result.courses.length} cursos · ${result.label}',
+                      ),
+                    ),
                   );
                 }
               },

@@ -16,8 +16,12 @@ class ScheduleState extends ChangeNotifier {
   List<Course> _allCourses = [];
   List<Course> get allCourses => _allCourses;
 
-  void setCourses(List<Course> courses) {
+  String? _coursesLabel;
+  String? get coursesLabel => _coursesLabel;
+
+  void setCourses(List<Course> courses, {String? label}) {
     _allCourses = courses;
+    _coursesLabel = label;
     notifyListeners();
   }
 

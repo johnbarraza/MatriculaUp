@@ -1,29 +1,72 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:file_picker/file_picker.dart';
 import '../models/course.dart';
 import '../models/curriculum.dart';
 
+/// Result of loading a courses JSON: the parsed courses plus a human-readable
+/// label describing the source (e.g. "2026-1 · v1 · 2026-02-25").
+class CoursesResult {
+  final List<Course> courses;
+  final String label;
+
+  const CoursesResult({required this.courses, required this.label});
+}
+
 class DataLoader {
-  static Future<List<Course>?> pickAndLoadCourses() async {
+  /// Builds a display label from JSON metadata fields.
+  /// Falls back to [fallback] (e.g. filename) when metadata is absent.
+  static String _buildLabel(Map<String, dynamic>? meta, String fallback) {
+    if (meta == null) return fallback;
+    final parts = <String>[];
+    final ciclo = meta['ciclo'] as String?;
+    final version = meta['version'] as String?;
+    final fecha = meta['fecha_extraccion'] as String?;
+    if (ciclo != null && ciclo.isNotEmpty) parts.add(ciclo);
+    if (version != null && version.isNotEmpty) parts.add(version);
+    if (fecha != null && fecha.isNotEmpty) parts.add(fecha);
+    return parts.isEmpty ? fallback : parts.join(' · ');
+  }
+
+  /// Loads the bundled default courses asset.
+  static Future<CoursesResult?> loadDefaultCourses() async {
     try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
+      final contents = await rootBundle.loadString('assets/default_courses.json');
+      final jsonData = jsonDecode(contents) as Map<String, dynamic>;
+      final coursesList = jsonData['cursos'] as List<dynamic>? ?? [];
+      final courses = coursesList.map((c) => Course.fromJson(c)).toList();
+      final label = _buildLabel(
+        jsonData['metadata'] as Map<String, dynamic>?,
+        'default',
+      );
+      return CoursesResult(courses: courses, label: label);
+    } catch (e) {
+      debugPrint("Error loading default courses: $e");
+      return null;
+    }
+  }
+
+  /// Opens a file picker so the user can load a custom courses JSON.
+  static Future<CoursesResult?> pickAndLoadCourses() async {
+    try {
+      final result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['json'],
-        withData:
-            true, // This flag ensures bytes are loaded into memory (critical for Web)
+        withData: true,
       );
 
       if (result != null && result.files.single.bytes != null) {
-        // Read file contents from raw bytes (works on Web, Desktop, Mobile)
-        String contents = utf8.decode(result.files.single.bytes!);
-
-        // Parse JSON
-        Map<String, dynamic> jsonData = jsonDecode(contents);
-
-        List<dynamic> coursesList = jsonData['cursos'] ?? [];
-        return coursesList.map((c) => Course.fromJson(c)).toList();
+        final contents = utf8.decode(result.files.single.bytes!);
+        final jsonData = jsonDecode(contents) as Map<String, dynamic>;
+        final coursesList = jsonData['cursos'] as List<dynamic>? ?? [];
+        final courses = coursesList.map((c) => Course.fromJson(c)).toList();
+        final label = _buildLabel(
+          jsonData['metadata'] as Map<String, dynamic>?,
+          result.files.single.name,
+        );
+        return CoursesResult(courses: courses, label: label);
       }
     } catch (e) {
       debugPrint("Error loading courses: $e");
@@ -33,18 +76,16 @@ class DataLoader {
 
   static Future<Curriculum?> pickAndLoadCurriculum() async {
     try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
+      final result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['json'],
         dialogTitle: 'Cargar Plan de Estudios (Curriculum)',
-        withData: true, // Load into memory for Web support
+        withData: true,
       );
 
       if (result != null && result.files.single.bytes != null) {
-        String contents = utf8.decode(result.files.single.bytes!);
-
-        // Parse JSON
-        Map<String, dynamic> jsonData = jsonDecode(contents);
+        final contents = utf8.decode(result.files.single.bytes!);
+        final jsonData = jsonDecode(contents) as Map<String, dynamic>;
         return Curriculum.fromJson(jsonData);
       }
     } catch (e) {
