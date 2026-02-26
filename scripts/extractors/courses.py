@@ -38,10 +38,10 @@ SESSION_KEYWORDS = {
     "PRACDIRIGIDA", "PRACCALIFICADA",
 }
 
-# Regex for a 6-digit course code
-COURSE_CODE_RE = re.compile(r'^(\d{6})\s*-\s*(.+)', re.DOTALL)
-# Also detect stand-alone 6-digit code (fixture format)
-STANDALONE_CODE_RE = re.compile(r'^\d{6}$')
+# Regex for a 6-character alphanumeric course code
+COURSE_CODE_RE = re.compile(r'^([A-Z0-9]{6})\s*-\s*(.+)', re.DOTALL)
+# Also detect stand-alone 6-character code (fixture format)
+STANDALONE_CODE_RE = re.compile(r'^[A-Z0-9]{6}$')
 
 # Spanish professor name pattern (EXT-03 fix):
 # Accepts LASTNAME(S), Firstname [del/de la/de los/de ...] [MoreNames]

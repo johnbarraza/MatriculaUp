@@ -63,7 +63,7 @@ PREREQUISITE_SCHEMA = {
 COURSE_SCHEMA = {
     "type": "object",
     "properties": {
-        "codigo": {"type": "string", "pattern": r"^\d{6}$"},
+        "codigo": {"type": "string", "pattern": r"^[A-Za-z0-9]{6}$"},
         "nombre": {"type": "string", "minLength": 1},
         "creditos": {"type": ["string", "number", "null"]},
         "prerequisitos": PREREQUISITE_SCHEMA,
