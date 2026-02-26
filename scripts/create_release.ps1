@@ -10,7 +10,7 @@ param(
 $SetupPath = "dist\MatriculaUp_$($Tag)_Setup.exe"
 $ZipPath = "dist\MatriculaUp_$($Tag)_Portable.zip"
 $ReleaseDir = "matriculaup_app\build\windows\x64\runner\Release"
-$JsonPath = "input\courses_2026-1.json"
+$JsonPath = "input\courses_2026-1_v1.json"
 
 $Notes = @"
 ## MatriculaUp $Tag - Horarios 2026-I

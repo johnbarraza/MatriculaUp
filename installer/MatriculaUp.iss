@@ -18,7 +18,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 ; Flutter app files
 Source: "..\matriculaup_app\build\windows\x64\runner\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; Default JSON configuration file
-Source: "..\input\courses_2026-1.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\input\courses_2026-1_v1.json"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\MatriculaUp"; Filename: "{app}\matriculaup_app.exe"
