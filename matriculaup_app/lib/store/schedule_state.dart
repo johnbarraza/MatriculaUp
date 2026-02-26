@@ -117,8 +117,10 @@ class ScheduleState extends ChangeNotifier {
   /// Determines if two session types belong to the same academic week
   /// and therefore can clash.
   bool _canConflict(Session s1, Session s2) {
-    bool isS1Exam = s1.tipo == 'PARCIAL' || s1.tipo == 'FINAL';
-    bool isS2Exam = s2.tipo == 'PARCIAL' || s2.tipo == 'FINAL';
+    bool isS1Exam =
+        s1.tipo == SessionType.parcial || s1.tipo == SessionType.finalExam;
+    bool isS2Exam =
+        s2.tipo == SessionType.parcial || s2.tipo == SessionType.finalExam;
 
     // Both are regular classes -> YES
     if (!isS1Exam && !isS2Exam) return true;
