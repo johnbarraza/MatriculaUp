@@ -114,11 +114,29 @@ class ScheduleState extends ChangeNotifier {
   }
 
   // ── Conflict Check ───────────────────────────────────────────────────────
+  /// Determines if two session types belong to the same academic week
+  /// and therefore can clash.
+  bool _canConflict(Session s1, Session s2) {
+    bool isS1Exam = s1.tipo == 'PARCIAL' || s1.tipo == 'FINAL';
+    bool isS2Exam = s2.tipo == 'PARCIAL' || s2.tipo == 'FINAL';
+
+    // Both are regular classes -> YES
+    if (!isS1Exam && !isS2Exam) return true;
+
+    // Both are exams -> Only conflict if they are the SAME type of exam
+    if (isS1Exam && isS2Exam) return s1.tipo == s2.tipo;
+
+    // One is regular, one is exam (they happen in different weeks) -> NO
+    return false;
+  }
+
   /// Returns true if the given section overlaps with any session in the current plan.
   bool conflictsWithSchedule(Section section) {
     for (var currentSel in selectedSections) {
       for (var newSession in section.sesiones) {
         for (var currentSession in currentSel.section.sesiones) {
+          if (!_canConflict(newSession, currentSession)) continue;
+
           if (newSession.dia == currentSession.dia) {
             if (TimeUtils.hasOverlap(
               newSession.horaInicio,
@@ -141,6 +159,8 @@ class ScheduleState extends ChangeNotifier {
     for (var currentSel in selectedSections) {
       for (var newSession in section.sesiones) {
         for (var currentSession in currentSel.section.sesiones) {
+          if (!_canConflict(newSession, currentSession)) continue;
+
           if (newSession.dia == currentSession.dia) {
             if (TimeUtils.hasOverlap(
               newSession.horaInicio,
