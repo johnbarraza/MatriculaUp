@@ -1,10 +1,10 @@
 [Setup]
 AppName=MatriculaUp
-AppVersion=1.2
+AppVersion=1.3
 AppPublisher=MatriculaUp
 DefaultDirName={autopf}\MatriculaUp
 DefaultGroupName=MatriculaUp
-OutputBaseFilename=MatriculaUp_v1.2_Setup
+OutputBaseFilename=MatriculaUp_v1.3_Setup
 OutputDir=..\dist
 Compression=lzma2/max
 SolidCompression=yes
