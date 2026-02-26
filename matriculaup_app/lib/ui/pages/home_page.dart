@@ -12,6 +12,7 @@ import 'package:matriculaup_app/ui/components/timetable_grid.dart';
 import 'package:matriculaup_app/ui/components/academic_calendar_sheet.dart';
 import 'package:matriculaup_app/ui/components/donation_dialog.dart';
 import 'package:matriculaup_app/ui/components/disclaimer_footer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -176,6 +177,15 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+          // Feedback button
+          IconButton(
+            icon: const Icon(Icons.bug_report_outlined),
+            tooltip: 'Reportar bug o dar feedback',
+            onPressed: () => launchUrl(
+              Uri.parse('https://forms.gle/hT2Db5FFj3ecMzLz8'),
+              mode: LaunchMode.externalApplication,
+            ),
+          ),
           // Donation button
           IconButton(
             icon: const Icon(Icons.coffee_outlined),
