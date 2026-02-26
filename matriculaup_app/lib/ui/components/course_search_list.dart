@@ -13,11 +13,18 @@ class CourseSearchList extends StatefulWidget {
 class _CourseSearchListState extends State<CourseSearchList> {
   String _searchQuery = '';
   bool _hideConflicts = false;
+  bool _showEfe = false; // false = Regulares, true = EFEs
 
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ScheduleState>();
-    final allCourses = state.allVisibleCourses;
+
+    // Auto-switch to regular if EFEs were unloaded
+    if (_showEfe && state.efeCourses.isEmpty) {
+      _showEfe = false;
+    }
+
+    final allCourses = _showEfe ? state.efeCourses : state.allCourses;
 
     // Filter by name, code, or professor. Optionally hide fully-conflicting courses.
     final filteredCourses = allCourses.where((c) {
@@ -61,6 +68,36 @@ class _CourseSearchListState extends State<CourseSearchList> {
               fillColor: Colors.white,
             ),
             onChanged: (value) => setState(() => _searchQuery = value),
+          ),
+        ),
+
+        // ── Regular / EFE toggle ─────────────────────────────────────────
+        Padding(
+          padding: const EdgeInsets.fromLTRB(8, 6, 8, 0),
+          child: SegmentedButton<bool>(
+            segments: [
+              const ButtonSegment<bool>(
+                value: false,
+                label: Text('Regulares'),
+                icon: Icon(Icons.menu_book_outlined, size: 15),
+              ),
+              ButtonSegment<bool>(
+                value: true,
+                enabled: state.efeCourses.isNotEmpty,
+                label: Text(
+                  state.efeCourses.isEmpty ? 'EFEs (no cargados)' : 'EFEs (${state.efeCourses.length})',
+                ),
+                icon: const Icon(Icons.science_outlined, size: 15),
+              ),
+            ],
+            selected: {_showEfe},
+            onSelectionChanged: (s) => setState(() => _showEfe = s.first),
+            style: ButtonStyle(
+              padding: WidgetStateProperty.all(
+                const EdgeInsets.symmetric(horizontal: 4),
+              ),
+              visualDensity: VisualDensity.compact,
+            ),
           ),
         ),
 
@@ -137,7 +174,9 @@ class _CourseSearchListState extends State<CourseSearchList> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        course.nombre,
+                        _showEfe
+                            ? course.nombre.replaceFirst('[EFE] ', '')
+                            : course.nombre,
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       ?curriculumTag,
