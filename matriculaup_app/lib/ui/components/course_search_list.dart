@@ -154,6 +154,8 @@ class _CourseSearchListState extends State<CourseSearchList> {
                     );
                     final conflictReason = state.getConflictReason(section);
                     final hasConflict = !isSelected && conflictReason != null;
+                    final hasFlexibleExam =
+                        !isSelected && state.hasFlexibleExam(section);
 
                     // Build session detail strings
                     final sessionDetails = section.sesiones
@@ -197,6 +199,15 @@ class _CourseSearchListState extends State<CourseSearchList> {
                               style: TextStyle(
                                 color: Colors.red.shade700,
                                 fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          if (hasFlexibleExam)
+                            Text(
+                              '⚠ Tiene examen sustitutorio/rezagado — horario provisional',
+                              style: TextStyle(
+                                color: Colors.orange.shade700,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           Text(

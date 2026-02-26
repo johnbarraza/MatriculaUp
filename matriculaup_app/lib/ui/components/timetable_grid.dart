@@ -101,9 +101,17 @@ class _TimetableGridState extends State<TimetableGrid> {
                     for (var selection in selections) {
                       for (var session in selection.section.sesiones) {
                         if (session.dia == day) {
-                          bool isExam =
+                          // CANCELADA never appears on the grid
+                          if (session.tipo == SessionType.cancelada) continue;
+
+                          // Exams tab: FINAL, PARCIAL, EXSUSTITUTORIO, EXREZAGADO
+                          // Classes tab: everything else (CLASE, PRÁCTICA, …)
+                          final isExam =
                               session.tipo == SessionType.finalExam ||
-                              session.tipo == SessionType.parcial;
+                              session.tipo == SessionType.parcial ||
+                              session.tipo == SessionType.exSustitutorio ||
+                              session.tipo == SessionType.exRezagado;
+
                           if ((widget.showExams && isExam) ||
                               (!widget.showExams && !isExam)) {
                             daySessions.add(

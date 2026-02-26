@@ -114,22 +114,68 @@ class ScheduleState extends ChangeNotifier {
   }
 
   // ── Conflict Check ───────────────────────────────────────────────────────
-  /// Determines if two session types belong to the same academic week
-  /// and therefore can clash.
+
+  /// Session types that represent regular academic weeks (classes/labs).
+  static const _regularTypes = {
+    SessionType.clase,
+    SessionType.practica,
+    SessionType.pracDirigida,
+    SessionType.pracCalificada,
+    SessionType.laboratorio,
+  };
+
+  /// Session types that represent fixed exam weeks (parcial/final).
+  static const _fixedExamTypes = {
+    SessionType.parcial,
+    SessionType.finalExam,
+  };
+
+  /// Determines if two sessions can possibly clash.
+  ///
+  /// Rules:
+  /// - CANCELADA: always ignored (no conflict with anything).
+  /// - EXSUSTITUTORIO / EXREZAGADO: shown on the timetable but never block
+  ///   adding a course (their schedule is provisional).
+  /// - Regular (CLASE/PRÁCTICA/…) vs Regular → check overlap.
+  /// - Exam (PARCIAL/FINAL) vs same exam type → check overlap.
+  /// - Regular vs Exam → never conflict (different weeks).
+  /// - PARCIAL vs FINAL → never conflict (different exam weeks).
   bool _canConflict(Session s1, Session s2) {
-    bool isS1Exam =
-        s1.tipo == SessionType.parcial || s1.tipo == SessionType.finalExam;
-    bool isS2Exam =
-        s2.tipo == SessionType.parcial || s2.tipo == SessionType.finalExam;
+    // Sessions that never block anything
+    const neverConflict = {
+      SessionType.cancelada,
+      SessionType.exSustitutorio,
+      SessionType.exRezagado,
+      SessionType.unknown,
+    };
+    if (neverConflict.contains(s1.tipo) || neverConflict.contains(s2.tipo)) {
+      return false;
+    }
 
-    // Both are regular classes -> YES
-    if (!isS1Exam && !isS2Exam) return true;
+    final s1Regular = _regularTypes.contains(s1.tipo);
+    final s2Regular = _regularTypes.contains(s2.tipo);
 
-    // Both are exams -> Only conflict if they are the SAME type of exam
-    if (isS1Exam && isS2Exam) return s1.tipo == s2.tipo;
+    // Both regular → can conflict
+    if (s1Regular && s2Regular) return true;
 
-    // One is regular, one is exam (they happen in different weeks) -> NO
+    final s1Exam = _fixedExamTypes.contains(s1.tipo);
+    final s2Exam = _fixedExamTypes.contains(s2.tipo);
+
+    // Both fixed exams → only conflict if same exam type (PARCIAL≠FINAL week)
+    if (s1Exam && s2Exam) return s1.tipo == s2.tipo;
+
+    // Cross-bucket (regular vs exam) → different weeks, no conflict
     return false;
+  }
+
+  /// Returns true if [section] has any EXSUSTITUTORIO or EXREZAGADO session.
+  /// Used to show a UI warning that those exam slots are provisional.
+  bool hasFlexibleExam(Section section) {
+    return section.sesiones.any(
+      (s) =>
+          s.tipo == SessionType.exSustitutorio ||
+          s.tipo == SessionType.exRezagado,
+    );
   }
 
   /// Returns true if the given section overlaps with any session in the current plan.
