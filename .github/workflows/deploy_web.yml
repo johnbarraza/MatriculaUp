@@ -1,0 +1,44 @@
+name: Deploy Flutter Web to GitHub Pages
+
+on:
+  # Trigger the workflow on pushes to the main branch
+  push:
+    branches:
+      - main
+  # Allow manual triggering from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          # You can specify a flutter version here if needed, e.g., flutter-version: '3.19.0'
+
+      - name: Install Dependencies
+        working-directory: ./matriculaup_app
+        run: flutter pub get
+
+      - name: Build Web App
+        working-directory: ./matriculaup_app
+        # The base-href must match the repository name exactly (case-sensitive)
+        run: flutter build web --release --base-href "/MatriculaUp/"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./matriculaup_app/build/web
+          # This action automatically creates the gh-pages branch if it doesn't exist
+          publish_branch: gh-pages
