@@ -1,0 +1,110 @@
+{
+  "ciclo": "2026-1",
+  "semestre": "Primer Semestre 2026",
+  "inicio_clases": "2026-03-16",
+  "fin_clases": "2026-06-27",
+  "eventos": [
+    {
+      "tipo": "prematricula",
+      "descripcion": "Prematrícula Vinculante — Primer Semestre (por turnos)",
+      "inicio": "2026-03-09",
+      "fin": "2026-03-10"
+    },
+    {
+      "tipo": "matricula",
+      "descripcion": "Matrícula de ingresantes, Intercambio, Consorcio y Ordinaria Automática",
+      "inicio": "2026-03-11",
+      "fin": "2026-03-11"
+    },
+    {
+      "tipo": "matricula",
+      "descripcion": "Matrícula Extemporánea y Modificación de Matrícula (por turnos)",
+      "inicio": "2026-03-13",
+      "fin": "2026-03-13"
+    },
+    {
+      "tipo": "academico",
+      "descripcion": "Inicio de clases del Primer Semestre 2026",
+      "inicio": "2026-03-16",
+      "fin": "2026-03-16"
+    },
+    {
+      "tipo": "plazo",
+      "descripcion": "Último día para el retiro de asignaturas (EFE) o del semestre sin pago",
+      "inicio": "2026-03-28",
+      "fin": "2026-03-28"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Semana Santa",
+      "inicio": "2026-04-02",
+      "fin": "2026-04-04"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Elecciones Generales",
+      "inicio": "2026-04-12",
+      "fin": "2026-04-12"
+    },
+    {
+      "tipo": "administrativo",
+      "descripcion": "Declaración, modificación o eliminación de concentraciones (110+ créditos)",
+      "inicio": "2026-04-27",
+      "fin": "2026-04-30"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Día del Trabajo",
+      "inicio": "2026-05-01",
+      "fin": "2026-05-01"
+    },
+    {
+      "tipo": "examen",
+      "descripcion": "EXÁMENES PARCIALES — Primer Semestre",
+      "inicio": "2026-05-04",
+      "fin": "2026-05-10"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Día de la Bandera / Batalla de Arica — Elecciones 2ª vuelta",
+      "inicio": "2026-06-07",
+      "fin": "2026-06-07"
+    },
+    {
+      "tipo": "administrativo",
+      "descripcion": "Encuestas de evaluación a docentes y encargados de prácticas",
+      "inicio": "2026-06-08",
+      "fin": "2026-06-21"
+    },
+    {
+      "tipo": "matricula",
+      "descripcion": "Matrícula Preventiva 2026-II",
+      "inicio": "2026-06-11",
+      "fin": "2026-06-12"
+    },
+    {
+      "tipo": "plazo",
+      "descripcion": "Último día para retiro de asignaturas/semestre (con pago de derechos)",
+      "inicio": "2026-06-27",
+      "fin": "2026-06-27"
+    },
+    {
+      "tipo": "academico",
+      "descripcion": "Último día de clases del Primer Semestre",
+      "inicio": "2026-06-27",
+      "fin": "2026-06-27"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "San Pedro y San Pablo",
+      "inicio": "2026-06-29",
+      "fin": "2026-06-29"
+    },
+    {
+      "tipo": "examen",
+      "descripcion": "EXÁMENES FINALES — Primer Semestre",
+      "inicio": "2026-06-30",
+      "fin": "2026-06-30"
+    }
+  ]
+}
