@@ -1,5 +1,7 @@
 // matriculaup_app/lib/ui/pages/home_page.dart
+import 'dart:convert';
 import 'dart:ui' as ui;
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +26,28 @@ class _HomePageState extends State<HomePage> {
   int _leftTab = 0;
   // Key for PNG capture of the timetable grid
   final GlobalKey _timetableKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadDefaultData();
+  }
+
+  Future<void> _loadDefaultData() async {
+    try {
+      final String contents = await rootBundle.loadString(
+        'assets/default_courses.json',
+      );
+      final Map<String, dynamic> jsonData = jsonDecode(contents);
+      final List<dynamic> coursesList = jsonData['cursos'] ?? [];
+      final courses = coursesList.map((c) => Course.fromJson(c)).toList();
+      if (mounted) {
+        context.read<ScheduleState>().setCourses(courses);
+      }
+    } catch (e) {
+      debugPrint("No default courses found or error loading: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
