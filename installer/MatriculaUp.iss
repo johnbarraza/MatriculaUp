@@ -1,10 +1,10 @@
 [Setup]
 AppName=MatriculaUp
-AppVersion=1.3
+AppVersion=1.4
 AppPublisher=MatriculaUp
 DefaultDirName={autopf}\MatriculaUp
 DefaultGroupName=MatriculaUp
-OutputBaseFilename=MatriculaUp_v1.3_Setup
+OutputBaseFilename=MatriculaUp_v1.4_Setup
 OutputDir=..\dist
 Compression=lzma2/max
 SolidCompression=yes
@@ -17,8 +17,9 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 ; Flutter app files
 Source: "..\matriculaup_app\build\windows\x64\runner\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-; Default JSON configuration file
+; Default JSON course files
 Source: "..\input\courses_2026-1_v1.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\input\efe_courses_2026-1_v1.json"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\MatriculaUp"; Filename: "{app}\matriculaup_app.exe"
