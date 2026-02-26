@@ -41,6 +41,13 @@ class _HomePageState extends State<HomePage> {
         label: result.label,
       );
     }
+    final efeResult = await DataLoader.loadDefaultEfeCourses();
+    if (efeResult != null && mounted) {
+      context.read<ScheduleState>().setEfeCourses(
+        efeResult.courses,
+        label: efeResult.label,
+      );
+    }
     final calendar = await DataLoader.loadCalendar();
     if (calendar != null && mounted) {
       context.read<ScheduleState>().setCalendar(calendar);

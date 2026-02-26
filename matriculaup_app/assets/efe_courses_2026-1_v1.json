@@ -1,0 +1,2872 @@
+{
+  "metadata": {
+    "ciclo": "2026-1",
+    "descripcion": "EFE + SSU 2026-I — formato estándar MatriculaUp",
+    "fecha_extraccion": "2026-02-26",
+    "fuente_pdf": "Horarios-ofertados-en-matricula-2026-I_planes-antiguos.pdf",
+    "fuente_excel": "Sesiones SSU_2026-I(1).xlsx",
+    "total_cursos": 47,
+    "version": "v1"
+  },
+  "cursos": [
+    {
+      "codigo": "900599",
+      "nombre": "[EFE] Ajedrez",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "SOTO VEGA JORGE ARTURO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900569",
+      "nombre": "[EFE] Defensa personal mixto",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "docentes": [
+            "CHACÓN SULLÓN RONALD DEAN"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900162",
+      "nombre": "[EFE] Escalada en palestra",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "HUAYANAY SOLÓRZANO JIMMY"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900533",
+      "nombre": "[EFE] Escultura en plastilina",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "docentes": [
+            "VÁSQUEZ JARA STEPHANY MARITÉ"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900630",
+      "nombre": "[EFE] Fotografía con Smartphone",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "MIYASHIRO HIGA LUIS FERNANDO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "MIYASHIRO HIGA LUIS FERNANDO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900598",
+      "nombre": "[EFE] Museos en vanguardia",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "docentes": [
+            "OLIVAS WESTON MARCELA ROSA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "13:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900719",
+      "nombre": "[EFE] Pintura experimental",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "DE ORBEGOSO SEOANE GUILLERMO ENRIQUE"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "DE ORBEGOSO SEOANE GUILLERMO ENRIQUE"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900644",
+      "nombre": "[EFE] Power Yoga",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "docentes": [
+            "BARRIOS RIVAS SOPHIA HELENA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900584",
+      "nombre": "[EFE] Running UP",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "ESPINOZA PAREDES VÍCTOR RAFAEL"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900842",
+      "nombre": "[EFE] Salsa: ritmo y expresión corporal",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "ZÚÑIGA CAHUANA DIEGO ALBERTO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900843",
+      "nombre": "[EFE] Senderismo en Canta (VIAJE DE 3 DÍAS)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "ESPINOZA PAREDES VÍCTOR RAFAEL"
+          ],
+          "observaciones": "2026-07-07 → 2026-07-09",
+          "sesiones": []
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900033",
+      "nombre": "[EFE] Tenis de mesa",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "PORTUGAL BOTETANO JAVIER ENRIQUE"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "PORTUGAL BOTETANO JAVIER ENRIQUE"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "docentes": [
+            "PORTUGAL BOTETANO JAVIER ENRIQUE"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "docentes": [
+            "PORTUGAL BOTETANO JAVIER ENRIQUE"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900160",
+      "nombre": "[EFE] Yoga",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "RODRÍGUEZ CENTENO GLENDY DEL CARMEN"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "docentes": [
+            "BARRIOS RIVAS SOPHIA HELENA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTRAPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900762",
+      "nombre": "[EFE] Cajón peruano",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "FIGUEROA EURIBE CARLOS"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900776",
+      "nombre": "[EFE] Diseño de contenido digital",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "DURAND RUIZ BRITT ALEXANDRA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900143",
+      "nombre": "[EFE] Futsal masculino",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "GÓMEZ CRUZ JUAN JOSÉ"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900834",
+      "nombre": "[EFE] Improvisación teatral y creatividad",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "MORI UGAZ MICHEL ALEXANDER"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "MORI UGAZ MICHEL ALEXANDER"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900700",
+      "nombre": "[EFE] Percusión creativa",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "docentes": [
+            "SOLANO ESTRELLA ADOLFO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900841",
+      "nombre": "[EFE] Presentaciones de alto impacto",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "docentes": [
+            "OVIEDO HURTADO GIOVANNI ADOLFO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900833",
+      "nombre": "[EFE] Rap y cultura Hip Hop",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "OVIEDO HURTADO GIOVANNI ADOLFO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900835",
+      "nombre": "[EFE] Teatro: habilidades escénicas",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "SEMINARIO ALVARADO MIGUEL GABRIEL"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "SEMINARIO ALVARADO MIGUEL GABRIEL"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900147",
+      "nombre": "[EFE] Vóleibol mixto",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "CÁRDENAS CÁRDENAS CÉSAR DAVID"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B",
+          "docentes": [
+            "CÁRDENAS CÁRDENAS CÉSAR DAVID"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "C",
+          "docentes": [
+            "CÁRDENAS CÁRDENAS CÉSAR DAVID"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "DOM",
+              "hora_inicio": "09:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900761",
+      "nombre": "[EFE] Voz y canto grupal",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "docentes": [
+            "COLQUICOCHA CARRASCAL MELISSA PRINCESA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "18:00",
+              "hora_fin": "19:50",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "18:00",
+              "hora_fin": "19:50",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INTERPERSONAL (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900684",
+      "nombre": "[EFE] Acción Viva",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "PEREYRA ESCOBAR MARÍA ALEJANDRA"
+          ],
+          "observaciones": "2026-03-17 → 2026-06-09",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "20:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "09:00",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "09:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "12:30",
+              "hora_fin": "12:50",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900836",
+      "nombre": "[EFE] Actualización digital para adultos mayores",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "SOLÓRZANO PANEZ SHIRLEY LUZMILA"
+          ],
+          "observaciones": "2026-03-16 → 2026-05-28 | 4 CLASES PRESENCIALES 9 SALIDAS DE CAMPO SEDE: JESÚS MARÍA",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "10:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "10:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "10:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B",
+          "docentes": [
+            "CABALLERO FELIPE MARÍA ISABEL"
+          ],
+          "observaciones": "2026-03-17 → 2026-06-09 | 4 CLASES PRESENCIALES 10 SALIDAS DE CAMPO MOVILIDAD UP SEDE: BREÑA",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "10:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "09:50",
+              "hora_fin": "10:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "10:30",
+              "hora_fin": "12:50",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "13:00",
+              "hora_fin": "13:30",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "14:30",
+              "hora_fin": "16:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900839",
+      "nombre": "[EFE] Aprendiendo juntos en la naturaleza - Shilcayo (VIAJE DE 6 DÍAS, 5 NOCHES. DOS CRÉDITOS)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "docentes": [
+            "SOLÓRZANO PANEZ, Shirley Luzmila"
+          ],
+          "observaciones": "2026-06-17 → 2026-07-11 | EXPERIENCIA DE INMERSIÓN SOCIAL EN LOS CASERÍOS EL PROGRESO Y SAN JOSÉ, EN TARAPOTO.",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "08:30",
+              "hora_fin": "17:30",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "08:30",
+              "hora_fin": "17:30",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "17:30",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "08:30",
+              "hora_fin": "17:30",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "17:30",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "08:30",
+              "hora_fin": "17:30",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900565",
+      "nombre": "[EFE] Bridges",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "ESPINOZA PAREDES, Víctor Rafael"
+          ],
+          "observaciones": "2026-03-19 → 2026-05-02 | 3 CLASES PRESENCIALES 6 SALIDAS DE CAMPO MOVILIDAD UP SEDE: S.J.M.",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "20:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "08:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "09:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "13:30",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "ESPINOZA PAREDES, Víctor Rafael"
+          ],
+          "observaciones": "2026-05-14 → 2026-06-25 | 3 CLASES PRESENCIALES 6 SALIDAS DE CAMPO MOVILIDAD UP SEDE: S.J.M.",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "20:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "08:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "09:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "13:30",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "docentes": [
+            "SOLÓRZANO PANEZ, Shirley Luzmila"
+          ],
+          "observaciones": "2026-05-14 → 2026-06-25 | 3 CLASES PRESENCIALES 6 SALIDAS DE CAMPO MOVILIDAD UP SEDE: S.J.M.",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "20:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "08:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "09:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "13:30",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900758",
+      "nombre": "[EFE] Campamentos que empoderan",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "docentes": [
+            "RODRÍGUEZ GARCÍA, Sebastián"
+          ],
+          "observaciones": "2026-05-23 → 2026-06-12 | 2 CLASES PRESENCIALES 3 SALIDAS DE CAMPO MOVILIDAD UP PERNOCTE 29 y 30 MAYO SALIDA 29/5 - REGRESO 31/5 SEDE: FUNDO LA QUERENCIA, LURÍN",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "08:45",
+              "hora_fin": "09:50",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "10:00",
+              "hora_fin": "18:00",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "08:00",
+              "hora_fin": "20:00",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "DOM",
+              "hora_inicio": "07:00",
+              "hora_fin": "17:00",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "DOM",
+              "hora_inicio": "17:10",
+              "hora_fin": "18:30",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900697",
+      "nombre": "[EFE] Casa Ronald Mc Donald",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "GONZALES BECERRA KATIA"
+          ],
+          "observaciones": "2026-05-16 → 2026-06-09 | 4 CLASES PRESENCIALES 12 SALIDAS DE CAMPO SEDE: JESÚS MARÍA",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900779",
+      "nombre": "[EFE] Empodera jóvenes",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "GRANTHON URIARTE RONALD JEFRIE"
+          ],
+          "observaciones": "2026-03-21 → 2026-06-20 | 5 CLASES PRESENCIALES 7 SALIDAS DE CAMPO SEDE: JESÚS MARÍA",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "09:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900787",
+      "nombre": "[EFE] Empodérate con Fe y Alegría",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "DE LA MATTA CASTILLO LUCERO SARA"
+          ],
+          "observaciones": "2026-03-26 → 2026-06-11 | 4 CLASES PRESENCIALES 7 SALIDAS DE CAMPO MOVILIDAD UP SEDE: SJM",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "08:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "12:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "12:30",
+              "hora_fin": "14:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B",
+          "docentes": [
+            "EYZAGUIRRE LANDAZURI PEGGY JEAN"
+          ],
+          "observaciones": "2026-03-26 → 2026-06-11 | 4 CLASES PRESENCIALES 7 SALIDAS DE CAMPO MOVILIDAD UP SEDE: SJM",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "08:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "12:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "C",
+          "docentes": [
+            "DE LA MATTA CASTILLO LUCERO SARA"
+          ],
+          "observaciones": "2026-04-01 → 2026-06-10 | 4 CLASES PRESENCIALES 7 SALIDAS DE CAMPO MOVILIDAD UP SEDE: SJM",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "12:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "D",
+          "docentes": [
+            "EYZAGUIRRE LANDAZURI PEGGY JEAN"
+          ],
+          "observaciones": "2026-03-27 → 2026-06-12 | 4 CLASES PRESENCIALES 7 SALIDAS DE CAMPO MOVILIDAD UP SEDE: VES",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "08:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "10:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "E",
+          "docentes": [
+            "SÁNCHEZ JUGO ISABEL"
+          ],
+          "observaciones": "2026-03-27 → 2026-06-12",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "10:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "10:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "13:30",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900788",
+      "nombre": "[EFE] Hogar Betania para adultos mayores",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "PEREYRA ESCOBAR MARÍA ALEJANDRA"
+          ],
+          "observaciones": "2026-03-18 → 2026-04-29",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "14:00",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "14:30",
+              "hora_fin": "16:50",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "17:00",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "14:00",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "14:30",
+              "hora_fin": "16:50",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "17:00",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "14:30",
+              "hora_fin": "16:50",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "PEREYRA ESCOBAR MARÍA ALEJANDRA"
+          ],
+          "observaciones": "2026-05-13 → 2026-06-26",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "14:30",
+              "hora_fin": "16:50",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "14:00",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "14:30",
+              "hora_fin": "16:50",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "17:00",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "14:00",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "17:00",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "13:30",
+              "hora_fin": "14:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "18:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900840",
+      "nombre": "[EFE] Proyectos con propósito: Adultos mayores en acción",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "GRANTHON URIARTE RONALD JEFRIE"
+          ],
+          "observaciones": "2026-03-17 → 2026-06-11",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "14:30",
+              "hora_fin": "16:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "14:30",
+              "hora_fin": "16:50",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "14:30",
+              "hora_fin": "16:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900814",
+      "nombre": "[EFE] Tutoría para niños geniales",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "DÍAZ CHAGRAY CLAUDIA"
+          ],
+          "observaciones": "2026-03-16 → 2026-04-27",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "10:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "08:30",
+              "hora_fin": "10:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "CABALLERO FELIPE, Maria Isabel"
+          ],
+          "observaciones": "2026-05-11 → 2026-06-22",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "10:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "08:30",
+              "hora_fin": "10:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "docentes": [
+            "GONZALES BECERRA KATIA"
+          ],
+          "observaciones": "2026-03-17 → 2026-04-30",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "08:30",
+              "hora_fin": "10:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "docentes": [
+            "GONZALES BECERRA KATIA"
+          ],
+          "observaciones": "2026-05-12 → 2026-06-23",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "08:30",
+              "hora_fin": "10:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "08:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "08:30",
+              "hora_fin": "10:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900826",
+      "nombre": "[EFE] VoluntArte Kantaya",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "SOLÓRZANO PANEZ SHIRLEY LUZMILA"
+          ],
+          "observaciones": "2026-03-18 → 2026-04-29",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "13:30",
+              "hora_fin": "16:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "08:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "09:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "SAB",
+              "hora_inicio": "12:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "08:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "12:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "12:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "13:30",
+              "hora_fin": "15:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900848",
+      "nombre": "[EFE] Barreras organizacionales en la construcción de aspiraciones de liderazgo en mujeres jóvenes",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "FUCHS ÁNGELES ROSA MARÍA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900851",
+      "nombre": "[EFE] Identificación de Mipymes peruanas con alta participación de mujeres",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "RODRÍGUEZ SATIZÁBAL BEATRIZ"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900850",
+      "nombre": "[EFE] Introducción a la Topología",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "COTRINA ASTO JOHN EDWIN"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900844",
+      "nombre": "[EFE] Neurociencia de la sostenibilidad: medición implícita del comportamiento y la toma de decisiones",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "PENNANO VILLANUEVA CARLA\nRIVAS VELARDE ANDREA CAROLINA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900845",
+      "nombre": "[EFE] Teoría, dinámicas y medición del capital humano en el Perú",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "CORTEZ VALDIVIA RAFAEL AUGUSTO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "13:30",
+              "hora_fin": "15:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900849",
+      "nombre": "[EFE] Uso de técnicas estadísticas y chatbots",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "MATEU BULLÓN PEDRO FERNANDO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900815",
+      "nombre": "[EFE] Diseño de futuros",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "CONTRERAS TORRES VERÓNICA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "CONTRERAS TORRES VERÓNICA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900650",
+      "nombre": "[EFE] Transformación creativa",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "RUIZ TAFUR MARÍA DEL ROCÍO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "RUIZ TAFUR MARÍA DEL ROCÍO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "docentes": [
+            "OTINIANO SÁENZ JAMES ISRAEL"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "docentes": [
+            "OTINIANO SÁENZ JAMES ISRAEL"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "VIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "C1",
+          "docentes": [
+            "LAY FERRATO PATRICIA EULALIA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:30",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:30",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "C2",
+          "docentes": [
+            "LAY FERRATO PATRICIA EULALIA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "D1",
+          "docentes": [
+            "RIVAS VELARDE ANDREA CAROLINA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "D2",
+          "docentes": [
+            "RIVAS VELARDE ANDREA CAROLINA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "E1",
+          "docentes": [
+            "ASTOCAZA MORALES JOSEPHINE ANNIE ROSE"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "E2",
+          "docentes": [
+            "ASTOCAZA MORALES JOSEPHINE ANNIE ROSE"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900649",
+      "nombre": "[EFE] Liderazgo responsable",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "CORAL CHÁVEZ EVELYN DESIREE"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "docentes": [
+            "MUÑOZ VALERA PAULA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE LIDERAZGO (UN CRÉDITO)"
+    },
+    {
+      "codigo": "9000387",
+      "nombre": "[EFE] Taller de Fortalecimiento de Competencias Profesionales",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "PUENTE MANDUJANO JESSICA SONIA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "PUENTE MANDUJANO JESSICA SONIA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "docentes": [
+            "ALFARO ESPARZA, ALFREDO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "docentes": [
+            "ALFARO ESPARZA, ALFREDO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "C1",
+          "docentes": [
+            "GANDOLFO GONZÁLEZ PAOLA MARÍA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "C2",
+          "docentes": [
+            "MEDINA ALBURQUEQUE OTTO ANTONIO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "D1",
+          "docentes": [
+            "MEDINA ALBURQUEQUE OTTO ANTONIO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "E1",
+          "docentes": [
+            "MEDINA ALBURQUEQUE OTTO ANTONIO"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "MAR",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE COMPETENCIAS PROFESIONALES (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900218",
+      "nombre": "[EFE] Taller de Preparación para la Vida Profesional",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "RUBINA ESPINOSA MAGALY SUSANA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "docentes": [
+            "RUBINA ESPINOSA MAGALY SUSANA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20",
+              "aula": ""
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "docentes": [
+            "ARANA RAMÍREZ MILUSKA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE COMPETENCIAS PROFESIONALES (UN CRÉDITO)"
+    },
+    {
+      "codigo": "900218_DER",
+      "nombre": "[EFE] Taller de Preparación para la Vida Profesional-DERECHO",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "docentes": [
+            "ARANA RAMÍREZ MILUSKA"
+          ],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20",
+              "aula": ""
+            }
+          ]
+        }
+      ],
+      "_tipo_efe": "EFE COMPETENCIAS PROFESIONALES (UN CRÉDITO)"
+    }
+  ]
+}
