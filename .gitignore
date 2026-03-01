@@ -15,7 +15,7 @@ __pycache__/
 debug*.py
 *out*.txt
 inno_out.txt
-
+tmp*.txt
 # OS Files
 .DS_Store
 Thumbs.db

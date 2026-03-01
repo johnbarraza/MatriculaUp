@@ -101,6 +101,7 @@ class ScheduleState extends ChangeNotifier {
   // ── Multiple Schedules (Plan A / B / C) ──────────────────────────────────
   /// 3 independent sections lists: index 0 = Plan A, 1 = Plan B, 2 = Plan C.
   final List<List<CourseSelection>> _schedules = [[], [], []];
+  final List<Set<String>> _hiddenCourses = [{}, {}, {}];
   int _activeScheduleIndex = 0;
 
   int get activeScheduleIndex => _activeScheduleIndex;
@@ -113,6 +114,16 @@ class ScheduleState extends ChangeNotifier {
 
   List<CourseSelection> get selectedSections =>
       _schedules[_activeScheduleIndex];
+
+  bool isCourseHidden(String courseCode) =>
+      _hiddenCourses[_activeScheduleIndex].contains(courseCode);
+
+  void toggleCourseVisibility(String courseCode) {
+    if (!_hiddenCourses[_activeScheduleIndex].remove(courseCode)) {
+      _hiddenCourses[_activeScheduleIndex].add(courseCode);
+    }
+    notifyListeners();
+  }
 
   // ── Add / Remove ─────────────────────────────────────────────────────────
   void addSection(Course course, Section section) {
@@ -146,6 +157,7 @@ class ScheduleState extends ChangeNotifier {
           sel.course.codigo == course.codigo &&
           sel.section.seccion == section.seccion,
     );
+    _hiddenCourses[_activeScheduleIndex].remove(course.codigo);
     notifyListeners();
   }
 

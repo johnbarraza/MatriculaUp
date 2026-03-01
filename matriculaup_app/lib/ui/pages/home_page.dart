@@ -11,8 +11,10 @@ import 'package:matriculaup_app/ui/components/selected_courses_panel.dart';
 import 'package:matriculaup_app/ui/components/timetable_grid.dart';
 import 'package:matriculaup_app/ui/components/academic_calendar_sheet.dart';
 import 'package:matriculaup_app/ui/components/donation_dialog.dart';
+import 'package:matriculaup_app/ui/components/courses_summary_bar.dart';
 import 'package:matriculaup_app/ui/components/disclaimer_footer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../utils/ics_exporter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -205,12 +207,6 @@ class _HomePageState extends State<HomePage> {
             tooltip: 'Configuración',
             onPressed: () => _showSettingsSheet(context, state),
           ),
-          // PNG Export button
-          IconButton(
-            icon: const Icon(Icons.camera_alt_outlined),
-            tooltip: 'Exportar horario como PNG',
-            onPressed: () => _exportAsPng(context),
-          ),
           const SizedBox(width: 8),
         ],
       ),
@@ -360,24 +356,73 @@ class _HomePageState extends State<HomePage> {
               color: Colors.white,
               child: Column(
                 children: [
+                  // ── Top controls row ────────────────────────────────────
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SegmentedButton<bool>(
-                      segments: const [
-                        ButtonSegment<bool>(
-                          value: false,
-                          label: Text('Semana Regular'),
+                    padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Semana Regular / Exámenes — compact, not stretched
+                        SegmentedButton<bool>(
+                          segments: const [
+                            ButtonSegment<bool>(
+                              value: false,
+                              label: Text('Semana Regular'),
+                            ),
+                            ButtonSegment<bool>(
+                              value: true,
+                              label: Text('Exámenes'),
+                            ),
+                          ],
+                          selected: <bool>{_showExams},
+                          onSelectionChanged: (s) =>
+                              setState(() => _showExams = s.first),
+                          style: ButtonStyle(
+                            tapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                            visualDensity: VisualDensity.compact,
+                          ),
                         ),
-                        ButtonSegment<bool>(
-                          value: true,
-                          label: Text('Exámenes'),
+                        const SizedBox(width: 4),
+                        // ICS export — always visible, disabled when no courses
+                        Tooltip(
+                          message: 'Exportar a Google Calendar (.ics)',
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.event_outlined,
+                              size: 20,
+                              color: state.selectedSections.isNotEmpty
+                                  ? null
+                                  : Colors.grey.shade400,
+                            ),
+                            visualDensity: VisualDensity.compact,
+                            padding: const EdgeInsets.all(6),
+                            constraints: const BoxConstraints(),
+                            onPressed: state.selectedSections.isNotEmpty
+                                ? () => _exportAsIcs(context)
+                                : null,
+                          ),
+                        ),
+                        // PNG export
+                        Tooltip(
+                          message: 'Exportar horario como PNG',
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.camera_alt_outlined,
+                              size: 20,
+                            ),
+                            visualDensity: VisualDensity.compact,
+                            padding: const EdgeInsets.all(6),
+                            constraints: const BoxConstraints(),
+                            onPressed: () => _exportAsPng(context),
+                          ),
                         ),
                       ],
-                      selected: <bool>{_showExams},
-                      onSelectionChanged: (s) =>
-                          setState(() => _showExams = s.first),
                     ),
                   ),
+                  // ── Course summary (always visible) ─────────────────────
+                  const CoursesSummaryBar(),
+                  // ── Timetable ────────────────────────────────────────────
                   Expanded(
                     child: TimetableGrid(
                       showExams: _showExams,
@@ -409,6 +454,43 @@ class _HomePageState extends State<HomePage> {
       ),
       builder: (_) => AcademicCalendarSheet(calendar: state.calendar!),
     );
+  }
+
+  // ── ICS Export ───────────────────────────────────────────────────────────
+  Future<void> _exportAsIcs(BuildContext context) async {
+    final state = context.read<ScheduleState>();
+    if (state.selectedSections.isEmpty) return;
+
+    try {
+      final bytes = IcsExporter.generateBytes(
+        state.selectedSections,
+        state.calendar,
+      );
+      final path = await FilePicker.platform.saveFile(
+        dialogTitle: 'Exportar horario a calendario (.ics)',
+        fileName: 'horario_matriculaup.ics',
+        type: FileType.custom,
+        allowedExtensions: ['ics'],
+        bytes: bytes,
+      );
+      if (path != null && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Guardado en: $path'),
+            action: SnackBarAction(
+              label: 'OK',
+              onPressed: () {},
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error al exportar: $e')));
+      }
+    }
   }
 
   // ── PNG Export ────────────────────────────────────────────────────────────

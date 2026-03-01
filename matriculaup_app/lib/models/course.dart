@@ -119,12 +119,18 @@ class Course {
   final Map<String, dynamic>? prerequisitos;
   final List<Section> secciones;
 
+  /// Raw EFE category string from `_tipo_efe` in the JSON, e.g.
+  /// "EFE INTRAPERSONAL (UN CRÉDITO)", "ARTE | CULTURA | DEPORTE", etc.
+  /// null for regular (non-EFE) courses.
+  final String? tipoEfe;
+
   Course({
     required this.codigo,
     required this.nombre,
     required this.creditos,
     this.prerequisitos,
     required this.secciones,
+    this.tipoEfe,
   });
 
   factory Course.fromJson(Map<String, dynamic> json) {
@@ -138,6 +144,7 @@ class Course {
               ?.map((e) => Section.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      tipoEfe: json['_tipo_efe'] as String?,
     );
   }
 }
