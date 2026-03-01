@@ -13,6 +13,8 @@ import 'package:matriculaup_app/ui/components/academic_calendar_sheet.dart';
 import 'package:matriculaup_app/ui/components/donation_dialog.dart';
 import 'package:matriculaup_app/ui/components/courses_summary_bar.dart';
 import 'package:matriculaup_app/ui/components/disclaimer_footer.dart';
+import 'package:matriculaup_app/ui/pages/fi_calculator_page.dart';
+import 'package:matriculaup_app/ui/pages/grade_calculator_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../utils/ics_exporter.dart';
 
@@ -179,6 +181,50 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+          // Calculadoras
+          PopupMenuButton<String>(
+            icon: const Icon(Icons.calculate_outlined),
+            tooltip: 'Calculadoras',
+            onSelected: (value) {
+              if (value == 'fi') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const FiCalculatorPage(),
+                  ),
+                );
+              } else if (value == 'grade') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const GradeCalculatorPage(),
+                  ),
+                );
+              }
+            },
+            itemBuilder: (_) => const [
+              PopupMenuItem(
+                value: 'fi',
+                child: Row(
+                  children: [
+                    Icon(Icons.leaderboard_outlined, size: 18),
+                    SizedBox(width: 10),
+                    Text('Factor de Inscripción'),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'grade',
+                child: Row(
+                  children: [
+                    Icon(Icons.quiz_outlined, size: 18),
+                    SizedBox(width: 10),
+                    Text('¿Cuánto me falta?'),
+                  ],
+                ),
+              ),
+            ],
+          ),
           // Feedback button
           IconButton(
             icon: const Icon(Icons.bug_report_outlined),

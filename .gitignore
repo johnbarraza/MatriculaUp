@@ -4,6 +4,10 @@
 .agent/
 .planning/
 .env/
+.claude/
+
+# Distribution binaries
+dist/
 
 # Python & Testing
 .pytest_cache/
