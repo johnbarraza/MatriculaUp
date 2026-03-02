@@ -18,6 +18,34 @@ import 'package:matriculaup_app/ui/pages/grade_calculator_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../utils/ics_exporter.dart';
 
+// ── Community resources ───────────────────────────────────────────────────────
+// To add a new resource, just append an entry to this list.
+const _kResources = [
+  _Resource(
+    title: 'Sílabos REA',
+    description: 'Repositorio de sílabos del programa REA · 2026-I',
+    url: 'https://drive.google.com/drive/folders/15YHaq5sXd1PXk1TfSPS125PmiXhf-62f',
+    icon: Icons.description_outlined,
+    tag: 'Drive',
+  ),
+];
+
+class _Resource {
+  final String title;
+  final String description;
+  final String url;
+  final IconData icon;
+  final String tag;
+
+  const _Resource({
+    required this.title,
+    required this.description,
+    required this.url,
+    required this.icon,
+    required this.tag,
+  });
+}
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -224,6 +252,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ],
+          ),
+          // Community resources
+          IconButton(
+            icon: const Icon(Icons.library_books_outlined),
+            tooltip: 'Materiales de la comunidad',
+            onPressed: () => _showResourcesSheet(context),
           ),
           // Feedback button
           IconButton(
@@ -743,6 +777,82 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ── Community Resources Sheet ─────────────────────────────────────────────
+  void _showResourcesSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (_) => Padding(
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.library_books_outlined, size: 20),
+                const SizedBox(width: 8),
+                const Text(
+                  'Materiales de la comunidad',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                ),
+                const Spacer(),
+                Tooltip(
+                  message: '¿Tienes material para aportar? Contáctanos',
+                  child: Icon(
+                    Icons.volunteer_activism_outlined,
+                    size: 16,
+                    color: Colors.pink.shade300,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            Text(
+              'Recursos compartidos por y para la comunidad UP',
+              style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+            ),
+            const Divider(height: 20),
+            ..._kResources.map(
+              (r) => ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: CircleAvatar(
+                  backgroundColor: Colors.blue.shade50,
+                  child: Icon(r.icon, size: 20, color: Colors.blue.shade700),
+                ),
+                title: Text(
+                  r.title,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+                subtitle: Text(
+                  r.description,
+                  style: const TextStyle(fontSize: 12),
+                ),
+                trailing: OutlinedButton.icon(
+                  icon: const Icon(Icons.open_in_new, size: 14),
+                  label: Text(r.tag),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 6,
+                    ),
+                    textStyle: const TextStyle(fontSize: 12),
+                  ),
+                  onPressed: () => launchUrl(
+                    Uri.parse(r.url),
+                    mode: LaunchMode.externalApplication,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
