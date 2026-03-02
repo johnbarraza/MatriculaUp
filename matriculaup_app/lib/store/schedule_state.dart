@@ -1,9 +1,14 @@
 // matriculaup_app/lib/store/schedule_state.dart
+import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/course.dart';
 import '../models/curriculum.dart';
 import '../models/calendar_event.dart';
 import '../utils/time_utils.dart';
+
+const _kSessionKey = 'session_v1';
 
 class CourseSelection {
   final Course course;
@@ -13,6 +18,118 @@ class CourseSelection {
 }
 
 class ScheduleState extends ChangeNotifier {
+  // ── Persistence ───────────────────────────────────────────────────────────
+  /// True once loadSession() has completed. Saves are blocked until then to
+  /// avoid overwriting a valid session with empty data on cold start.
+  bool _initialized = false;
+  Timer? _saveTimer;
+
+  @override
+  void notifyListeners() {
+    super.notifyListeners();
+    if (_initialized) _scheduleSave();
+  }
+
+  void _scheduleSave() {
+    _saveTimer?.cancel();
+    _saveTimer = Timer(const Duration(milliseconds: 400), _saveSession);
+  }
+
+  Future<void> _saveSession() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final data = jsonEncode({
+        'activeIdx': _activeScheduleIndex,
+        'maxCredits': maxCredits,
+        'schedules': List.generate(3, (i) => {
+          'sels': _schedules[i].map((s) => {
+            'code': s.course.codigo,
+            'sec': s.section.seccion,
+          }).toList(),
+          'hidden': _hiddenCourses[i].toList(),
+        }),
+      });
+      await prefs.setString(_kSessionKey, data);
+    } catch (_) {
+      // Non-critical — ignore save errors
+    }
+  }
+
+  /// Restores the last session from storage. Must be called after
+  /// allVisibleCourses is populated. Sets _initialized = true when done.
+  Future<void> loadSession(List<Course> allCourses) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(_kSessionKey);
+      if (raw != null) {
+        final json = jsonDecode(raw) as Map<String, dynamic>;
+
+        final maxC = json['maxCredits'] as int?;
+        if (maxC != null) maxCredits = maxC;
+
+        final activeIdx = json['activeIdx'] as int?;
+        if (activeIdx != null && activeIdx >= 0 && activeIdx < 3) {
+          _activeScheduleIndex = activeIdx;
+        }
+
+        final schedulesJson = json['schedules'] as List<dynamic>?;
+        if (schedulesJson != null) {
+          for (int i = 0; i < schedulesJson.length && i < 3; i++) {
+            final sMap = schedulesJson[i] as Map<String, dynamic>;
+
+            final hidden = sMap['hidden'] as List<dynamic>?;
+            if (hidden != null) {
+              _hiddenCourses[i] = Set<String>.from(hidden.cast<String>());
+            }
+
+            final sels = sMap['sels'] as List<dynamic>?;
+            if (sels != null) {
+              for (final sel in sels) {
+                final m = sel as Map<String, dynamic>;
+                final code = m['code'] as String?;
+                final secId = m['sec'] as String?;
+                if (code == null || secId == null) continue;
+
+                Course? course;
+                for (final c in allCourses) {
+                  if (c.codigo == code) {
+                    course = c;
+                    break;
+                  }
+                }
+                if (course == null) continue;
+
+                Section? section;
+                for (final s in course.secciones) {
+                  if (s.seccion == secId) {
+                    section = s;
+                    break;
+                  }
+                }
+                if (section == null) continue;
+
+                _schedules[i].add(CourseSelection(course: course, section: section));
+              }
+            }
+          }
+        }
+      }
+    } catch (_) {
+      // Start fresh on any error
+    } finally {
+      _initialized = true;
+      notifyListeners();
+    }
+  }
+
+  /// Wipes the saved session (used from Settings).
+  Future<void> clearSession() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(_kSessionKey);
+    } catch (_) {}
+  }
+
   // ── Course data ──────────────────────────────────────────────────────────
   List<Course> _allCourses = [];
   List<Course> get allCourses => _allCourses;

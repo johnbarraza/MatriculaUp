@@ -67,23 +67,26 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _loadDefaultData() async {
+    final state = context.read<ScheduleState>();
+
     final result = await DataLoader.loadDefaultCourses();
     if (result != null && mounted) {
-      context.read<ScheduleState>().setCourses(
-        result.courses,
-        label: result.label,
-      );
+      state.setCourses(result.courses, label: result.label);
     }
+
     final efeResult = await DataLoader.loadDefaultEfeCourses();
     if (efeResult != null && mounted) {
-      context.read<ScheduleState>().setEfeCourses(
-        efeResult.courses,
-        label: efeResult.label,
-      );
+      state.setEfeCourses(efeResult.courses, label: efeResult.label);
     }
+
+    // Restore last session now that all courses are available
+    if (mounted) {
+      await state.loadSession(state.allVisibleCourses);
+    }
+
     final calendar = await DataLoader.loadCalendar();
     if (calendar != null && mounted) {
-      context.read<ScheduleState>().setCalendar(calendar);
+      state.setCalendar(calendar);
     }
   }
 
@@ -760,6 +763,69 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ],
+            const Divider(height: 24),
+            // ── Session ───────────────────────────────────────────────────
+            Row(
+              children: [
+                const Icon(Icons.save_outlined, size: 14, color: Colors.grey),
+                const SizedBox(width: 6),
+                const Text(
+                  'Los horarios seleccionados se guardan automáticamente.',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            TextButton.icon(
+              icon: const Icon(
+                Icons.delete_outline,
+                size: 16,
+                color: Colors.red,
+              ),
+              label: const Text(
+                'Limpiar sesión guardada',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () async {
+                Navigator.pop(ctx);
+                final confirm = await showDialog<bool>(
+                  context: context,
+                  builder: (d) => AlertDialog(
+                    title: const Text('Limpiar sesión'),
+                    content: const Text(
+                      '¿Eliminar todos los cursos seleccionados y restablecer la configuración?\n\nEsta acción no se puede deshacer.',
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(d, false),
+                        child: const Text('Cancelar'),
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          foregroundColor: Colors.white,
+                        ),
+                        onPressed: () => Navigator.pop(d, true),
+                        child: const Text('Limpiar'),
+                      ),
+                    ],
+                  ),
+                );
+                if (confirm == true && context.mounted) {
+                  await context.read<ScheduleState>().clearSession();
+                  // Reload the page to apply fresh state
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Sesión eliminada. Reinicia la app para empezar desde cero.',
+                        ),
+                      ),
+                    );
+                  }
+                }
+              },
+            ),
             const Divider(height: 24),
             // ── Donation ─────────────────────────────────────────────────
             OutlinedButton.icon(
