@@ -23,6 +23,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
       return sum + (double.tryParse(sel.course.creditos) ?? 0.0).round();
     });
     final weeklyHours = state.weeklyHours;
+    final gapHours = state.weeklyGapHours;
     final count = selections.length;
 
     return Container(
@@ -84,6 +85,16 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                       '${weeklyHours.toStringAsFixed(1)} h/sem',
                       Colors.teal.shade700,
                     ),
+                    if (gapHours > 0) ...[
+                      const SizedBox(width: 4),
+                      Tooltip(
+                        message: 'Horas libres entre clases del mismo día',
+                        child: _chip(
+                          '${gapHours.toStringAsFixed(1)} h hueco',
+                          Colors.orange.shade700,
+                        ),
+                      ),
+                    ],
                   ],
                   const Spacer(),
                   if (hasSelections)
@@ -153,220 +164,223 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
               // Center can actually push the DataTable to the middle.
               constraints: BoxConstraints(minWidth: constraints.maxWidth),
               child: Center(
-          child: DataTable(
-            headingRowHeight: 24,
-            dataRowMinHeight: 34,
-            dataRowMaxHeight: 34,
-            columnSpacing: 12,
-            horizontalMargin: 12,
-            dividerThickness: 0.5,
-            headingRowColor: WidgetStateProperty.all(Colors.grey.shade50),
-            columns: [
-              DataColumn(
-                label: SizedBox(
-                  width: 12,
-                  child: Text(
-                    '',
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.grey.shade500,
-                    ),
-                  ),
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'CURSO',
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.grey.shade600,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'SEC',
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.grey.shade600,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  'DOCENTE',
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.grey.shade600,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-              ),
-              DataColumn(
-                numeric: true,
-                label: Text(
-                  'CR',
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.grey.shade600,
-                    letterSpacing: 0.5,
-                  ),
-                ),
-              ),
-              const DataColumn(label: SizedBox.shrink()),
-            ],
-            rows: selections.map((sel) {
-              final isHidden = state.isCourseHidden(sel.course.codigo);
-              final courseColor = _courseColor(sel.course.codigo);
-
-              return DataRow(
-                color: WidgetStateProperty.resolveWith((states) {
-                  if (isHidden) return Colors.grey.shade50;
-                  if (states.contains(WidgetState.hovered)) {
-                    return Colors.blue.shade50.withValues(alpha: 0.5);
-                  }
-                  return null;
-                }),
-                cells: [
-                  // Color dot
-                  DataCell(
-                    Center(
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
+                child: DataTable(
+                  headingRowHeight: 24,
+                  dataRowMinHeight: 34,
+                  dataRowMaxHeight: 34,
+                  columnSpacing: 12,
+                  horizontalMargin: 12,
+                  dividerThickness: 0.5,
+                  headingRowColor: WidgetStateProperty.all(Colors.grey.shade50),
+                  columns: [
+                    DataColumn(
+                      label: SizedBox(
                         width: 12,
-                        height: 12,
-                        decoration: BoxDecoration(
-                          color: isHidden
-                              ? Colors.grey.shade300
-                              : courseColor,
-                          borderRadius: BorderRadius.circular(3),
+                        child: Text(
+                          '',
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey.shade500,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  // Course name
-                  DataCell(
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 210),
-                      child: Text(
-                        sel.course.nombre,
+                    DataColumn(
+                      label: Text(
+                        'CURSO',
                         style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: isHidden
-                              ? Colors.grey.shade400
-                              : Colors.grey.shade800,
-                          decoration: isHidden
-                              ? TextDecoration.lineThrough
-                              : null,
-                          decorationColor: Colors.grey.shade400,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.grey.shade600,
+                          letterSpacing: 0.5,
                         ),
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  ),
-                  // Section
-                  DataCell(
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 2,
-                      ),
-                      decoration: BoxDecoration(
-                        color: isHidden
-                            ? Colors.grey.shade100
-                            : courseColor.withValues(alpha: 0.15),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        sel.section.seccion,
+                    DataColumn(
+                      label: Text(
+                        'SEC',
                         style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w600,
-                          color: isHidden
-                              ? Colors.grey.shade400
-                              : courseColor
-                                    .withValues(alpha: 1.0)
-                                    .withRed(
-                                      (courseColor.r * 0.7).round(),
-                                    )
-                                    .withGreen(
-                                      (courseColor.g * 0.7).round(),
-                                    )
-                                    .withBlue(
-                                      (courseColor.b * 0.7).round(),
-                                    ),
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.grey.shade600,
+                          letterSpacing: 0.5,
                         ),
                       ),
                     ),
-                  ),
-                  // Professor
-                  DataCell(
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 140),
-                      child: Text(
-                        _formatProfName(sel.section.docentes),
+                    DataColumn(
+                      label: Text(
+                        'DOCENTE',
                         style: TextStyle(
-                          fontSize: 11,
-                          color: isHidden
-                              ? Colors.grey.shade400
-                              : Colors.grey.shade600,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.grey.shade600,
+                          letterSpacing: 0.5,
                         ),
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  ),
-                  // Credits
-                  DataCell(
-                    Text(
-                      sel.course.creditos,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: isHidden
-                            ? Colors.grey.shade400
-                            : Colors.grey.shade700,
+                    DataColumn(
+                      numeric: true,
+                      label: Text(
+                        'CR',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.grey.shade600,
+                          letterSpacing: 0.5,
+                        ),
                       ),
                     ),
-                  ),
-                  // Action buttons
-                  DataCell(
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _actionButton(
-                          icon: isHidden
-                              ? Icons.visibility_off_outlined
-                              : Icons.visibility_outlined,
-                          color: isHidden
-                              ? Colors.grey.shade400
-                              : Colors.blue.shade600,
-                          tooltip: isHidden
-                              ? 'Mostrar en horario'
-                              : 'Ocultar del horario',
-                          onPressed: () =>
-                              state.toggleCourseVisibility(sel.course.codigo),
+                    const DataColumn(label: SizedBox.shrink()),
+                  ],
+                  rows: selections.map((sel) {
+                    final isHidden = state.isCourseHidden(sel.course.codigo);
+                    final courseColor = _courseColor(sel.course.codigo);
+
+                    return DataRow(
+                      color: WidgetStateProperty.resolveWith((states) {
+                        if (isHidden) return Colors.grey.shade50;
+                        if (states.contains(WidgetState.hovered)) {
+                          return Colors.blue.shade50.withValues(alpha: 0.5);
+                        }
+                        return null;
+                      }),
+                      cells: [
+                        // Color dot
+                        DataCell(
+                          Center(
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 200),
+                              width: 12,
+                              height: 12,
+                              decoration: BoxDecoration(
+                                color: isHidden
+                                    ? Colors.grey.shade300
+                                    : courseColor,
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                            ),
+                          ),
                         ),
-                        _actionButton(
-                          icon: Icons.close_rounded,
-                          color: Colors.red.shade400,
-                          tooltip: 'Quitar curso',
-                          onPressed: () =>
-                              state.removeSection(sel.course, sel.section),
+                        // Course name
+                        DataCell(
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 210),
+                            child: Text(
+                              sel.course.nombre,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: isHidden
+                                    ? Colors.grey.shade400
+                                    : Colors.grey.shade800,
+                                decoration: isHidden
+                                    ? TextDecoration.lineThrough
+                                    : null,
+                                decorationColor: Colors.grey.shade400,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                        // Section
+                        DataCell(
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                              vertical: 2,
+                            ),
+                            decoration: BoxDecoration(
+                              color: isHidden
+                                  ? Colors.grey.shade100
+                                  : courseColor.withValues(alpha: 0.15),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              sel.section.seccion,
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600,
+                                color: isHidden
+                                    ? Colors.grey.shade400
+                                    : courseColor
+                                          .withValues(alpha: 1.0)
+                                          .withRed(
+                                            (courseColor.r * 0.7).round(),
+                                          )
+                                          .withGreen(
+                                            (courseColor.g * 0.7).round(),
+                                          )
+                                          .withBlue(
+                                            (courseColor.b * 0.7).round(),
+                                          ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Professor
+                        DataCell(
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 140),
+                            child: Text(
+                              _formatProfName(sel.section.docentes),
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: isHidden
+                                    ? Colors.grey.shade400
+                                    : Colors.grey.shade600,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                        // Credits
+                        DataCell(
+                          Text(
+                            sel.course.creditos,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: isHidden
+                                  ? Colors.grey.shade400
+                                  : Colors.grey.shade700,
+                            ),
+                          ),
+                        ),
+                        // Action buttons
+                        DataCell(
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              _actionButton(
+                                icon: isHidden
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_outlined,
+                                color: isHidden
+                                    ? Colors.grey.shade400
+                                    : Colors.blue.shade600,
+                                tooltip: isHidden
+                                    ? 'Mostrar en horario'
+                                    : 'Ocultar del horario',
+                                onPressed: () => state.toggleCourseVisibility(
+                                  sel.course.codigo,
+                                ),
+                              ),
+                              _actionButton(
+                                icon: Icons.close_rounded,
+                                color: Colors.red.shade400,
+                                tooltip: 'Quitar curso',
+                                onPressed: () => state.removeSection(
+                                  sel.course,
+                                  sel.section,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
-                    ),
-                  ),
-                ],
-              );
-            }).toList(),
-          ),
+                    );
+                  }).toList(),
+                ),
               ), // Center
             ), // ConstrainedBox minWidth
           ), // horizontal scroll
@@ -402,8 +416,9 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
   String _formatProfName(List<String> docentes) {
     if (docentes.isEmpty) return '—';
     final first = docentes.first;
-    final lastName =
-        first.contains(',') ? first.split(',').first.trim() : first.trim();
+    final lastName = first.contains(',')
+        ? first.split(',').first.trim()
+        : first.trim();
     final formatted = lastName
         .split(' ')
         .map(
@@ -412,6 +427,8 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
               : '',
         )
         .join(' ');
-    return docentes.length > 1 ? '$formatted +${docentes.length - 1}' : formatted;
+    return docentes.length > 1
+        ? '$formatted +${docentes.length - 1}'
+        : formatted;
   }
 }

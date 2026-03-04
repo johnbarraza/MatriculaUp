@@ -41,13 +41,15 @@ class ScheduleState extends ChangeNotifier {
       final data = jsonEncode({
         'activeIdx': _activeScheduleIndex,
         'maxCredits': maxCredits,
-        'schedules': List.generate(3, (i) => {
-          'sels': _schedules[i].map((s) => {
-            'code': s.course.codigo,
-            'sec': s.section.seccion,
-          }).toList(),
-          'hidden': _hiddenCourses[i].toList(),
-        }),
+        'schedules': List.generate(
+          3,
+          (i) => {
+            'sels': _schedules[i]
+                .map((s) => {'code': s.course.codigo, 'sec': s.section.seccion})
+                .toList(),
+            'hidden': _hiddenCourses[i].toList(),
+          },
+        ),
       });
       await prefs.setString(_kSessionKey, data);
     } catch (_) {
@@ -108,7 +110,9 @@ class ScheduleState extends ChangeNotifier {
                 }
                 if (section == null) continue;
 
-                _schedules[i].add(CourseSelection(course: course, section: section));
+                _schedules[i].add(
+                  CourseSelection(course: course, section: section),
+                );
               }
             }
           }
@@ -210,6 +214,36 @@ class ScheduleState extends ChangeNotifier {
     return total;
   }
 
+  /// Total weekly gap hours between CLASE/PRÁCTICA sessions on the same day.
+  /// A "gap" is any dead time between two non-adjacent sessions on the same day
+  /// (e.g. class ends 11:00, next class starts 15:00 → 4 h gap).
+  double get weeklyGapHours {
+    final claseTypes = {SessionType.clase, SessionType.practica};
+
+    // Collect all relevant sessions grouped by day
+    final Map<String, List<(int start, int end)>> byDay = {};
+    for (final sel in selectedSections) {
+      for (final session in sel.section.sesiones) {
+        if (!claseTypes.contains(session.tipo)) continue;
+        final start = TimeUtils.timeToMinutes(session.horaInicio);
+        final end = TimeUtils.timeToMinutes(session.horaFin);
+        byDay.putIfAbsent(session.dia, () => []).add((start, end));
+      }
+    }
+
+    double totalGapMins = 0;
+    for (final slots in byDay.values) {
+      // Sort by start time
+      slots.sort((a, b) => a.$1.compareTo(b.$1));
+      // Sum gaps between consecutive sessions
+      for (int i = 1; i < slots.length; i++) {
+        final gap = slots[i].$1 - slots[i - 1].$2;
+        if (gap > 0) totalGapMins += gap;
+      }
+    }
+    return totalGapMins / 60.0;
+  }
+
   void setMaxCredits(int limit) {
     maxCredits = limit;
     notifyListeners();
@@ -290,10 +324,7 @@ class ScheduleState extends ChangeNotifier {
   };
 
   /// Session types that represent fixed exam weeks (parcial/final).
-  static const _fixedExamTypes = {
-    SessionType.parcial,
-    SessionType.finalExam,
-  };
+  static const _fixedExamTypes = {SessionType.parcial, SessionType.finalExam};
 
   /// Determines if two sessions can possibly clash.
   ///

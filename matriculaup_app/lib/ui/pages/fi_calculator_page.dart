@@ -1,7 +1,10 @@
 // matriculaup_app/lib/ui/pages/fi_calculator_page.dart
+import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/course.dart';
 import '../../store/schedule_state.dart';
 
@@ -20,9 +23,9 @@ class _CourseEntry {
   final TextEditingController grade;
 
   _CourseEntry({String n = '', String c = '', String g = ''})
-      : name = TextEditingController(text: n),
-        credits = TextEditingController(text: c),
-        grade = TextEditingController(text: g);
+    : name = TextEditingController(text: n),
+      credits = TextEditingController(text: c),
+      grade = TextEditingController(text: g);
 
   void dispose() {
     name.dispose();
@@ -30,7 +33,15 @@ class _CourseEntry {
     grade.dispose();
   }
 
-  int? get creditValue => int.tryParse(credits.text.trim());
+  int? get creditValue {
+    final text = credits.text.trim();
+    if (text.isEmpty) return null;
+    // Accept both "4" and "4.00" (JSON may use float strings)
+    final d = double.tryParse(text);
+    if (d == null || d <= 0) return null;
+    return d.round();
+  }
+
   double? get gradeValue =>
       double.tryParse(grade.text.trim().replaceAll(',', '.'));
 }
@@ -82,12 +93,12 @@ class _CoursePickerDialogState extends State<_CoursePickerDialog> {
       _filtered = q.isEmpty
           ? widget.courses
           : widget.courses
-              .where(
-                (c) =>
-                    c.nombre.toLowerCase().contains(q) ||
-                    c.codigo.toLowerCase().contains(q),
-              )
-              .toList();
+                .where(
+                  (c) =>
+                      c.nombre.toLowerCase().contains(q) ||
+                      c.codigo.toLowerCase().contains(q),
+                )
+                .toList();
     });
   }
 
@@ -109,8 +120,10 @@ class _CoursePickerDialogState extends State<_CoursePickerDialog> {
                 hintText: 'Buscar por nombre o código',
                 isDense: true,
                 border: OutlineInputBorder(),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
               ),
               onChanged: _onSearch,
             ),
@@ -202,16 +215,115 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
       _cRows.add(_CourseEntry());
       _vRows.add(_CourseEntry());
     }
+    _loadFi();
   }
 
   @override
   void dispose() {
+    _saveTimer?.cancel();
     for (final r in _cRows) r.dispose();
     for (final r in _vRows) r.dispose();
     for (final b in _cBonuses) b.dispose();
     for (final b in _vBonuses) b.dispose();
     _accCreditsCtrl.dispose();
     super.dispose();
+  }
+
+  // ── Persistence ──────────────────────────────────────────────────────────────
+
+  static const _kFiKey = 'fi_calculator_v1';
+
+  Future<void> _loadFi() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(_kFiKey);
+      if (raw == null) return;
+      final json = jsonDecode(raw) as Map<String, dynamic>;
+
+      void applyRows(List<_CourseEntry> target, List<dynamic>? data) {
+        if (data == null) return;
+        for (final r in target) r.dispose();
+        target.clear();
+        for (final item in data) {
+          final m = item as Map<String, dynamic>;
+          target.add(
+            _CourseEntry(
+              n: m['n'] as String? ?? '',
+              c: m['c'] as String? ?? '',
+              g: m['g'] as String? ?? '',
+            ),
+          );
+        }
+        if (target.isEmpty) target.add(_CourseEntry());
+      }
+
+      void applyBonuses(List<_BonusEntry> bonuses, List<dynamic>? data) {
+        if (data == null) return;
+        for (int i = 0; i < bonuses.length && i < data.length; i++) {
+          final m = data[i] as Map<String, dynamic>;
+          bonuses[i].enabled = m['enabled'] as bool? ?? false;
+          if (m['amount'] != null) {
+            bonuses[i].amount.text = m['amount'] as String;
+          }
+        }
+      }
+
+      setState(() {
+        applyRows(_cRows, json['cRows'] as List<dynamic>?);
+        applyRows(_vRows, json['vRows'] as List<dynamic>?);
+        applyBonuses(_cBonuses, json['cBonuses'] as List<dynamic>?);
+        applyBonuses(_vBonuses, json['vBonuses'] as List<dynamic>?);
+        if (json['accCredits'] != null) {
+          _accCreditsCtrl.text = json['accCredits'] as String;
+        }
+        if (json['mode'] != null) {
+          _isCachimbo = json['mode'] == 'cachimbo';
+        }
+      });
+    } catch (_) {
+      // Ignore load errors — start fresh
+    }
+  }
+
+  Future<void> _saveFi() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      List<Map<String, String>> rowsToMap(List<_CourseEntry> rows) => rows
+          .map(
+            (r) => {'n': r.name.text, 'c': r.credits.text, 'g': r.grade.text},
+          )
+          .toList();
+
+      List<Map<String, dynamic>> bonusesToMap(List<_BonusEntry> bonuses) =>
+          bonuses
+              .map((b) => {'enabled': b.enabled, 'amount': b.amount.text})
+              .toList();
+
+      await prefs.setString(
+        _kFiKey,
+        jsonEncode({
+          'mode': _isCachimbo ? 'cachimbo' : 'veterano',
+          'cRows': rowsToMap(_cRows),
+          'vRows': rowsToMap(_vRows),
+          'cBonuses': bonusesToMap(_cBonuses),
+          'vBonuses': bonusesToMap(_vBonuses),
+          'accCredits': _accCreditsCtrl.text,
+        }),
+      );
+    } catch (_) {}
+  }
+
+  // Debounced auto-save: fires 600ms after the last setState
+  Timer? _saveTimer;
+  void _scheduleAutoSave() {
+    _saveTimer?.cancel();
+    _saveTimer = Timer(const Duration(milliseconds: 600), _saveFi);
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+    _scheduleAutoSave();
   }
 
   // ── Calculations ────────────────────────────────────────────────────────────
@@ -288,10 +400,7 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
 
   // ── Builders ─────────────────────────────────────────────────────────────────
 
-  Widget _buildCourseTable(
-    List<_CourseEntry> rows,
-    List<Course> courses,
-  ) {
+  Widget _buildCourseTable(List<_CourseEntry> rows, List<Course> courses) {
     final hasDb = courses.isNotEmpty;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -305,15 +414,13 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
                 children: [
                   const Text(
                     'Curso',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                   ),
                   if (hasDb) ...[
                     const SizedBox(width: 4),
                     Tooltip(
-                      message: 'Pulsa 🔍 en cada fila para autocompletar desde la base de datos cargada',
+                      message:
+                          'Pulsa 🔍 en cada fila para autocompletar desde la base de datos cargada',
                       child: Icon(
                         Icons.info_outline,
                         size: 13,
@@ -406,9 +513,7 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
                   child: TextField(
                     controller: row.credits,
                     keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 13),
                     decoration: InputDecoration(
@@ -553,8 +658,9 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
       );
     }
 
-    final creditsLabel =
-        _isCachimbo ? 'Créditos matriculados' : 'Créditos acumulados';
+    final creditsLabel = _isCachimbo
+        ? 'Créditos matriculados'
+        : 'Créditos acumulados';
     final formula = _isCachimbo
         ? 'PP × 10 + Créditos + Bonos  =  ${result.pp} × 10 + ${result.credits} + ${result.bonos}'
         : '10 × PP + Créditos acumulados + Bonos  =  10 × ${result.pp} + ${result.credits} + ${result.bonos}';
@@ -601,20 +707,19 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
   }
 
   Widget _chip(String text, Color color) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Text(text, style: const TextStyle(fontSize: 12)),
-      );
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+    decoration: BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: Text(text, style: const TextStyle(fontSize: 12)),
+  );
 
   // ── Build ─────────────────────────────────────────────────────────────────────
 
   @override
   Widget build(BuildContext context) {
-    final courses =
-        context.watch<ScheduleState>().allVisibleCourses;
+    final courses = context.watch<ScheduleState>().allVisibleCourses;
     final result = _isCachimbo ? _calcCachimbo() : _calcVeterano();
 
     return Scaffold(
@@ -648,8 +753,7 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
                         ChoiceChip(
                           label: const Text('Cachimbo'),
                           selected: _isCachimbo,
-                          onSelected: (_) =>
-                              setState(() => _isCachimbo = true),
+                          onSelected: (_) => setState(() => _isCachimbo = true),
                         ),
                         const SizedBox(width: 8),
                         ChoiceChip(
@@ -696,20 +800,14 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
                   // ── Cachimbo ───────────────────────────────────────────────
                   const Text(
                     'Cursos del semestre anterior',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
                   _buildCourseTable(_cRows, courses),
                   const SizedBox(height: 20),
                   const Text(
                     'Bonificaciones',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   _buildBonuses(_cBonuses, editable: false),
@@ -717,10 +815,7 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
                   // ── Veterano ───────────────────────────────────────────────
                   const Text(
                     'Cursos del último semestre académico',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                   const Text(
                     'Excluir cursos de verano, nivelación, retirados y desaprobados',
@@ -812,9 +907,7 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
                     child: TextField(
                       controller: _accCreditsCtrl,
                       keyboardType: TextInputType.number,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       decoration: const InputDecoration(
                         labelText: 'Créditos acumulados',
                         hintText: 'ej. 96',
