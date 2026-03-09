@@ -515,9 +515,22 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
 
   String _formatInstructorsSummary(Section section) {
     final docente = _formatProfName(section.docentes);
-    if (section.jps.isEmpty) return docente;
-    final jp = _formatProfName(section.jps);
+    final jps = _tryReadSectionJps(section);
+    if (jps.isEmpty) return docente;
+    final jp = _formatProfName(jps);
     return '$docente | JP: $jp';
+  }
+
+  List<String> _tryReadSectionJps(Section section) {
+    try {
+      final raw = (section as dynamic).jps;
+      if (raw is List) {
+        return raw.map((e) => e?.toString() ?? '').where((e) => e.isNotEmpty).toList();
+      }
+      return const [];
+    } catch (_) {
+      return const [];
+    }
   }
 
   String _formatSectionCupos(Section section) {
