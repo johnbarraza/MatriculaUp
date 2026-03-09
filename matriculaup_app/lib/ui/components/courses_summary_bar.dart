@@ -379,7 +379,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 140),
                             child: Text(
-                              _formatProfName(sel.section.docentes),
+                              _formatInstructorsSummary(sel.section),
                               style: TextStyle(
                                 fontSize: 11,
                                 color: isHidden
@@ -511,6 +511,13 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
     return docentes.length > 1
         ? '$formatted +${docentes.length - 1}'
         : formatted;
+  }
+
+  String _formatInstructorsSummary(Section section) {
+    final docente = _formatProfName(section.docentes);
+    if (section.jps.isEmpty) return docente;
+    final jp = _formatProfName(section.jps);
+    return '$docente | JP: $jp';
   }
 
   String _formatSectionCupos(Section section) {
