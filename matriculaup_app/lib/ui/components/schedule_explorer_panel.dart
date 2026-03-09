@@ -329,9 +329,21 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
   }
 
   bool _sectionHasAvailableCupos(Section section) {
-    final cupos = section.sesiones.map((s) => s.cupos).whereType<int>().toList();
+    final cupos = section.sesiones.map(_tryReadSessionCupos).whereType<int>().toList();
     if (cupos.isEmpty) return true;
     return cupos.any((c) => c > 0);
+  }
+
+  int? _tryReadSessionCupos(Session session) {
+    try {
+      final value = (session as dynamic).cupos;
+      if (value is int) return value;
+      if (value is num) return value.toInt();
+      if (value is String) return int.tryParse(value);
+      return null;
+    } catch (_) {
+      return null;
+    }
   }
 
   bool _conflictsWithChosen(Section candidate, List<CourseSelection> chosen) {

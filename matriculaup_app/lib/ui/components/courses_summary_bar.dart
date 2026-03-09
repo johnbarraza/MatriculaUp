@@ -523,7 +523,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
   String _formatSectionCupos(Section section) {
     final cupos =
         section.sesiones
-            .map((s) => s.cupos)
+            .map(_tryReadSessionCupos)
             .whereType<int>()
             .toSet()
             .toList()
@@ -531,5 +531,17 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
     if (cupos.isEmpty) return 's/d';
     if (cupos.length == 1) return '${cupos.first}';
     return '${cupos.first}-${cupos.last}';
+  }
+
+  int? _tryReadSessionCupos(Session session) {
+    try {
+      final value = (session as dynamic).cupos;
+      if (value is int) return value;
+      if (value is num) return value.toInt();
+      if (value is String) return int.tryParse(value);
+      return null;
+    } catch (_) {
+      return null;
+    }
   }
 }
