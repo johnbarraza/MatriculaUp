@@ -48,6 +48,7 @@ class ScheduleState extends ChangeNotifier {
                 .map((s) => {'code': s.course.codigo, 'sec': s.section.seccion})
                 .toList(),
             'hidden': _hiddenCourses[i].toList(),
+            'locked': _lockedCourses[i].toList(),
           },
         ),
       });
@@ -82,6 +83,11 @@ class ScheduleState extends ChangeNotifier {
             final hidden = sMap['hidden'] as List<dynamic>?;
             if (hidden != null) {
               _hiddenCourses[i] = Set<String>.from(hidden.cast<String>());
+            }
+
+            final locked = sMap['locked'] as List<dynamic>?;
+            if (locked != null) {
+              _lockedCourses[i] = Set<String>.from(locked.cast<String>());
             }
 
             final sels = sMap['sels'] as List<dynamic>?;
@@ -244,6 +250,26 @@ class ScheduleState extends ChangeNotifier {
     return totalGapMins / 60.0;
   }
 
+  /// Number of days (LUN-SAB) that have at least one regular session.
+  int get classDaysCount {
+    const summaryDays = {'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'};
+    final daysWithClasses = <String>{};
+
+    for (final sel in selectedSections) {
+      for (final session in sel.section.sesiones) {
+        if (!_regularTypes.contains(session.tipo)) continue;
+        final day = session.dia.toUpperCase().trim();
+        if (summaryDays.contains(day)) {
+          daysWithClasses.add(day);
+        }
+      }
+    }
+    return daysWithClasses.length;
+  }
+
+  /// Number of free days (LUN-SAB) without regular sessions.
+  int get freeDaysCount => 6 - classDaysCount;
+
   void setMaxCredits(int limit) {
     maxCredits = limit;
     notifyListeners();
@@ -253,6 +279,7 @@ class ScheduleState extends ChangeNotifier {
   /// 3 independent sections lists: index 0 = Plan A, 1 = Plan B, 2 = Plan C.
   final List<List<CourseSelection>> _schedules = [[], [], []];
   final List<Set<String>> _hiddenCourses = [{}, {}, {}];
+  final List<Set<String>> _lockedCourses = [{}, {}, {}];
   int _activeScheduleIndex = 0;
 
   int get activeScheduleIndex => _activeScheduleIndex;
@@ -268,6 +295,19 @@ class ScheduleState extends ChangeNotifier {
 
   bool isCourseHidden(String courseCode) =>
       _hiddenCourses[_activeScheduleIndex].contains(courseCode);
+
+  Set<String> get lockedCourseCodes =>
+      Set<String>.from(_lockedCourses[_activeScheduleIndex]);
+
+  bool isCourseLocked(String courseCode) =>
+      _lockedCourses[_activeScheduleIndex].contains(courseCode);
+
+  void toggleCourseLock(String courseCode) {
+    if (!_lockedCourses[_activeScheduleIndex].remove(courseCode)) {
+      _lockedCourses[_activeScheduleIndex].add(courseCode);
+    }
+    notifyListeners();
+  }
 
   void toggleCourseVisibility(String courseCode) {
     if (!_hiddenCourses[_activeScheduleIndex].remove(courseCode)) {
@@ -309,6 +349,18 @@ class ScheduleState extends ChangeNotifier {
           sel.section.seccion == section.seccion,
     );
     _hiddenCourses[_activeScheduleIndex].remove(course.codigo);
+    _lockedCourses[_activeScheduleIndex].remove(course.codigo);
+    notifyListeners();
+  }
+
+  /// Replaces the active plan with [selections] in one operation.
+  /// Intended for schedule generators/explorers that produce full combinations.
+  void replaceActiveSchedule(List<CourseSelection> selections) {
+    _schedules[_activeScheduleIndex] = List<CourseSelection>.from(selections);
+    _hiddenCourses[_activeScheduleIndex].clear();
+    _lockedCourses[_activeScheduleIndex].removeWhere(
+      (code) => !selections.any((sel) => sel.course.codigo == code),
+    );
     notifyListeners();
   }
 

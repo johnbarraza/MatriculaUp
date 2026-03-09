@@ -1,7 +1,9 @@
 // matriculaup_app/lib/ui/components/courses_summary_bar.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../models/course.dart';
 import '../../store/schedule_state.dart';
+import 'schedule_explorer_panel.dart';
 
 class CoursesSummaryBar extends StatefulWidget {
   const CoursesSummaryBar({super.key});
@@ -24,6 +26,8 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
     });
     final weeklyHours = state.weeklyHours;
     final gapHours = state.weeklyGapHours;
+    final classDays = state.classDaysCount;
+    final freeDays = state.freeDaysCount;
     final count = selections.length;
 
     return Container(
@@ -95,6 +99,10 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                         ),
                       ),
                     ],
+                    const SizedBox(width: 4),
+                    _chip('$classDays d con clases', Colors.indigo.shade700),
+                    const SizedBox(width: 4),
+                    _chip('$freeDays d libres', Colors.green.shade700),
                   ],
                   const Spacer(),
                   if (hasSelections)
@@ -126,7 +134,43 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
             duration: const Duration(milliseconds: 180),
             curve: Curves.easeInOut,
             child: (_expanded && hasSelections)
-                ? _buildTable(state, selections)
+                ? LayoutBuilder(
+                    builder: (context, constraints) {
+                      final width = constraints.maxWidth;
+                      final useSidePanel = width >= 1050;
+                      if (useSidePanel) {
+                        return SizedBox(
+                          height: 280,
+                          child: Row(
+                            children: [
+                              Expanded(child: _buildTable(state, selections)),
+                              const VerticalDivider(width: 1),
+                              const SizedBox(
+                                width: 340,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 4),
+                                  child: ScheduleExplorerPanel(embedded: true),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                      return Column(
+                        children: [
+                          _buildTable(state, selections),
+                          const Divider(height: 1),
+                          const SizedBox(
+                            height: 260,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 4),
+                              child: ScheduleExplorerPanel(embedded: true),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  )
                 : const SizedBox.shrink(),
           ),
         ],
@@ -230,10 +274,23 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                         ),
                       ),
                     ),
+                    DataColumn(
+                      numeric: true,
+                      label: Text(
+                        'CUPOS',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.grey.shade600,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
                     const DataColumn(label: SizedBox.shrink()),
                   ],
                   rows: selections.map((sel) {
                     final isHidden = state.isCourseHidden(sel.course.codigo);
+                    final isLocked = state.isCourseLocked(sel.course.codigo);
                     final courseColor = _courseColor(sel.course.codigo);
 
                     return DataRow(
@@ -346,11 +403,35 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                             ),
                           ),
                         ),
+                        // Cupos
+                        DataCell(
+                          Text(
+                            _formatSectionCupos(sel.section),
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: isHidden
+                                  ? Colors.grey.shade400
+                                  : Colors.grey.shade700,
+                            ),
+                          ),
+                        ),
                         // Action buttons
                         DataCell(
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
+                              _actionButton(
+                                icon: isLocked ? Icons.lock : Icons.lock_open,
+                                color: isLocked
+                                    ? Colors.amber.shade700
+                                    : Colors.blueGrey.shade500,
+                                tooltip: isLocked
+                                    ? 'Curso obligatorio para explorador'
+                                    : 'Marcar como obligatorio',
+                                onPressed: () =>
+                                    state.toggleCourseLock(sel.course.codigo),
+                              ),
                               _actionButton(
                                 icon: isHidden
                                     ? Icons.visibility_off_outlined
@@ -430,5 +511,18 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
     return docentes.length > 1
         ? '$formatted +${docentes.length - 1}'
         : formatted;
+  }
+
+  String _formatSectionCupos(Section section) {
+    final cupos =
+        section.sesiones
+            .map((s) => s.cupos)
+            .whereType<int>()
+            .toSet()
+            .toList()
+          ..sort();
+    if (cupos.isEmpty) return 's/d';
+    if (cupos.length == 1) return '${cupos.first}';
+    return '${cupos.first}-${cupos.last}';
   }
 }
