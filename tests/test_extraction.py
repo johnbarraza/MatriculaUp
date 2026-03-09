@@ -5,6 +5,7 @@ import re
 try:
     from scripts.extractors.courses import extract_prerequisites_with_continuation, is_truncated_prerequisite
     from scripts.extractors.courses import extract_professors_spanish
+    from scripts.extractors.courses import split_instructor_roles
     MODULES_AVAILABLE = True
 except ImportError:
     MODULES_AVAILABLE = False
@@ -84,6 +85,17 @@ class TestProfessorSpanishNames:
         """Multiple professors separated by ' / ' must each be extracted."""
         result = extract_professors_spanish(sample_professor_text)
         assert len(result) >= 2, f"Expected 2+ professors, got {len(result)}: {result}"
+
+    @skip_if_no_modules
+    def test_split_instructor_roles_docente_y_jps(self):
+        text = "BASURTO PRECIADO, Maria Pia / CABRERA SARMIENTO, Liz Yossie / SANCHEZ GARCIA, Gustavo Sebastian"
+        docentes, docente_principal, jps = split_instructor_roles(text)
+        assert len(docentes) == 3
+        assert docente_principal == "BASURTO PRECIADO, Maria Pia"
+        assert jps == [
+            "CABRERA SARMIENTO, Liz Yossie",
+            "SANCHEZ GARCIA, Gustavo Sebastian",
+        ]
 
 
 class TestCurriculumStructure:

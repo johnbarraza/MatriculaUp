@@ -61,6 +61,7 @@ class Session {
   final String horaInicio;
   final String horaFin;
   final String aula;
+  final int? cupos;
 
   Session({
     required this.tipo,
@@ -68,6 +69,7 @@ class Session {
     required this.horaInicio,
     required this.horaFin,
     required this.aula,
+    this.cupos,
   });
 
   factory Session.fromJson(Map<String, dynamic> json) {
@@ -77,6 +79,7 @@ class Session {
       horaInicio: json['hora_inicio'] as String,
       horaFin: json['hora_fin'] as String,
       aula: json['aula'] as String? ?? "",
+      cupos: json['cupos'] as int?,
     );
   }
 }
@@ -84,24 +87,40 @@ class Session {
 class Section {
   final String seccion;
   final List<String> docentes;
+  final String? docentePrincipal;
+  final List<String> jps;
   final String observaciones;
   final List<Session> sesiones;
 
   Section({
     required this.seccion,
     required this.docentes,
+    this.docentePrincipal,
+    required this.jps,
     required this.observaciones,
     required this.sesiones,
   });
 
   factory Section.fromJson(Map<String, dynamic> json) {
+    final docentesList =
+        (json['docentes'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList() ??
+        [];
+    final principal =
+        (json['docente_principal'] as String?) ??
+        (docentesList.isNotEmpty ? docentesList.first : null);
+    final jpsList =
+        (json['jps'] as List<dynamic>?)
+            ?.map((e) => e as String)
+            .toList() ??
+        (docentesList.length > 1 ? docentesList.sublist(1) : <String>[]);
+
     return Section(
       seccion: json['seccion'] as String,
-      docentes:
-          (json['docentes'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
+      docentes: docentesList,
+      docentePrincipal: principal,
+      jps: jpsList,
       observaciones: json['observaciones'] as String? ?? "",
       sesiones:
           (json['sesiones'] as List<dynamic>?)

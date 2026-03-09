@@ -1,0 +1,81 @@
+{
+  meta: {
+    carrera: "Economía",
+    plan: "2022",
+    inst: "Universidad del Pacífico",
+    limites: { total_cr: 204, obl_cr: 168, elect_cr: 36 }
+  },
+  bloques: {
+    "Pensamiento Crítico": [8, ["Filosofía", "Teología", "Pensamiento Soc. Contemp."]],
+    "Procesos Sociales": [8, ["Ciencia Política", "Hist. Económica y Emp.", "Hist. Crítica del Perú"]],
+    "Ciencias Sociales": [4, ["Sociología", "Antropología", "Psicología"]],
+    "Desarrollo Personal": [4, ["Emprendimiento e Innovación", "Literatura", "Liderazgo"]],
+    "Quehacer Científico": [4, ["Hist. y Fil. de la Ciencia", "Cosmología y Cs. Vida", "Pensamiento Sistémico"]]
+  },
+  cursos: [
+    // CICLO 0: NIVELACIÓN
+    ["170131", "Niv. Informática", 0, 0, [], "O"],
+    ["120000", "Niv. Lenguaje", 0, 0, [], "O"],
+    ["134654", "Niv. Matemáticas", 0, 0, [], "O"],
+
+    // CICLO 1
+    ["132641", "Eco. General I", 5, 1, [], "O"],
+    ["160092", "Fund. Contabilidad", 4, 1, [], "O"],
+    ["120001", "Lenguaje I", 4, 1, ["120000"], "O"],
+    ["138649", "Matemáticas I", 5, 1, ["134654"], "O"],
+
+    // CICLO 2
+    ["130642", "Eco. General II", 5, 2, ["132641"], "O"],
+    ["120006", "Lenguaje II", 4, 2, ["120001"], "O"],
+    ["131650", "Matemáticas II", 5, 2, ["138649"], "O"],
+    [null, "Bloque CCSS", 4, 2, [], "O"],
+
+    // CICLO 3
+    ["130224", "Estadística I", 4, 3, ["131650"], "O"],
+    ["150140", "Inv. Académica", 3, 3, ["120006"], "O"],
+    ["130233", "Matemáticas III", 5, 3, ["131650"], "O"],
+    ["138201", "Microeconomía I", 5, 3, ["130642", "131650"], "O"],
+    [null, "Bloque Proc. Soc. 1", 4, 3, [], "O"],
+
+    // CICLO 4
+    ["130225", "Estadística II", 4, 4, ["130224"], "O"],
+    ["134203", "Macroeconomía I", 5, 4, ["138201", "130233"], "O"],
+    ["130229", "Matemáticas IV", 5, 4, ["130233"], "O"],
+    ["134427", "Microeconomía II", 5, 4, ["138201", "130233"], "O"],
+
+    // CICLO 5
+    ["130223", "Estadística Aplicada", 4, 5, ["130225"], "O"],
+    ["133016", "Eval. Priv. Proyectos", 4, 5, ["134427"], "O"],
+    ["132204", "Macroeconomía II", 5, 5, ["134203", "130229"], "O"],
+    ["130656", "Teoría Comercio Int.", 4, 5, ["134427"], "O"],
+    [null, "Bloque Pens. Crítico 1", 4, 5, [], "O"],
+
+    // CICLO 6
+    ["130424", "Econometría I", 5, 6, ["130223", "130229"], "O"],
+    ["1F0228", "Eco. Financiera I", 4, 6, ["133016"], "O"],
+    ["130648", "Macroeconomía III", 5, 6, ["132204"], "O"],
+    ["135645", "Gestión RRNN", 4, 6, ["138201"], "O"],
+    [null, "Bloque Proc. Soc. 2", 4, 6, [], "O"],
+
+    // CICLO 7
+    ["138425", "Econometría II", 5, 7, ["130424"], "O"],
+    ["186108", "Economía y Derecho", 4, 7, ["130229"], "O"],
+    ["135015", "Hist. Pens. Eco.", 4, 7, ["138201", "134203"], "O"],
+    ["130227", "Macro. Internacional", 4, 7, ["132204"], "O"],
+    [null, "Bloque Q. Científico", 4, 7, [], "O"],
+
+    // CICLO 8
+    ["132655", "Política Económica", 4, 8, ["130648", "130227"], "O"],
+    ["130232", "Org. Industrial", 4, 8, ["134427"], "O"],
+    [null, "Bloque Pens. Crítico 2", 4, 8, [], "O"],
+
+    // CICLO 9
+    ["150013", "Proyección Social", 4, 9, ["160cr"], "O"],
+    ["120133", "Ética", 4, 9, [], "O"],
+    ["131566", "Inv. Económica I", 2, 9, ["160cr"], "O"],
+
+    // CICLO 10
+    ["130567", "Inv. Económica II", 2, 10, ["131566"], "O"],
+    [null, "Bloque Des. Personal", 4, 10, [], "O"]
+  ]
+}

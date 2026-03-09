@@ -238,7 +238,9 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
 
   @override
   void dispose() {
-    for (final r in _rows) r.dispose();
+    for (final r in _rows) {
+      r.dispose();
+    }
     _passingCtrl.dispose();
     super.dispose();
   }
@@ -345,7 +347,9 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
   // ── Preset evaluations ────────────────────────────────────────────────────
 
   void _applyPreset(List<({String name, String weight})> preset) {
-    for (final r in _rows) r.dispose();
+    for (final r in _rows) {
+      r.dispose();
+    }
     setState(() {
       _rows.clear();
       for (final p in preset) {
@@ -430,7 +434,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
       statusIcon = Icons.check_circle_outline;
       statusColor = Colors.green.shade700;
     } else {
-      final isComfy = needed! <= 12;
+      final isComfy = needed <= 12;
       cardColor = isComfy ? Colors.green.shade50 : Colors.orange.shade50;
       statusText = isComfy ? 'Alcanzable' : 'Exigente pero posible';
       statusIcon = isComfy
@@ -466,7 +470,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
               ],
             ),
             const SizedBox(height: 14),
-            if (!impossible && !alreadyPassing && needed != null) ...[
+            if (!impossible && !alreadyPassing) ...[
               const Text(
                 'Para aprobar, necesitas al menos:',
                 style: TextStyle(fontSize: 13, color: Colors.black54),

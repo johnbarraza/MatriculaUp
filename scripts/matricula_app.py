@@ -299,7 +299,29 @@ class MatriculaApp:
         # Aplicar filtro de búsqueda
         if search_term:
             kws = [w for w in normalize_str(search_term).split() if w]
-            names = [n for n in names if all(kw in normalize_str(n) for kw in kws)]
+            # Buscar por nombre de curso y también por docentes/JPs de sus secciones
+            grouped_docs = (
+                df.groupby('Curso', dropna=False)['Docentes']
+                .apply(
+                    lambda s: " ".join(
+                        sorted(
+                            {
+                                str(v).strip()
+                                for v in s.fillna('')
+                                if str(v).strip()
+                            }
+                        )
+                    )
+                )
+                .to_dict()
+            )
+
+            def _matches(name: str) -> bool:
+                blob = f"{name} {grouped_docs.get(name, '')}"
+                blob_norm = normalize_str(blob)
+                return all(kw in blob_norm for kw in kws)
+
+            names = [n for n in names if _matches(n)]
 
         # Aplicar filtros de cursos obligatorios
         if filter_mandatory_only or filter_pending_only:
@@ -1098,8 +1120,8 @@ def build_ui():
                 with gr.Accordion("🔍 Búsqueda de Cursos", open=True):
                     search = gr.Textbox(
                         label="Buscar",
-                        placeholder="Ej: Economía, García, Microeconomía...",
-                        info="Busca por nombre de curso o docente"
+                        placeholder="Ej: Econometría, Basurto, Cabrera (JP)...",
+                        info="Busca por nombre de curso, docente o JP"
                     )
 
                     with gr.Row():

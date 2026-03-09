@@ -221,10 +221,18 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
   @override
   void dispose() {
     _saveTimer?.cancel();
-    for (final r in _cRows) r.dispose();
-    for (final r in _vRows) r.dispose();
-    for (final b in _cBonuses) b.dispose();
-    for (final b in _vBonuses) b.dispose();
+    for (final r in _cRows) {
+      r.dispose();
+    }
+    for (final r in _vRows) {
+      r.dispose();
+    }
+    for (final b in _cBonuses) {
+      b.dispose();
+    }
+    for (final b in _vBonuses) {
+      b.dispose();
+    }
     _accCreditsCtrl.dispose();
     super.dispose();
   }
@@ -242,7 +250,9 @@ class _FiCalculatorPageState extends State<FiCalculatorPage> {
 
       void applyRows(List<_CourseEntry> target, List<dynamic>? data) {
         if (data == null) return;
-        for (final r in target) r.dispose();
+        for (final r in target) {
+          r.dispose();
+        }
         target.clear();
         for (final item in data) {
           final m = item as Map<String, dynamic>;

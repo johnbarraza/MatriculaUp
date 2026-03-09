@@ -7,7 +7,6 @@ import 'package:file_picker/file_picker.dart';
 import '../../data/data_loader.dart';
 import '../../store/schedule_state.dart';
 import 'package:matriculaup_app/ui/components/course_search_list.dart';
-import 'package:matriculaup_app/ui/components/selected_courses_panel.dart';
 import 'package:matriculaup_app/ui/components/timetable_grid.dart';
 import 'package:matriculaup_app/ui/components/academic_calendar_sheet.dart';
 import 'package:matriculaup_app/ui/components/donation_dialog.dart';
@@ -55,8 +54,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _showExams = false;
-  // Left-panel tab: 0 = search, 1 = selected courses
-  int _leftTab = 0;
   // Key for PNG capture of the timetable grid
   final GlobalKey _timetableKey = GlobalKey();
 
@@ -110,12 +107,12 @@ class _HomePageState extends State<HomePage> {
             ),
             if (state.coursesLabel != null)
               Text(
-                state.coursesLabel!,
+                'Regulares: ${state.coursesLabel!}',
                 style: const TextStyle(fontSize: 11, color: Colors.white70),
               ),
             if (state.efeCoursesLabel != null)
               Text(
-                'EFE: ${state.efeCoursesLabel!}',
+                'EFEs: ${state.efeCoursesLabel!}',
                 style: const TextStyle(fontSize: 11, color: Colors.greenAccent),
               ),
           ],
@@ -362,71 +359,21 @@ class _HomePageState extends State<HomePage> {
                     )
                   : Column(
                       children: [
-                        // Tab row: Search | Selected
-                        Row(
-                          children: [
-                            Expanded(
-                              child: InkWell(
-                                onTap: () => setState(() => _leftTab = 0),
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 10,
-                                  ),
-                                  color: _leftTab == 0
-                                      ? Colors.blue.shade700
-                                      : Colors.grey[300],
-                                  child: Text(
-                                    'Buscar cursos',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      color: _leftTab == 0
-                                          ? Colors.white
-                                          : Colors.black54,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          color: Colors.blue.shade700,
+                          child: const Text(
+                            'Buscar cursos',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
-                            Expanded(
-                              child: InkWell(
-                                onTap: () => setState(() => _leftTab = 1),
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 10,
-                                  ),
-                                  color: _leftTab == 1
-                                      ? Colors.blue.shade700
-                                      : Colors.grey[300],
-                                  child: Text(
-                                    'Seleccionados (${state.selectedSections.length})',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      color: _leftTab == 1
-                                          ? Colors.white
-                                          : Colors.black54,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        // Tab content
-                        Expanded(
-                          child: IndexedStack(
-                            index: _leftTab,
-                            children: const [
-                              CourseSearchList(),
-                              SingleChildScrollView(
-                                child: SelectedCoursesPanel(),
-                              ),
-                            ],
                           ),
                         ),
+                        const Expanded(child: CourseSearchList()),
                       ],
                     ),
             ),
@@ -442,65 +389,65 @@ class _HomePageState extends State<HomePage> {
                   // ── Top controls row ────────────────────────────────────
                   Padding(
                     padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Semana Regular / Exámenes — compact, not stretched
-                        SegmentedButton<bool>(
-                          segments: const [
-                            ButtonSegment<bool>(
-                              value: false,
-                              label: Text('Semana Regular'),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          // Semana Regular / Exámenes — always reachable
+                          SegmentedButton<bool>(
+                            segments: const [
+                              ButtonSegment<bool>(
+                                value: false,
+                                label: Text('Semana Regular'),
+                              ),
+                              ButtonSegment<bool>(
+                                value: true,
+                                label: Text('Exámenes'),
+                              ),
+                            ],
+                            selected: <bool>{_showExams},
+                            onSelectionChanged: (s) =>
+                                setState(() => _showExams = s.first),
+                            style: ButtonStyle(
+                              tapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              visualDensity: VisualDensity.compact,
                             ),
-                            ButtonSegment<bool>(
-                              value: true,
-                              label: Text('Exámenes'),
-                            ),
-                          ],
-                          selected: <bool>{_showExams},
-                          onSelectionChanged: (s) =>
-                              setState(() => _showExams = s.first),
-                          style: ButtonStyle(
-                            tapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                            visualDensity: VisualDensity.compact,
                           ),
-                        ),
-                        const SizedBox(width: 4),
-                        // ICS export — always visible, disabled when no courses
-                        Tooltip(
-                          message: 'Exportar a Google Calendar (.ics)',
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.event_outlined,
-                              size: 20,
-                              color: state.selectedSections.isNotEmpty
-                                  ? null
-                                  : Colors.grey.shade400,
+                          const SizedBox(width: 4),
+                          Tooltip(
+                            message: 'Exportar a Google Calendar (.ics)',
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.event_outlined,
+                                size: 20,
+                                color: state.selectedSections.isNotEmpty
+                                    ? null
+                                    : Colors.grey.shade400,
+                              ),
+                              visualDensity: VisualDensity.compact,
+                              padding: const EdgeInsets.all(6),
+                              constraints: const BoxConstraints(),
+                              onPressed: state.selectedSections.isNotEmpty
+                                  ? () => _exportAsIcs(context)
+                                  : null,
                             ),
-                            visualDensity: VisualDensity.compact,
-                            padding: const EdgeInsets.all(6),
-                            constraints: const BoxConstraints(),
-                            onPressed: state.selectedSections.isNotEmpty
-                                ? () => _exportAsIcs(context)
-                                : null,
                           ),
-                        ),
-                        // PNG export
-                        Tooltip(
-                          message: 'Exportar horario como PNG',
-                          child: IconButton(
-                            icon: const Icon(
-                              Icons.camera_alt_outlined,
-                              size: 20,
+                          Tooltip(
+                            message: 'Exportar horario como PNG',
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.camera_alt_outlined,
+                                size: 20,
+                              ),
+                              visualDensity: VisualDensity.compact,
+                              padding: const EdgeInsets.all(6),
+                              constraints: const BoxConstraints(),
+                              onPressed: () => _exportAsPng(context),
                             ),
-                            visualDensity: VisualDensity.compact,
-                            padding: const EdgeInsets.all(6),
-                            constraints: const BoxConstraints(),
-                            onPressed: () => _exportAsPng(context),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   // ── Course summary (always visible) ─────────────────────
@@ -635,7 +582,7 @@ class _HomePageState extends State<HomePage> {
                   const Icon(Icons.info_outline, size: 14, color: Colors.grey),
                   const SizedBox(width: 6),
                   Text(
-                    'JSON activo: ${state.coursesLabel}',
+                    'Regulares activos: ${state.coursesLabel}',
                     style: const TextStyle(fontSize: 12, color: Colors.grey),
                   ),
                 ],

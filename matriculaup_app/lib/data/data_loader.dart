@@ -24,11 +24,15 @@ class DataLoader {
     final parts = <String>[];
     final ciclo = meta['ciclo'] as String?;
     final version = meta['version'] as String?;
-    final fecha = meta['fecha_extraccion'] as String?;
+    final fechaVersion = meta['fecha_version'] as String?;
+    final fechaExtraccion = meta['fecha_extraccion'] as String?;
+    final fecha = (fechaVersion != null && fechaVersion.isNotEmpty)
+        ? fechaVersion
+        : fechaExtraccion;
     if (ciclo != null && ciclo.isNotEmpty) parts.add(ciclo);
     if (version != null && version.isNotEmpty) parts.add(version);
     if (fecha != null && fecha.isNotEmpty) parts.add(fecha);
-    return parts.isEmpty ? fallback : parts.join(' · ');
+    return parts.isEmpty ? fallback : parts.join(' | ');
   }
 
   /// Loads the bundled default EFE courses asset.
@@ -125,3 +129,4 @@ class DataLoader {
     return null;
   }
 }
+

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "flutter-adaptive-ui": {
+      "source": "madteacher/mad-agents-skills",
+      "sourceType": "github",
+      "computedHash": "7b9c4ecda94f80ae16addab433432ae0e76d1b114a3f87e2df9269954e6196b6"
+    },
+    "flutter-animations": {
+      "source": "madteacher/mad-agents-skills",
+      "sourceType": "github",
+      "computedHash": "0c62d299cfdb82a8a22eadcb9b58c998cb6ceb85368a342689143a0278e4c7bb"
+    },
+    "flutter-layout": {
+      "source": "flutter/skills",
+      "sourceType": "github",
+      "computedHash": "437843244d7e7b3094e79663821786b35758e5aac7f2163ffcac63ec80837ad2"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "computedHash": "4cfe5e95a230616c17d92b44e3cd37bae543ce087a7756a446a62f77d7c58a37"
+    }
+  }
+}

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../store/schedule_state.dart';
 
 /// A panel listing all selected courses for the active schedule plan.
-/// Each row shows the course name, section, credits, and a delete button.
+/// Each row shows the course name, section, credits, cupos, and a delete button.
 class SelectedCoursesPanel extends StatelessWidget {
   const SelectedCoursesPanel({super.key});
 
@@ -31,13 +31,26 @@ class SelectedCoursesPanel extends StatelessWidget {
       itemCount: selections.length,
       itemBuilder: (context, i) {
         final sel = selections[i];
+        final isLocked = state.isCourseLocked(sel.course.codigo);
         final credits = double.tryParse(sel.course.creditos)?.round() ?? 0;
+        final cupos =
+            sel.section.sesiones
+                .map((s) => s.cupos)
+                .whereType<int>()
+                .toSet()
+                .toList()
+              ..sort();
+        final cuposLabel = cupos.isEmpty
+            ? 's/d'
+            : (cupos.length == 1
+                  ? '${cupos.first}'
+                  : '${cupos.first}-${cupos.last}');
 
         return ListTile(
           dense: true,
-          leading: const Icon(
-            Icons.check_circle,
-            color: Colors.green,
+          leading: Icon(
+            isLocked ? Icons.lock : Icons.check_circle,
+            color: isLocked ? Colors.amber.shade800 : Colors.green,
             size: 18,
           ),
           title: Text(
@@ -46,13 +59,29 @@ class SelectedCoursesPanel extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           subtitle: Text(
-            '${sel.course.codigo} · Sec ${sel.section.seccion} · $credits cr.',
+            '${sel.course.codigo} | Sec ${sel.section.seccion} | $credits cr. | Cupos: $cuposLabel${isLocked ? ' | Obligatorio' : ''}',
             style: const TextStyle(fontSize: 11),
           ),
-          trailing: IconButton(
-            icon: const Icon(Icons.delete_outline, size: 18, color: Colors.red),
-            tooltip: 'Quitar del horario',
-            onPressed: () => state.removeSection(sel.course, sel.section),
+          trailing: Wrap(
+            spacing: 2,
+            children: [
+              IconButton(
+                icon: Icon(
+                  isLocked ? Icons.lock : Icons.lock_open,
+                  size: 18,
+                  color: isLocked ? Colors.amber.shade800 : Colors.blueGrey,
+                ),
+                tooltip: isLocked
+                    ? 'Curso obligatorio para el explorador'
+                    : 'Marcar como obligatorio',
+                onPressed: () => state.toggleCourseLock(sel.course.codigo),
+              ),
+              IconButton(
+                icon: const Icon(Icons.delete_outline, size: 18, color: Colors.red),
+                tooltip: 'Quitar del horario',
+                onPressed: () => state.removeSection(sel.course, sel.section),
+              ),
+            ],
           ),
         );
       },

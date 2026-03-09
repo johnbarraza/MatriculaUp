@@ -22,6 +22,7 @@ SESSION_SCHEMA = {
         "hora_inicio": {"type": "string", "pattern": r"^\d{2}:\d{2}$"},
         "hora_fin": {"type": "string", "pattern": r"^\d{2}:\d{2}$"},
         "aula": {"type": ["string", "null"]},
+        "cupos": {"type": ["integer", "null"]},
     },
     "required": ["tipo", "dia", "hora_inicio", "hora_fin"],
 }
@@ -31,6 +32,8 @@ SECTION_SCHEMA = {
     "properties": {
         "seccion": {"type": "string", "minLength": 1},
         "docentes": {"type": "array", "items": {"type": "string"}},
+        "docente_principal": {"type": ["string", "null"]},
+        "jps": {"type": "array", "items": {"type": "string"}},
         "observaciones": {"type": ["string", "null"]},
         "sesiones": {"type": "array", "items": SESSION_SCHEMA, "minItems": 0},
     },
@@ -80,6 +83,8 @@ COURSES_SCHEMA = {
             "properties": {
                 "ciclo": {"type": "string"},
                 "fecha_extraccion": {"type": "string"},
+                "version": {"type": "string"},
+                "fecha_version": {"type": ["string", "null"]},
             },
             "required": ["ciclo", "fecha_extraccion"],
         },

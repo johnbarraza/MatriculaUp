@@ -128,6 +128,19 @@ def extract_professors_spanish(text: str) -> list[str]:
     return results if results else [text.strip()]
 
 
+def split_instructor_roles(text: str) -> tuple[list[str], str | None, list[str]]:
+    """Split instructor cell into docentes list, main docente, and JP list.
+
+    Convention requested for 2026-I v4:
+      - First name is the lead professor/docente.
+      - Remaining names are JPs (assistant instructors).
+    """
+    docentes = extract_professors_spanish(text) if text else []
+    docente_principal = docentes[0] if docentes else None
+    jps = docentes[1:] if len(docentes) > 1 else []
+    return docentes, docente_principal, jps
+
+
 def extract_prerequisites_with_continuation(rows: list) -> list[dict]:
     """Parse a sequence of table rows and return a list of course dicts.
 
@@ -407,10 +420,12 @@ def _parse_section_row(cells: list[str], current_course: dict) -> dict | None:
         hora_fin = cells[7] if len(cells) > 7 else ""
         aula = cells[10] if len(cells) > 10 else ""
 
-        docentes = extract_professors_spanish(prof_text) if prof_text else []
+        docentes, docente_principal, jps = split_instructor_roles(prof_text)
         section = {
             "seccion": col0,
             "docentes": docentes,
+            "docente_principal": docente_principal,
+            "jps": jps,
             "observaciones": obs,
             "sesiones": [],
         }
@@ -423,6 +438,7 @@ def _parse_section_row(cells: list[str], current_course: dict) -> dict | None:
                 "hora_inicio": hora_inicio,
                 "hora_fin": hora_fin,
                 "aula": aula,
+                "cupos": _parse_cupos(cells[9] if len(cells) > 9 else ""),
             }
             section["sesiones"].append(session)
 
@@ -440,10 +456,12 @@ def _parse_section_row(cells: list[str], current_course: dict) -> dict | None:
         # Parse hour range "07:30 - 09:30"
         hora_inicio, hora_fin = _parse_hora_range(hora_range)
 
-        docentes = extract_professors_spanish(prof_text) if prof_text else []
+        docentes, docente_principal, jps = split_instructor_roles(prof_text)
         section = {
             "seccion": col0,
             "docentes": docentes,
+            "docente_principal": docente_principal,
+            "jps": jps,
             "observaciones": "",
             "sesiones": [],
         }
@@ -486,6 +504,7 @@ def _parse_session_from_cells(cells: list[str]) -> dict | None:
         "hora_inicio": hora_inicio,
         "hora_fin": hora_fin,
         "aula": aula,
+        "cupos": _parse_cupos(cells[9] if len(cells) > 9 else ""),
     }
 
 
@@ -495,6 +514,20 @@ def _parse_hora_range(hora_range: str) -> tuple[str, str]:
         parts = hora_range.split(' - ', 1)
         return parts[0].strip(), parts[1].strip()
     return hora_range.strip(), ""
+
+
+def _parse_cupos(value: str) -> int | None:
+    """Parse cupos preserving zero; return None only when empty/unparseable."""
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    text = text.replace(",", ".")
+    try:
+        return int(float(text))
+    except ValueError:
+        return None
 
 
 # ---------------------------------------------------------------------------
@@ -521,6 +554,8 @@ class CourseOfferingExtractor(BaseExtractor):
     def __init__(self, pdf_path: str, output_dir: str = "input"):
         super().__init__(pdf_path, output_dir)
         self._cycle = self._detect_cycle()
+        self._version = self._detect_version_from_filename()
+        self._version_date = None
 
     def _detect_cycle(self) -> str:
         """Extract cycle identifier from PDF filename, e.g. '2026-1'.
@@ -544,8 +579,35 @@ class CourseOfferingExtractor(BaseExtractor):
     def cycle(self) -> str:
         return self._cycle
 
+    @property
+    def version(self) -> str:
+        return self._version
+
+    @property
+    def version_date(self) -> str | None:
+        return self._version_date
+
     def output_filename(self) -> str:
-        return f"courses_{self.cycle}.json"
+        return f"courses_{self.cycle}_{self.version}.json"
+
+    def _detect_version_from_filename(self) -> str:
+        """Extract version suffix from filename, e.g. '_V4' -> 'v4'."""
+        stem = self.pdf_path.stem
+        m = re.search(r'[-_](v\d+)(?=[-_\s]|$)', stem, re.IGNORECASE)
+        if m:
+            return m.group(1).lower()
+        return "v1"
+
+    def _detect_version_from_pdf_text(self, pdf) -> tuple[str | None, str | None]:
+        """Detect version marker and date from PDF text like '06/03/2026 V4'."""
+        # Scan first pages where the release/version banner appears.
+        max_pages = min(5, len(pdf.pages))
+        for i in range(max_pages):
+            text = (pdf.pages[i].extract_text() or "").replace("\n", " ")
+            m = re.search(r'(\d{2}/\d{2}/\d{4})\s*V(\d+)', text, re.IGNORECASE)
+            if m:
+                return f"v{m.group(2)}", m.group(1)
+        return None, None
 
     def extract(self) -> dict:
         """Extract all courses from the PDF.
@@ -560,6 +622,11 @@ class CourseOfferingExtractor(BaseExtractor):
         warning_count = 0
 
         with pdfplumber.open(str(self.pdf_path)) as pdf:
+            detected_version, detected_date = self._detect_version_from_pdf_text(pdf)
+            if detected_version:
+                self._version = detected_version
+            if detected_date:
+                self._version_date = detected_date
             total_pages = len(pdf.pages)
 
             for i, page in enumerate(pdf.pages):
@@ -622,6 +689,8 @@ class CourseOfferingExtractor(BaseExtractor):
             "metadata": {
                 "ciclo": self.cycle,
                 "fecha_extraccion": date.today().isoformat(),
+                "version": self.version,
+                "fecha_version": self.version_date,
             },
             "cursos": merged,
         }
@@ -787,6 +856,7 @@ class CourseOfferingExtractor(BaseExtractor):
             hora_inicio = cells[6] if len(cells) > 6 else ""
             hora_fin = cells[7] if len(cells) > 7 else ""
             aula = cells[10] if len(cells) > 10 else ""
+            cupos = _parse_cupos(cells[9] if len(cells) > 9 else "")
         else:
             # 10-col layout: [3]=tipo, [4]=dia, [5]=horaI, [6]=horaF, [9]=aula
             # (the blank spacer column between tipo and dia is absent)
@@ -794,12 +864,15 @@ class CourseOfferingExtractor(BaseExtractor):
             hora_inicio = col5
             hora_fin = cells[6] if len(cells) > 6 else ""
             aula = cells[9] if len(cells) > 9 else ""
+            cupos = _parse_cupos(cells[8] if len(cells) > 8 else "")
 
-        docentes = extract_professors_spanish(prof_text) if prof_text else []
+        docentes, docente_principal, jps = split_instructor_roles(prof_text)
 
         section = {
             "seccion": section_letter,
             "docentes": docentes,
+            "docente_principal": docente_principal,
+            "jps": jps,
             "observaciones": obs,
             "sesiones": [],
         }
@@ -814,6 +887,7 @@ class CourseOfferingExtractor(BaseExtractor):
                     "hora_inicio": hora_inicio,
                     "hora_fin": hora_fin,
                     "aula": aula,
+                    "cupos": cupos,
                 }
                 section["sesiones"].append(session)
 
@@ -836,12 +910,14 @@ class CourseOfferingExtractor(BaseExtractor):
             hora_inicio = cells[6] if len(cells) > 6 else ""
             hora_fin = cells[7] if len(cells) > 7 else ""
             aula = cells[10] if len(cells) > 10 else ""
+            cupos = _parse_cupos(cells[9] if len(cells) > 9 else "")
         else:
             # 10-col layout: dia is at col[4], hora_inicio at col[5]
             dia = cells[4] if len(cells) > 4 else ""
             hora_inicio = col5
             hora_fin = cells[6] if len(cells) > 6 else ""
             aula = cells[9] if len(cells) > 9 else ""
+            cupos = _parse_cupos(cells[8] if len(cells) > 8 else "")
 
         if not tipo or not hora_inicio:
             return None
@@ -852,6 +928,7 @@ class CourseOfferingExtractor(BaseExtractor):
             "hora_inicio": hora_inicio,
             "hora_fin": hora_fin,
             "aula": aula,
+            "cupos": cupos,
         }
 
     def _merge_courses(self, courses: list[dict]) -> list[dict]:
