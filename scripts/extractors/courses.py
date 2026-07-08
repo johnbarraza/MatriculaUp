@@ -345,8 +345,27 @@ def _parse_prereq_expression(text: str) -> dict:
         inner = text[1:-1].strip()
         return _parse_prereq_expression(inner)
 
-    # Try to parse as a single course entry
-    m = re.match(r'^(\d{6})\s+(.+)$', text, re.DOTALL)
+    # Credit-count prerequisites appear in the offer PDF as:
+    # "CREDITOS CURSADOS CREDITOS ACA CURSADO 120.0000".
+    m_credits = re.match(
+        r'^CREDITOS\s+CURSADOS\s+CREDITOS\s+ACA\s+CURSADO\s+(\d+(?:[.,]\d+)?)$',
+        text,
+        re.IGNORECASE,
+    )
+    if m_credits:
+        credits = float(m_credits.group(1).replace(",", "."))
+        return {
+            "items": [
+                {
+                    "type": "creditos_cursados",
+                    "creditos": int(credits) if credits.is_integer() else credits,
+                }
+            ]
+        }
+
+    # Try to parse as a single course entry. Regular offer codes are six
+    # alphanumeric chars, not only six digits (e.g. 1F0112, 1MN377).
+    m = re.match(r'^([A-Z0-9]{6})\s+(.+)$', text, re.DOTALL)
     if m:
         return {"items": [{"code": m.group(1), "name": m.group(2).strip()}]}
 

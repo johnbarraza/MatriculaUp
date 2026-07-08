@@ -7,7 +7,7 @@ def build_exe():
     main_script = project_root / "src" / "matriculaup" / "main.py"
     
     # Path outputs for bundled files
-    input_courses = project_root / "input" / "courses_2026-1.json"
+    input_courses = project_root / "input" / "courses_2026-2_v1.json"
     input_curriculum = project_root / "input" / "curricula_economia2017.json"
 
     # Convert paths to string for PyInstaller

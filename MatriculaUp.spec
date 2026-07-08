@@ -5,7 +5,7 @@ a = Analysis(
     ['C:\\Users\\johnb\\Documents\\GitHub\\MatriculaUp\\src\\matriculaup\\main.py'],
     pathex=['C:\\Users\\johnb\\Documents\\GitHub\\MatriculaUp\\src'],
     binaries=[],
-    datas=[('C:\\Users\\johnb\\Documents\\GitHub\\MatriculaUp\\input\\courses_2026-1.json', 'input'), ('C:\\Users\\johnb\\Documents\\GitHub\\MatriculaUp\\input\\curricula_economia2017.json', 'input')],
+    datas=[('C:\\Users\\johnb\\Documents\\GitHub\\MatriculaUp\\input\\courses_2026-2_v1.json', 'input'), ('C:\\Users\\johnb\\Documents\\GitHub\\MatriculaUp\\input\\curricula_economia2017.json', 'input')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

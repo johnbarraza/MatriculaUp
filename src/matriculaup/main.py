@@ -24,7 +24,7 @@ def main():
     app = QApplication(sys.path)
     
     # 1. Load Data
-    json_path = base_path / "input" / "courses_2026-1.json"
+    json_path = base_path / "input" / "courses_2026-2_v1.json"
     print(f"Loading data from {json_path}")
     
     try:

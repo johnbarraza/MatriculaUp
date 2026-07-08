@@ -1,0 +1,134 @@
+{
+  "ciclo": "2026-2",
+  "semestre": "Segundo Semestre 2026",
+  "inicio_clases": "2026-08-10",
+  "fin_clases": "2026-11-21",
+  "eventos": [
+    {
+      "tipo": "prematricula",
+      "descripcion": "Prematricula Vinculante - Segundo Semestre (por turnos)",
+      "inicio": "2026-08-03",
+      "fin": "2026-08-04"
+    },
+    {
+      "tipo": "matricula",
+      "descripcion": "Matricula de ingresantes, Intercambio, Consorcio y Ordinaria Automatica - Segundo Semestre",
+      "inicio": "2026-08-05",
+      "fin": "2026-08-05"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Batalla de Junin",
+      "inicio": "2026-08-06",
+      "fin": "2026-08-06"
+    },
+    {
+      "tipo": "matricula",
+      "descripcion": "Matricula Extemporanea y Modificacion de Matricula (por turnos)",
+      "inicio": "2026-08-08",
+      "fin": "2026-08-08"
+    },
+    {
+      "tipo": "academico",
+      "descripcion": "Inicio de clases del Segundo Semestre 2026",
+      "inicio": "2026-08-10",
+      "fin": "2026-08-10"
+    },
+    {
+      "tipo": "plazo",
+      "descripcion": "Ultimo dia para retiro de asignaturas o semestre sin pago de derechos",
+      "inicio": "2026-08-22",
+      "fin": "2026-08-22"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Festividad Santa Rosa",
+      "inicio": "2026-08-30",
+      "fin": "2026-08-30"
+    },
+    {
+      "tipo": "administrativo",
+      "descripcion": "Declaracion, modificacion o eliminacion de concentraciones (110 o mas creditos)",
+      "inicio": "2026-09-14",
+      "fin": "2026-09-19"
+    },
+    {
+      "tipo": "examen",
+      "descripcion": "EXAMENES PARCIALES - Segundo Semestre",
+      "inicio": "2026-09-28",
+      "fin": "2026-10-03"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Elecciones regionales y municipales 2026",
+      "inicio": "2026-10-04",
+      "fin": "2026-10-04"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Combate de Angamos",
+      "inicio": "2026-10-08",
+      "fin": "2026-10-08"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Todos los santos",
+      "inicio": "2026-11-01",
+      "fin": "2026-11-01"
+    },
+    {
+      "tipo": "administrativo",
+      "descripcion": "Encuestas de evaluacion de docentes y encargados de practicas",
+      "inicio": "2026-11-02",
+      "fin": "2026-11-15"
+    },
+    {
+      "tipo": "plazo",
+      "descripcion": "Ultimo dia para retiro de asignaturas o semestre con pago de derechos",
+      "inicio": "2026-11-21",
+      "fin": "2026-11-21"
+    },
+    {
+      "tipo": "academico",
+      "descripcion": "Ultimo dia de clases del Segundo Semestre",
+      "inicio": "2026-11-21",
+      "fin": "2026-11-21"
+    },
+    {
+      "tipo": "examen",
+      "descripcion": "EXAMENES FINALES - Segundo Semestre",
+      "inicio": "2026-11-23",
+      "fin": "2026-11-29"
+    },
+    {
+      "tipo": "administrativo",
+      "descripcion": "Devolucion de examenes finales segundo semestre",
+      "inicio": "2026-12-04",
+      "fin": "2026-12-04"
+    },
+    {
+      "tipo": "libre",
+      "descripcion": "Dia de la Inmaculada Concepcion y Batalla de Ayacucho",
+      "inicio": "2026-12-08",
+      "fin": "2026-12-09"
+    },
+    {
+      "tipo": "prematricula",
+      "descripcion": "Prematricula Vinculante - Cursos Extraordinarios 2027 (por turnos)",
+      "inicio": "2026-12-14",
+      "fin": "2026-12-14"
+    },
+    {
+      "tipo": "matricula",
+      "descripcion": "Matricula Automatica - Cursos Extraordinarios 2027",
+      "inicio": "2026-12-15",
+      "fin": "2026-12-15"
+    },
+    {
+      "tipo": "matricula",
+      "descripcion": "Modificacion de Matricula - Cursos Extraordinarios 2027 (por turnos)",
+      "inicio": "2026-12-16",
+      "fin": "2026-12-16"
+    }
+  ]
+}

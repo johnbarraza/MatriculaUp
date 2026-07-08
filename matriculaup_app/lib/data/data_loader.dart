@@ -17,6 +17,17 @@ class CoursesResult {
 }
 
 class DataLoader {
+  static String _formatCycle(String ciclo) {
+    final parts = ciclo.split('-');
+    if (parts.length != 2) return ciclo;
+    final term = switch (parts[1]) {
+      '1' => 'I',
+      '2' => 'II',
+      _ => parts[1],
+    };
+    return '${parts[0]}-$term';
+  }
+
   /// Builds a display label from JSON metadata fields.
   /// Falls back to [fallback] (e.g. filename) when metadata is absent.
   static String _buildLabel(Map<String, dynamic>? meta, String fallback) {
@@ -29,34 +40,27 @@ class DataLoader {
     final fecha = (fechaVersion != null && fechaVersion.isNotEmpty)
         ? fechaVersion
         : fechaExtraccion;
-    if (ciclo != null && ciclo.isNotEmpty) parts.add(ciclo);
-    if (version != null && version.isNotEmpty) parts.add(version);
+    if (ciclo != null && ciclo.isNotEmpty) {
+      parts.add('Matrícula ${_formatCycle(ciclo)}');
+    }
+    if (version != null && version.isNotEmpty) {
+      parts.add(version.toUpperCase());
+    }
     if (fecha != null && fecha.isNotEmpty) parts.add(fecha);
-    return parts.isEmpty ? fallback : parts.join(' | ');
+    return parts.isEmpty ? fallback : parts.join(' · ');
   }
 
   /// Loads the bundled default EFE courses asset.
   static Future<CoursesResult?> loadDefaultEfeCourses() async {
-    try {
-      final contents = await rootBundle.loadString('assets/efe_courses_2026-1_v1.json');
-      final jsonData = jsonDecode(contents) as Map<String, dynamic>;
-      final coursesList = jsonData['cursos'] as List<dynamic>? ?? [];
-      final courses = coursesList.map((c) => Course.fromJson(c)).toList();
-      final label = _buildLabel(
-        jsonData['metadata'] as Map<String, dynamic>?,
-        'EFE default',
-      );
-      return CoursesResult(courses: courses, label: label);
-    } catch (e) {
-      debugPrint("Error loading default EFE courses: $e");
-      return null;
-    }
+    return null;
   }
 
   /// Loads the bundled default courses asset.
   static Future<CoursesResult?> loadDefaultCourses() async {
     try {
-      final contents = await rootBundle.loadString('assets/default_courses.json');
+      final contents = await rootBundle.loadString(
+        'assets/default_courses.json',
+      );
       final jsonData = jsonDecode(contents) as Map<String, dynamic>;
       final coursesList = jsonData['cursos'] as List<dynamic>? ?? [];
       final courses = coursesList.map((c) => Course.fromJson(c)).toList();
@@ -100,7 +104,9 @@ class DataLoader {
   /// Loads the bundled academic calendar asset.
   static Future<AcademicCalendar?> loadCalendar() async {
     try {
-      final contents = await rootBundle.loadString('assets/calendar_2026-1.json');
+      final contents = await rootBundle.loadString(
+        'assets/calendar_2026-2.json',
+      );
       final jsonData = jsonDecode(contents) as Map<String, dynamic>;
       return AcademicCalendar.fromJson(jsonData);
     } catch (e) {
@@ -129,4 +135,3 @@ class DataLoader {
     return null;
   }
 }
-

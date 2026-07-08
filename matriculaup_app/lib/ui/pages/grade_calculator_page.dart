@@ -1,6 +1,5 @@
 // matriculaup_app/lib/ui/pages/grade_calculator_page.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class GradeCalculatorPage extends StatefulWidget {
   const GradeCalculatorPage({super.key});
@@ -9,7 +8,7 @@ class GradeCalculatorPage extends StatefulWidget {
   State<GradeCalculatorPage> createState() => _GradeCalculatorPageState();
 }
 
-// ── Data model ────────────────────────────────────────────────────────────────
+// â”€â”€ Data model â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /// Categories used to sort evaluations in the canonical order.
 enum _EvalCategory {
@@ -66,7 +65,7 @@ class _EvalEntry {
   _EvalCategory get category => _inferCategory(name.text);
 }
 
-// ── Result model ──────────────────────────────────────────────────────────────
+// â”€â”€ Result model â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _CalcResult {
   final double completedWeighted;
@@ -96,7 +95,7 @@ class _CalcResult {
   double get maxAchievable => completedWeighted + (pendingWeightPct / 100) * 20;
 }
 
-// ── Group-weight dialog ────────────────────────────────────────────────────────
+// â”€â”€ Group-weight dialog â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /// Lets the user set a TOTAL % for a group (e.g. all PCs = 45 %)
 /// and distribute it evenly among N entries of that type.
@@ -147,7 +146,7 @@ class _GroupWeightDialogState extends State<_GroupWeightDialog> {
         children: [
           Text(
             'Ingresa el porcentaje TOTAL del grupo y lo divido entre '
-            '${widget.count} ${widget.count == 1 ? 'evaluación' : 'evaluaciones'}.',
+            '${widget.count} ${widget.count == 1 ? 'evaluaciÃ³n' : 'evaluaciones'}.',
             style: const TextStyle(fontSize: 13),
           ),
           const SizedBox(height: 12),
@@ -218,7 +217,7 @@ class _GroupWeightDialogState extends State<_GroupWeightDialog> {
   }
 }
 
-// ── Page state ────────────────────────────────────────────────────────────────
+// â”€â”€ Page state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
   final List<_EvalEntry> _rows = [];
@@ -245,7 +244,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
     super.dispose();
   }
 
-  // ── Calculation ───────────────────────────────────────────────────────────
+  // â”€â”€ Calculation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   _CalcResult _calculate() {
     final passing =
@@ -276,7 +275,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
     );
   }
 
-  // ── Sort rows ─────────────────────────────────────────────────────────────
+  // â”€â”€ Sort rows â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   /// Reorder rows: PCs/CLs first, then EP, then EF. Stable within each group.
   void _autoSortRows() {
@@ -290,7 +289,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
     });
   }
 
-  // ── Group-weight distribution ─────────────────────────────────────────────
+  // â”€â”€ Group-weight distribution â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   /// Returns distinct group labels for PC-type evals (without trailing digits).
   List<String> _pcGroupNames() {
@@ -298,7 +297,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
     final result = <String>[];
     for (final row in _rows) {
       if (row.category == _EvalCategory.pc) {
-        // Strip trailing digits to get group name (PC1→PC, CL1→CL, etc.)
+        // Strip trailing digits to get group name (PC1â†’PC, CL1â†’CL, etc.)
         final groupName = row.name.text
             .trim()
             .replaceAll(RegExp(r'\d+$'), '')
@@ -344,7 +343,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
     }
   }
 
-  // ── Preset evaluations ────────────────────────────────────────────────────
+  // â”€â”€ Preset evaluations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   void _applyPreset(List<({String name, String weight})> preset) {
     for (final r in _rows) {
@@ -358,7 +357,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
     });
   }
 
-  // ── Builders ──────────────────────────────────────────────────────────────
+  // â”€â”€ Builders â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   Widget _buildResultCard(_CalcResult r) {
     if (r.completedWeightPct == 0) {
@@ -396,8 +395,8 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
               const SizedBox(height: 6),
               Text(
                 passes
-                    ? '✓ Aprobado (≥ ${r.passing})'
-                    : '✗ Desaprobado (< ${r.passing})',
+                    ? 'âœ“ Aprobado (â‰¥ ${r.passing})'
+                    : 'âœ— Desaprobado (< ${r.passing})',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -424,13 +423,13 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
     if (impossible) {
       cardColor = Colors.red.shade50;
       statusText =
-          'Imposible aprobar aunque saques 20 en todo (máx: ${r.maxAchievable.toStringAsFixed(2)})';
+          'Imposible aprobar aunque saques 20 en todo (mÃ¡x: ${r.maxAchievable.toStringAsFixed(2)})';
       statusIcon = Icons.cancel_outlined;
       statusColor = Colors.red.shade700;
     } else if (alreadyPassing) {
       cardColor = Colors.green.shade50;
       statusText =
-          '¡Ya tienes el aprobado asegurado aunque saques 0 en los pendientes!';
+          'Â¡Ya tienes el aprobado asegurado aunque saques 0 en los pendientes!';
       statusIcon = Icons.check_circle_outline;
       statusColor = Colors.green.shade700;
     } else {
@@ -456,7 +455,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
               runSpacing: 4,
               children: [
                 _chip(
-                  'Nota acumulada: ${r.currentNote?.toStringAsFixed(2) ?? '—'}',
+                  'Nota acumulada: ${r.currentNote?.toStringAsFixed(2) ?? 'â€”'}',
                   Colors.blue.shade100,
                 ),
                 _chip(
@@ -486,7 +485,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
                 ),
               ),
               Text(
-                'en cada evaluación pendiente',
+                'en cada evaluaciÃ³n pendiente',
                 style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
               ),
               const SizedBox(height: 10),
@@ -522,7 +521,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
     child: Text(text, style: const TextStyle(fontSize: 12)),
   );
 
-  // ── Build ─────────────────────────────────────────────────────────────────
+  // â”€â”€ Build â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   @override
   Widget build(BuildContext context) {
@@ -532,7 +531,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('¿Cuánto me falta para aprobar?'),
+        title: const Text('Â¿CuÃ¡nto me falta para aprobar?'),
         backgroundColor: Colors.indigo.shade700,
         foregroundColor: Colors.white,
       ),
@@ -544,11 +543,11 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // ── Passing grade ────────────────────────────────────────────
+                // â”€â”€ Passing grade â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 Row(
                   children: [
                     const Text(
-                      'Nota mínima aprobatoria:',
+                      'Nota mÃ­nima aprobatoria:',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(width: 12),
@@ -576,7 +575,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
 
                 const SizedBox(height: 12),
 
-                // ── Presets ──────────────────────────────────────────────────
+                // â”€â”€ Presets â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 Wrap(
                   spacing: 6,
                   runSpacing: 4,
@@ -634,7 +633,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
 
                 const SizedBox(height: 10),
 
-                // ── Group-weight distribution chips ──────────────────────────
+                // â”€â”€ Group-weight distribution chips â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 if (pcGroups.isNotEmpty) ...[
                   Wrap(
                     spacing: 6,
@@ -660,13 +659,13 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
                   const SizedBox(height: 4),
                 ],
 
-                // ── Auto-order button ────────────────────────────────────────
+                // â”€â”€ Auto-order button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 Row(
                   children: [
                     TextButton.icon(
                       icon: const Icon(Icons.sort, size: 16),
                       label: const Text(
-                        'Ordenar (PCs → EP → EF)',
+                        'Ordenar (PCs â†’ EP â†’ EF)',
                         style: TextStyle(fontSize: 12),
                       ),
                       style: TextButton.styleFrom(
@@ -685,13 +684,13 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
 
                 const SizedBox(height: 8),
 
-                // ── Table header ─────────────────────────────────────────────
+                // â”€â”€ Table header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 Row(
                   children: const [
                     Expanded(
                       flex: 4,
                       child: Text(
-                        'Evaluación',
+                        'EvaluaciÃ³n',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 12,
@@ -727,7 +726,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
                 ),
                 const Divider(height: 12),
 
-                // ── Table rows ───────────────────────────────────────────────
+                // â”€â”€ Table rows â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 ..._rows.asMap().entries.map((e) {
                   final i = e.key;
                   final row = e.value;
@@ -741,7 +740,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
                             controller: row.name,
                             style: const TextStyle(fontSize: 13),
                             decoration: InputDecoration(
-                              hintText: 'Evaluación',
+                              hintText: 'EvaluaciÃ³n',
                               isDense: true,
                               border: const OutlineInputBorder(),
                               contentPadding: const EdgeInsets.symmetric(
@@ -790,7 +789,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
                             textAlign: TextAlign.center,
                             style: const TextStyle(fontSize: 13),
                             decoration: InputDecoration(
-                              hintText: '—',
+                              hintText: 'â€”',
                               isDense: true,
                               border: const OutlineInputBorder(),
                               contentPadding: const EdgeInsets.symmetric(
@@ -815,7 +814,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
                             ),
                             padding: EdgeInsets.zero,
                             constraints: const BoxConstraints(),
-                            tooltip: 'Eliminar evaluación',
+                            tooltip: 'Eliminar evaluaciÃ³n',
                             onPressed: () {
                               row.dispose();
                               setState(() => _rows.removeAt(i));
@@ -827,13 +826,13 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
                   );
                 }),
 
-                // ── Add row + weight total ────────────────────────────────────
+                // â”€â”€ Add row + weight total â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 Row(
                   children: [
                     TextButton.icon(
                       icon: const Icon(Icons.add, size: 16),
                       label: const Text(
-                        'Agregar evaluación',
+                        'Agregar evaluaciÃ³n',
                         style: TextStyle(fontSize: 13),
                       ),
                       onPressed: () => setState(() => _rows.add(_EvalEntry())),
@@ -852,7 +851,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
                       ),
                       child: Text(
                         totalOk
-                            ? 'Total: 100% ✓'
+                            ? 'Total: 100% âœ“'
                             : 'Total: ${result.totalWeightPct.toStringAsFixed(0)}% (debe ser 100%)',
                       ),
                     ),
@@ -861,7 +860,7 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
 
                 const SizedBox(height: 16),
 
-                // ── Legend ───────────────────────────────────────────────────
+                // â”€â”€ Legend â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 Row(
                   children: [
                     Container(
@@ -890,15 +889,15 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
 
                 const SizedBox(height: 16),
 
-                // ── Result card ──────────────────────────────────────────────
+                // â”€â”€ Result card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 _buildResultCard(result),
 
                 const SizedBox(height: 16),
 
-                // ── How it works ─────────────────────────────────────────────
+                // â”€â”€ How it works â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                 ExpansionTile(
                   title: const Text(
-                    '¿Cómo se calcula?',
+                    'Â¿CÃ³mo se calcula?',
                     style: TextStyle(fontSize: 13),
                   ),
                   children: [
@@ -908,12 +907,12 @@ class _GradeCalculatorPageState extends State<GradeCalculatorPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            '• Ingresa la nota en las evaluaciones ya rendidas; deja en blanco las pendientes.\n'
-                            '• "Distribuir % en grupo" reparte el % total entre las evaluaciones del mismo tipo (PC1, PC2, etc.).\n'
-                            '• El botón "Ordenar" pone PCs y controles primero, luego EP y finalmente EF.\n'
-                            '• La nota mínima mostrada asume que obtienes la misma nota en TODAS las evaluaciones pendientes.\n'
-                            '• Fórmula: Nota necesaria = (Meta − Σ(nota × peso/100)) ÷ (Σ pesos pendientes / 100)\n'
-                            '• Rango de notas: 0 a 20.',
+                            'â€¢ Ingresa la nota en las evaluaciones ya rendidas; deja en blanco las pendientes.\n'
+                            'â€¢ "Distribuir % en grupo" reparte el % total entre las evaluaciones del mismo tipo (PC1, PC2, etc.).\n'
+                            'â€¢ El botÃ³n "Ordenar" pone PCs y controles primero, luego EP y finalmente EF.\n'
+                            'â€¢ La nota mÃ­nima mostrada asume que obtienes la misma nota en TODAS las evaluaciones pendientes.\n'
+                            'â€¢ FÃ³rmula: Nota necesaria = (Meta âˆ’ Î£(nota Ã— peso/100)) Ã· (Î£ pesos pendientes / 100)\n'
+                            'â€¢ Rango de notas: 0 a 20.',
                             style: TextStyle(fontSize: 12),
                           ),
                         ],

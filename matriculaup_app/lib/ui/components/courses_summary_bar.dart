@@ -64,47 +64,56 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                         : Colors.grey.shade400,
                   ),
                   const SizedBox(width: 7),
-                  if (!hasSelections)
-                    Text(
-                      'Sin cursos seleccionados — busca en el panel izquierdo',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey.shade400,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    )
-                  else ...[
-                    Text(
-                      '$count ${count == 1 ? 'curso' : 'cursos'}',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.blue.shade800,
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    _chip('$totalCredits cr.', Colors.blue.shade700),
-                    const SizedBox(width: 4),
-                    _chip(
-                      '${weeklyHours.toStringAsFixed(1)} h/sem',
-                      Colors.teal.shade700,
-                    ),
-                    if (gapHours > 0) ...[
-                      const SizedBox(width: 4),
-                      Tooltip(
-                        message: 'Horas libres entre clases del mismo día',
-                        child: _chip(
-                          '${gapHours.toStringAsFixed(1)} h hueco',
-                          Colors.orange.shade700,
-                        ),
-                      ),
-                    ],
-                    const SizedBox(width: 4),
-                    _chip('$classDays d con clases', Colors.indigo.shade700),
-                    const SizedBox(width: 4),
-                    _chip('$freeDays d libres', Colors.green.shade700),
-                  ],
-                  const Spacer(),
+                  Expanded(
+                    child: !hasSelections
+                        ? Text(
+                            'Sin cursos seleccionados - busca en el panel izquierdo',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey.shade400,
+                              fontStyle: FontStyle.italic,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        : Wrap(
+                            spacing: 4,
+                            runSpacing: 4,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(
+                                '$count ${count == 1 ? 'curso' : 'cursos'}',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.blue.shade800,
+                                ),
+                              ),
+                              _chip('$totalCredits cr.', Colors.blue.shade700),
+                              _chip(
+                                '${weeklyHours.toStringAsFixed(1)} h/sem',
+                                Colors.teal.shade700,
+                              ),
+                              if (gapHours > 0)
+                                Tooltip(
+                                  message:
+                                      'Horas libres entre clases del mismo dia',
+                                  child: _chip(
+                                    '${gapHours.toStringAsFixed(1)} h hueco',
+                                    Colors.orange.shade700,
+                                  ),
+                                ),
+                              _chip(
+                                '$classDays d con clases',
+                                Colors.indigo.shade700,
+                              ),
+                              _chip(
+                                '$freeDays d libres',
+                                Colors.green.shade700,
+                              ),
+                            ],
+                          ),
+                  ),
+                  const SizedBox(width: 8),
                   if (hasSelections)
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -525,7 +534,10 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
     try {
       final raw = (section as dynamic).jps;
       if (raw is List) {
-        return raw.map((e) => e?.toString() ?? '').where((e) => e.isNotEmpty).toList();
+        return raw
+            .map((e) => e?.toString() ?? '')
+            .where((e) => e.isNotEmpty)
+            .toList();
       }
       return const [];
     } catch (_) {

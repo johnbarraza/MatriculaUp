@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../store/schedule_state.dart';
 
 String _normalizeSearch(String input) {
-  const from = 'áéíóúüñÁÉÍÓÚÜÑ';
+  const from = 'Ã¡Ã©Ã­Ã³ÃºÃ¼Ã±ÃÃ‰ÃÃ“ÃšÃœÃ‘';
   const to = 'aeiouunAEIOUUN';
   var out = input;
   for (int i = 0; i < from.length; i++) {

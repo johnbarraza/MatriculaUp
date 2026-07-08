@@ -38,7 +38,7 @@ class CurriculumTab(QWidget):
         # 2. Results Table
         self.table = QTableWidget()
         self.table.setColumnCount(4)
-        self.table.setHorizontalHeaderLabels(["Código", "Nombre del Curso", "Créditos", "Estado (2026-1)"])
+        self.table.setHorizontalHeaderLabels(["Código", "Nombre del Curso", "Créditos", "Estado (2026-2)"])
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
         self.table.setEditTriggers(QTableWidget.NoEditTriggers)
         self.table.setSelectionBehavior(QTableWidget.SelectRows)

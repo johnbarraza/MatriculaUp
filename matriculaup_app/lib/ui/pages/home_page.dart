@@ -23,7 +23,8 @@ const _kResources = [
   _Resource(
     title: 'Sílabos REA',
     description: 'Repositorio de sílabos del programa REA · 2026-I',
-    url: 'https://drive.google.com/drive/folders/15YHaq5sXd1PXk1TfSPS125PmiXhf-62f',
+    url:
+        'https://drive.google.com/drive/folders/15YHaq5sXd1PXk1TfSPS125PmiXhf-62f',
     icon: Icons.description_outlined,
     tag: 'Drive',
   ),
@@ -98,22 +99,27 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       // ── AppBar ───────────────────────────────────────────────────────────
       appBar: AppBar(
+        foregroundColor: Colors.black87,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
               'MatriculaUp',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
             ),
             if (state.coursesLabel != null)
               Text(
                 'Regulares: ${state.coursesLabel!}',
-                style: const TextStyle(fontSize: 11, color: Colors.white70),
+                style: const TextStyle(fontSize: 11, color: Colors.black87),
               ),
             if (state.efeCoursesLabel != null)
               Text(
                 'EFEs: ${state.efeCoursesLabel!}',
-                style: const TextStyle(fontSize: 11, color: Colors.greenAccent),
+                style: TextStyle(fontSize: 11, color: Colors.green.shade800),
               ),
           ],
         ),
@@ -217,9 +223,7 @@ class _HomePageState extends State<HomePage> {
               if (value == 'fi') {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (_) => const FiCalculatorPage(),
-                  ),
+                  MaterialPageRoute(builder: (_) => const FiCalculatorPage()),
                 );
               } else if (value == 'grade') {
                 Navigator.push(
@@ -278,7 +282,7 @@ class _HomePageState extends State<HomePage> {
           if (state.calendar != null)
             IconButton(
               icon: const Icon(Icons.calendar_month_outlined),
-              tooltip: 'Calendario Académico 2026-I',
+              tooltip: 'Calendario Académico 2026-II',
               onPressed: () => _showCalendar(context, state),
             ),
           // Settings button
@@ -295,175 +299,179 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             child: Row(
-        children: [
-          // ── Left Panel ─────────────────────────────────────────────────
-          Expanded(
-            flex: 3,
-            child: Container(
-              color: Colors.grey[100],
-              child: courses.isEmpty
-                  ? Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ElevatedButton.icon(
-                            icon: const Icon(Icons.upload_file),
-                            onPressed: () async {
-                              final result =
-                                  await DataLoader.pickAndLoadCourses();
-                              if (result != null && context.mounted) {
-                                context.read<ScheduleState>().setCourses(
-                                  result.courses,
-                                  label: result.label,
-                                );
-                              }
-                            },
-                            label: const Text('Cargar Horarios JSON'),
-                          ),
-                          const SizedBox(height: 16),
-                          OutlinedButton.icon(
-                            icon: const Icon(Icons.school),
-                            onPressed: () async {
-                              final curriculum =
-                                  await DataLoader.pickAndLoadCurriculum();
-                              if (curriculum != null && context.mounted) {
-                                context.read<ScheduleState>().setCurriculum(
-                                  curriculum,
-                                );
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Plan de estudios "${curriculum.title}" cargado (Opcional)',
+              children: [
+                // ── Left Panel ─────────────────────────────────────────────────
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    color: Colors.grey[100],
+                    child: courses.isEmpty
+                        ? Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                ElevatedButton.icon(
+                                  icon: const Icon(Icons.upload_file),
+                                  onPressed: () async {
+                                    final result =
+                                        await DataLoader.pickAndLoadCourses();
+                                    if (result != null && context.mounted) {
+                                      context.read<ScheduleState>().setCourses(
+                                        result.courses,
+                                        label: result.label,
+                                      );
+                                    }
+                                  },
+                                  label: const Text('Cargar Horarios JSON'),
+                                ),
+                                const SizedBox(height: 16),
+                                OutlinedButton.icon(
+                                  icon: const Icon(Icons.school),
+                                  onPressed: () async {
+                                    final curriculum =
+                                        await DataLoader.pickAndLoadCurriculum();
+                                    if (curriculum != null && context.mounted) {
+                                      context
+                                          .read<ScheduleState>()
+                                          .setCurriculum(curriculum);
+                                      ScaffoldMessenger.of(
+                                        context,
+                                      ).showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Plan de estudios "${curriculum.title}" cargado (Opcional)',
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  label: const Text(
+                                    'Cargar Plan de Estudios (Opcional)',
+                                  ),
+                                ),
+                                if (state.curriculum != null)
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Text(
+                                      'Plan activo: ${state.curriculum!.title}',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green,
+                                      ),
                                     ),
                                   ),
-                                );
-                              }
-                            },
-                            label: const Text(
-                              'Cargar Plan de Estudios (Opcional)',
+                              ],
                             ),
-                          ),
-                          if (state.curriculum != null)
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Text(
-                                'Plan activo: ${state.curriculum!.title}',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green,
+                          )
+                        : Column(
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                ),
+                                color: Colors.blue.shade700,
+                                child: const Text(
+                                  'Buscar cursos',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
-                        ],
-                      ),
-                    )
-                  : Column(
+                              const Expanded(child: CourseSearchList()),
+                            ],
+                          ),
+                  ),
+                ),
+
+                // ── Right Panel: Timetable ───────────────────────────────────
+                Expanded(
+                  flex: 7,
+                  child: Container(
+                    color: Colors.white,
+                    child: Column(
                       children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          color: Colors.blue.shade700,
-                          child: const Text(
-                            'Buscar cursos',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                        // ── Top controls row ────────────────────────────────────
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                // Semana Regular / Exámenes — always reachable
+                                SegmentedButton<bool>(
+                                  segments: const [
+                                    ButtonSegment<bool>(
+                                      value: false,
+                                      label: Text('Semana Regular'),
+                                    ),
+                                    ButtonSegment<bool>(
+                                      value: true,
+                                      label: Text('Exámenes'),
+                                    ),
+                                  ],
+                                  selected: <bool>{_showExams},
+                                  onSelectionChanged: (s) =>
+                                      setState(() => _showExams = s.first),
+                                  style: ButtonStyle(
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    visualDensity: VisualDensity.compact,
+                                  ),
+                                ),
+                                const SizedBox(width: 4),
+                                Tooltip(
+                                  message: 'Exportar a Google Calendar (.ics)',
+                                  child: IconButton(
+                                    icon: Icon(
+                                      Icons.event_outlined,
+                                      size: 20,
+                                      color: state.selectedSections.isNotEmpty
+                                          ? null
+                                          : Colors.grey.shade400,
+                                    ),
+                                    visualDensity: VisualDensity.compact,
+                                    padding: const EdgeInsets.all(6),
+                                    constraints: const BoxConstraints(),
+                                    onPressed: state.selectedSections.isNotEmpty
+                                        ? () => _exportAsIcs(context)
+                                        : null,
+                                  ),
+                                ),
+                                Tooltip(
+                                  message: 'Exportar horario como PNG',
+                                  child: IconButton(
+                                    icon: const Icon(
+                                      Icons.camera_alt_outlined,
+                                      size: 20,
+                                    ),
+                                    visualDensity: VisualDensity.compact,
+                                    padding: const EdgeInsets.all(6),
+                                    constraints: const BoxConstraints(),
+                                    onPressed: () => _exportAsPng(context),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        const Expanded(child: CourseSearchList()),
+                        // ── Course summary (always visible) ─────────────────────
+                        const CoursesSummaryBar(),
+                        // ── Timetable ────────────────────────────────────────────
+                        Expanded(
+                          child: TimetableGrid(
+                            showExams: _showExams,
+                            exportKey: _timetableKey,
+                          ),
+                        ),
                       ],
                     ),
-            ),
-          ),
-
-          // ── Right Panel: Timetable ───────────────────────────────────
-          Expanded(
-            flex: 7,
-            child: Container(
-              color: Colors.white,
-              child: Column(
-                children: [
-                  // ── Top controls row ────────────────────────────────────
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          // Semana Regular / Exámenes — always reachable
-                          SegmentedButton<bool>(
-                            segments: const [
-                              ButtonSegment<bool>(
-                                value: false,
-                                label: Text('Semana Regular'),
-                              ),
-                              ButtonSegment<bool>(
-                                value: true,
-                                label: Text('Exámenes'),
-                              ),
-                            ],
-                            selected: <bool>{_showExams},
-                            onSelectionChanged: (s) =>
-                                setState(() => _showExams = s.first),
-                            style: ButtonStyle(
-                              tapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              visualDensity: VisualDensity.compact,
-                            ),
-                          ),
-                          const SizedBox(width: 4),
-                          Tooltip(
-                            message: 'Exportar a Google Calendar (.ics)',
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.event_outlined,
-                                size: 20,
-                                color: state.selectedSections.isNotEmpty
-                                    ? null
-                                    : Colors.grey.shade400,
-                              ),
-                              visualDensity: VisualDensity.compact,
-                              padding: const EdgeInsets.all(6),
-                              constraints: const BoxConstraints(),
-                              onPressed: state.selectedSections.isNotEmpty
-                                  ? () => _exportAsIcs(context)
-                                  : null,
-                            ),
-                          ),
-                          Tooltip(
-                            message: 'Exportar horario como PNG',
-                            child: IconButton(
-                              icon: const Icon(
-                                Icons.camera_alt_outlined,
-                                size: 20,
-                              ),
-                              visualDensity: VisualDensity.compact,
-                              padding: const EdgeInsets.all(6),
-                              constraints: const BoxConstraints(),
-                              onPressed: () => _exportAsPng(context),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                   ),
-                  // ── Course summary (always visible) ─────────────────────
-                  const CoursesSummaryBar(),
-                  // ── Timetable ────────────────────────────────────────────
-                  Expanded(
-                    child: TimetableGrid(
-                      showExams: _showExams,
-                      exportKey: _timetableKey,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+                ),
+              ],
             ),
           ),
           // ── Disclaimer footer ────────────────────────────────────────────
@@ -507,10 +515,7 @@ class _HomePageState extends State<HomePage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Guardado en: $path'),
-            action: SnackBarAction(
-              label: 'OK',
-              onPressed: () {},
-            ),
+            action: SnackBarAction(label: 'OK', onPressed: () {}),
           ),
         );
       }
@@ -592,7 +597,11 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 4),
               Row(
                 children: [
-                  const Icon(Icons.science_outlined, size: 14, color: Colors.green),
+                  const Icon(
+                    Icons.science_outlined,
+                    size: 14,
+                    color: Colors.green,
+                  ),
                   const SizedBox(width: 6),
                   Text(
                     'EFEs activos: ${state.efeCoursesLabel}',

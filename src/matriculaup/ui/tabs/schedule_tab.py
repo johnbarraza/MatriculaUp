@@ -50,7 +50,7 @@ class ScheduleTab(QWidget):
         filepath, _ = QFileDialog.getSaveFileName(
             self,
             "Exportar Horario",
-            "horario_2026-1.png",
+            "horario_2026-2.png",
             "Imágenes PNG (*.png)"
         )
         if not filepath:

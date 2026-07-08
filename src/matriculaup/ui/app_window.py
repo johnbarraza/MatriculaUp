@@ -21,7 +21,7 @@ class AppWindow(QMainWindow):
         self.persistence = PersistenceManager()
         
         # 2. Main widget and layout
-        self.setWindowTitle("MatriculaUp - Planificador 2026-1")
+        self.setWindowTitle("MatriculaUp - Planificador 2026-2")
         self.resize(1024, 768)
         
         central_widget = QWidget()

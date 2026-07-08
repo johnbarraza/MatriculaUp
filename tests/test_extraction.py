@@ -6,6 +6,8 @@ try:
     from scripts.extractors.courses import extract_prerequisites_with_continuation, is_truncated_prerequisite
     from scripts.extractors.courses import extract_professors_spanish
     from scripts.extractors.courses import split_instructor_roles
+    from scripts.extractors.courses import parse_prerequisite_tree
+    from scripts.extractors.courses import CourseOfferingExtractor
     MODULES_AVAILABLE = True
 except ImportError:
     MODULES_AVAILABLE = False
@@ -96,6 +98,67 @@ class TestProfessorSpanishNames:
             "CABRERA SARMIENTO, Liz Yossie",
             "SANCHEZ GARCIA, Gustavo Sebastian",
         ]
+
+
+class TestCoursePdfMetadata:
+    """Regular offer PDFs must drive cycle/version metadata and output names."""
+
+    @skip_if_no_modules
+    @pytest.mark.parametrize(
+        ("filename", "cycle", "version", "output"),
+        [
+            ("Oferta-Academica-2026-I_v1.pdf", "2026-1", "v1", "courses_2026-1_v1.json"),
+            ("Oferta-Academica-2026-I-V4.pdf", "2026-1", "v4", "courses_2026-1_v4.json"),
+            ("Oferta-Academica-2026-II-V1.pdf", "2026-2", "v1", "courses_2026-2_v1.json"),
+            ("Oferta-Academica-2025-II_18.08_10.03am.pdf", "2025-2", "v1", "courses_2025-2_v1.json"),
+        ],
+    )
+    def test_cycle_and_filename_version_detection(self, filename, cycle, version, output):
+        extractor = CourseOfferingExtractor(filename)
+        assert extractor.cycle == cycle
+        assert extractor.version == version
+        assert extractor.output_filename() == output
+
+    @skip_if_no_modules
+    def test_pdf_text_version_marker_wins_over_filename(self):
+        class FakePage:
+            def __init__(self, text):
+                self._text = text
+
+            def extract_text(self):
+                return self._text
+
+        class FakePdf:
+            pages = [
+                FakePage("Direccion de Asuntos Academicos y Registro 07/07/2026 V1"),
+            ]
+
+        extractor = CourseOfferingExtractor("Oferta-Academica-2026-II.pdf")
+        version, version_date = extractor._detect_version_from_pdf_text(FakePdf())
+        assert version == "v1"
+        assert version_date == "07/07/2026"
+
+
+class TestPrerequisiteParsing:
+    @skip_if_no_modules
+    def test_alphanumeric_course_code_prerequisite_parses(self):
+        parsed = parse_prerequisite_tree("1F0112 Fundamentos de Finanzas")
+        assert parsed == {
+            "items": [
+                {"code": "1F0112", "name": "Fundamentos de Finanzas"},
+            ]
+        }
+
+    @skip_if_no_modules
+    def test_credit_count_prerequisite_parses(self):
+        parsed = parse_prerequisite_tree(
+            "CREDITOS CURSADOS CREDITOS ACA CURSADO 120.0000"
+        )
+        assert parsed == {
+            "items": [
+                {"type": "creditos_cursados", "creditos": 120},
+            ]
+        }
 
 
 class TestCurriculumStructure:

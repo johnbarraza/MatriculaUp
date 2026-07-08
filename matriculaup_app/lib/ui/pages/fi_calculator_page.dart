@@ -49,13 +49,10 @@ class _CourseEntry {
 class _BonusEntry {
   final String label;
   final TextEditingController amount;
-  bool enabled;
+  bool enabled = false;
 
-  _BonusEntry({
-    required this.label,
-    required String defaultAmount,
-    this.enabled = false,
-  }) : amount = TextEditingController(text: defaultAmount);
+  _BonusEntry({required this.label, required String defaultAmount})
+    : amount = TextEditingController(text: defaultAmount);
 
   void dispose() => amount.dispose();
   double get amountValue => double.tryParse(amount.text.trim()) ?? 0;

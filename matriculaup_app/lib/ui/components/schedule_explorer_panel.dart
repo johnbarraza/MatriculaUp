@@ -39,7 +39,9 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ScheduleState>();
-    final selectedCodes = state.selectedSections.map((s) => s.course.codigo).toSet();
+    final selectedCodes = state.selectedSections
+        .map((s) => s.course.codigo)
+        .toSet();
 
     final body = Column(
       children: [
@@ -50,7 +52,10 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
               Expanded(
                 child: Text(
                   '${selectedCodes.length} cursos',
-                  style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               DropdownButtonHideUnderline(
@@ -88,7 +93,10 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
                 onPressed: _isGenerating ? null : () => _generateOptions(state),
                 style: ElevatedButton.styleFrom(
                   visualDensity: VisualDensity.compact,
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 8,
+                  ),
                 ),
                 child: _isGenerating
                     ? const SizedBox(
@@ -121,8 +129,11 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
             padding: const EdgeInsets.fromLTRB(8, 6, 8, 4),
             child: Row(
               children: [
-                Icon(Icons.auto_awesome_mosaic_outlined,
-                    size: 14, color: Colors.blue.shade700),
+                Icon(
+                  Icons.auto_awesome_mosaic_outlined,
+                  size: 14,
+                  color: Colors.blue.shade700,
+                ),
                 const SizedBox(width: 4),
                 const Expanded(
                   child: Text(
@@ -174,7 +185,9 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
                 final o = topOptions[i];
                 return TweenAnimationBuilder<double>(
                   tween: Tween(begin: 0, end: 1),
-                  duration: Duration(milliseconds: 160 + ((i * 14).clamp(0, 140) as int)),
+                  duration: Duration(
+                    milliseconds: 160 + (i * 14).clamp(0, 140),
+                  ),
                   curve: Curves.easeOutCubic,
                   builder: (context, t, child) {
                     return Opacity(
@@ -208,11 +221,18 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
                                   '${o.selectedCourseCount}/${o.targetCourseCount} cursos',
                                   Colors.indigo.shade700,
                                 ),
-                                _metricChip('${o.credits} cr', Colors.blue.shade700),
-                                _metricChip('${o.weeklyHours.toStringAsFixed(1)} h',
-                                    Colors.teal.shade700),
-                                _metricChip('${o.gapHours.toStringAsFixed(1)} h hueco',
-                                    Colors.orange.shade700),
+                                _metricChip(
+                                  '${o.credits} cr',
+                                  Colors.blue.shade700,
+                                ),
+                                _metricChip(
+                                  '${o.weeklyHours.toStringAsFixed(1)} h',
+                                  Colors.teal.shade700,
+                                ),
+                                _metricChip(
+                                  '${o.gapHours.toStringAsFixed(1)} h hueco',
+                                  Colors.orange.shade700,
+                                ),
                                 _metricChip(
                                   '${o.classDaysCount} d clase',
                                   Colors.indigo.shade700,
@@ -226,7 +246,10 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
                           ),
                           IconButton(
                             tooltip: 'Usar opcion',
-                            icon: const Icon(Icons.check_circle_outline, size: 18),
+                            icon: const Icon(
+                              Icons.check_circle_outline,
+                              size: 18,
+                            ),
                             onPressed: () {
                               state.replaceActiveSchedule(o.selections);
                               if (widget.closeOnApply && context.mounted) {
@@ -253,18 +276,26 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
       ),
       child: Text(
         text,
-        style: TextStyle(color: color, fontWeight: FontWeight.w600, fontSize: 9),
+        style: TextStyle(
+          color: color,
+          fontWeight: FontWeight.w600,
+          fontSize: 9,
+        ),
       ),
     );
   }
 
   Future<void> _generateOptions(ScheduleState state) async {
-    final targetCodes = state.selectedSections.map((sel) => sel.course.codigo).toSet();
+    final targetCodes = state.selectedSections
+        .map((sel) => sel.course.codigo)
+        .toSet();
     final lockedCodes = state.lockedCourseCodes;
 
     if (targetCodes.length < 2) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Necesitas al menos 2 cursos seleccionados.')),
+        const SnackBar(
+          content: Text('Necesitas al menos 2 cursos seleccionados.'),
+        ),
       );
       return;
     }
@@ -272,10 +303,11 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
     setState(() => _isGenerating = true);
     await Future<void>.delayed(const Duration(milliseconds: 10));
 
-    final selectedCourses = state.allVisibleCourses
-        .where((c) => targetCodes.contains(c.codigo))
-        .toList()
-      ..sort((a, b) => a.secciones.length.compareTo(b.secciones.length));
+    final selectedCourses =
+        state.allVisibleCourses
+            .where((c) => targetCodes.contains(c.codigo))
+            .toList()
+          ..sort((a, b) => a.secciones.length.compareTo(b.secciones.length));
     final targetCount = selectedCourses.length;
 
     final options = <_ScheduleOption>[];
@@ -308,7 +340,9 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
 
     options.sort((a, b) {
       if (_generationMode == _GenerationMode.maximize) {
-        final byCourses = b.selectedCourseCount.compareTo(a.selectedCourseCount);
+        final byCourses = b.selectedCourseCount.compareTo(
+          a.selectedCourseCount,
+        );
         if (byCourses != 0) return byCourses;
       }
       final byGap = a.gapHours.compareTo(b.gapHours);
@@ -316,20 +350,27 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
       return a.weeklyHours.compareTo(b.weeklyHours);
     });
 
+    if (!mounted) return;
+
     setState(() {
       _options = options;
       _isGenerating = false;
     });
 
-    if (options.isEmpty && context.mounted) {
+    if (options.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('No se encontraron combinaciones sin cruces.')),
+        const SnackBar(
+          content: Text('No se encontraron combinaciones sin cruces.'),
+        ),
       );
     }
   }
 
   bool _sectionHasAvailableCupos(Section section) {
-    final cupos = section.sesiones.map(_tryReadSessionCupos).whereType<int>().toList();
+    final cupos = section.sesiones
+        .map(_tryReadSessionCupos)
+        .whereType<int>()
+        .toList();
     if (cupos.isEmpty) return true;
     return cupos.any((c) => c > 0);
   }
@@ -416,15 +457,16 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
     }
 
     const windowHours = 75.0;
-    final freeHours =
-        ((windowHours - weeklyHours).clamp(0, windowHours) as num).toDouble();
+    final freeHours = (windowHours - weeklyHours)
+        .clamp(0, windowHours)
+        .toDouble();
     const summaryDays = {'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'};
     final classDaysCount = byDay.keys
         .map((d) => d.toUpperCase().trim())
         .where(summaryDays.contains)
         .toSet()
         .length;
-    final freeDaysCount = ((6 - classDaysCount).clamp(0, 6) as num).toInt();
+    final freeDaysCount = (6 - classDaysCount).clamp(0, 6).toInt();
 
     return _ScheduleOption(
       selections: copy,
@@ -478,9 +520,7 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
                 style: TextStyle(fontWeight: FontWeight.w700),
               ),
               SizedBox(height: 2),
-              Text(
-                'Si quieres X cursos en cualquier horario: usa Maes.',
-              ),
+              Text('Si quieres X cursos en cualquier horario: usa Maes.'),
               SizedBox(height: 2),
               Text(
                 'Si quieres ver en que horarios hay opciones: usa ambos y compara.',
@@ -495,9 +535,7 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
                 style: TextStyle(fontWeight: FontWeight.w700),
               ),
               SizedBox(height: 2),
-              Text(
-                'Si esta activado, ignora secciones con cupo cero.',
-              ),
+              Text('Si esta activado, ignora secciones con cupo cero.'),
               SizedBox(height: 10),
               Text(
                 '5. Importante:',
@@ -546,5 +584,3 @@ class _ScheduleOption {
     required this.freeDaysCount,
   });
 }
-
-
