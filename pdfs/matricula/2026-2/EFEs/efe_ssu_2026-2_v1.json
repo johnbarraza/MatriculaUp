@@ -1,0 +1,6998 @@
+{
+  "metadata": {
+    "ciclo": "2026-2",
+    "version": "v1",
+    "fecha_version": "07/07/2026",
+    "descripcion": "Experiencias Formativas Estudiantiles - Planes Antiguos 2026-2",
+    "fecha_extraccion": "2026-07-07",
+    "fuente_pdf": "Horarios-ofertados-matricula-2026-II-planes-antiguos.pdf",
+    "fuente_excel": "Sesiones SSU 2026-II.xlsx",
+    "total_cursos": 48
+  },
+  "cursos": [
+    {
+      "codigo": "900599",
+      "nombre": "Ajedrez",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "SOTO VEGA, Jorge Arturo"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900762",
+      "nombre": "Cajón peruano",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "FIGUEROA EURIBE, Carlos Eduardo"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900569",
+      "nombre": "Defensa personal mixto",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "CHACÓN SULLÓN, Ronald Dean"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            },
+            {
+              "dia": "VIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900852",
+      "nombre": "Deporte sin límites: experiencia vivencial en Paradeportes",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "ESPINOZA PAREDES, Víctor Rafael"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "16:30",
+              "hora_fin": "20:20",
+              "fecha": "2026-11-30"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "16:30",
+              "hora_fin": "22:20",
+              "fecha": "2026-12-01"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "22:20",
+              "fecha": "2026-12-02"
+            },
+            {
+              "dia": "JUE",
+              "hora_inicio": "16:30",
+              "hora_fin": "22:20",
+              "fecha": "2026-12-03"
+            },
+            {
+              "dia": "VIE",
+              "hora_inicio": "16:30",
+              "hora_fin": "20:20",
+              "fecha": "2026-12-04"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900776",
+      "nombre": "Diseño de contenido digital",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "NAVARRO ESPINOZA, Nathalia Alexandra"
+          ],
+          "cupos": 20,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900162",
+      "nombre": "Escalada en palestra",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "HUAYANAY SOLORZANO, Jimmy Edison"
+          ],
+          "cupos": 12,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900533",
+      "nombre": "Escultura en plastilina",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "VÁSQUEZ JARA, Stephany Marité"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "VÁSQUEZ JARA, Stephany Marité"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900630",
+      "nombre": "Fotografía con Smartphone",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "MIYASHIRO HIGA, Luis Fernando"
+          ],
+          "cupos": 20,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "MIYASHIRO HIGA, Luis Fernando"
+          ],
+          "cupos": 20,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900143",
+      "nombre": "Futsal masculino",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "GÓMEZ CRUZ, Juan José"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "GÓMEZ CRUZ, Juan José"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900834",
+      "nombre": "Improvisación teatral y creatividad",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "MORI UGAZ, Michael Alexander"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "MORI UGAZ, Michael Alexander"
+          ],
+          "cupos": 12,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:22"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900854",
+      "nombre": "Inmersión cultural en Huaraz (VIAJE)",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "TORRES RAMIS, Luis"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-11-14",
+          "fecha_fin": "2026-12-04",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones_por_dia": []
+        }
+      ]
+    },
+    {
+      "codigo": "900598",
+      "nombre": "Museos en vanguardia",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "GÓMEZ DE LA TORRE BARRERA, María Belén"
+          ],
+          "cupos": 20,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "SAB",
+              "hora_inicio": "13:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900719",
+      "nombre": "Pintura experimental",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "DE ORBEGOSO SEOANE, Guillermo Enrique"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "DE ORBEGOSO SEOANE, Guillermo Enrique"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900644",
+      "nombre": "Power Yoga",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "BARRIOS RIVAS, Sophia Helena"
+          ],
+          "cupos": 12,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900841",
+      "nombre": "Presentaciones de alto impacto",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "OVIEDO HURTADO, Giovanni Adolfo"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "SAB",
+              "hora_inicio": "10:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "OVIEDO HURTADO, Giovanni Adolfo"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900853",
+      "nombre": "Reels con propósito: creación audiovisual con impacto social",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "DIAZ CHAGRAY, Claudia Sofía",
+            "FIGUEROA EURIBE, Carlos Eduardo"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900584",
+      "nombre": "Running UP",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "ESPINOZA PAREDES, Víctor Rafael"
+          ],
+          "cupos": 12,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900842",
+      "nombre": "Salsa: ritmo y expresión corporal",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "ZÚÑIGA CAHUANA, Diego Alberto"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "SAB",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "ZUÑIGA CAHUANA, Diego Alberto"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900835",
+      "nombre": "Teatro: habilidades escénicas",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "SEMINARIO ALVARADO, Miguel Gabriel"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "SEMINARIO ALVARADO, Miguel Gabriel"
+          ],
+          "cupos": 12,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900033",
+      "nombre": "Tenis de mesa",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "PORTUGAL BOTETANO, Javier Enrique"
+          ],
+          "cupos": 14,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "PORTUGAL BOTETANO, Javier Enrique"
+          ],
+          "cupos": 14,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "facilitadores": [
+            "PORTUGAL BOTETANO, Javier Enrique"
+          ],
+          "cupos": 14,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        },
+        {
+          "seccion": "C1",
+          "facilitadores": [
+            "PORTUGAL BOTETANO, Javier Enrique"
+          ],
+          "cupos": 14,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900709",
+      "nombre": "Vida Fitness",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "BARRIOS RIVAS, Sophia Helena"
+          ],
+          "cupos": 12,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900147",
+      "nombre": "Vóleibol mixto",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "CÁRDENAS CÁRDENAS, César David"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "CÁRDENAS CÁRDENAS, César David"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "facilitadores": [
+            "CÁRDENAS CÁRDENAS, César David"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900761",
+      "nombre": "Voz y canto grupal",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "COLQUICOCHA CARRASCAL, Melissa"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "18:30",
+              "hora_fin": "20:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "18:30",
+              "hora_fin": "20:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900160",
+      "nombre": "Yoga",
+      "tipo_efe": "ARTE - CULTURA - DEPORTE (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "RODRÍGUEZ CENTENO, Glendy del Carmen"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "MIRA EL VÍDEO AQUÍ",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "BARRIOS RIVAS, Sophia Helena"
+          ],
+          "cupos": 16,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900836",
+      "nombre": "Actualización digital para adultos mayores",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "CABALLERO FELIPE, María Isabel"
+          ],
+          "cupos": 15,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-12",
+          "fecha_fin": "2026-10-28",
+          "detalle": "4 CLASES PRESENCIALES 10 SALIDAS DE CAMPO MOVILIDAD UP SEDE: CIAM BREÑA",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-12",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-17",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-19",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-24",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-31",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-07",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-14",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-16",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-21",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-05",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-12",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-19",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-26",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "10:00",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:00",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-28",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "B",
+          "facilitadores": [
+            "SOLÓRZANO PANEZ, Shirley Luzmila"
+          ],
+          "cupos": 14,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-13",
+          "fecha_fin": "2026-11-12",
+          "detalle": "4 CLASES PRESENCIALES 10 SALIDAS DE CAMPO SEDE: CIAM JESÚS MARÍA",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-13",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-17",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-20",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-24",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-31",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-07",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-14",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-17",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-21",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-05",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-12",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-19",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-26",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-02",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-09",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-12",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "C",
+          "facilitadores": [
+            "GONZALES BECERRA, Katia"
+          ],
+          "cupos": 14,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-10",
+          "fecha_fin": "2026-11-02",
+          "detalle": "4 CLASES PRESENCIALES 10 SALIDAS DE CAMPO MOVILIDAD UP SEDE: CIAM LA PUNTA",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-10",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-11",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-17",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-18",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-25",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-01",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-08",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-15",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-21",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-22",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-06",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-13",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-20",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-27",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:35",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-02",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900856",
+      "nombre": "Aprendiendo entre generaciones",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "GRANTHON URIARTE, Ronald Jefrie"
+          ],
+          "cupos": 14,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-14",
+          "fecha_fin": "2026-11-13",
+          "detalle": "4 CLASES PRESENCIALES 10 SALIDAS DE CAMPO MOVILIDAD UP SEDE: CIAM BREÑA",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-14",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-21",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-28",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-04",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-11",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-18",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-25",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-06",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-09",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-16",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-23",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-30",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-06",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:00",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:00",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-13",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900565",
+      "nombre": "Bridges",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "ESPINOZA PAREDES, Víctor Rafael"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-13",
+          "fecha_fin": "2026-09-26",
+          "detalle": "3 CLASES PRESENCIALES 6 SALIDAS DE CAMPO MOVILIDAD UP SEDE: SAN JUAN DE MIRAFLORES",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-13",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-15",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-22",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-05",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-10",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-12",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-19",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-24",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-26",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "SOLÓRZANO PANEZ, Shirley Luzmila"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-10-08",
+          "fecha_fin": "2026-11-19",
+          "detalle": "3 CLASES PRESENCIALES 6 SALIDAS DE CAMPO MOVILIDAD UP SEDE: SAN JUAN DE MIRAFLORES",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-10-08",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-10",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-17",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-24",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-29",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-31",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-07",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-14",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-19",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "facilitadores": [
+            "RODRÍGUEZ GARCÍA, Sebastián"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-14",
+          "fecha_fin": "2026-09-26",
+          "detalle": "3 CLASES PRESENCIALES 6 SALIDAS DE CAMPO MOVILIDAD UP SEDE: SAN JUAN DE MIRAFLORES",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-14",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-15",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-22",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-05",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-11",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-12",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-19",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-25",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-26",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "facilitadores": [
+            "RODRÍGUEZ GARCÍA, Sebastián"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-10-09",
+          "fecha_fin": "2026-11-20",
+          "detalle": "3 CLASES PRESENCIALES 6 SALIDAS DE CAMPO MOVILIDAD UP SEDE: SAN JUAN DE MIRAFLORES",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-10-09",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-10",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-17",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-24",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-30",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-31",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-07",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-14",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-20",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900697",
+      "nombre": "Casa Ronald Mc Donald",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "PEREYRA ESCOBAR, María Alejandra"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-11",
+          "fecha_fin": "2026-11-12",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-11",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "18:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-18",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-20",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-25",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-01",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-08",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-15",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-22",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-24",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-06",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-13",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-20",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-27",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-03",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-10",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-12",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "15:30",
+                  "hora_fin": "18:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900779",
+      "nombre": "Empodera jóvenes",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "GRANTHON URIARTE, Ronald Jefrie"
+          ],
+          "cupos": 6,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-15",
+          "fecha_fin": "2026-11-07",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-15",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-22",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-29",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-05",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-12",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-19",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-26",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-10",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-17",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-24",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-31",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-07",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "09:20",
+                  "hora_fin": "12:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900787",
+      "nombre": "Empodérate con Fe y Alegría",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "EYZAGUIRRE LANDAZURI, Peggy Jean"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-11",
+          "fecha_fin": "2026-10-21",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-11",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-12",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-19",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "07:45",
+                  "hora_fin": "08:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "12:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-26",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "07:45",
+                  "hora_fin": "08:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "12:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-02",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "07:45",
+                  "hora_fin": "08:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "12:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-09",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "07:45",
+                  "hora_fin": "08:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "12:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-15",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "10:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-16",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "07:45",
+                  "hora_fin": "08:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "12:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-23",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "07:45",
+                  "hora_fin": "08:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "12:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-07",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "07:45",
+                  "hora_fin": "08:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "12:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-14",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "07:45",
+                  "hora_fin": "08:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "11:30",
+                  "hora_fin": "12:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-21",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "B",
+          "facilitadores": [
+            "LÓPEZ MOSCOL, Rosa Lizbeth"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-10",
+          "fecha_fin": "2026-10-21",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-10",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-12",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-19",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-26",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-02",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-09",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-14",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-16",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-23",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-07",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-14",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-21",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "C",
+          "facilitadores": [
+            "DE LA MATTA CASTILLO, Lucero Sara"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-10",
+          "fecha_fin": "2026-10-21",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-10",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-12",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-19",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "15:45",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "19:30",
+                  "hora_fin": "20:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-26",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "15:45",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "19:30",
+                  "hora_fin": "20:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-02",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "15:45",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "19:30",
+                  "hora_fin": "20:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-09",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "15:45",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "19:30",
+                  "hora_fin": "20:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-14",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-16",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "15:45",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "19:30",
+                  "hora_fin": "20:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-23",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "15:45",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "19:30",
+                  "hora_fin": "20:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-07",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "15:45",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "19:30",
+                  "hora_fin": "20:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-14",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "15:45",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "19:30",
+                  "hora_fin": "20:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-21",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "D",
+          "facilitadores": [
+            "DE LA MATTA CASTILLO, Lucero Sara"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-11",
+          "fecha_fin": "2026-10-23",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-11",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-14",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-21",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-28",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-04",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-11",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-18",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-25",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-09",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-16",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "09:45",
+                  "hora_fin": "10:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "14:15"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-23",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "10:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "E",
+          "facilitadores": [
+            "GRANTHON URIARTE, Ronald Jefrie"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-13",
+          "fecha_fin": "2026-11-05",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-13",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-20",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-27",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-03",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-10",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-17",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-18",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-24",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-15",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-22",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-29",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-05",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "F",
+          "facilitadores": [
+            "DE LA MATTA CASTILLO, Lucero Sara"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-13",
+          "fecha_fin": "2026-11-30",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-13",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-15",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-22",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-29",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-05",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-12",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-17",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-19",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-26",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-10",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-17",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-24",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "11:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-31",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "G",
+          "facilitadores": [
+            "LÓPEZ MOSCOL, Rosa Lizbeth"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-11",
+          "fecha_fin": "2026-11-05",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-11",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-13",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-20",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-27",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-03",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-10",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-15",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-17",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-24",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-15",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-22",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-29",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "18:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-05",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "H",
+          "facilitadores": [
+            "JIMÉNEZ ANTÚNEZ, Claudia Vanessa"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-13",
+          "fecha_fin": "2026-10-29",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-13",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-14",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-21",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-28",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-04",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-11",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-17",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-18",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-25",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-09",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-16",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-23",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "VIRTUAL",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-29",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900855",
+      "nombre": "Historias para sanar",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "RODRÍGUEZ GARCÍA, Sebastián"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-10",
+          "fecha_fin": "2026-10-20",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-10",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "20:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-11",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-18",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:50",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "18:00"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-25",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:50",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "18:00"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-01",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:50",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "18:00"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-08",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:50",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "18:00"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-14",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "19:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-15",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:50",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "18:00"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-22",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:50",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "18:00"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-06",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:50",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "18:00"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-13",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "13:50",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "17:30",
+                  "hora_fin": "18:00"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-20",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900788",
+      "nombre": "Hogar Betania para adultos mayores",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "PEREYRA ESCOBAR, María Alejandra"
+          ],
+          "cupos": 4,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-12",
+          "fecha_fin": "2026-10-16",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-12",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-14",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "CLASE",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-19",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-21",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-26",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-28",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-02",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-04",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-09",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-11",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-16",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-18",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-23",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-25",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-07",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-09",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-14",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "14:00",
+                  "hora_fin": "14:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "16:50"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-16",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "14:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900814",
+      "nombre": "Tutoría para niños geniales",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "SOLÓRZANO PANEZ, Shirley Luzmila"
+          ],
+          "cupos": 3,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-10",
+          "fecha_fin": "2026-09-21",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-10",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-12",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-17",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-19",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-24",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-26",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-31",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "10:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-02",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-07",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-09",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-14",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-16",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-21",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "10:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "SOLÓRZANO PANEZ, Shirley Luzmila"
+          ],
+          "cupos": 3,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-10-05",
+          "fecha_fin": "2026-11-18",
+          "detalle": "",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-10-05",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-07",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-12",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-14",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-19",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-21",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-26",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "10:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-28",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-02",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-04",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-09",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-11",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-16",
+              "dia": "LUN",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "10:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "facilitadores": [
+            "GONZALES BECERRA, Katia"
+          ],
+          "cupos": 12,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-11",
+          "fecha_fin": "2026-09-24",
+          "detalle": "3 CLASES PRESENCIALES 11 SALIDAS DE CAMPO SEDE: CEBE JESÚS MARÍA",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-11",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-13",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-18",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-20",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-25",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-27",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-01",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "10:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-03",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-08",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-10",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-15",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-17",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-22",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "10:20"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "facilitadores": [
+            "GONZALES BECERRA, Katia"
+          ],
+          "cupos": 12,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-10-06",
+          "fecha_fin": "2026-11-19",
+          "detalle": "3 CLASES PRESENCIALES 11 SALIDAS DE CAMPO SEDE: CEBE JESÚS MARÍA",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-10-06",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-09",
+              "dia": "VIE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-13",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-15",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-20",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-22",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-27",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "10:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-10-29",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-03",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-05",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-10",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-12",
+              "dia": "JUE",
+              "sesiones": [
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "11:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-11-17",
+              "dia": "MAR",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "10:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900826",
+      "nombre": "VoluntArte Kantaya",
+      "tipo_efe": "EFE SERVICIO SOCIAL UNIVERSITARIO (DOS CRÉDITOS)",
+      "creditos": "2",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "SOLÓRZANO PANEZ, Shirley Luzmila"
+          ],
+          "cupos": 20,
+          "tipo_sesion": "INICIO_FIN",
+          "fecha_inicio": "2026-08-12",
+          "fecha_fin": "2026-09-23",
+          "detalle": "3 CLASES PRESENCIALES 9 SALIDAS DE CAMPO MOVILIDAD UP SEDE: VENTANILLA",
+          "sesiones_por_dia": [
+            {
+              "fecha": "2026-08-12",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-15",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-19",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-22",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-26",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-08-29",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-02",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "15:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-05",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-09",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "16:30",
+                  "hora_fin": "17:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-12",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-19",
+              "dia": "SAB",
+              "sesiones": [
+                {
+                  "tipo": "IDA",
+                  "hora_inicio": "08:30",
+                  "hora_fin": "09:20"
+                },
+                {
+                  "tipo": "TRABAJO DE CAMPO",
+                  "hora_inicio": "09:30",
+                  "hora_fin": "12:20"
+                },
+                {
+                  "tipo": "REGRESO",
+                  "hora_inicio": "12:30",
+                  "hora_fin": "13:20"
+                }
+              ]
+            },
+            {
+              "fecha": "2026-09-23",
+              "dia": "MIE",
+              "sesiones": [
+                {
+                  "tipo": "TALLER",
+                  "hora_inicio": "13:30",
+                  "hora_fin": "16:20"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900846",
+      "nombre": "Clínica de Gestión Ambiental",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "GRANADOS MANDUJANO, Milagros Libertad"
+          ],
+          "cupos": 8,
+          "tipo_sesion": "CLASE",
+          "detalle": "REQUISITOS: Taller dirigido a alumnos de Derecho Investigación académica (150140)",
+          "sesiones": [
+            {
+              "dia": "VIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900861",
+      "nombre": "Entendiendo a las familias peruanas del futuro del Perú",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "PENNANO VILLANUEVA, Carla",
+            "RIVAS VELARDE, Andrea Carolina"
+          ],
+          "cupos": 8,
+          "tipo_sesion": "CLASE",
+          "detalle": "REQUISITOS: Investigación académica (150140) 120 créditos acumulados",
+          "sesiones": [
+            {
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900859",
+      "nombre": "GenAI Lab: investigación sobre cómo la inteligencia artificial generativa está rediseñando el trabajo, las interfaces humano-máquina y los procesos de aprendizaje",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "MONSALVE ZANATTI, Martin Alberto"
+          ],
+          "cupos": 8,
+          "tipo_sesion": "CLASE",
+          "detalle": "REQUISITOS: Investigación académica (150140)",
+          "sesiones": [
+            {
+              "dia": "MAR",
+              "hora_inicio": "18:30",
+              "hora_fin": "20:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900858",
+      "nombre": "ICT Policy Enactment in Higher Education",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "RODRIGUEZ CONSONI, Mariana"
+          ],
+          "cupos": 8,
+          "tipo_sesion": "CLASE",
+          "detalle": "REQUISITOS: Investigación académica (150140)",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "13:30",
+              "hora_fin": "15:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900862",
+      "nombre": "Khipus Digitales - Modelado 3D asistido por IA",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "LAZO LAZO, Juan Guillermo",
+            "PARDO GRAU, Cecilia Maria Luisa"
+          ],
+          "cupos": 8,
+          "tipo_sesion": "CLASE",
+          "detalle": "REQUISITOS: Investigación académica (150140) 60 créditos acumulados",
+          "sesiones": [
+            {
+              "dia": "MAR",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900847",
+      "nombre": "La promesa de la IA: talento, empleabilidad y tecnología global",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "MANKY BONILLA, Walter Omar"
+          ],
+          "cupos": 8,
+          "tipo_sesion": "CLASE",
+          "detalle": "REQUISITOS: Investigación académica (150140)",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900780",
+      "nombre": "Minería y sostenibilidad-Centro de Estudios sobre Minería y Sostenibilidad",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "CASAS TRAGODARA, Carlos Augusto",
+            "SÁNCHEZ VARGAS, María Estefanía"
+          ],
+          "cupos": 8,
+          "tipo_sesion": "CLASE",
+          "detalle": "REQUISITOS: Investigación académica (150140) 81 créditos acumulados",
+          "sesiones": [
+            {
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900860",
+      "nombre": "Redes complejas: Un abordaje aplicado al análisis de sistemas sociales y económicos",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "ALIAGA ALIAGA, Walter"
+          ],
+          "cupos": 8,
+          "tipo_sesion": "CLASE",
+          "detalle": "REQUISITOS: Investigación académica (150140) Estadística I (130224)",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900857",
+      "nombre": "Voces de las mujeres empresarias en Perú",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": "60 créditos acumulados",
+      "secciones": [
+        {
+          "seccion": "A",
+          "facilitadores": [
+            "RODRÍGUEZ SATIZABAL, Beatriz Helena"
+          ],
+          "cupos": 8,
+          "tipo_sesion": "CLASE",
+          "detalle": "REQUISITOS: Investigación académica (150140)",
+          "sesiones": [
+            {
+              "dia": "VIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900815",
+      "nombre": "Diseño de futuros",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "CONTRERAS TORRES, Verónica"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900650",
+      "nombre": "Transformación creativa",
+      "tipo_efe": "EFE INNOVACIÓN / INVESTIGACIÓN (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "RUIZ TAFUR, María del Rocío"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "RUIZ TAFUR, María del Rocío"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "facilitadores": [
+            "LAY FERRATO, Patricia Eulalia"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "facilitadores": [
+            "LAY FERRATO, Patricia Eulalia"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        },
+        {
+          "seccion": "C1",
+          "facilitadores": [
+            "PEINADO BRAVO, María Estrella del Pilar"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        },
+        {
+          "seccion": "C2",
+          "facilitadores": [
+            "RIVAS VELARDE, Andrea Carolina"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        },
+        {
+          "seccion": "D1",
+          "facilitadores": [
+            "ASTOCAZA MORALES, Josephine Annie Rose"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            }
+          ]
+        },
+        {
+          "seccion": "D2",
+          "facilitadores": [
+            "ASTOCAZA MORALES, Josephine Annie Rose"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            }
+          ]
+        },
+        {
+          "seccion": "E1",
+          "facilitadores": [
+            "MONTOYA ADRIAZOLA, Mariana Soledad"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            }
+          ]
+        },
+        {
+          "seccion": "E2",
+          "facilitadores": [
+            "MONTOYA ADRIAZOLA, Mariana Soledad"
+          ],
+          "cupos": 25,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900649",
+      "nombre": "Liderazgo responsable",
+      "tipo_efe": "EFE LIDERAZGO (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": null,
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "GANDOLFO GONZÁLEZ, Paola María"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "MUÑOZ VALERA, Paola Virginia"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "facilitadores": [
+            "CORAL CHÁVEZ, Evelyn Desiree"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "facilitadores": [
+            "MUÑOZ VALERA, Paola Virginia"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "13:30",
+              "hora_fin": "15:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "13:30",
+              "hora_fin": "15:20"
+            }
+          ]
+        },
+        {
+          "seccion": "C1",
+          "facilitadores": [
+            "CORAL CHAVEZ, Evelyn Desiree"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "SAB",
+              "hora_inicio": "14:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "9000387",
+      "nombre": "Taller de Fortalecimiento de Competencias Profesionales",
+      "tipo_efe": "EFE COMPETENCIAS PROFESIONALES (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": "PRERREQUISITO: 175 CRÉDITOS ACUMULADOS",
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "GANDOLFO GONZÁLEZ, Paola María"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "GANDOLFO GONZÁLEZ, Paola María"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "facilitadores": [
+            "ALFARO ESPARZA, Alfredo"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "18:30",
+              "hora_fin": "21:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "facilitadores": [
+            "ALFARO ESPARZA, Alfredo"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "18:30",
+              "hora_fin": "21:20"
+            }
+          ]
+        },
+        {
+          "seccion": "C1",
+          "facilitadores": [
+            "GANDOLFO GONZÁLEZ, Paola María"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        },
+        {
+          "seccion": "C2",
+          "facilitadores": [
+            "MEDINA ALBURQUEQUE, Otto Antonio"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20"
+            }
+          ]
+        },
+        {
+          "seccion": "D1",
+          "facilitadores": [
+            "MEDINA ALBURQUEQUE, Otto Antonio"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "19:30",
+              "hora_fin": "21:20"
+            }
+          ]
+        },
+        {
+          "seccion": "D2",
+          "facilitadores": [
+            "GANDOLFO GONZÁLEZ, Paola María"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "900218",
+      "nombre": "Taller de Preparación para la Vida Profesional",
+      "tipo_efe": "EFE COMPETENCIAS PROFESIONALES (UN CRÉDITO)",
+      "creditos": "1",
+      "prerequisitos": "PRERREQUISITO: 55 CRÉDITOS ACUMULADOS",
+      "secciones": [
+        {
+          "seccion": "A1",
+          "facilitadores": [
+            "ARANA RAMÍREZ, Miluska"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "11:30",
+              "hora_fin": "13:20"
+            }
+          ]
+        },
+        {
+          "seccion": "A2",
+          "facilitadores": [
+            "RUBINA ESPINOSA, Magaly Susana"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "LUN",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            },
+            {
+              "dia": "MIE",
+              "hora_inicio": "15:30",
+              "hora_fin": "17:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B1",
+          "facilitadores": [
+            "CABALLERO FELIPE, María Isabel"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "07:30",
+              "hora_fin": "09:20"
+            }
+          ]
+        },
+        {
+          "seccion": "B2",
+          "facilitadores": [
+            "ARANA RAMÍREZ, Miluska"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "JUE",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            },
+            {
+              "dia": "MAR",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20"
+            }
+          ]
+        },
+        {
+          "seccion": "C1",
+          "facilitadores": [
+            "RUBINA ESPINOSA, Magaly Susana"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "MIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            },
+            {
+              "dia": "VIE",
+              "hora_inicio": "17:30",
+              "hora_fin": "19:20"
+            }
+          ]
+        },
+        {
+          "seccion": "C2",
+          "facilitadores": [
+            "CABALLERO FELIPE, María Isabel"
+          ],
+          "cupos": 30,
+          "tipo_sesion": "CLASE",
+          "detalle": "",
+          "sesiones": [
+            {
+              "dia": "SAB",
+              "hora_inicio": "07:30",
+              "hora_fin": "10:20"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -31,6 +31,7 @@ ISCC_PATHS = [
 
 JSON_FILES = [
     "courses_2026-2_v1.json",
+    "efe_courses_2026-2_v1.json",
 ]
 
 

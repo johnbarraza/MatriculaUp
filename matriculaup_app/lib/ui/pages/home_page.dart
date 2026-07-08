@@ -268,7 +268,7 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.bug_report_outlined),
             tooltip: 'Reportar bug o dar feedback',
             onPressed: () => launchUrl(
-              Uri.parse('https://forms.gle/hT2Db5FFj3ecMzLz8'),
+              Uri.parse('https://forms.gle/cag87CjtGhmDLaek6'),
               mode: LaunchMode.externalApplication,
             ),
           ),

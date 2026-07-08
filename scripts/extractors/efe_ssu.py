@@ -1,570 +1,551 @@
-"""
-efe_extractor.py — Extractor completo de EFEs (Experiencias Formativas Estudiantiles)
+"""Extract EFE/SSU offerings from UP PDF + SSU Excel files.
 
-Extrae TODOS los cursos EFE del PDF de oferta 2026-I (planes antiguos) y los combina
-con el Excel de sesiones SSU cuando corresponde.
-
-Tipos de EFE en el PDF:
-  - EFE INTRAPERSONAL        → sesiones CLASE (DIA + hora fija semanal)
-  - EFE INTERPERSONAL        → sesiones CLASE
-  - EFE SERVICIO SOCIAL      → sesiones INICIO/FIN (fechas exactas en Excel)
-  - EFE INNOVACIÓN/INVEST.   → sesiones CLASE
-  - EFE LIDERAZGO            → sesiones CLASE
-  - EFE COMPETENCIAS PROF.   → sesiones CLASE
-
-Salida: efe_ssu_2026-1_v1.json (mismo nombre que el usuario solicitó)
-
-Formato JSON:
-{
-  "metadata": {...},
-  "cursos": [
-    {
-      "codigo": "900XXX",
-      "nombre": "...",
-      "tipo_efe": "EFE ... (UN CRÉDITO)",
-      "creditos": "1",
-      "prerequisitos": "...",           # texto crudo del PDF si existe
-      "secciones": [
-        {
-          "seccion": "A1",
-          "facilitadores": ["APELLIDO, Nombre"],
-          "cupos": 16,
-          "tipo_sesion": "CLASE" | "INICIO_FIN",
-
-          # Para tipo CLASE (cursos regulares):
-          "sesiones": [
-            {"dia": "LUN", "hora_inicio": "09:30", "hora_fin": "11:20"}
-          ],
-
-          # Para tipo INICIO_FIN (SSU y similares):
-          "fecha_inicio": "2026-03-17",
-          "fecha_fin":    "2026-06-09",
-          "detalle":      "4 CLASES PRESENCIALES ...",
-          "sesiones_por_dia": [          # solo si hay datos en el Excel
-            {
-              "fecha":    "2026-03-21",
-              "dia":      "SAB",
-              "sesiones": [
-                {"tipo": "IDA",            "hora_inicio": "09:00", "hora_fin": "09:30"},
-                {"tipo": "TRABAJO DE CAMPO","hora_inicio": "09:30", "hora_fin": "12:20"},
-                {"tipo": "REGRESO",         "hora_inicio": "12:30", "hora_fin": "12:50"}
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+The 2026-II EFE PDFs use a compact table format where the third column is
+either a weekday, an exact date, or INICIO/FIN for SSU and travel-style
+experiences. This script keeps the raw EFE structure and enriches SSU sections
+with the dated activities from the Excel workbook.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
-import sys
+import unicodedata
 from collections import defaultdict
 from datetime import date, datetime, time
 from pathlib import Path
-
-# ── Paths ────────────────────────────────────────────────────────────────────
+from typing import Any
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-EFE_DIR  = BASE_DIR / "pdfs" / "matricula" / "2026-1" / "EFEs"
-PDF_PATH  = EFE_DIR / "Horarios-ofertados-en-matricula-2026-I_planes-antiguos.pdf"
-XLSX_PATH = EFE_DIR / "Sesiones SSU_2026-I(1).xlsx"
-OUT_PATH  = EFE_DIR / "efe_ssu_2026-1_v1.json"
-CICLO     = "2026-1"
+DEFAULT_CYCLE = "2026-2"
+DEFAULT_EFE_DIR = BASE_DIR / "pdfs" / "matricula" / DEFAULT_CYCLE / "EFEs"
+DEFAULT_PDF = DEFAULT_EFE_DIR / "Horarios-ofertados-matricula-2026-II-planes-antiguos.pdf"
+DEFAULT_XLSX = DEFAULT_EFE_DIR / "Sesiones SSU 2026-II.xlsx"
+DEFAULT_OUT = DEFAULT_EFE_DIR / "efe_ssu_2026-2_v1.json"
 
-# ── Constants ────────────────────────────────────────────────────────────────
+COURSE_CODE_RE = re.compile(r"^(\d{5,7}[A-Z_]*)\s*[-\u2013]\s*(.+)", re.DOTALL)
+SECTION_RE = re.compile(r"^[A-Z]\d?$")
+TIME_RE = re.compile(r"^\d{1,2}:\d{2}")
 
-COURSE_CODE_RE = re.compile(r"^(\d{5,7}[_A-Z]*)\s*[-–]\s*(.+)", re.DOTALL)
-SECTION_RE     = re.compile(r"^([A-Z]\d?)$")
-
-_MONTH_ES = {
-    "ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6,
-    "jul": 7, "ago": 8, "sep": 9, "oct": 10, "nov": 11, "dic": 12,
+MONTH_ES = {
+    "ENE": 1,
+    "FEB": 2,
+    "MAR": 3,
+    "ABR": 4,
+    "MAY": 5,
+    "JUN": 6,
+    "JUL": 7,
+    "AGO": 8,
+    "SEP": 9,
+    "OCT": 10,
+    "NOV": 11,
+    "DIC": 12,
 }
-_WEEKDAY_ES = ["LUN", "MAR", "MIE", "JUE", "VIE", "SAB", "DOM"]
-
-# Rows to skip (table headers / preamble)
-_SKIP_PATTERNS = [
-    re.compile(r"^SECC\.?\s*$", re.IGNORECASE),
-    re.compile(r"^PREREQUISITO", re.IGNORECASE),
-    re.compile(r"^REQUISITO", re.IGNORECASE),
-    re.compile(r"^TALLERES\s+DE", re.IGNORECASE),
-]
-
-# EFE type heading keywords
-_EFE_HEADING_RE = re.compile(r"EFE\s+\w", re.IGNORECASE)
+WEEKDAY_ES = ["LUN", "MAR", "MIE", "JUE", "VIE", "SAB", "DOM"]
+WEEKDAY_SET = set(WEEKDAY_ES)
 
 
-# ── Helpers ──────────────────────────────────────────────────────────────────
+def _strip_accents(value: str) -> str:
+    normalized = unicodedata.normalize("NFKD", value)
+    return "".join(ch for ch in normalized if not unicodedata.combining(ch))
 
-def _parse_pdf_date(raw: str) -> str | None:
-    """Parse 'DD-Mon' (Spanish) → ISO date 2026."""
+
+def _norm(value: Any) -> str:
+    return _strip_accents(str(value or "")).upper().strip()
+
+
+def _cell(value: Any) -> str:
+    if value is None:
+        return ""
+    return str(value).replace("\r", "\n").strip()
+
+
+def _text(value: Any) -> str:
+    return re.sub(r"\s+", " ", _cell(value)).strip()
+
+
+def _clean_detail(value: str) -> str:
+    if not value:
+        return ""
+    cleaned = re.sub(r"[\U0001F300-\U0001FAFF\u2600-\u27BF]", "", value)
+    return _text(cleaned)
+
+
+def _split_people(value: str) -> list[str]:
+    people: list[str] = []
+    for part in re.split(r"\n+", value or ""):
+        person = _text(part)
+        if person:
+            people.append(person)
+    return people
+
+
+def _parse_cycle_year(cycle: str) -> int:
+    match = re.match(r"^(\d{4})-", cycle)
+    return int(match.group(1)) if match else date.today().year
+
+
+def _parse_cupos(value: Any) -> int | None:
+    raw = _text(value)
     if not raw:
         return None
-    raw = raw.strip()
-    m = re.match(r"(\d{1,2})[-/](\w{3})", raw, re.IGNORECASE)
-    if m:
-        day = int(m.group(1))
-        mon = _MONTH_ES.get(m.group(2).lower())
-        if mon:
-            return date(2026, mon, day).isoformat()
-    return None
+    match = re.search(r"\d+", raw)
+    return int(match.group(0)) if match else None
 
 
-def _parse_excel_date(val) -> str | None:
-    """Parse Excel date cell → ISO string."""
-    if val is None:
+def _parse_time(value: Any) -> str | None:
+    if value is None:
         return None
-    if isinstance(val, datetime):
-        return val.date().isoformat()
-    if isinstance(val, date):
-        return val.isoformat()
-    s = str(val).strip()
-    for fmt in ("%d/%m/%Y", "%Y-%m-%d", "%d-%m-%Y"):
+    if isinstance(value, time):
+        return value.strftime("%H:%M")
+    if isinstance(value, datetime):
+        return value.strftime("%H:%M")
+    raw = _text(value)
+    match = TIME_RE.match(raw)
+    if not match:
+        return None
+    hour, minute = match.group(0).split(":")
+    return f"{int(hour):02d}:{minute}"
+
+
+def _parse_date(value: Any, year: int) -> str | None:
+    if value is None:
+        return None
+    if isinstance(value, datetime):
+        return value.date().isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
+
+    raw = _text(value)
+    if not raw:
+        return None
+
+    for fmt in ("%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d"):
         try:
-            return datetime.strptime(s, fmt).date().isoformat()
+            return datetime.strptime(raw, fmt).date().isoformat()
         except ValueError:
-            continue
-    return None
-
-
-def _parse_time(val) -> str | None:
-    """Parse time value → 'HH:MM'."""
-    if val is None:
-        return None
-    if isinstance(val, time):
-        return val.strftime("%H:%M")
-    if isinstance(val, datetime):
-        return val.strftime("%H:%M")
-    s = str(val).strip()
-    m = re.match(r"(\d{1,2}):(\d{2})", s)
-    if m:
-        return f"{int(m.group(1)):02d}:{m.group(2)}"
-    return None
-
-
-def _clean(s) -> str:
-    """Strip and normalize a cell value to a clean string."""
-    if s is None:
-        return ""
-    return str(s).strip()
-
-
-def _is_skip_row(col0: str) -> bool:
-    return any(p.match(col0) for p in _SKIP_PATTERNS)
-
-
-# ── Step 1: Parse Excel ──────────────────────────────────────────────────────
-
-def _load_excel() -> dict[str, dict[str, list[dict]]]:
-    """Returns {codigo: {seccion: [{fecha, dia, tipo, hora_inicio, hora_fin}]}}"""
-    import openpyxl
-
-    wb   = openpyxl.load_workbook(str(XLSX_PATH))
-    ws   = wb.active
-    rows = list(ws.iter_rows(values_only=True))
-
-    # Locate header row
-    header_idx = None
-    for i, row in enumerate(rows):
-        for cell in row:
-            if cell and re.search(r"C[ÓO]D", str(cell), re.IGNORECASE):
-                header_idx = i
-                break
-        if header_idx is not None:
-            break
-
-    if header_idx is None:
-        print("[Excel] WARNING: Header row not found — Excel skipped.")
-        return {}
-
-    header = [_clean(c) for c in rows[header_idx]]
-
-    def col(patterns: list[str]) -> int:
-        for pat in patterns:
-            for idx, h in enumerate(header):
-                if re.search(pat, h, re.IGNORECASE):
-                    return idx
-        raise KeyError(f"Column not found: {patterns}")
-
-    try:
-        i_cod = col([r"C[ÓO]D"])
-        i_sec = col([r"SECC"])
-        i_fec = col([r"FECHA"])
-        i_tip = col([r"SESI[ÓO]N|TIPO|ACTIVIDAD"])
-        i_hi  = col([r"INICIO|H[\._\s]*INI"])
-        i_hf  = col([r"FIN|H[\._\s]*FIN"])
-    except KeyError as e:
-        print(f"[Excel] WARNING: {e} — Excel skipped.")
-        return {}
-
-    result: dict[str, dict[str, list[dict]]] = defaultdict(lambda: defaultdict(list))
-    total = skipped = 0
-
-    for row in rows[header_idx + 1:]:
-        codigo = _clean(row[i_cod])
-        if not re.match(r"^\d{5,7}$", codigo):
-            continue
-        seccion  = _clean(row[i_sec])
-        iso_date = _parse_excel_date(row[i_fec])
-        tipo     = _clean(row[i_tip])
-        hi       = _parse_time(row[i_hi])
-        hf       = _parse_time(row[i_hf])
-
-        if not iso_date:
-            skipped += 1
-            continue
-
-        d        = datetime.strptime(iso_date, "%Y-%m-%d").date()
-        dia      = _WEEKDAY_ES[d.weekday()]
-
-        total += 1
-        result[codigo][seccion].append({
-            "fecha":       iso_date,
-            "dia":         dia,
-            "tipo":        tipo,
-            "hora_inicio": hi or "",
-            "hora_fin":    hf or "",
-        })
-
-    # Sort by (fecha, hora_inicio) within each section
-    for codigo in result:
-        for sec in result[codigo]:
-            result[codigo][sec].sort(key=lambda s: (s["fecha"], s["hora_inicio"]))
-
-    print(f"[Excel] {total} session rows | {len(result)} cursos | {skipped} skipped")
-    return dict(result)
-
-
-# ── Step 2: Parse PDF ────────────────────────────────────────────────────────
-
-def _load_pdf() -> list[dict]:
-    """Parse all EFE courses from PDF. Returns list of course dicts."""
-    import pdfplumber
-
-    courses: list[dict] = []
-    current_efe_type   = None
-    current_prereq     = None
-    current_course     = None
-    current_section    = None   # last section letter
-
-    def new_section(letter: str, facilitador: str, cupos, session_type: str,
-                    date_or_day: str, hi: str, hf: str, detalle: str) -> dict:
-        """Build a new section dict based on session type."""
-        facilitadores = [facilitador] if facilitador else []
-        cupos_int = None
-        try:
-            cupos_int = int(str(cupos).strip()) if cupos else None
-        except (ValueError, TypeError):
             pass
 
-        if session_type in ("INICIO", "FIN"):
-            sec = {
-                "seccion":        letter,
-                "facilitadores":  facilitadores,
-                "cupos":          cupos_int,
-                "tipo_sesion":    "INICIO_FIN",
-                "fecha_inicio":   _parse_pdf_date(date_or_day) if session_type == "INICIO" else None,
-                "fecha_fin":      _parse_pdf_date(date_or_day) if session_type == "FIN" else None,
-                "detalle":        _clean_detalle(detalle),
-                "sesiones_por_dia": [],
-            }
-        elif session_type == "CLASE":
-            sec = {
-                "seccion":       letter,
-                "facilitadores": facilitadores,
-                "cupos":         cupos_int,
-                "tipo_sesion":   "CLASE",
-                "sesiones":      [],
-            }
-            if date_or_day and hi:
-                sec["sesiones"].append({
-                    "dia":         date_or_day,
-                    "hora_inicio": hi,
-                    "hora_fin":    hf,
-                })
-        else:
-            # unknown — treat as CLASE with no sessions
-            sec = {
-                "seccion":       letter,
-                "facilitadores": facilitadores,
-                "cupos":         cupos_int,
-                "tipo_sesion":   session_type or "CLASE",
-                "sesiones":      [],
-            }
-        return sec
+    match = re.match(r"^(\d{1,2})[-/ ]([A-Za-z\u00C0-\u017F]{3})$", raw)
+    if match:
+        day = int(match.group(1))
+        month = MONTH_ES.get(_norm(match.group(2))[:3])
+        if month:
+            return date(year, month, day).isoformat()
+    return None
 
-    def _clean_detalle(raw: str) -> str:
-        """Remove emoji/icon characters from detalle text."""
-        if not raw:
-            return ""
-        # Remove common emoji ranges
-        cleaned = re.sub(
-            r"[\U0001F300-\U0001F9FF\u2600-\u26FF\u2700-\u27BF✅☑📄🔗]",
-            "", raw
+
+def _weekday_for_date(iso_date: str) -> str:
+    parsed = datetime.strptime(iso_date, "%Y-%m-%d").date()
+    return WEEKDAY_ES[parsed.weekday()]
+
+
+def _parse_creditos(heading: str, default: str = "1") -> str:
+    norm = _norm(heading)
+    if "SIN CREDITO" in norm:
+        return "0"
+    if "DOS CREDIT" in norm:
+        return "2"
+    if "UN CREDIT" in norm:
+        return "1"
+    return default
+
+
+def _heading_text(value: str) -> str:
+    for line in value.splitlines():
+        if "CREDITO" in _norm(line):
+            return _text(line)
+    return _text(value)
+
+
+def _parse_course_cell(value: str) -> tuple[str, str, str | None] | None:
+    lines = [_text(line) for line in value.splitlines() if _text(line)]
+    for idx, line in enumerate(lines):
+        match = COURSE_CODE_RE.match(line)
+        if not match:
+            continue
+        name_parts = [_text(match.group(2))]
+        prereq_parts = lines[:idx]
+        for extra in lines[idx + 1 :]:
+            norm = _norm(extra)
+            if "REQUISITO" in norm or ("CREDITO" in norm and "ACUMULAD" in norm):
+                prereq_parts.append(extra)
+            else:
+                name_parts.append(extra)
+        prereq = " ".join(prereq_parts).strip() or None
+        return match.group(1), _text(" ".join(name_parts)), prereq
+    return None
+
+
+def _is_table_header(cells: list[str]) -> bool:
+    first = _norm(cells[0] if cells else "")
+    return first in {"SECC", "SECC."} or first.startswith("FACILITADOR")
+
+
+def _is_heading(cells: list[str]) -> bool:
+    non_empty = [_text(c) for c in cells if _text(c)]
+    if len(non_empty) != 1:
+        return False
+    raw = non_empty[0]
+    norm = _norm(raw)
+    if COURSE_CODE_RE.match(raw) or SECTION_RE.match(raw):
+        return False
+    if "ACUMULAD" in norm or norm.startswith("IMPORTANTE"):
+        return False
+    if "CREDITO" not in norm:
+        return False
+    return norm.startswith("EFE ") or "ARTE" in norm or "COMPETENCIAS" in norm
+
+
+def _is_prereq_row(cells: list[str]) -> bool:
+    non_empty = [_text(c) for c in cells if _text(c)]
+    if len(non_empty) != 1:
+        return False
+    norm = _norm(non_empty[0])
+    return "REQUISITO" in norm or "CREDITO" in norm and "ACUMULAD" in norm
+
+
+def _parse_session_marker(value: Any, year: int) -> tuple[str, str | None]:
+    raw = _text(value)
+    norm = _norm(raw)
+    if norm in WEEKDAY_SET:
+        return norm, None
+    iso_date = _parse_date(raw, year)
+    if iso_date:
+        return _weekday_for_date(iso_date), iso_date
+    return raw, None
+
+
+def _load_excel(xlsx_path: Path) -> dict[str, dict[str, list[dict[str, Any]]]]:
+    """Return {codigo: {seccion: [{fecha, dia, tipo, hora_inicio, hora_fin}]}}."""
+    import openpyxl
+
+    wb = openpyxl.load_workbook(str(xlsx_path), data_only=True)
+    ws = wb.active
+    rows = list(ws.iter_rows(values_only=True))
+
+    header_idx = None
+    for idx, row in enumerate(rows):
+        if any("COD" in _norm(cell) for cell in row):
+            header_idx = idx
+            break
+    if header_idx is None:
+        print("[Excel] WARNING: header row not found; Excel skipped.")
+        return {}
+
+    header = [_norm(cell) for cell in rows[header_idx]]
+
+    def col(*patterns: str) -> int:
+        for pattern in patterns:
+            regex = re.compile(pattern)
+            for idx, name in enumerate(header):
+                if regex.search(name):
+                    return idx
+        raise KeyError(patterns)
+
+    try:
+        i_cod = col(r"COD")
+        i_sec = col(r"SECC")
+        i_fecha = col(r"FECHA")
+        i_tipo = col(r"ACTIVIDAD", r"SESION", r"TIPO")
+        i_inicio = col(r"INICIO", r"H.*INI")
+        i_fin = col(r"FIN", r"H.*FIN")
+    except KeyError as exc:
+        print(f"[Excel] WARNING: missing column {exc}; Excel skipped.")
+        return {}
+
+    result: dict[str, dict[str, list[dict[str, Any]]]] = defaultdict(lambda: defaultdict(list))
+    total = skipped = 0
+    for row in rows[header_idx + 1 :]:
+        codigo = _text(row[i_cod] if i_cod < len(row) else "")
+        if not re.match(r"^\d{5,7}$", codigo):
+            continue
+        fecha = _parse_date(row[i_fecha] if i_fecha < len(row) else None, date.today().year)
+        if not fecha:
+            skipped += 1
+            continue
+        seccion = _text(row[i_sec] if i_sec < len(row) else "")
+        total += 1
+        result[codigo][seccion].append(
+            {
+                "fecha": fecha,
+                "dia": _weekday_for_date(fecha),
+                "tipo": _text(row[i_tipo] if i_tipo < len(row) else ""),
+                "hora_inicio": _parse_time(row[i_inicio] if i_inicio < len(row) else None) or "",
+                "hora_fin": _parse_time(row[i_fin] if i_fin < len(row) else None) or "",
+            }
         )
-        # Remove leftover check-box prefixes like "✔" or similar
-        cleaned = re.sub(r"\s+", " ", cleaned).strip()
-        return cleaned
 
-    with pdfplumber.open(str(PDF_PATH)) as pdf:
+    for by_section in result.values():
+        for sessions in by_section.values():
+            sessions.sort(key=lambda item: (item["fecha"], item["hora_inicio"], item["hora_fin"]))
+
+    print(f"[Excel] {total} session rows | {len(result)} cursos | {skipped} skipped")
+    return {codigo: dict(sections) for codigo, sections in result.items()}
+
+
+def _new_section(cells: list[str], year: int) -> dict[str, Any] | None:
+    seccion = _text(cells[0] if len(cells) > 0 else "")
+    facilitadores = _split_people(cells[1] if len(cells) > 1 else "")
+    marker = _text(cells[2] if len(cells) > 2 else "")
+    marker_norm = _norm(marker)
+
+    if marker_norm in {"INICIO", "FIN"}:
+        fecha = _parse_date(cells[3] if len(cells) > 3 else "", year)
+        section = {
+            "seccion": seccion,
+            "facilitadores": facilitadores,
+            "cupos": _parse_cupos(cells[5] if len(cells) > 5 else None),
+            "tipo_sesion": "INICIO_FIN",
+            "fecha_inicio": fecha if marker_norm == "INICIO" else None,
+            "fecha_fin": fecha if marker_norm == "FIN" else None,
+            "detalle": _clean_detail(cells[6] if len(cells) > 6 else ""),
+            "sesiones_por_dia": [],
+        }
+        return section
+
+    dia, fecha = _parse_session_marker(marker, year)
+    hora_inicio = _parse_time(cells[3] if len(cells) > 3 else None)
+    hora_fin = _parse_time(cells[4] if len(cells) > 4 else None)
+    section = {
+        "seccion": seccion,
+        "facilitadores": facilitadores,
+        "cupos": _parse_cupos(cells[5] if len(cells) > 5 else None),
+        "tipo_sesion": "CLASE",
+        "detalle": _clean_detail(cells[6] if len(cells) > 6 else ""),
+        "sesiones": [],
+    }
+    if dia and hora_inicio and hora_fin:
+        session = {"dia": dia, "hora_inicio": hora_inicio, "hora_fin": hora_fin}
+        if fecha:
+            session["fecha"] = fecha
+        section["sesiones"].append(session)
+    return section
+
+
+def _append_continuation(section: dict[str, Any], cells: list[str], year: int) -> None:
+    marker = _text(cells[2] if len(cells) > 2 else "")
+    marker_norm = _norm(marker)
+    if not marker:
+        return
+
+    if marker_norm == "FIN" and section.get("tipo_sesion") == "INICIO_FIN":
+        section["fecha_fin"] = _parse_date(cells[3] if len(cells) > 3 else "", year)
+        return
+    if marker_norm == "INICIO" and section.get("tipo_sesion") == "INICIO_FIN":
+        section["fecha_inicio"] = _parse_date(cells[3] if len(cells) > 3 else "", year)
+        return
+
+    if section.get("tipo_sesion") != "CLASE":
+        return
+
+    dia, fecha = _parse_session_marker(marker, year)
+    hora_inicio = _parse_time(cells[3] if len(cells) > 3 else None)
+    hora_fin = _parse_time(cells[4] if len(cells) > 4 else None)
+    if dia and hora_inicio and hora_fin:
+        session = {"dia": dia, "hora_inicio": hora_inicio, "hora_fin": hora_fin}
+        if fecha:
+            session["fecha"] = fecha
+        section.setdefault("sesiones", []).append(session)
+
+
+def _load_pdf(pdf_path: Path, cycle: str) -> list[dict[str, Any]]:
+    import pdfplumber
+
+    year = _parse_cycle_year(cycle)
+    courses: list[dict[str, Any]] = []
+    current_type = ""
+    current_creditos = "1"
+    current_prereq: str | None = None
+    current_course: dict[str, Any] | None = None
+    current_section: dict[str, Any] | None = None
+
+    with pdfplumber.open(str(pdf_path)) as pdf:
         for page in pdf.pages:
-            for tbl in page.find_tables():
-                rows = tbl.extract()
-                for row in rows:
-                    cells = [_clean(c) for c in row]
-                    col0  = cells[0]
-                    if not col0 and all(not c for c in cells):
-                        continue
-
-                    # Remove trailing empty columns
-                    while cells and not cells[-1]:
+            for table in page.find_tables():
+                for row in table.extract():
+                    cells = [_cell(value) for value in row]
+                    while cells and not _text(cells[-1]):
                         cells.pop()
-
-                    non_empty = [c for c in cells if c]
-                    joined_up = " ".join(non_empty).upper()
-
-                    # ── EFE type heading ──────────────────────────────────
-                    if _EFE_HEADING_RE.match(col0) and len(non_empty) <= 2:
-                        current_efe_type = " ".join(non_empty)
-                        current_prereq   = None
+                    if not cells or not any(_text(c) for c in cells):
                         continue
 
-                    # ── Skip header/preamble rows ─────────────────────────
-                    if _is_skip_row(col0):
+                    if _is_table_header(cells):
+                        continue
+                    if _is_heading(cells):
+                        current_type = _heading_text(cells[0])
+                        current_creditos = _parse_creditos(current_type, current_creditos)
+                        current_prereq = None
+                        current_course = None
+                        current_section = None
                         continue
 
-                    # Capture prerequisite/requirement text (large text row
-                    # that's not a course or section)
-                    if (len(col0) > 40 and len(non_empty) <= 3
-                            and not COURSE_CODE_RE.match(col0)
-                            and not SECTION_RE.match(col0)):
-                        current_prereq = col0
-                        continue
-
-                    # ── Course header ────────────────────────────────────
-                    m_course = COURSE_CODE_RE.match(col0)
-                    if m_course:
-                        # Strip any trailing newline + garbage (e.g. "\nPRE")
-                        nombre_raw = m_course.group(2).strip()
-                        nombre_clean = nombre_raw.split("\n")[0].strip()
+                    col0 = _text(cells[0])
+                    parsed_course = _parse_course_cell(cells[0])
+                    if parsed_course:
+                        codigo, nombre, inline_prereq = parsed_course
                         current_course = {
-                            "codigo":      m_course.group(1),
-                            "nombre":      nombre_clean,
-                            "tipo_efe":    current_efe_type or "",
-                            "creditos":    "1",
-                            "prerequisitos": current_prereq or None,
-                            "secciones":   [],
+                            "codigo": codigo,
+                            "nombre": nombre,
+                            "tipo_efe": current_type,
+                            "creditos": current_creditos,
+                            "prerequisitos": inline_prereq or current_prereq,
+                            "secciones": [],
                         }
                         courses.append(current_course)
+                        current_prereq = None
                         current_section = None
+                        continue
+
+                    if _is_prereq_row(cells):
+                        current_prereq = _text(cells[0])
                         continue
 
                     if current_course is None:
                         continue
 
-                    # ── Section header row ────────────────────────────────
-                    # PDF format (9 cols): [seccion, facilitador, tipo_sesion, dia_o_fecha, hi, hf, cupos, detalle, silabo]
-                    # PDF format (7 cols): [seccion, facilitador, tipo_sesion, dia_o_fecha, cupos, detalle, silabo]
-                    m_sec = SECTION_RE.match(col0)
-                    if m_sec:
-                        letter    = col0
-                        facilit   = cells[1] if len(cells) > 1 else ""
-                        ses_type  = cells[2].upper() if len(cells) > 2 else ""
-                        col3      = cells[3] if len(cells) > 3 else ""  # dia or date
-                        col4      = cells[4] if len(cells) > 4 else ""
-                        col5      = cells[5] if len(cells) > 5 else ""
-                        col6      = cells[6] if len(cells) > 6 else ""
-                        col7      = cells[7] if len(cells) > 7 else ""
-
-                        # Determine layout:
-                        # 9-col regular:  col3=dia, col4=hi, col5=hf, col6=cupos, col7=detalle
-                        # 7-col SSU:      col3=fecha, col4=cupos, col5=detalle
-                        is_regular = ses_type == "CLASE"
-                        if is_regular:
-                            dia    = col3
-                            hi     = col4
-                            hf     = col5
-                            cupos  = col6
-                            det    = col7
-                        else:
-                            # INICIO/FIN format
-                            # in 9-col: col4 might be empty, cupos in col6
-                            # in 7-col: cupos in col4
-                            if len(cells) >= 7:
-                                # 7-col layout (SSU, page 4+)
-                                cupos = col4
-                                det   = col5
-                            else:
-                                cupos = col4
-                                det   = col5
-                            dia   = col3
-                            hi    = ""
-                            hf    = ""
-
-                        sec = new_section(letter, facilit, cupos, ses_type,
-                                          dia, hi, hf, det)
-
-                        # Check if section already exists (avoid duplicate from cross-page)
+                    if SECTION_RE.match(col0):
+                        section = _new_section(cells, year)
+                        if section is None:
+                            continue
                         existing = next(
-                            (s for s in current_course["secciones"] if s["seccion"] == letter),
+                            (
+                                item
+                                for item in current_course["secciones"]
+                                if item["seccion"] == section["seccion"]
+                            ),
                             None,
                         )
-                        if existing:
-                            # Merge: update fecha_fin if FIN row
-                            if ses_type == "FIN":
-                                existing["fecha_fin"] = sec.get("fecha_fin")
-                            elif ses_type == "INICIO":
-                                existing["fecha_inicio"] = sec.get("fecha_inicio")
+                        if existing is None:
+                            current_course["secciones"].append(section)
+                            current_section = section
                         else:
-                            current_course["secciones"].append(sec)
-                            existing = sec
-
-                        current_section = letter
+                            if section.get("facilitadores"):
+                                known = set(existing.get("facilitadores", []))
+                                for person in section["facilitadores"]:
+                                    if person not in known:
+                                        existing.setdefault("facilitadores", []).append(person)
+                            if section.get("tipo_sesion") == "CLASE":
+                                existing.setdefault("sesiones", []).extend(section.get("sesiones", []))
+                            if section.get("fecha_inicio"):
+                                existing["fecha_inicio"] = section["fecha_inicio"]
+                            if section.get("fecha_fin"):
+                                existing["fecha_fin"] = section["fecha_fin"]
+                            current_section = existing
                         continue
 
-                    # ── Continuation row (col0 empty) ─────────────────────
-                    if not col0 and current_course and current_section:
-                        # Find the last section
-                        sec = next(
-                            (s for s in reversed(current_course["secciones"])
-                             if s["seccion"] == current_section),
-                            None,
-                        )
-                        if sec is None:
-                            continue
+                    if not col0 and current_section is not None:
+                        _append_continuation(current_section, cells, year)
 
-                        ses_type = cells[2].upper() if len(cells) > 2 else ""
-                        col3     = cells[3] if len(cells) > 3 else ""
-                        col4     = cells[4] if len(cells) > 4 else ""
-                        col5     = cells[5] if len(cells) > 5 else ""
-
-                        if ses_type == "CLASE" and sec.get("tipo_sesion") == "CLASE":
-                            # Additional recurring session day
-                            dia = col3
-                            hi  = col4
-                            hf  = col5
-                            if dia and hi:
-                                sec["sesiones"].append({
-                                    "dia":         dia,
-                                    "hora_inicio": hi,
-                                    "hora_fin":    hf,
-                                })
-                        elif ses_type == "FIN" and sec.get("tipo_sesion") == "INICIO_FIN":
-                            sec["fecha_fin"] = _parse_pdf_date(col3)
-                        elif ses_type == "INICIO" and sec.get("tipo_sesion") == "INICIO_FIN":
-                            sec["fecha_inicio"] = _parse_pdf_date(col3)
-
-    print(f"[PDF] {len(courses)} cursos extraídos.")
+    print(f"[PDF] {len(courses)} cursos extraidos.")
     by_type: dict[str, int] = defaultdict(int)
-    for c in courses:
-        by_type[c["tipo_efe"]] += 1
-    for t, n in by_type.items():
-        print(f"  {n:3d}  {t}")
-
+    for course in courses:
+        by_type[course["tipo_efe"]] += 1
+    for heading, count in by_type.items():
+        print(f"  {count:3d}  {heading}")
     return courses
 
 
-# ── Step 3: Merge Excel sessions into SSU courses ─────────────────────────────
-
-def _merge_excel(courses: list[dict], excel: dict[str, dict[str, list[dict]]]) -> None:
-    """Inject sesiones_por_dia from Excel into INICIO_FIN sections."""
+def _merge_excel(courses: list[dict[str, Any]], excel: dict[str, dict[str, list[dict[str, Any]]]]) -> None:
     for course in courses:
-        codigo = course["codigo"]
-        if codigo not in excel:
+        by_section = excel.get(course["codigo"])
+        if not by_section:
             continue
-        for sec in course["secciones"]:
-            if sec.get("tipo_sesion") != "INICIO_FIN":
+        for section in course.get("secciones", []):
+            if section.get("tipo_sesion") != "INICIO_FIN":
                 continue
-            seccion_key = sec["seccion"]
-            flat_sessions = excel[codigo].get(seccion_key, [])
+            flat_sessions = by_section.get(section["seccion"], [])
+            if not flat_sessions and len(by_section) == 1:
+                flat_sessions = next(iter(by_section.values()))
             if not flat_sessions:
-                # Try all sections for this course (may have section mismatch)
                 continue
-            # Group by fecha
-            by_day: dict[str, list[dict]] = defaultdict(list)
-            for s in flat_sessions:
-                by_day[s["fecha"]].append({
-                    "tipo":        s["tipo"],
-                    "hora_inicio": s["hora_inicio"],
-                    "hora_fin":    s["hora_fin"],
-                })
-            sesiones_por_dia = [
-                {
-                    "fecha":    f,
-                    "dia":      _WEEKDAY_ES[datetime.strptime(f, "%Y-%m-%d").date().weekday()],
-                    "sesiones": by_day[f],
-                }
-                for f in sorted(by_day)
+
+            grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+            for item in flat_sessions:
+                grouped[item["fecha"]].append(
+                    {
+                        "tipo": item["tipo"],
+                        "hora_inicio": item["hora_inicio"],
+                        "hora_fin": item["hora_fin"],
+                    }
+                )
+            section["sesiones_por_dia"] = [
+                {"fecha": fecha, "dia": _weekday_for_date(fecha), "sesiones": grouped[fecha]}
+                for fecha in sorted(grouped)
             ]
-            sec["sesiones_por_dia"] = sesiones_por_dia
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+def _build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Extract EFE/SSU data from PDF and Excel.")
+    parser.add_argument("--cycle", default=DEFAULT_CYCLE)
+    parser.add_argument("--pdf", type=Path, default=DEFAULT_PDF)
+    parser.add_argument("--xlsx", type=Path, default=DEFAULT_XLSX)
+    parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    parser.add_argument("--version", default="v1")
+    parser.add_argument("--fecha-version", default="07/07/2026")
+    parser.add_argument("--descripcion", default=None)
+    return parser
+
 
 def main() -> None:
-    print("=== EFE Extractor (todos los tipos) ===")
-    print(f"PDF:   {PDF_PATH.name}")
-    print(f"Excel: {XLSX_PATH.name}")
-    print(f"Out:   {OUT_PATH}")
+    args = _build_parser().parse_args()
+    descripcion = args.descripcion
+    if descripcion is None:
+        plan = "Planes Antiguos" if "antiguos" in args.pdf.name.lower() else "Planes Actuales"
+        descripcion = f"Experiencias Formativas Estudiantiles - {plan} {args.cycle}"
+
+    print("=== EFE/SSU Extractor ===")
+    print(f"PDF:   {args.pdf}")
+    print(f"Excel: {args.xlsx}")
+    print(f"Out:   {args.out}")
     print()
 
-    print("[1/3] Parsing Excel (sesiones SSU)...")
-    excel = _load_excel()
+    print("[1/3] Parsing Excel (SSU sessions)...")
+    excel = _load_excel(args.xlsx)
 
-    print()
-    print("[2/3] Parsing PDF (todos los EFEs)...")
-    courses = _load_pdf()
+    print("\n[2/3] Parsing PDF (EFE offerings)...")
+    courses = _load_pdf(args.pdf, args.cycle)
 
-    print()
-    print("[3/3] Merging Excel sessions into SSU courses...")
+    print("\n[3/3] Merging Excel SSU sessions...")
     _merge_excel(courses, excel)
 
     data = {
         "metadata": {
-            "ciclo":            CICLO,
-            "descripcion":      "Experiencias Formativas Estudiantiles — Planes Antiguos 2026-I",
+            "ciclo": args.cycle,
+            "version": args.version,
+            "fecha_version": args.fecha_version,
+            "descripcion": descripcion,
             "fecha_extraccion": date.today().isoformat(),
-            "fuente_pdf":       PDF_PATH.name,
-            "fuente_excel":     XLSX_PATH.name,
-            "total_cursos":     len(courses),
+            "fuente_pdf": args.pdf.name,
+            "fuente_excel": args.xlsx.name,
+            "total_cursos": len(courses),
         },
         "cursos": courses,
     }
 
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    with open(args.out, "w", encoding="utf-8") as output:
+        json.dump(data, output, ensure_ascii=False, indent=2)
 
-    # Stats
-    tipo_clase    = sum(
-        1 for c in courses for s in c["secciones"]
-        if s.get("tipo_sesion") == "CLASE"
+    total_sections = sum(len(course["secciones"]) for course in courses)
+    clase_sections = sum(
+        1
+        for course in courses
+        for section in course["secciones"]
+        if section.get("tipo_sesion") == "CLASE"
     )
-    tipo_ssu      = sum(
-        1 for c in courses for s in c["secciones"]
-        if s.get("tipo_sesion") == "INICIO_FIN"
+    inicio_fin_sections = total_sections - clase_sections
+    excel_days = sum(
+        len(section.get("sesiones_por_dia", []))
+        for course in courses
+        for section in course["secciones"]
     )
-    total_secciones = tipo_clase + tipo_ssu
 
-    print(f"\n[OK] {OUT_PATH.name}")
+    print(f"\n[OK] {args.out.name}")
     print(f"     Cursos:    {len(courses)}")
-    print(f"     Secciones: {total_secciones}  (CLASE={tipo_clase}, INICIO_FIN={tipo_ssu})")
-
-    # Quick preview
-    print("\n[Preview]")
-    for c in courses[:3]:
-        print(f"  {c['codigo']} - {c['nombre'][:45]}")
-        for s in c["secciones"][:2]:
-            if s.get("tipo_sesion") == "CLASE":
-                print(f"    Secc {s['seccion']} | cupos={s['cupos']} | sesiones={s.get('sesiones')}")
-            else:
-                ndias = len(s.get("sesiones_por_dia", []))
-                print(f"    Secc {s['seccion']} | {s.get('fecha_inicio')} → {s.get('fecha_fin')} | dias_excel={ndias}")
+    print(f"     Secciones: {total_sections} (CLASE={clase_sections}, INICIO_FIN={inicio_fin_sections})")
+    print(f"     Dias SSU desde Excel: {excel_days}")
 
 
 if __name__ == "__main__":

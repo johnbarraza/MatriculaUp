@@ -52,7 +52,22 @@ class DataLoader {
 
   /// Loads the bundled default EFE courses asset.
   static Future<CoursesResult?> loadDefaultEfeCourses() async {
-    return null;
+    try {
+      final contents = await rootBundle.loadString(
+        'assets/efe_courses_2026-2_v1.json',
+      );
+      final jsonData = jsonDecode(contents) as Map<String, dynamic>;
+      final coursesList = jsonData['cursos'] as List<dynamic>? ?? [];
+      final courses = coursesList.map((c) => Course.fromJson(c)).toList();
+      final label = _buildLabel(
+        jsonData['metadata'] as Map<String, dynamic>?,
+        'EFE 2026-II V1',
+      );
+      return CoursesResult(courses: courses, label: label);
+    } catch (e) {
+      debugPrint("Error loading default EFE courses: $e");
+      return null;
+    }
   }
 
   /// Loads the bundled default courses asset.
