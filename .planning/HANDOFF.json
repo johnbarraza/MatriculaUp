@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-07-08T04:46:41.255Z",
+  "phase": null,
+  "phase_name": "2026-II V1 data refresh",
+  "phase_dir": ".planning",
+  "plan": null,
+  "task": null,
+  "total_tasks": null,
+  "status": "paused",
+  "completed_tasks": [
+    {
+      "id": 1,
+      "name": "Extract regular offer 2026-II V1",
+      "status": "done",
+      "commit": "c47cc97"
+    },
+    {
+      "id": 2,
+      "name": "Add 2026-II academic calendar and default regular asset",
+      "status": "done",
+      "commit": "c47cc97"
+    },
+    {
+      "id": 3,
+      "name": "Extract EFE/SSU 2026-II V1 from planes antiguos PDF and SSU Excel",
+      "status": "done",
+      "commit": "e3bf1b8"
+    },
+    {
+      "id": 4,
+      "name": "Re-enable bundled EFE asset in Flutter and update contact form URL",
+      "status": "done",
+      "commit": "e3bf1b8"
+    },
+    {
+      "id": 5,
+      "name": "Deploy GitHub Pages build",
+      "status": "done",
+      "commit": "9b44f18"
+    }
+  ],
+  "remaining_tasks": [
+    {
+      "id": 6,
+      "name": "Optional analytics setup if user provides GA4/Plausible/Umami tracking details",
+      "status": "not_started"
+    },
+    {
+      "id": 7,
+      "name": "Optional support for switching between EFE planes antiguos and planes actuales",
+      "status": "not_started"
+    }
+  ],
+  "blockers": [],
+  "human_actions_pending": [
+    {
+      "action": "Provide analytics provider/tracking ID if visit tracking is desired",
+      "context": "GitHub Pages does not provide detailed visitor analytics. A third-party script is needed.",
+      "blocking": false
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Use EFE planes antiguos as the bundled default",
+      "rationale": "Previous app/data flow targeted Economia 2017 and older plans. The new extractor remains parameterized so planes actuales can be generated later.",
+      "phase": null
+    },
+    {
+      "decision": "Publish from temporary clones instead of the local workspace origin",
+      "rationale": "The local workspace origin points to toonight/get-shit-done-for-antigravity, while the correct repo is johnbarraza/MatriculaUp.",
+      "phase": null
+    },
+    {
+      "decision": "Do not add analytics code yet",
+      "rationale": "No tracking ID or provider choice was supplied, and adding tracking without consent/config would be brittle.",
+      "phase": null
+    }
+  ],
+  "uncommitted_files": [],
+  "next_action": "If resuming for another data update, start by checking .planning/.continue-here.md, then verify the correct GitHub remote before committing or pushing.",
+  "context_notes": "2026-II V1 regular data and EFE/SSU data are published. GitHub Pages was verified for regular and EFE JSON assets, and main.dart.js was verified to contain the new Google Forms contact URL."
+}
