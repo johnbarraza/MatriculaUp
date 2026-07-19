@@ -1,0 +1,87 @@
+name: Extract PDF and Update Courses Data
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pdfs/matricula/*/regular/*.pdf'
+  workflow_dispatch:
+    inputs:
+      pdf_path:
+        description: 'Ruta al PDF a extraer (relativa a la raiz del repo)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  extract_and_update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed PDF
+        id: detect
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PDF="${{ inputs.pdf_path }}"
+          else
+            PDF=$(git diff --name-only HEAD~1 HEAD -- 'pdfs/matricula/*/regular/*.pdf' | tail -1)
+          fi
+
+          if [ -z "$PDF" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "No se encontro PDF modificado, saltando extraccion."
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "pdf=$PDF" >> $GITHUB_OUTPUT
+            echo "Extraer: $PDF"
+          fi
+
+      - name: Setup Python
+        if: steps.detect.outputs.skip == 'false'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        if: steps.detect.outputs.skip == 'false'
+        run: pip install "pdfplumber>=0.11.8" "jsonschema>=4.20.0"
+
+      - name: Run extractor
+        if: steps.detect.outputs.skip == 'false'
+        run: |
+          python scripts/extract.py \
+            --type courses \
+            --pdf "${{ steps.detect.outputs.pdf }}" \
+            --output-dir input
+
+      - name: Copy JSON to Flutter asset
+        if: steps.detect.outputs.skip == 'false'
+        run: |
+          LATEST=$(ls -t input/courses_*.json | head -1)
+          echo "Copiando $LATEST -> matriculaup_app/assets/default_courses.json"
+          cp "$LATEST" matriculaup_app/assets/default_courses.json
+
+      - name: Commit and push
+        if: steps.detect.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add matriculaup_app/assets/default_courses.json
+          git add input/
+
+          if git diff --cached --quiet; then
+            echo "Sin cambios que commitear."
+          else
+            PDF_NAME=$(basename "${{ steps.detect.outputs.pdf }}")
+            git commit -m "data: auto-extract ${PDF_NAME} -> default_courses.json"
+            git push
+          fi
