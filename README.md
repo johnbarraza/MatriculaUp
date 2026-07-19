@@ -1,5 +1,8 @@
 # MatriculaUP - Planificador Inteligente de Horarios
 
+[![Código Abierto](https://img.shields.io/badge/Código%20Abierto-GPL--3.0-blue?logo=github)](https://github.com/johnbarraza/MatriculaUp)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 Sistema de planificación de horarios universitarios con gestión de cursos obligatorios por carrera y ciclo.
 
 ## Características Principales
