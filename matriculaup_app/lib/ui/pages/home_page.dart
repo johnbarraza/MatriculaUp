@@ -32,6 +32,16 @@ const _kResources = [
     icon: Icons.description_outlined,
     tag: 'Drive',
   ),
+  _Resource(
+    title: 'UP Blackboard Sync',
+    description:
+        'Descarga todo tu material de Blackboard (PDFs, videos, archivos) '
+        'para compartir con amigos o usar con LLMs.',
+    url:
+        'https://github.com/johnbarraza/UPBlackboardSync/releases?page=4#release-v1.0',
+    icon: Icons.download_outlined,
+    tag: 'GitHub',
+  ),
 ];
 
 class _Resource {
