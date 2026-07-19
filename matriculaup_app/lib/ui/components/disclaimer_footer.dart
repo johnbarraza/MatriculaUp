@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DisclaimerFooter extends StatelessWidget {
@@ -39,7 +38,7 @@ class DisclaimerFooter extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 6),
-          // ── Author credits ──���─────────────────────────────────────────────
+          // ── Author credits ─────────────────────────────────────────────────
           Row(
             children: [
               const Text(
@@ -64,11 +63,7 @@ class DisclaimerFooter extends StatelessWidget {
                   ),
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                    child: FaIcon(
-                      FontAwesomeIcons.linkedin,
-                      size: 16,
-                      color: Color(0xFF0A66C2),
-                    ),
+                    child: _BrandBadge(label: 'in', color: Color(0xFF0A66C2)),
                   ),
                 ),
               ),
@@ -79,17 +74,42 @@ class DisclaimerFooter extends StatelessWidget {
                   onTap: () => _open('https://johnbarraza.github.io/'),
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                    child: FaIcon(
-                      FontAwesomeIcons.github,
-                      size: 16,
-                      color: Colors.white70,
-                    ),
+                    child: _BrandBadge(label: 'GH', color: Colors.white70),
                   ),
                 ),
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _BrandBadge extends StatelessWidget {
+  final String label;
+  final Color color;
+
+  const _BrandBadge({required this.label, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 18,
+      height: 18,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(3),
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        label,
+        style: const TextStyle(
+          fontSize: 10,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          height: 1,
+        ),
       ),
     );
   }
