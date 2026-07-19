@@ -110,8 +110,34 @@ class _HomePageState extends State<HomePage> {
     final credits = state.currentCredits;
     final maxCredits = state.maxCredits;
     final hasFreeTime = state.hasTimeSlotSelection;
+    final isMobile = MediaQuery.of(context).size.width < 600;
 
     return Scaffold(
+      drawer: isMobile
+          ? Drawer(
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      color: Colors.blue.shade700,
+                      child: const Text(
+                        'Buscar cursos',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    const Expanded(child: CourseSearchList()),
+                  ],
+                ),
+              ),
+            )
+          : null,
       // ── AppBar ───────────────────────────────────────────────────────────
       appBar: AppBar(
         foregroundColor: Colors.black87,
@@ -141,41 +167,17 @@ class _HomePageState extends State<HomePage> {
         actions: [
           // Clear time slots
           if (hasFreeTime)
-            Tooltip(
-              message: 'Limpiar selección de horario',
-              child: InkWell(
-                borderRadius: BorderRadius.circular(8),
-                onTap: () => state.clearTimeSlots(),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.filter_alt,
-                        size: 16,
-                        color: Colors.greenAccent,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        'Horario Filtrado',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.greenAccent,
-                        ),
-                      ),
-                      SizedBox(width: 4),
-                      Icon(Icons.close, size: 14, color: Colors.white54),
-                    ],
-                  ),
-                ),
-              ),
+            IconButton(
+              icon: const Icon(Icons.filter_alt, color: Colors.greenAccent),
+              tooltip: 'Limpiar selección de horario',
+              onPressed: () => state.clearTimeSlots(),
             ),
           // Credit counter
           InkWell(
             borderRadius: BorderRadius.circular(8),
             onTap: () => _showCreditLimitDialog(context, state),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               child: Row(
                 children: [
                   const Icon(Icons.stars_rounded, size: 16),
@@ -187,8 +189,6 @@ class _HomePageState extends State<HomePage> {
                       color: credits >= maxCredits ? Colors.red.shade200 : null,
                     ),
                   ),
-                  const SizedBox(width: 4),
-                  const Icon(Icons.edit, size: 12),
                 ],
               ),
             ),
@@ -208,8 +208,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          // Weekly hours chip
-          if (state.selectedSections.isNotEmpty)
+          // Weekly hours chip — desktop only
+          if (!isMobile && state.selectedSections.isNotEmpty)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4),
               child: Tooltip(
@@ -230,83 +230,165 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-          // Calculadoras
-          PopupMenuButton<String>(
-            icon: const Icon(Icons.calculate_outlined),
-            tooltip: 'Calculadoras',
-            onSelected: (value) {
-              if (value == 'fi') {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const FiCalculatorPage()),
-                );
-              } else if (value == 'grade') {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const GradeCalculatorPage(),
+          if (!isMobile) ...[
+            // Calculadoras
+            PopupMenuButton<String>(
+              icon: const Icon(Icons.calculate_outlined),
+              tooltip: 'Calculadoras',
+              onSelected: (value) {
+                if (value == 'fi') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const FiCalculatorPage()),
+                  );
+                } else if (value == 'grade') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const GradeCalculatorPage(),
+                    ),
+                  );
+                }
+              },
+              itemBuilder: (_) => const [
+                PopupMenuItem(
+                  value: 'fi',
+                  child: Row(
+                    children: [
+                      Icon(Icons.leaderboard_outlined, size: 18),
+                      SizedBox(width: 10),
+                      Text('Factor de Inscripción'),
+                    ],
                   ),
-                );
-              }
-            },
-            itemBuilder: (_) => const [
-              PopupMenuItem(
-                value: 'fi',
-                child: Row(
-                  children: [
+                ),
+                PopupMenuItem(
+                  value: 'grade',
+                  child: Row(
+                    children: [
+                      Icon(Icons.quiz_outlined, size: 18),
+                      SizedBox(width: 10),
+                      Text('¿Cuánto me falta?'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            IconButton(
+              icon: const Icon(Icons.library_books_outlined),
+              tooltip: 'Materiales de la comunidad',
+              onPressed: () => _showResourcesSheet(context),
+            ),
+            IconButton(
+              icon: const Icon(Icons.bug_report_outlined),
+              tooltip: 'Reportar bug o dar feedback',
+              onPressed: () => launchUrl(
+                Uri.parse('https://forms.gle/cag87CjtGhmDLaek6'),
+                mode: LaunchMode.externalApplication,
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.coffee_outlined),
+              tooltip: 'Invítame un café ☕',
+              onPressed: () => DonationDialog.show(context),
+            ),
+            if (state.calendar != null)
+              IconButton(
+                icon: const Icon(Icons.calendar_month_outlined),
+                tooltip: 'Calendario Académico 2026-II',
+                onPressed: () => _showCalendar(context, state),
+              ),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              tooltip: 'Configuración',
+              onPressed: () => _showSettingsSheet(context, state),
+            ),
+          ] else
+            // Mobile: all secondary actions in one popup
+            PopupMenuButton<String>(
+              icon: const Icon(Icons.more_vert),
+              tooltip: 'Más opciones',
+              onSelected: (value) {
+                switch (value) {
+                  case 'fi':
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const FiCalculatorPage()));
+                  case 'grade':
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const GradeCalculatorPage()));
+                  case 'resources':
+                    _showResourcesSheet(context);
+                  case 'bug':
+                    launchUrl(Uri.parse('https://forms.gle/cag87CjtGhmDLaek6'),
+                        mode: LaunchMode.externalApplication);
+                  case 'donate':
+                    DonationDialog.show(context);
+                  case 'calendar':
+                    _showCalendar(context, state);
+                  case 'settings':
+                    _showSettingsSheet(context, state);
+                }
+              },
+              itemBuilder: (_) => [
+                const PopupMenuItem(
+                  value: 'fi',
+                  child: Row(children: [
                     Icon(Icons.leaderboard_outlined, size: 18),
                     SizedBox(width: 10),
                     Text('Factor de Inscripción'),
-                  ],
+                  ]),
                 ),
-              ),
-              PopupMenuItem(
-                value: 'grade',
-                child: Row(
-                  children: [
+                const PopupMenuItem(
+                  value: 'grade',
+                  child: Row(children: [
                     Icon(Icons.quiz_outlined, size: 18),
                     SizedBox(width: 10),
                     Text('¿Cuánto me falta?'),
-                  ],
+                  ]),
                 ),
-              ),
-            ],
-          ),
-          // Community resources
-          IconButton(
-            icon: const Icon(Icons.library_books_outlined),
-            tooltip: 'Materiales de la comunidad',
-            onPressed: () => _showResourcesSheet(context),
-          ),
-          // Feedback button
-          IconButton(
-            icon: const Icon(Icons.bug_report_outlined),
-            tooltip: 'Reportar bug o dar feedback',
-            onPressed: () => launchUrl(
-              Uri.parse('https://forms.gle/cag87CjtGhmDLaek6'),
-              mode: LaunchMode.externalApplication,
+                const PopupMenuItem(
+                  value: 'resources',
+                  child: Row(children: [
+                    Icon(Icons.library_books_outlined, size: 18),
+                    SizedBox(width: 10),
+                    Text('Materiales comunidad'),
+                  ]),
+                ),
+                if (state.calendar != null)
+                  const PopupMenuItem(
+                    value: 'calendar',
+                    child: Row(children: [
+                      Icon(Icons.calendar_month_outlined, size: 18),
+                      SizedBox(width: 10),
+                      Text('Calendario Académico'),
+                    ]),
+                  ),
+                const PopupMenuItem(
+                  value: 'donate',
+                  child: Row(children: [
+                    Icon(Icons.coffee_outlined, size: 18),
+                    SizedBox(width: 10),
+                    Text('Invítame un café ☕'),
+                  ]),
+                ),
+                const PopupMenuItem(
+                  value: 'bug',
+                  child: Row(children: [
+                    Icon(Icons.bug_report_outlined, size: 18),
+                    SizedBox(width: 10),
+                    Text('Reportar bug'),
+                  ]),
+                ),
+                const PopupMenuItem(
+                  value: 'settings',
+                  child: Row(children: [
+                    Icon(Icons.settings, size: 18),
+                    SizedBox(width: 10),
+                    Text('Configuración'),
+                  ]),
+                ),
+              ],
             ),
-          ),
-          // Donation button
-          IconButton(
-            icon: const Icon(Icons.coffee_outlined),
-            tooltip: 'Invítame un café ☕',
-            onPressed: () => DonationDialog.show(context),
-          ),
-          // Academic calendar button
-          if (state.calendar != null)
-            IconButton(
-              icon: const Icon(Icons.calendar_month_outlined),
-              tooltip: 'Calendario Académico 2026-II',
-              onPressed: () => _showCalendar(context, state),
-            ),
-          // Settings button
-          IconButton(
-            icon: const Icon(Icons.settings),
-            tooltip: 'Configuración',
-            onPressed: () => _showSettingsSheet(context, state),
-          ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 4),
         ],
       ),
 
@@ -315,7 +397,8 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: Row(
               children: [
-                // ── Left Panel ─────────────────────────────────────────────────
+                // ── Left Panel (hidden on mobile — use Drawer instead) ─────────
+                if (!isMobile)
                 Expanded(
                   flex: 3,
                   child: Container(
@@ -404,7 +487,7 @@ class _HomePageState extends State<HomePage> {
 
                 // ── Right Panel: Timetable ───────────────────────────────────
                 Expanded(
-                  flex: 7,
+                  flex: isMobile ? 1 : 7,
                   child: Container(
                     color: Colors.white,
                     child: Column(

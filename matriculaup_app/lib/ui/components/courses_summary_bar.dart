@@ -67,7 +67,9 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                   Expanded(
                     child: !hasSelections
                         ? Text(
-                            'Sin cursos seleccionados - busca en el panel izquierdo',
+                            MediaQuery.of(context).size.width < 600
+                                ? 'Sin cursos — abre el menú ☰ para buscar'
+                                : 'Sin cursos seleccionados - busca en el panel izquierdo',
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey.shade400,

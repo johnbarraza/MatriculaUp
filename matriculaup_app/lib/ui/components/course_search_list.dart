@@ -209,17 +209,20 @@ class _CourseSearchListState extends State<CourseSearchList> {
           ),
 
         // ── "Ocultar Cruces" toggle ──────────────────────────────────────
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: SwitchListTile(
-            dense: true,
-            title: const Text(
-              'Ocultar cursos con cruce',
-              style: TextStyle(fontSize: 13),
+        Material(
+          color: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: SwitchListTile(
+              dense: true,
+              title: const Text(
+                'Ocultar cursos con cruce',
+                style: TextStyle(fontSize: 13),
+              ),
+              secondary: const Icon(Icons.filter_alt_outlined, size: 18),
+              value: _hideConflicts,
+              onChanged: (v) => setState(() => _hideConflicts = v),
             ),
-            secondary: const Icon(Icons.filter_alt_outlined, size: 18),
-            value: _hideConflicts,
-            onChanged: (v) => setState(() => _hideConflicts = v),
           ),
         ),
 
@@ -398,12 +401,14 @@ class _CourseSearchListState extends State<CourseSearchList> {
                                   : section.docentes.first);
                           final jpsStr = section.jps.join(', ');
 
-                          return ListTile(
-                            tileColor: hasConflict
-                                ? Colors.red.shade50
-                                : (hasOnlyZeroCupos
-                                      ? Colors.orange.shade50
-                                      : null),
+                          final tileColor = hasConflict
+                              ? Colors.red.shade50
+                              : (hasOnlyZeroCupos
+                                    ? Colors.orange.shade50
+                                    : null);
+                          return Material(
+                            color: tileColor ?? Colors.transparent,
+                            child: ListTile(
                             title: Text(
                               'Seccion ${section.seccion} | Cupos: $cuposLabel${hasOnlyZeroCupos ? ' | SIN CUPO' : ''}',
                               style: TextStyle(
@@ -548,6 +553,7 @@ class _CourseSearchListState extends State<CourseSearchList> {
                                           : (hasOnlyZeroCupos ? 'Sin cupo' : 'Agregar')),
                               ),
                             ),
+                          ),
                           );
                         }).toList(),
                       ),
