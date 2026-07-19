@@ -1,4 +1,6 @@
 // matriculaup_app/lib/ui/pages/home_page.dart
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -801,16 +803,7 @@ class _HomePageState extends State<HomePage> {
                 );
                 if (confirm == true && context.mounted) {
                   await context.read<ScheduleState>().clearSession();
-                  // Reload the page to apply fresh state
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                          'Sesión eliminada. Reinicia la app para empezar desde cero.',
-                        ),
-                      ),
-                    );
-                  }
+                  html.window.location.reload();
                 }
               },
             ),
