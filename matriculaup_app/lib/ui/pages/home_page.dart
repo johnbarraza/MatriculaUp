@@ -1,9 +1,6 @@
 // matriculaup_app/lib/ui/pages/home_page.dart
 import 'dart:js_interop';
 import 'dart:ui' as ui;
-
-@JS('window.location.reload')
-external void _reloadPage();
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +17,9 @@ import 'package:matriculaup_app/ui/pages/fi_calculator_page.dart';
 import 'package:matriculaup_app/ui/pages/grade_calculator_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../utils/ics_exporter.dart';
+
+@JS('window.location.reload')
+external void _reloadPage();
 
 // ── Community resources ───────────────────────────────────────────────────────
 // To add a new resource, just append an entry to this list.
