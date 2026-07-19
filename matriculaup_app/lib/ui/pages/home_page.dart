@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/data_loader.dart';
 import '../../store/schedule_state.dart';
 import 'package:matriculaup_app/ui/components/course_search_list.dart';
@@ -70,6 +71,7 @@ class _HomePageState extends State<HomePage> {
     final result = await DataLoader.loadDefaultCourses();
     if (result != null && mounted) {
       state.setCourses(result.courses, label: result.label);
+      _checkAndAnnounceNewData(result.label);
     }
 
     final efeResult = await DataLoader.loadDefaultEfeCourses();
@@ -479,6 +481,42 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  // ── New data announcement ─────────────────────────────────────────────────
+  Future<void> _checkAndAnnounceNewData(String currentLabel) async {
+    final prefs = await SharedPreferences.getInstance();
+    const key = 'last_data_label';
+    final lastSeen = prefs.getString(key);
+    if (lastSeen == currentLabel || !mounted) return;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!mounted) return;
+      await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (ctx) => AlertDialog(
+          title: const Row(
+            children: [
+              Icon(Icons.new_releases_outlined, color: Colors.blue),
+              SizedBox(width: 8),
+              Text('Datos actualizados'),
+            ],
+          ),
+          content: Text(
+            'La app ahora usa:\n\n$currentLabel\n\n'
+            'Los horarios reflejan la oferta académica más reciente.',
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('Entendido'),
+            ),
+          ],
+        ),
+      );
+      await prefs.setString(key, currentLabel);
+    });
   }
 
   // ── Academic Calendar ─────────────────────────────────────────────────────

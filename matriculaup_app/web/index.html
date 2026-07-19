@@ -52,5 +52,29 @@
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
   <script src="flutter_bootstrap.js" async></script>
+
+  <script>
+    // Force service worker to check for updates on every load and auto-reload
+    // when a new version is ready — fixes stale cache after deploys.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.ready.then(function (reg) {
+          reg.update();
+          reg.addEventListener('updatefound', function () {
+            var sw = reg.installing;
+            sw.addEventListener('statechange', function () {
+              if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+                sw.postMessage('skipWaiting');
+              }
+            });
+          });
+        });
+        var reloading = false;
+        navigator.serviceWorker.addEventListener('controllerchange', function () {
+          if (!reloading) { reloading = true; window.location.reload(); }
+        });
+      });
+    }
+  </script>
 </body>
 </html>
