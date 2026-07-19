@@ -40,6 +40,7 @@ dependencies:
   screenshot: ^3.0.0
   url_launcher: ^6.3.1
   shared_preferences: ^2.5.4
+  font_awesome_flutter: ^10.8.0
 
 dev_dependencies:
   flutter_test:

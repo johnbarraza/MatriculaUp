@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-/// Thin bar shown at the bottom of the main screen.
-/// Contains the legal disclaimer and author credits.
 class DisclaimerFooter extends StatelessWidget {
   const DisclaimerFooter({super.key});
 
@@ -14,46 +13,81 @@ class DisclaimerFooter extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: const Color(0xFF1A1A2E),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      child: Row(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.info_outline, size: 13, color: Colors.white54),
-          const SizedBox(width: 6),
-          const Expanded(
-            child: Text(
-              'MatriculaUp no se responsabiliza por errores en cursos con formato inusual, '
-              'datos incorrectos en el JSON fuente, ni por cruces de horario no detectados. '
-              'Verifica siempre tu matrícula en el sistema oficial de la universidad.',
-              style: TextStyle(fontSize: 10, color: Colors.white54, height: 1.4),
-            ),
-          ),
-          const SizedBox(width: 12),
-          const Text(
-            'Hecho por John Barraza',
-            style: TextStyle(fontSize: 10, color: Colors.white38),
-          ),
-          const SizedBox(width: 4),
-          Tooltip(
-            message: 'LinkedIn',
-            child: InkWell(
-              borderRadius: BorderRadius.circular(4),
-              onTap: () => _open('https://www.linkedin.com/in/john-barraza-ratachi/'),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                child: Icon(Icons.work_outline, size: 14, color: Colors.white38),
+          // ── Disclaimer ────────────────────────────────────────────────────
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(Icons.info_outline, size: 13, color: Colors.white60),
+              const SizedBox(width: 6),
+              const Expanded(
+                child: Text(
+                  'MatriculaUp no se responsabiliza por errores en cursos con formato inusual, '
+                  'datos incorrectos en el JSON fuente, ni por cruces de horario no detectados. '
+                  'Verifica siempre tu matrícula en el sistema oficial de la universidad.',
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: Colors.white70,
+                    height: 1.4,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-          Tooltip(
-            message: 'Portfolio',
-            child: InkWell(
-              borderRadius: BorderRadius.circular(4),
-              onTap: () => _open('https://johnbarraza.github.io/'),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                child: Icon(Icons.code, size: 14, color: Colors.white38),
+          const SizedBox(height: 6),
+          // ── Author credits ──���─────────────────────────────────────────────
+          Row(
+            children: [
+              const Text(
+                'Hecho por ',
+                style: TextStyle(fontSize: 12, color: Colors.white60),
               ),
-            ),
+              const Text(
+                'John Barraza',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Tooltip(
+                message: 'LinkedIn',
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(4),
+                  onTap: () => _open(
+                    'https://www.linkedin.com/in/john-barraza-ratachi/',
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    child: FaIcon(
+                      FontAwesomeIcons.linkedin,
+                      size: 16,
+                      color: Color(0xFF0A66C2),
+                    ),
+                  ),
+                ),
+              ),
+              Tooltip(
+                message: 'Portfolio',
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(4),
+                  onTap: () => _open('https://johnbarraza.github.io/'),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    child: FaIcon(
+                      FontAwesomeIcons.github,
+                      size: 16,
+                      color: Colors.white70,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
