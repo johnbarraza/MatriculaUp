@@ -1,7 +1,9 @@
 // matriculaup_app/lib/ui/pages/home_page.dart
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
+import 'dart:js_interop';
 import 'dart:ui' as ui;
+
+@JS('window.location.reload')
+external void _reloadPage();
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -803,7 +805,7 @@ class _HomePageState extends State<HomePage> {
                 );
                 if (confirm == true && context.mounted) {
                   await context.read<ScheduleState>().clearSession();
-                  html.window.location.reload();
+                  _reloadPage();
                 }
               },
             ),
