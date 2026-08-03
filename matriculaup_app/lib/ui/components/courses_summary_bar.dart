@@ -194,10 +194,12 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
   }
 
   Widget _chip(String label, Color color) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final chipColor = isDark ? Color.lerp(color, Colors.white, 0.65)! : color;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
+        color: chipColor.withValues(alpha: isDark ? 0.18 : 0.12),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
@@ -205,7 +207,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
         style: TextStyle(
           fontSize: 11,
           fontWeight: FontWeight.w600,
-          color: color,
+          color: chipColor,
         ),
       ),
     );
@@ -213,275 +215,282 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
 
   Widget _buildTable(ScheduleState state, List<CourseSelection> selections) {
     return LayoutBuilder(
-      builder: (context, constraints) => ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 190),
-        child: SingleChildScrollView(
+      builder: (context, constraints) {
+        final colorScheme = Theme.of(context).colorScheme;
+        return ConstrainedBox(
+          constraints: const BoxConstraints(maxHeight: 190),
           child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: ConstrainedBox(
-              // Ensure scroll area is at least as wide as the panel so that
-              // Center can actually push the DataTable to the middle.
-              constraints: BoxConstraints(minWidth: constraints.maxWidth),
-              child: Center(
-                child: DataTable(
-                  headingRowHeight: 24,
-                  dataRowMinHeight: 34,
-                  dataRowMaxHeight: 34,
-                  columnSpacing: 12,
-                  horizontalMargin: 12,
-                  dividerThickness: 0.5,
-                  headingRowColor: WidgetStateProperty.all(Colors.grey.shade50),
-                  columns: [
-                    DataColumn(
-                      label: SizedBox(
-                        width: 12,
-                        child: Text(
-                          '',
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: ConstrainedBox(
+                // Ensure scroll area is at least as wide as the panel so that
+                // Center can actually push the DataTable to the middle.
+                constraints: BoxConstraints(minWidth: constraints.maxWidth),
+                child: Center(
+                  child: DataTable(
+                    headingRowHeight: 24,
+                    dataRowMinHeight: 34,
+                    dataRowMaxHeight: 34,
+                    columnSpacing: 12,
+                    horizontalMargin: 12,
+                    dividerThickness: 0.5,
+                    headingRowColor: WidgetStateProperty.all(
+                      colorScheme.surfaceContainerHighest,
+                    ),
+                    columns: [
+                      DataColumn(
+                        label: SizedBox(
+                          width: 12,
+                          child: Text(
+                            '',
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ),
+                      ),
+                      DataColumn(
+                        label: Text(
+                          'CURSO',
                           style: TextStyle(
                             fontSize: 10,
-                            color: Colors.grey.shade500,
+                            fontWeight: FontWeight.w700,
+                            color: colorScheme.onSurfaceVariant,
+                            letterSpacing: 0.5,
                           ),
                         ),
                       ),
-                    ),
-                    DataColumn(
-                      label: Text(
-                        'CURSO',
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.grey.shade600,
-                          letterSpacing: 0.5,
+                      DataColumn(
+                        label: Text(
+                          'SEC',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                            color: colorScheme.onSurfaceVariant,
+                            letterSpacing: 0.5,
+                          ),
                         ),
                       ),
-                    ),
-                    DataColumn(
-                      label: Text(
-                        'SEC',
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.grey.shade600,
-                          letterSpacing: 0.5,
+                      DataColumn(
+                        label: Text(
+                          'DOCENTE',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                            color: colorScheme.onSurfaceVariant,
+                            letterSpacing: 0.5,
+                          ),
                         ),
                       ),
-                    ),
-                    DataColumn(
-                      label: Text(
-                        'DOCENTE',
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.grey.shade600,
-                          letterSpacing: 0.5,
+                      DataColumn(
+                        numeric: true,
+                        label: Text(
+                          'CR',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                            color: colorScheme.onSurfaceVariant,
+                            letterSpacing: 0.5,
+                          ),
                         ),
                       ),
-                    ),
-                    DataColumn(
-                      numeric: true,
-                      label: Text(
-                        'CR',
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.grey.shade600,
-                          letterSpacing: 0.5,
+                      DataColumn(
+                        numeric: true,
+                        label: Text(
+                          'CUPOS',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                            color: colorScheme.onSurfaceVariant,
+                            letterSpacing: 0.5,
+                          ),
                         ),
                       ),
-                    ),
-                    DataColumn(
-                      numeric: true,
-                      label: Text(
-                        'CUPOS',
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.grey.shade600,
-                          letterSpacing: 0.5,
-                        ),
-                      ),
-                    ),
-                    const DataColumn(label: SizedBox.shrink()),
-                  ],
-                  rows: selections.map((sel) {
-                    final isHidden = state.isCourseHidden(sel.course.codigo);
-                    final isLocked = state.isCourseLocked(sel.course.codigo);
-                    final courseColor = _courseColor(sel.course.codigo);
+                      const DataColumn(label: SizedBox.shrink()),
+                    ],
+                    rows: selections.map((sel) {
+                      final isHidden = state.isCourseHidden(sel.course.codigo);
+                      final isLocked = state.isCourseLocked(sel.course.codigo);
+                      final courseColor = _courseColor(sel.course.codigo);
 
-                    return DataRow(
-                      color: WidgetStateProperty.resolveWith((states) {
-                        if (isHidden) return Colors.grey.shade50;
-                        if (states.contains(WidgetState.hovered)) {
-                          return Colors.blue.shade50.withValues(alpha: 0.5);
-                        }
-                        return null;
-                      }),
-                      cells: [
-                        // Color dot
-                        DataCell(
-                          Center(
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 200),
-                              width: 12,
-                              height: 12,
+                      return DataRow(
+                        color: WidgetStateProperty.resolveWith((states) {
+                          if (isHidden) {
+                            return colorScheme.surfaceContainerHighest;
+                          }
+                          if (states.contains(WidgetState.hovered)) {
+                            return Colors.blue.shade50.withValues(alpha: 0.5);
+                          }
+                          return null;
+                        }),
+                        cells: [
+                          // Color dot
+                          DataCell(
+                            Center(
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 200),
+                                width: 12,
+                                height: 12,
+                                decoration: BoxDecoration(
+                                  color: isHidden
+                                      ? Colors.grey.shade300
+                                      : courseColor,
+                                  borderRadius: BorderRadius.circular(3),
+                                ),
+                              ),
+                            ),
+                          ),
+                          // Course name
+                          DataCell(
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 210),
+                              child: Text(
+                                sel.course.nombre,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  color: isHidden
+                                      ? Colors.grey.shade400
+                                      : colorScheme.onSurface,
+                                  decoration: isHidden
+                                      ? TextDecoration.lineThrough
+                                      : null,
+                                  decorationColor: Colors.grey.shade400,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                          // Section
+                          DataCell(
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 6,
+                                vertical: 2,
+                              ),
                               decoration: BoxDecoration(
                                 color: isHidden
-                                    ? Colors.grey.shade300
-                                    : courseColor,
-                                borderRadius: BorderRadius.circular(3),
+                                    ? Colors.grey.shade100
+                                    : courseColor.withValues(alpha: 0.15),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Text(
+                                sel.section.seccion,
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600,
+                                  color: isHidden
+                                      ? Colors.grey.shade400
+                                      : courseColor
+                                            .withValues(alpha: 1.0)
+                                            .withRed(
+                                              (courseColor.r * 0.7).round(),
+                                            )
+                                            .withGreen(
+                                              (courseColor.g * 0.7).round(),
+                                            )
+                                            .withBlue(
+                                              (courseColor.b * 0.7).round(),
+                                            ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        // Course name
-                        DataCell(
-                          ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 210),
-                            child: Text(
-                              sel.course.nombre,
+                          // Professor
+                          DataCell(
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 140),
+                              child: Text(
+                                _formatInstructorsSummary(sel.section),
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: isHidden
+                                      ? Colors.grey.shade400
+                                      : colorScheme.onSurfaceVariant,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                          // Credits
+                          DataCell(
+                            Text(
+                              sel.course.creditos,
                               style: TextStyle(
                                 fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: isHidden
-                                    ? Colors.grey.shade400
-                                    : Colors.grey.shade800,
-                                decoration: isHidden
-                                    ? TextDecoration.lineThrough
-                                    : null,
-                                decorationColor: Colors.grey.shade400,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ),
-                        // Section
-                        DataCell(
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 6,
-                              vertical: 2,
-                            ),
-                            decoration: BoxDecoration(
-                              color: isHidden
-                                  ? Colors.grey.shade100
-                                  : courseColor.withValues(alpha: 0.15),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: Text(
-                              sel.section.seccion,
-                              style: TextStyle(
-                                fontSize: 11,
                                 fontWeight: FontWeight.w600,
                                 color: isHidden
                                     ? Colors.grey.shade400
-                                    : courseColor
-                                          .withValues(alpha: 1.0)
-                                          .withRed(
-                                            (courseColor.r * 0.7).round(),
-                                          )
-                                          .withGreen(
-                                            (courseColor.g * 0.7).round(),
-                                          )
-                                          .withBlue(
-                                            (courseColor.b * 0.7).round(),
-                                          ),
+                                    : colorScheme.onSurface,
                               ),
                             ),
                           ),
-                        ),
-                        // Professor
-                        DataCell(
-                          ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 140),
-                            child: Text(
-                              _formatInstructorsSummary(sel.section),
+                          // Cupos
+                          DataCell(
+                            Text(
+                              _formatSectionCupos(sel.section),
                               style: TextStyle(
-                                fontSize: 11,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
                                 color: isHidden
                                     ? Colors.grey.shade400
-                                    : Colors.grey.shade600,
+                                    : colorScheme.onSurface,
                               ),
-                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                        ),
-                        // Credits
-                        DataCell(
-                          Text(
-                            sel.course.creditos,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: isHidden
-                                  ? Colors.grey.shade400
-                                  : Colors.grey.shade700,
-                            ),
-                          ),
-                        ),
-                        // Cupos
-                        DataCell(
-                          Text(
-                            _formatSectionCupos(sel.section),
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: isHidden
-                                  ? Colors.grey.shade400
-                                  : Colors.grey.shade700,
-                            ),
-                          ),
-                        ),
-                        // Action buttons
-                        DataCell(
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              _actionButton(
-                                icon: isLocked ? Icons.lock : Icons.lock_open,
-                                color: isLocked
-                                    ? Colors.amber.shade700
-                                    : Colors.blueGrey.shade500,
-                                tooltip: isLocked
-                                    ? 'Curso obligatorio para explorador'
-                                    : 'Marcar como obligatorio',
-                                onPressed: () =>
-                                    state.toggleCourseLock(sel.course.codigo),
-                              ),
-                              _actionButton(
-                                icon: isHidden
-                                    ? Icons.visibility_off_outlined
-                                    : Icons.visibility_outlined,
-                                color: isHidden
-                                    ? Colors.grey.shade400
-                                    : Colors.blue.shade600,
-                                tooltip: isHidden
-                                    ? 'Mostrar en horario'
-                                    : 'Ocultar del horario',
-                                onPressed: () => state.toggleCourseVisibility(
-                                  sel.course.codigo,
+                          // Action buttons
+                          DataCell(
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                _actionButton(
+                                  icon: isLocked ? Icons.lock : Icons.lock_open,
+                                  color: isLocked
+                                      ? Colors.amber.shade700
+                                      : Colors.blueGrey.shade500,
+                                  tooltip: isLocked
+                                      ? 'Curso obligatorio para explorador'
+                                      : 'Marcar como obligatorio',
+                                  onPressed: () =>
+                                      state.toggleCourseLock(sel.course.codigo),
                                 ),
-                              ),
-                              _actionButton(
-                                icon: Icons.close_rounded,
-                                color: Colors.red.shade400,
-                                tooltip: 'Quitar curso',
-                                onPressed: () => state.removeSection(
-                                  sel.course,
-                                  sel.section,
+                                _actionButton(
+                                  icon: isHidden
+                                      ? Icons.visibility_off_outlined
+                                      : Icons.visibility_outlined,
+                                  color: isHidden
+                                      ? Colors.grey.shade400
+                                      : Colors.blue.shade600,
+                                  tooltip: isHidden
+                                      ? 'Mostrar en horario'
+                                      : 'Ocultar del horario',
+                                  onPressed: () => state.toggleCourseVisibility(
+                                    sel.course.codigo,
+                                  ),
                                 ),
-                              ),
-                            ],
+                                _actionButton(
+                                  icon: Icons.close_rounded,
+                                  color: Colors.red.shade400,
+                                  tooltip: 'Quitar curso',
+                                  onPressed: () => state.removeSection(
+                                    sel.course,
+                                    sel.section,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    );
-                  }).toList(),
-                ),
-              ), // Center
-            ), // ConstrainedBox minWidth
-          ), // horizontal scroll
-        ), // vertical scroll
-      ), // ConstrainedBox maxHeight
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                ), // Center
+              ), // ConstrainedBox minWidth
+            ), // horizontal scroll
+          ), // vertical scroll
+        ); // ConstrainedBox maxHeight
+      },
     ); // LayoutBuilder
   }
 

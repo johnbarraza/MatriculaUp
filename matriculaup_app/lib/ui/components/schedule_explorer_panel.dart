@@ -457,17 +457,18 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
       }
     }
 
-    const windowHours = 75.0;
+    // 7:30-22:30 across all seven days, including Sunday.
+    const windowHours = 90.0;
     final freeHours = (windowHours - weeklyHours)
         .clamp(0, windowHours)
         .toDouble();
-    const summaryDays = {'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'};
+    const summaryDays = {'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB', 'DOM'};
     final classDaysCount = byDay.keys
         .map((d) => d.toUpperCase().trim())
         .where(summaryDays.contains)
         .toSet()
         .length;
-    final freeDaysCount = (6 - classDaysCount).clamp(0, 6).toInt();
+    final freeDaysCount = (7 - classDaysCount).clamp(0, 7).toInt();
 
     return _ScheduleOption(
       selections: copy,

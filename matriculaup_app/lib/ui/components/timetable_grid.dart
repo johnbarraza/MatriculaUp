@@ -16,7 +16,15 @@ class TimetableGrid extends StatefulWidget {
   final double minHourHeight = 30.0;
   final double maxHourHeight = 56.0;
 
-  final List<String> days = const ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'];
+  final List<String> days = const [
+    'LUN',
+    'MAR',
+    'MIE',
+    'JUE',
+    'VIE',
+    'SAB',
+    'DOM',
+  ];
 
   int get gridStartMins => startHour * 60 + startMinute;
 
@@ -112,7 +120,11 @@ class _TimetableGridState extends State<TimetableGrid> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 10,
-                                    color: colorScheme.onSurfaceVariant,
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? colorScheme.onSurface
+                                        : colorScheme.onSurfaceVariant,
                                   ),
                                 ),
                               );

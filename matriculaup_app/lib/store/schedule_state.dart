@@ -250,9 +250,9 @@ class ScheduleState extends ChangeNotifier {
     return totalGapMins / 60.0;
   }
 
-  /// Number of days (LUN-SAB) that have at least one regular session.
+  /// Number of days (LUN-DOM) that have at least one regular session.
   int get classDaysCount {
-    const summaryDays = {'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'};
+    const summaryDays = {'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB', 'DOM'};
     final daysWithClasses = <String>{};
 
     for (final sel in selectedSections) {
@@ -267,8 +267,8 @@ class ScheduleState extends ChangeNotifier {
     return daysWithClasses.length;
   }
 
-  /// Number of free days (LUN-SAB) without regular sessions.
-  int get freeDaysCount => 6 - classDaysCount;
+  /// Number of free days (LUN-DOM) without regular sessions.
+  int get freeDaysCount => 7 - classDaysCount;
 
   void setMaxCredits(int limit) {
     maxCredits = limit;
