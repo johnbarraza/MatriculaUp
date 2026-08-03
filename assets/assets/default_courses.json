@@ -1,9 +1,9 @@
 {
   "metadata": {
     "ciclo": "2026-2",
-    "fecha_extraccion": "2026-07-18",
-    "version": "v2",
-    "fecha_version": "15/07/2026"
+    "fecha_extraccion": "2026-08-03",
+    "version": "v3",
+    "fecha_version": "22/07/2026"
   },
   "cursos": [
     {
@@ -27,7 +27,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "J-503",
-              "cupos": 30
+              "cupos": 35
             },
             {
               "tipo": "CLASE",
@@ -35,7 +35,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "J-503",
-              "cupos": 30
+              "cupos": 35
             },
             {
               "tipo": "PARCIAL",
@@ -43,7 +43,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 35
             },
             {
               "tipo": "FINAL",
@@ -51,7 +51,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 35
             }
           ]
         }
@@ -1475,7 +1475,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "J-503",
-              "cupos": 30
+              "cupos": 35
             },
             {
               "tipo": "CLASE",
@@ -1483,7 +1483,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "J-503",
-              "cupos": 30
+              "cupos": 35
             }
           ]
         },
@@ -1768,23 +1768,32 @@
       "nombre": "Fundamentos Filosóficos de los Derechos Humanos",
       "creditos": "4.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
+            "op": "AND",
             "items": [
               {
-                "code": "180277",
-                "name": "Introducción al Derecho"
+                "items": [
+                  {
+                    "code": "180277",
+                    "name": "Introducción al Derecho"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "120273",
+                    "name": "Filosofia Política"
+                  }
+                ]
               }
             ]
           },
           {
-            "items": [
-              {
-                "code": "120273",
-                "name": "Filosofia Política"
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -2702,7 +2711,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "J-503",
-              "cupos": 30
+              "cupos": 32
             },
             {
               "tipo": "CLASE",
@@ -2710,7 +2719,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "J-503",
-              "cupos": 30
+              "cupos": 32
             },
             {
               "tipo": "PARCIAL",
@@ -2718,7 +2727,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 32
             },
             {
               "tipo": "FINAL",
@@ -2726,7 +2735,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 32
             }
           ]
         }
@@ -2811,7 +2820,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "H-502",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -2819,7 +2828,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "H-502",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "PARCIAL",
@@ -2827,7 +2836,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "FINAL",
@@ -2835,7 +2844,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             }
           ]
         },
@@ -2854,7 +2863,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-508",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -2862,7 +2871,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-508",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "PARCIAL",
@@ -2870,7 +2879,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "FINAL",
@@ -2878,7 +2887,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             }
           ]
         },
@@ -2897,7 +2906,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-506",
-              "cupos": 30
+              "cupos": 13
             },
             {
               "tipo": "CLASE",
@@ -2905,7 +2914,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-506",
-              "cupos": 30
+              "cupos": 13
             },
             {
               "tipo": "PARCIAL",
@@ -2913,7 +2922,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 13
             },
             {
               "tipo": "FINAL",
@@ -2921,7 +2930,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 13
             }
           ]
         },
@@ -2940,7 +2949,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-102",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "CLASE",
@@ -2948,7 +2957,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-102",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "PARCIAL",
@@ -2956,7 +2965,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "FINAL",
@@ -2964,7 +2973,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 29
             }
           ]
         },
@@ -3542,7 +3551,7 @@
               "hora_inicio": "17:30",
               "hora_fin": "19:20",
               "aula": "A-502",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "CLASE",
@@ -3550,7 +3559,7 @@
               "hora_inicio": "17:30",
               "hora_fin": "19:20",
               "aula": "A-502",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "PARCIAL",
@@ -3558,7 +3567,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "FINAL",
@@ -3566,7 +3575,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             }
           ]
         }
@@ -4317,49 +4326,6 @@
           ]
         },
         {
-          "seccion": "R",
-          "docentes": [
-            "CARRIÓN CARAVEDO, Úrsula"
-          ],
-          "docente_principal": "CARRIÓN CARAVEDO, Úrsula",
-          "jps": [],
-          "observaciones": "",
-          "sesiones": [
-            {
-              "tipo": "CLASE",
-              "dia": "JUE",
-              "hora_inicio": "15:30",
-              "hora_fin": "17:20",
-              "aula": "H-502",
-              "cupos": 30
-            },
-            {
-              "tipo": "CLASE",
-              "dia": "MAR",
-              "hora_inicio": "15:30",
-              "hora_fin": "17:20",
-              "aula": "H-502",
-              "cupos": 30
-            },
-            {
-              "tipo": "PARCIAL",
-              "dia": "MIE",
-              "hora_inicio": "10:30",
-              "hora_fin": "12:30",
-              "aula": "A-PEND",
-              "cupos": 30
-            },
-            {
-              "tipo": "FINAL",
-              "dia": "MIE",
-              "hora_inicio": "10:30",
-              "hora_fin": "12:30",
-              "aula": "A-PEND",
-              "cupos": 30
-            }
-          ]
-        },
-        {
           "seccion": "S",
           "docentes": [
             "FERRUCCI MONTOYA, Gabriela Ida"
@@ -4548,14 +4514,7 @@
       "codigo": "120131",
       "nombre": "Literatura y Sociedad en los Siglos de Oro Español e Hispanoamericano",
       "creditos": "4.00",
-      "prerequisitos": {
-        "items": [
-          {
-            "code": "124020",
-            "name": "Literatura"
-          }
-        ]
-      },
+      "prerequisitos": null,
       "secciones": [
         {
           "seccion": "A",
@@ -4623,22 +4582,6 @@
               "hora_fin": "19:20",
               "aula": "X -202",
               "cupos": 30
-            },
-            {
-              "tipo": "PARCIAL",
-              "dia": "LUN",
-              "hora_inicio": "07:30",
-              "hora_fin": "09:30",
-              "aula": "A-PEND",
-              "cupos": 30
-            },
-            {
-              "tipo": "FINAL",
-              "dia": "LUN",
-              "hora_inicio": "07:30",
-              "hora_fin": "09:30",
-              "aula": "A-PEND",
-              "cupos": 30
             }
           ]
         }
@@ -4665,7 +4608,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-501",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "CLASE",
@@ -4673,7 +4616,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-501",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "PARCIAL",
@@ -4681,7 +4624,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "FINAL",
@@ -4689,7 +4632,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             }
           ]
         },
@@ -4708,7 +4651,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-502",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "CLASE",
@@ -4716,7 +4659,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-502",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "PARCIAL",
@@ -4724,7 +4667,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "FINAL",
@@ -4732,7 +4675,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             }
           ]
         },
@@ -4794,7 +4737,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "B-505",
-              "cupos": 30
+              "cupos": 25
             },
             {
               "tipo": "CLASE",
@@ -4802,7 +4745,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "B-505",
-              "cupos": 30
+              "cupos": 25
             },
             {
               "tipo": "PARCIAL",
@@ -4810,7 +4753,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 25
             },
             {
               "tipo": "FINAL",
@@ -4818,7 +4761,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 25
             }
           ]
         },
@@ -4837,7 +4780,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-506",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "CLASE",
@@ -4845,7 +4788,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-506",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "PARCIAL",
@@ -4853,7 +4796,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "FINAL",
@@ -4861,7 +4804,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             }
           ]
         },
@@ -4966,7 +4909,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-503",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -4974,7 +4917,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-503",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "PARCIAL",
@@ -4982,7 +4925,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "FINAL",
@@ -4990,7 +4933,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             }
           ]
         },
@@ -5009,7 +4952,7 @@
               "hora_inicio": "17:30",
               "hora_fin": "19:20",
               "aula": "A-201",
-              "cupos": 30
+              "cupos": 11
             },
             {
               "tipo": "CLASE",
@@ -5017,7 +4960,7 @@
               "hora_inicio": "17:30",
               "hora_fin": "19:20",
               "aula": "A-201",
-              "cupos": 30
+              "cupos": 11
             },
             {
               "tipo": "PARCIAL",
@@ -5025,7 +4968,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 11
             },
             {
               "tipo": "FINAL",
@@ -5033,7 +4976,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 11
             }
           ]
         }
@@ -5611,10 +5554,19 @@
       "nombre": "Taller de Humanidades Digitales 1",
       "creditos": "4.00",
       "prerequisitos": {
+        "op": "OR",
         "items": [
           {
-            "code": "150140",
-            "name": "Investigación Académica"
+            "items": [
+              {
+                "code": "150140",
+                "name": "Investigación Académica"
+              }
+            ]
+          },
+          {
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -6117,12 +6069,16 @@
           "docentes": [
             "CASTRO CARLIN, Juan Francisco",
             "CORDOVA RUIZ, Fernanda Solaine",
-            "MAMANI PALOMINO, Janice De Jesus"
+            "AGUILAR VALENCIA, Edys Mirella",
+            "MAMANI PALOMINO, Janice De Jesus",
+            "PATIÑO HUAMANCHUM"
           ],
           "docente_principal": "CASTRO CARLIN, Juan Francisco",
           "jps": [
             "CORDOVA RUIZ, Fernanda Solaine",
-            "MAMANI PALOMINO, Janice De Jesus"
+            "AGUILAR VALENCIA, Edys Mirella",
+            "MAMANI PALOMINO, Janice De Jesus",
+            "PATIÑO HUAMANCHUM"
           ],
           "observaciones": "",
           "sesiones": [
@@ -6518,7 +6474,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "A-201",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "CLASE",
@@ -6526,7 +6482,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "A-201",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "PRÁCTICA",
@@ -6534,7 +6490,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-101",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "PARCIAL",
@@ -6542,7 +6498,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "FINAL",
@@ -6550,7 +6506,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 1
             }
           ]
         },
@@ -6574,7 +6530,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-201",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "CLASE",
@@ -6582,7 +6538,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-201",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "PRÁCTICA",
@@ -6590,7 +6546,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-102",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "PARCIAL",
@@ -6598,7 +6554,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "FINAL",
@@ -6606,7 +6562,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 1
             }
           ]
         },
@@ -6614,13 +6570,17 @@
           "seccion": "C",
           "docentes": [
             "PARODI TRECE, Carlos Alfredo Justo",
+            "CALZADA ARONI, Jesus Aron",
+            "TASAYCO YAÑEZ, Diego Adan",
             "ARROYO CERNA, Brisa Fernanda",
-            "POSTIGO LOZADA, Rodrigo Santiago"
+            "POSTIGO LOZADA, Rodrigo Sa"
           ],
           "docente_principal": "PARODI TRECE, Carlos Alfredo Justo",
           "jps": [
+            "CALZADA ARONI, Jesus Aron",
+            "TASAYCO YAÑEZ, Diego Adan",
             "ARROYO CERNA, Brisa Fernanda",
-            "POSTIGO LOZADA, Rodrigo Santiago"
+            "POSTIGO LOZADA, Rodrigo Sa"
           ],
           "observaciones": "",
           "sesiones": [
@@ -6710,7 +6670,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "H-501",
-              "cupos": 32
+              "cupos": 31
             },
             {
               "tipo": "CLASE",
@@ -6718,7 +6678,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "H-501",
-              "cupos": 32
+              "cupos": 31
             },
             {
               "tipo": "PRÁCTICA",
@@ -6726,7 +6686,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-103",
-              "cupos": 32
+              "cupos": 31
             },
             {
               "tipo": "PARCIAL",
@@ -6734,7 +6694,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 32
+              "cupos": 31
             },
             {
               "tipo": "FINAL",
@@ -6742,7 +6702,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 32
+              "cupos": 31
             }
           ]
         },
@@ -6766,7 +6726,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "H-501",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "CLASE",
@@ -6774,7 +6734,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "H-501",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PRÁCTICA",
@@ -6782,7 +6742,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-107",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PARCIAL",
@@ -6790,7 +6750,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "FINAL",
@@ -6798,7 +6758,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             }
           ]
         },
@@ -6918,10 +6878,12 @@
           "seccion": "H",
           "docentes": [
             "HERNANDEZ RUBIÑOS, Mario German",
+            "PORRAS AMPUERO, Grazzia Micaela",
             "CARDENAS AGUIRRE, Javier"
           ],
           "docente_principal": "HERNANDEZ RUBIÑOS, Mario German",
           "jps": [
+            "PORRAS AMPUERO, Grazzia Micaela",
             "CARDENAS AGUIRRE, Javier"
           ],
           "observaciones": "",
@@ -7807,10 +7769,15 @@
         {
           "seccion": "X",
           "docentes": [
-            "MUÑOZ NAJAR GONZALES, Monica"
+            "MUÑOZ NAJAR GONZALES, Monica",
+            "BENDEZU YAMUCA, Gabriela Milagros",
+            "FLORES BENITES, Carlos Alberto"
           ],
           "docente_principal": "MUÑOZ NAJAR GONZALES, Monica",
-          "jps": [],
+          "jps": [
+            "BENDEZU YAMUCA, Gabriela Milagros",
+            "FLORES BENITES, Carlos Alberto"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -8002,7 +7969,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "H-507",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "CLASE",
@@ -8010,7 +7977,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "H-507",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PRÁCTICA",
@@ -8018,7 +7985,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "H-202",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PARCIAL",
@@ -8026,7 +7993,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "FINAL",
@@ -8034,7 +8001,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             }
           ]
         },
@@ -9923,10 +9890,12 @@
           "seccion": "K",
           "docentes": [
             "LINDO HUERTAS, Elsa Maria",
+            "ARANDA RIVADENEYRA, Mariana Jesus",
             "PALOMINO FALCONI, Katherine Janeth"
           ],
           "docente_principal": "LINDO HUERTAS, Elsa Maria",
           "jps": [
+            "ARANDA RIVADENEYRA, Mariana Jesus",
             "PALOMINO FALCONI, Katherine Janeth"
           ],
           "observaciones": "",
@@ -10028,10 +9997,12 @@
           "seccion": "M",
           "docentes": [
             "LINDO HUERTAS, Elsa Maria",
+            "CHAPARRO PANDURO, Javier David",
             "RIOS TORRES, Jose Antonio"
           ],
           "docente_principal": "LINDO HUERTAS, Elsa Maria",
           "jps": [
+            "CHAPARRO PANDURO, Javier David",
             "RIOS TORRES, Jose Antonio"
           ],
           "observaciones": "",
@@ -10705,10 +10676,19 @@
             ]
           },
           {
+            "op": "OR",
             "items": [
               {
-                "code": "131650",
-                "name": "Matemáticas II"
+                "items": [
+                  {
+                    "code": "131650",
+                    "name": "Matemáticas II"
+                  }
+                ]
+              },
+              {
+                "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+                "parsed": false
               }
             ]
           }
@@ -11540,10 +11520,15 @@
         {
           "seccion": "A",
           "docentes": [
-            "LI NING CHAMAN, Jorge Francisco"
+            "LI NING CHAMAN, Jorge Francisco",
+            "AVALOS NUÑEZ, Jaime Daniel",
+            "ROMERO CORAL, Leonardo Stephano"
           ],
           "docente_principal": "LI NING CHAMAN, Jorge Francisco",
-          "jps": [],
+          "jps": [
+            "AVALOS NUÑEZ, Jaime Daniel",
+            "ROMERO CORAL, Leonardo Stephano"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -11583,10 +11568,15 @@
         {
           "seccion": "B",
           "docentes": [
-            "LI NING CHAMAN, Jorge Francisco"
+            "LI NING CHAMAN, Jorge Francisco",
+            "AVILES BARRETO, Adriano",
+            "DIAZ TEJADA, Luciano"
           ],
           "docente_principal": "LI NING CHAMAN, Jorge Francisco",
-          "jps": [],
+          "jps": [
+            "AVILES BARRETO, Adriano",
+            "DIAZ TEJADA, Luciano"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -11626,10 +11616,15 @@
         {
           "seccion": "C",
           "docentes": [
-            "MONTESINOS CORDOVA, Jorge Luis"
+            "MONTESINOS CORDOVA, Jorge Luis",
+            "SOLIS DIAZ, Cesar Alexander",
+            "MENDOZA NATIVIDAD, Bertha Lucia"
           ],
           "docente_principal": "MONTESINOS CORDOVA, Jorge Luis",
-          "jps": [],
+          "jps": [
+            "SOLIS DIAZ, Cesar Alexander",
+            "MENDOZA NATIVIDAD, Bertha Lucia"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -11669,10 +11664,15 @@
         {
           "seccion": "D",
           "docentes": [
-            "MONTESINOS CORDOVA, Jorge Luis"
+            "MONTESINOS CORDOVA, Jorge Luis",
+            "MARATUECH FERNANDEZ, Juan Diego Fernando",
+            "SAEZ CHAVEZ, Renzo Miguel"
           ],
           "docente_principal": "MONTESINOS CORDOVA, Jorge Luis",
-          "jps": [],
+          "jps": [
+            "MARATUECH FERNANDEZ, Juan Diego Fernando",
+            "SAEZ CHAVEZ, Renzo Miguel"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -12102,10 +12102,19 @@
       "nombre": "Investigación Económica I",
       "creditos": "2.00",
       "prerequisitos": {
+        "op": "OR",
         "items": [
           {
-            "type": "creditos_cursados",
-            "creditos": 160
+            "items": [
+              {
+                "type": "creditos_cursados",
+                "creditos": 160
+              }
+            ]
+          },
+          {
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -12388,10 +12397,15 @@
         {
           "seccion": "A",
           "docentes": [
-            "URRUNAGA PASCO-FONT, Roberto Luis"
+            "URRUNAGA PASCO-FONT, Roberto Luis",
+            "ALMONACID CORDOVA, Jesus Antonio",
+            "PARRA CARRANZA, Valeria Nicol"
           ],
           "docente_principal": "URRUNAGA PASCO-FONT, Roberto Luis",
-          "jps": [],
+          "jps": [
+            "ALMONACID CORDOVA, Jesus Antonio",
+            "PARRA CARRANZA, Valeria Nicol"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -12439,10 +12453,15 @@
         {
           "seccion": "B",
           "docentes": [
-            "URRUNAGA PASCO-FONT, Roberto Luis"
+            "URRUNAGA PASCO-FONT, Roberto Luis",
+            "SAAVEDRA GUERRA, Cesar Adrian",
+            "VERA CIEZA, Sergio Marcelo"
           ],
           "docente_principal": "URRUNAGA PASCO-FONT, Roberto Luis",
-          "jps": [],
+          "jps": [
+            "SAAVEDRA GUERRA, Cesar Adrian",
+            "VERA CIEZA, Sergio Marcelo"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -12547,10 +12566,12 @@
           "seccion": "D",
           "docentes": [
             "VEGA DE LA CRUZ, Hugo Yamil",
+            "FLORES BENITES, Carlos Alberto",
             "JARA BRAVO, Jorge Luis"
           ],
           "docente_principal": "VEGA DE LA CRUZ, Hugo Yamil",
           "jps": [
+            "FLORES BENITES, Carlos Alberto",
             "JARA BRAVO, Jorge Luis"
           ],
           "observaciones": "",
@@ -13229,7 +13250,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "A-408",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "CLASE",
@@ -13237,7 +13258,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "J-403",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "PRÁCTICA",
@@ -13245,7 +13266,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "A-101",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "PARCIAL",
@@ -13253,7 +13274,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 1
             },
             {
               "tipo": "FINAL",
@@ -13261,7 +13282,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 1
             }
           ]
         },
@@ -13283,7 +13304,7 @@
               "hora_inicio": "17:30",
               "hora_fin": "19:20",
               "aula": "A-102",
-              "cupos": 35
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -13291,7 +13312,7 @@
               "hora_inicio": "17:30",
               "hora_fin": "19:20",
               "aula": "A-102",
-              "cupos": 35
+              "cupos": 0
             },
             {
               "tipo": "PARCIAL",
@@ -13299,7 +13320,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 0
             },
             {
               "tipo": "FINAL",
@@ -13307,7 +13328,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 0
             }
           ]
         },
@@ -13329,7 +13350,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "J-201",
-              "cupos": 35
+              "cupos": 33
             },
             {
               "tipo": "CLASE",
@@ -13337,7 +13358,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "J-201",
-              "cupos": 35
+              "cupos": 33
             },
             {
               "tipo": "PRÁCTICA",
@@ -13345,7 +13366,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "A-103",
-              "cupos": 35
+              "cupos": 33
             },
             {
               "tipo": "PARCIAL",
@@ -13353,7 +13374,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 33
             },
             {
               "tipo": "FINAL",
@@ -13361,7 +13382,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 33
             }
           ]
         },
@@ -13383,7 +13404,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "J-201",
-              "cupos": 35
+              "cupos": 33
             },
             {
               "tipo": "CLASE",
@@ -13391,7 +13412,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "J-201",
-              "cupos": 35
+              "cupos": 33
             },
             {
               "tipo": "PARCIAL",
@@ -13399,7 +13420,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 33
             },
             {
               "tipo": "FINAL",
@@ -13407,7 +13428,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 33
             }
           ]
         },
@@ -13429,7 +13450,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-101",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "CLASE",
@@ -13437,7 +13458,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-101",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PARCIAL",
@@ -13445,7 +13466,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "FINAL",
@@ -13453,7 +13474,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             }
           ]
         },
@@ -13575,7 +13596,7 @@
               "hora_inicio": "17:30",
               "hora_fin": "19:20",
               "aula": "A-205",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "CLASE",
@@ -13583,7 +13604,7 @@
               "hora_inicio": "17:30",
               "hora_fin": "19:20",
               "aula": "A-205",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PARCIAL",
@@ -13591,7 +13612,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "FINAL",
@@ -13599,7 +13620,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             }
           ]
         },
@@ -14352,7 +14373,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-301",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "CLASE",
@@ -14360,7 +14381,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-301",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PRÁCTICA",
@@ -14368,7 +14389,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "A-102",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PARCIAL",
@@ -14376,7 +14397,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "FINAL",
@@ -14384,7 +14405,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             }
           ]
         },
@@ -16191,23 +16212,32 @@
       "nombre": "Microeconomía I",
       "creditos": "5.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
+            "op": "AND",
             "items": [
               {
-                "code": "132641",
-                "name": "Economía General I"
+                "items": [
+                  {
+                    "code": "132641",
+                    "name": "Economía General I"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "131650",
+                    "name": "Matemáticas II"
+                  }
+                ]
               }
             ]
           },
           {
-            "items": [
-              {
-                "code": "131650",
-                "name": "Matemáticas II"
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -17036,7 +17066,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "12:20",
               "aula": "H-503",
-              "cupos": 35
+              "cupos": 0
             },
             {
               "tipo": "PARCIAL",
@@ -17044,7 +17074,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 0
             },
             {
               "tipo": "FINAL",
@@ -17052,7 +17082,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 0
             }
           ]
         },
@@ -17071,7 +17101,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "12:20",
               "aula": "A-101",
-              "cupos": 35
+              "cupos": 30
             },
             {
               "tipo": "PRÁCTICA",
@@ -17079,7 +17109,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-102",
-              "cupos": 35
+              "cupos": 30
             },
             {
               "tipo": "PARCIAL",
@@ -17087,7 +17117,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 30
             },
             {
               "tipo": "FINAL",
@@ -17095,7 +17125,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 30
             }
           ]
         },
@@ -17114,7 +17144,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "16:20",
               "aula": "J-503",
-              "cupos": 35
+              "cupos": 30
             },
             {
               "tipo": "PARCIAL",
@@ -17122,7 +17152,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 30
             },
             {
               "tipo": "FINAL",
@@ -17130,7 +17160,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 30
             }
           ]
         },
@@ -17149,7 +17179,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "16:20",
               "aula": "J-403",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "PARCIAL",
@@ -17157,7 +17187,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "FINAL",
@@ -17165,7 +17195,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             }
           ]
         },
@@ -17184,7 +17214,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "12:20",
               "aula": "A-107",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "PRÁCTICA",
@@ -17192,7 +17222,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-108",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "PARCIAL",
@@ -17200,7 +17230,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "FINAL",
@@ -17208,7 +17238,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             }
           ]
         },
@@ -17227,7 +17257,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "16:20",
               "aula": "J-604",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "PARCIAL",
@@ -17235,7 +17265,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "FINAL",
@@ -17243,7 +17273,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             }
           ]
         },
@@ -17262,7 +17292,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "12:20",
               "aula": "A-202",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "PARCIAL",
@@ -17270,7 +17300,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "FINAL",
@@ -17278,7 +17308,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             }
           ]
         },
@@ -17297,7 +17327,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "12:20",
               "aula": "A-102",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "PRÁCTICA",
@@ -17305,7 +17335,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-205",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "PARCIAL",
@@ -17313,7 +17343,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "FINAL",
@@ -17321,7 +17351,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             }
           ]
         },
@@ -17340,7 +17370,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "16:20",
               "aula": "F-501",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "PRÁCTICA",
@@ -17348,7 +17378,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-206",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "PARCIAL",
@@ -17356,7 +17386,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             },
             {
               "tipo": "FINAL",
@@ -17364,7 +17394,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 31
             }
           ]
         }
@@ -18009,7 +18039,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "18:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18017,7 +18047,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "18:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18025,7 +18055,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "18:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18033,7 +18063,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "19:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18041,7 +18071,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "18:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             }
           ]
         }
@@ -18096,7 +18126,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "11:20",
               "aula": "A-206",
-              "cupos": 12
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18104,7 +18134,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-301",
-              "cupos": 12
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18112,7 +18142,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-301",
-              "cupos": 12
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18120,7 +18150,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-301",
-              "cupos": 12
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18128,7 +18158,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-301",
-              "cupos": 12
+              "cupos": 0
             }
           ]
         }
@@ -18196,7 +18226,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 20
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18204,7 +18234,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 20
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18212,7 +18242,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 20
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18220,7 +18250,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "11:20",
               "aula": "Virtual-Virtua",
-              "cupos": 20
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -18228,7 +18258,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 20
+              "cupos": 0
             }
           ]
         }
@@ -18403,12 +18433,14 @@
           "docentes": [
             "ZEVALLOS URQUIETA, Hector Augusto",
             "DIBOS SANCHEZ, Maria Jose",
-            "HUAQUISTO AYALA, Marcelo Vicente"
+            "HUAQUISTO AYALA, Marcelo Vicente",
+            "ZAMBRANO FREYRE, Sebastian Andre"
           ],
           "docente_principal": "ZEVALLOS URQUIETA, Hector Augusto",
           "jps": [
             "DIBOS SANCHEZ, Maria Jose",
-            "HUAQUISTO AYALA, Marcelo Vicente"
+            "HUAQUISTO AYALA, Marcelo Vicente",
+            "ZAMBRANO FREYRE, Sebastian Andre"
           ],
           "observaciones": "",
           "sesiones": [
@@ -18449,10 +18481,15 @@
         {
           "seccion": "D",
           "docentes": [
-            "ZEVALLOS URQUIETA, Hector Augusto"
+            "ZEVALLOS URQUIETA, Hector Augusto",
+            "DIAZ BAZAN, Andres Gabriel",
+            "HUAQUISTO AYALA, Marcelo Vicente"
           ],
           "docente_principal": "ZEVALLOS URQUIETA, Hector Augusto",
-          "jps": [],
+          "jps": [
+            "DIAZ BAZAN, Andres Gabriel",
+            "HUAQUISTO AYALA, Marcelo Vicente"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -19455,7 +19492,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 10
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -19463,7 +19500,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 10
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -19471,7 +19508,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 10
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -19479,7 +19516,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "11:20",
               "aula": "Virtual-Virtua",
-              "cupos": 10
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -19487,7 +19524,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 10
+              "cupos": 0
             }
           ]
         }
@@ -20413,6 +20450,14 @@
               "dia": "LUN",
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
+              "aula": "H-600",
+              "cupos": 30
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "09:30",
+              "hora_fin": "11:20",
               "aula": "A-508",
               "cupos": 30
             },
@@ -20898,7 +20943,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "A-502",
-              "cupos": 30
+              "cupos": 19
             },
             {
               "tipo": "CLASE",
@@ -20906,7 +20951,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "A-502",
-              "cupos": 30
+              "cupos": 19
             },
             {
               "tipo": "PARCIAL",
@@ -20914,7 +20959,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 19
             },
             {
               "tipo": "FINAL",
@@ -20922,7 +20967,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 19
             }
           ]
         },
@@ -20941,7 +20986,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "H-302",
-              "cupos": 30
+              "cupos": 9
             },
             {
               "tipo": "CLASE",
@@ -20949,7 +20994,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "H-302",
-              "cupos": 30
+              "cupos": 9
             },
             {
               "tipo": "PARCIAL",
@@ -20957,7 +21002,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 9
             },
             {
               "tipo": "FINAL",
@@ -20965,7 +21010,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 9
             }
           ]
         }
@@ -21512,7 +21557,7 @@
               "dia": "JUE",
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
-              "aula": "A-PEND",
+              "aula": "A-108",
               "cupos": 24
             },
             {
@@ -23922,16 +23967,108 @@
       "nombre": "Proyecto Empresarial",
       "creditos": "5.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
             "op": "AND",
             "items": [
               {
+                "op": "AND",
                 "items": [
                   {
-                    "code": "149078",
-                    "name": "Dirección Estratégica"
+                    "items": [
+                      {
+                        "code": "149078",
+                        "name": "Dirección Estratégica"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "OR",
+                    "items": [
+                      {
+                        "items": [
+                          {
+                            "code": "142085",
+                            "name": "Gestión de la Sostenibilidad Social y Am"
+                          }
+                        ]
+                      },
+                      {
+                        "items": [
+                          {
+                            "code": "140743",
+                            "name": "Gestión Estratégica de la Responsabilida"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "op": "OR",
+                    "items": [
+                      {
+                        "items": [
+                          {
+                            "code": "1MN020",
+                            "name": "Investigación de Mercados"
+                          }
+                        ]
+                      },
+                      {
+                        "items": [
+                          {
+                            "code": "147745",
+                            "name": "Investigación de Mercados"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "1MN016",
+                        "name": "Gestión Internacional de Empresas"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "OR",
+                    "items": [
+                      {
+                        "items": [
+                          {
+                            "code": "160025",
+                            "name": "Contabilidad para la Toma de Decisiones"
+                          }
+                        ]
+                      },
+                      {
+                        "items": [
+                          {
+                            "code": "160088",
+                            "name": "Contabilidad de Gestión"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "144741",
+                        "name": "Gestión de Personas"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "141041",
+                        "name": "Gestión de la Cadena de Suministros"
+                      }
+                    ]
                   }
                 ]
               },
@@ -23941,109 +24078,26 @@
                   {
                     "items": [
                       {
-                        "code": "142085",
-                        "name": "Gestión de la Sostenibilidad Social y Am"
+                        "code": "160172",
+                        "name": "Evaluación Financiera de las Organizacio"
                       }
                     ]
                   },
                   {
                     "items": [
                       {
-                        "code": "140743",
-                        "name": "Gestión Estratégica de la Responsabilida"
+                        "code": "167138",
+                        "name": "Evaluación Financiera de las Empresas"
                       }
                     ]
-                  }
-                ]
-              },
-              {
-                "op": "OR",
-                "items": [
-                  {
-                    "items": [
-                      {
-                        "code": "1MN020",
-                        "name": "Investigación de Mercados"
-                      }
-                    ]
-                  },
-                  {
-                    "items": [
-                      {
-                        "code": "147745",
-                        "name": "Investigación de Mercados"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "1MN016",
-                    "name": "Gestión Internacional de Empresas"
-                  }
-                ]
-              },
-              {
-                "op": "OR",
-                "items": [
-                  {
-                    "items": [
-                      {
-                        "code": "160025",
-                        "name": "Contabilidad para la Toma de Decisiones"
-                      }
-                    ]
-                  },
-                  {
-                    "items": [
-                      {
-                        "code": "160088",
-                        "name": "Contabilidad de Gestión"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "144741",
-                    "name": "Gestión de Personas"
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "141041",
-                    "name": "Gestión de la Cadena de Suministros"
                   }
                 ]
               }
             ]
           },
           {
-            "op": "OR",
-            "items": [
-              {
-                "items": [
-                  {
-                    "code": "160172",
-                    "name": "Evaluación Financiera de las Organizacio"
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "167138",
-                    "name": "Evaluación Financiera de las Empresas"
-                  }
-                ]
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -25682,23 +25736,32 @@
       "nombre": "Economía Politica Internacional",
       "creditos": "4.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
+            "op": "AND",
             "items": [
               {
-                "code": "130642",
-                "name": "Economía General II"
+                "items": [
+                  {
+                    "code": "130642",
+                    "name": "Economía General II"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "150289",
+                    "name": "Política Comparada"
+                  }
+                ]
               }
             ]
           },
           {
-            "items": [
-              {
-                "code": "150289",
-                "name": "Política Comparada"
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -25804,7 +25867,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "A-621",
-              "cupos": 25
+              "cupos": 23
             },
             {
               "tipo": "PRÁCTICA",
@@ -25812,7 +25875,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "A-621",
-              "cupos": 25
+              "cupos": 23
             }
           ]
         },
@@ -26074,7 +26137,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "A-401",
-              "cupos": 25
+              "cupos": 24
             },
             {
               "tipo": "PRÁCTICA",
@@ -26082,7 +26145,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "X -303",
-              "cupos": 25
+              "cupos": 24
             }
           ]
         },
@@ -28114,6 +28177,40 @@
       ]
     },
     {
+      "codigo": "160318",
+      "nombre": "Automatización de Procesos Financieros mediante RPA",
+      "creditos": "3.00",
+      "prerequisitos": {
+        "items": [
+          {
+            "code": "160171",
+            "name": "Contabilidad Financiera Intermedia"
+          }
+        ]
+      },
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "HERRERA SANTILLAN, Luz Aydely"
+          ],
+          "docente_principal": "HERRERA SANTILLAN, Luz Aydely",
+          "jps": [],
+          "observaciones": "",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "19:30",
+              "hora_fin": "22:20",
+              "aula": "B-505",
+              "cupos": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
       "codigo": "160140",
       "nombre": "Constitución y Formalización de MYPES",
       "creditos": "3.00",
@@ -28737,10 +28834,13 @@
         {
           "seccion": "H",
           "docentes": [
-            "MARADIEGUE , SANTIAGO ALBERTO"
+            "MARADIEGUE , SANTIAGO ALBERTO",
+            "VILLAVICENCIO EYZAGUIRRE, Maximo Moises"
           ],
           "docente_principal": "MARADIEGUE , SANTIAGO ALBERTO",
-          "jps": [],
+          "jps": [
+            "VILLAVICENCIO EYZAGUIRRE, Maximo Moises"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -29054,10 +29154,13 @@
         {
           "seccion": "N",
           "docentes": [
-            "ROSAS AMBROSIO, Annel Victoria"
+            "ROSAS AMBROSIO, Annel Victoria",
+            "MELLO QUISPE, Diego Santiago"
           ],
           "docente_principal": "ROSAS AMBROSIO, Annel Victoria",
-          "jps": [],
+          "jps": [
+            "MELLO QUISPE, Diego Santiago"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -29181,15 +29284,10 @@
         {
           "seccion": "B",
           "docentes": [
-            "ALVA GONZALES, Edgar Paul",
-            "Alvarado Requejo, Andrea Nickol",
-            "SILVA TORRALVA, Bryan Andree"
+            "ALVA GONZALES, Edgar Paul"
           ],
           "docente_principal": "ALVA GONZALES, Edgar Paul",
-          "jps": [
-            "Alvarado Requejo, Andrea Nickol",
-            "SILVA TORRALVA, Bryan Andree"
-          ],
+          "jps": [],
           "observaciones": "",
           "sesiones": [
             {
@@ -29296,10 +29394,15 @@
         {
           "seccion": "E",
           "docentes": [
-            "MATSUNO FUCHIGAMI, Ana Cecilia"
+            "MATSUNO FUCHIGAMI, Ana Cecilia",
+            "Alvarado Requejo, Andrea Nickol",
+            "SILVA TORRALVA, Bryan Andree"
           ],
           "docente_principal": "MATSUNO FUCHIGAMI, Ana Cecilia",
-          "jps": [],
+          "jps": [
+            "Alvarado Requejo, Andrea Nickol",
+            "SILVA TORRALVA, Bryan Andree"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -29446,10 +29549,13 @@
         {
           "seccion": "A",
           "docentes": [
-            "RUIZ LLACSAHUANGA, Ketty Margarita"
+            "RUIZ LLACSAHUANGA, Ketty Margarita",
+            "NIEVES ZAVALA, Miguel Daygort"
           ],
           "docente_principal": "RUIZ LLACSAHUANGA, Ketty Margarita",
-          "jps": [],
+          "jps": [
+            "NIEVES ZAVALA, Miguel Daygort"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -29997,7 +30103,7 @@
               "hora_inicio": "14:30",
               "hora_fin": "17:20",
               "aula": "A-407",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "PRÁCTICA",
@@ -30005,7 +30111,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-101",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "PARCIAL",
@@ -30013,7 +30119,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "FINAL",
@@ -30021,7 +30127,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             }
           ]
         },
@@ -30045,7 +30151,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "12:20",
               "aula": "A-402",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "PRÁCTICA",
@@ -30053,7 +30159,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-102",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "PARCIAL",
@@ -30061,7 +30167,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "FINAL",
@@ -30069,7 +30175,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             }
           ]
         },
@@ -30093,7 +30199,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "12:20",
               "aula": "A-402",
-              "cupos": 30
+              "cupos": 26
             },
             {
               "tipo": "PRÁCTICA",
@@ -30101,7 +30207,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-103",
-              "cupos": 30
+              "cupos": 26
             },
             {
               "tipo": "PARCIAL",
@@ -30109,7 +30215,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 26
             },
             {
               "tipo": "FINAL",
@@ -30117,7 +30223,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 26
             }
           ]
         },
@@ -30139,7 +30245,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "12:20",
               "aula": "A-402",
-              "cupos": 30
+              "cupos": 12
             },
             {
               "tipo": "PRÁCTICA",
@@ -30147,7 +30253,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-107",
-              "cupos": 30
+              "cupos": 12
             },
             {
               "tipo": "PARCIAL",
@@ -30155,7 +30261,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 12
             },
             {
               "tipo": "FINAL",
@@ -30163,7 +30269,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 12
             }
           ]
         },
@@ -30228,7 +30334,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "A-105",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "PRÁCTICA",
@@ -30236,7 +30342,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-201",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "PARCIAL",
@@ -30244,7 +30350,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "FINAL",
@@ -30252,7 +30358,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 29
             }
           ]
         },
@@ -30260,11 +30366,13 @@
           "seccion": "G",
           "docentes": [
             "SOTO MUJICA, José Carlos Humberto",
-            "MARQUEZ CORDOVA, Mayte Vanessa"
+            "MARQUEZ CORDOVA, Mayte Vanessa",
+            "MAYORGA ARAUJO, Claudia Patricia"
           ],
           "docente_principal": "SOTO MUJICA, José Carlos Humberto",
           "jps": [
-            "MARQUEZ CORDOVA, Mayte Vanessa"
+            "MARQUEZ CORDOVA, Mayte Vanessa",
+            "MAYORGA ARAUJO, Claudia Patricia"
           ],
           "observaciones": "",
           "sesiones": [
@@ -30274,7 +30382,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "13:20",
               "aula": "A-506",
-              "cupos": 30
+              "cupos": 28
             },
             {
               "tipo": "PRÁCTICA",
@@ -30282,7 +30390,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "A-202",
-              "cupos": 30
+              "cupos": 28
             },
             {
               "tipo": "PARCIAL",
@@ -30290,7 +30398,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 28
             },
             {
               "tipo": "FINAL",
@@ -30298,7 +30406,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 28
             }
           ]
         },
@@ -30775,10 +30883,13 @@
         {
           "seccion": "R",
           "docentes": [
-            "QUIÑONES BOZA, Horacio"
+            "QUIÑONES BOZA, Horacio",
+            "LOCONI VILLAFUERTE, Ariana Gianella"
           ],
           "docente_principal": "QUIÑONES BOZA, Horacio",
-          "jps": [],
+          "jps": [
+            "LOCONI VILLAFUERTE, Ariana Gianella"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -30835,7 +30946,7 @@
               "hora_inicio": "14:30",
               "hora_fin": "17:20",
               "aula": "B-402",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "PRÁCTICA",
@@ -30843,7 +30954,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "B-303",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "PARCIAL",
@@ -30851,7 +30962,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "FINAL",
@@ -30859,7 +30970,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 29
             }
           ]
         },
@@ -31385,7 +31496,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -31393,7 +31504,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -31401,7 +31512,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -31409,7 +31520,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -31417,7 +31528,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 25
+              "cupos": 0
             }
           ]
         }
@@ -31875,7 +31986,7 @@
           "jps": [
             "AYBAR FLORES, Paulo Jose Alejandro"
           ],
-          "observaciones": "Prác. Calificada: Viernes 13:30\n- 15:20 los días 11.09 y 23.10\nPrác. quincenal par Vier 11:30\n-13:20. Prácticas quincenales\n(semanas par)",
+          "observaciones": "Prác. Calificada: Viernes 13:30\n- 15:20 los días 11.09 y 23.10\nPrác. quincenal par Vier 11:30\n- 13:20. Prácticas quincenales\n(semanas par)",
           "sesiones": [
             {
               "tipo": "CLASE",
@@ -32376,21 +32487,21 @@
           ],
           "docente_principal": "TOVAR GALARRETA, Juan Carlos Alfredo",
           "jps": [],
-          "observaciones": "",
+          "observaciones": "Virtual / Presencial",
           "sesiones": [
             {
               "tipo": "CLASE",
-              "dia": "JUE",
+              "dia": "MAR",
               "hora_inicio": "17:30",
               "hora_fin": "20:20",
-              "aula": "A-405",
+              "aula": "Virtual-Virtua",
               "cupos": 30
             },
             {
               "tipo": "PRÁCTICA",
-              "dia": "MAR",
-              "hora_inicio": "17:30",
-              "hora_fin": "19:20",
+              "dia": "JUE",
+              "hora_inicio": "18:30",
+              "hora_fin": "20:20",
               "aula": "A-405",
               "cupos": 30
             },
@@ -32604,20 +32715,29 @@
             "op": "OR",
             "items": [
               {
+                "op": "OR",
                 "items": [
                   {
-                    "code": "170119",
-                    "name": "Arquitectura del Sistema de Información"
+                    "items": [
+                      {
+                        "code": "170119",
+                        "name": "Arquitectura del Sistema de Información"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "142273",
+                        "name": "Sistemas de Información y Análisis de Da"
+                      }
+                    ]
                   }
                 ]
               },
               {
-                "items": [
-                  {
-                    "code": "142273",
-                    "name": "Sistemas de Información y Análisis de Da"
-                  }
-                ]
+                "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+                "parsed": false
               }
             ]
           }
@@ -32986,120 +33106,129 @@
       "nombre": "Emprendimiento Tecnológico",
       "creditos": "4.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
-            "op": "OR",
+            "op": "AND",
             "items": [
               {
+                "op": "OR",
                 "items": [
                   {
-                    "code": "170351",
-                    "name": "Métodos de Investigación Cuantitativa (Puede llevarlo en simultáneo)"
+                    "items": [
+                      {
+                        "code": "170351",
+                        "name": "Métodos de Investigación Cuantitativa (Puede llevarlo en simultáneo)"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "170067",
+                        "name": "Investigación Operativa I"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "170037",
+                        "name": "Técnicas de Optimización y Simulación"
+                      }
+                    ]
                   }
                 ]
               },
               {
+                "op": "OR",
                 "items": [
                   {
-                    "code": "170067",
-                    "name": "Investigación Operativa I"
+                    "items": [
+                      {
+                        "code": "170344",
+                        "name": "Metodologías Ágiles"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "175064",
+                        "name": "Gobierno de Tecnologías de Información"
+                      }
+                    ]
                   }
                 ]
               },
               {
+                "op": "OR",
                 "items": [
                   {
-                    "code": "170037",
-                    "name": "Técnicas de Optimización y Simulación"
+                    "items": [
+                      {
+                        "code": "170347",
+                        "name": "Transformación Digital y Gestión del Cam"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "170128",
+                        "name": "Modelamiento de Negocios y Arq. Empresar"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "op": "OR",
+                "items": [
+                  {
+                    "items": [
+                      {
+                        "code": "170212",
+                        "name": "Desarrollo de Soluciones Empresariales"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "170121",
+                        "name": "Desarrollo de Soluciones Empresariales I"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "op": "OR",
+                "items": [
+                  {
+                    "items": [
+                      {
+                        "code": "170331",
+                        "name": "Infraestructura Tecnológica"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "170213",
+                        "name": "Sistemas de Información para la Gerencia"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           },
           {
-            "op": "OR",
-            "items": [
-              {
-                "items": [
-                  {
-                    "code": "170344",
-                    "name": "Metodologías Ágiles"
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "175064",
-                    "name": "Gobierno de Tecnologías de Información"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "op": "OR",
-            "items": [
-              {
-                "items": [
-                  {
-                    "code": "170347",
-                    "name": "Transformación Digital y Gestión del Cam"
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "170128",
-                    "name": "Modelamiento de Negocios y Arq. Empresar"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "op": "OR",
-            "items": [
-              {
-                "items": [
-                  {
-                    "code": "170212",
-                    "name": "Desarrollo de Soluciones Empresariales"
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "170121",
-                    "name": "Desarrollo de Soluciones Empresariales I"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "op": "OR",
-            "items": [
-              {
-                "items": [
-                  {
-                    "code": "170331",
-                    "name": "Infraestructura Tecnológica"
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "170213",
-                    "name": "Sistemas de Información para la Gerencia"
-                  }
-                ]
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -35228,7 +35357,7 @@
           "sesiones": [
             {
               "tipo": "CLASE",
-              "dia": "LUN",
+              "dia": "VIE",
               "hora_inicio": "14:30",
               "hora_fin": "17:20",
               "aula": "B-304",
@@ -36436,7 +36565,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "12:20",
               "aula": "C-401",
-              "cupos": 27
+              "cupos": 16
             },
             {
               "tipo": "CLASE",
@@ -36444,7 +36573,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "C-401",
-              "cupos": 27
+              "cupos": 16
             },
             {
               "tipo": "PRÁCTICA",
@@ -36452,7 +36581,7 @@
               "hora_inicio": "12:30",
               "hora_fin": "13:20",
               "aula": "C-401",
-              "cupos": 27
+              "cupos": 16
             },
             {
               "tipo": "PRÁCTICA",
@@ -36460,7 +36589,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "C-401",
-              "cupos": 27
+              "cupos": 16
             },
             {
               "tipo": "PARCIAL",
@@ -36468,7 +36597,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 27
+              "cupos": 16
             },
             {
               "tipo": "FINAL",
@@ -36476,7 +36605,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 27
+              "cupos": 16
             }
           ]
         },
@@ -36500,7 +36629,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "A-203",
-              "cupos": 30
+              "cupos": 26
             },
             {
               "tipo": "CLASE",
@@ -36508,7 +36637,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "10:20",
               "aula": "A-203",
-              "cupos": 30
+              "cupos": 26
             },
             {
               "tipo": "PRÁCTICA",
@@ -36516,7 +36645,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "11:20",
               "aula": "A-203",
-              "cupos": 30
+              "cupos": 26
             },
             {
               "tipo": "PRÁCTICA",
@@ -36524,7 +36653,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "C-401",
-              "cupos": 30
+              "cupos": 26
             },
             {
               "tipo": "PARCIAL",
@@ -36532,7 +36661,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 26
             },
             {
               "tipo": "FINAL",
@@ -36540,7 +36669,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 26
             }
           ]
         },
@@ -36564,7 +36693,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-505",
-              "cupos": 30
+              "cupos": 12
             },
             {
               "tipo": "CLASE",
@@ -36572,7 +36701,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "16:20",
               "aula": "A-505",
-              "cupos": 30
+              "cupos": 12
             },
             {
               "tipo": "PRÁCTICA",
@@ -36580,7 +36709,7 @@
               "hora_inicio": "16:30",
               "hora_fin": "17:20",
               "aula": "A-505",
-              "cupos": 30
+              "cupos": 12
             },
             {
               "tipo": "PRÁCTICA",
@@ -36588,7 +36717,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "C-401",
-              "cupos": 30
+              "cupos": 12
             },
             {
               "tipo": "PARCIAL",
@@ -36596,7 +36725,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 12
             },
             {
               "tipo": "FINAL",
@@ -36604,7 +36733,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 12
             }
           ]
         }
@@ -37528,7 +37657,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "E-303",
-              "cupos": 30
+              "cupos": 24
             },
             {
               "tipo": "PRÁCTICA",
@@ -37536,7 +37665,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "13:20",
               "aula": "E-303",
-              "cupos": 30
+              "cupos": 24
             },
             {
               "tipo": "PARCIAL",
@@ -37544,7 +37673,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 24
             },
             {
               "tipo": "FINAL",
@@ -37552,7 +37681,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 24
             }
           ]
         },
@@ -37571,7 +37700,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "A-105",
-              "cupos": 26
+              "cupos": 20
             },
             {
               "tipo": "PRÁCTICA",
@@ -37579,7 +37708,7 @@
               "hora_inicio": "09:30",
               "hora_fin": "11:20",
               "aula": "A-105",
-              "cupos": 26
+              "cupos": 20
             },
             {
               "tipo": "PARCIAL",
@@ -37587,7 +37716,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 26
+              "cupos": 20
             },
             {
               "tipo": "FINAL",
@@ -37595,7 +37724,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 26
+              "cupos": 20
             }
           ]
         },
@@ -37614,7 +37743,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "E-302",
-              "cupos": 28
+              "cupos": 0
             },
             {
               "tipo": "PRÁCTICA",
@@ -37622,7 +37751,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "E-302",
-              "cupos": 28
+              "cupos": 0
             },
             {
               "tipo": "PARCIAL",
@@ -37630,7 +37759,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 28
+              "cupos": 0
             },
             {
               "tipo": "FINAL",
@@ -37638,7 +37767,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 28
+              "cupos": 0
             }
           ]
         },
@@ -37700,7 +37829,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "E-304",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "PRÁCTICA",
@@ -37708,7 +37837,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:20",
               "aula": "E-304",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "PARCIAL",
@@ -37716,7 +37845,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             },
             {
               "tipo": "FINAL",
@@ -37724,7 +37853,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "12:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 27
             }
           ]
         },
@@ -37958,7 +38087,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-203",
-              "cupos": 30
+              "cupos": 24
             },
             {
               "tipo": "PRÁCTICA",
@@ -37966,7 +38095,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-203",
-              "cupos": 30
+              "cupos": 24
             },
             {
               "tipo": "PARCIAL",
@@ -37974,7 +38103,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 24
             },
             {
               "tipo": "FINAL",
@@ -37982,7 +38111,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 24
             }
           ]
         },
@@ -38001,7 +38130,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "E-302",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "PRÁCTICA",
@@ -38009,7 +38138,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "E-302",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "PARCIAL",
@@ -38017,7 +38146,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             },
             {
               "tipo": "FINAL",
@@ -38025,7 +38154,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 0
             }
           ]
         },
@@ -38095,7 +38224,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "E-305",
-              "cupos": 34
+              "cupos": 33
             },
             {
               "tipo": "CLASE",
@@ -38103,7 +38232,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "E-305",
-              "cupos": 34
+              "cupos": 33
             },
             {
               "tipo": "PARCIAL",
@@ -38111,7 +38240,7 @@
               "hora_inicio": "16:30",
               "hora_fin": "18:30",
               "aula": "A-PEND",
-              "cupos": 34
+              "cupos": 33
             },
             {
               "tipo": "FINAL",
@@ -38119,7 +38248,7 @@
               "hora_inicio": "16:30",
               "hora_fin": "18:30",
               "aula": "A-PEND",
-              "cupos": 34
+              "cupos": 33
             }
           ]
         },
@@ -38854,14 +38983,6 @@
               "hora_fin": "12:30",
               "aula": "A-PEND",
               "cupos": 30
-            },
-            {
-              "tipo": "CLASE",
-              "dia": "JUE",
-              "hora_inicio": "07:30",
-              "hora_fin": "08:20",
-              "aula": "J-502",
-              "cupos": 30
             }
           ]
         },
@@ -38926,6 +39047,108 @@
               "hora_fin": "12:30",
               "aula": "A-PEND",
               "cupos": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "170337",
+      "nombre": "Procesos de Suministros",
+      "creditos": "4.00",
+      "prerequisitos": {
+        "op": "AND",
+        "items": [
+          {
+            "op": "OR",
+            "items": [
+              {
+                "items": [
+                  {
+                    "code": "170135",
+                    "name": "Ingeniería de Procesos"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "142084",
+                    "name": "Gestión de Operaciones en las Organizaci"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "items": [
+              {
+                "code": "132641",
+                "name": "Economía General I"
+              }
+            ]
+          },
+          {
+            "items": [
+              {
+                "code": "120001",
+                "name": "Lenguaje I"
+              }
+            ]
+          },
+          {
+            "items": [
+              {
+                "code": "130224",
+                "name": "Estadística I"
+              }
+            ]
+          },
+          {
+            "op": "OR",
+            "items": [
+              {
+                "items": [
+                  {
+                    "code": "131650",
+                    "name": "Matemáticas II"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "170333",
+                    "name": "Matemáticas Discretas para la Computació"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "secciones": [
+        {
+          "seccion": "A",
+          "docentes": [
+            "GARMENDIA FOSSA, Francisco Antonio",
+            "LINARES AQUIZE, Adriana",
+            "GARCIA REYES, Karin Maria"
+          ],
+          "docente_principal": "GARMENDIA FOSSA, Francisco Antonio",
+          "jps": [
+            "LINARES AQUIZE, Adriana",
+            "GARCIA REYES, Karin Maria"
+          ],
+          "observaciones": "Prác. quincenal par Vie 09:30 -\n11:20. Prácticas quincenales\n(semanas par)",
+          "sesiones": [
+            {
+              "tipo": "CLASE",
+              "dia": "JUE",
+              "hora_inicio": "07:30",
+              "hora_fin": "08:20",
+              "aula": "J-502",
+              "cupos": 30
             },
             {
               "tipo": "CLASE",
@@ -38966,7 +39189,23 @@
               "hora_fin": "15:30",
               "aula": "A-PEND",
               "cupos": 30
-            },
+            }
+          ]
+        },
+        {
+          "seccion": "B",
+          "docentes": [
+            "BUSTAMANTE BAUTISTA, Beatriz Esther",
+            "GARAY BUSTAMANTE, Jose Manuel",
+            "GARCIA REYES, Karin Maria"
+          ],
+          "docente_principal": "BUSTAMANTE BAUTISTA, Beatriz Esther",
+          "jps": [
+            "GARAY BUSTAMANTE, Jose Manuel",
+            "GARCIA REYES, Karin Maria"
+          ],
+          "observaciones": "Prác. quincenal impar Vie\n09:30 - 11:20. Prácticas\nquincenales (semanas impar)",
+          "sesiones": [
             {
               "tipo": "CLASE",
               "dia": "MAR",
@@ -39371,7 +39610,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": -1
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39379,7 +39618,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": -1
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39387,7 +39626,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": -1
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39395,7 +39634,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "11:20",
               "aula": "Virtual-Virtua",
-              "cupos": -1
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39403,7 +39642,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": -1
+              "cupos": 0
             }
           ]
         }
@@ -39503,7 +39742,7 @@
               "hora_inicio": "19:30",
               "hora_fin": "22:20",
               "aula": "Virtual-Virtua",
-              "cupos": 13
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39511,7 +39750,7 @@
               "hora_inicio": "19:30",
               "hora_fin": "22:20",
               "aula": "Virtual-Virtua",
-              "cupos": 13
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39519,7 +39758,7 @@
               "hora_inicio": "19:30",
               "hora_fin": "22:20",
               "aula": "Virtual-Virtua",
-              "cupos": 13
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39527,7 +39766,7 @@
               "hora_inicio": "19:30",
               "hora_fin": "23:20",
               "aula": "Virtual-Virtua",
-              "cupos": 13
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39535,7 +39774,7 @@
               "hora_inicio": "19:30",
               "hora_fin": "22:20",
               "aula": "Virtual-Virtua",
-              "cupos": 13
+              "cupos": 0
             }
           ]
         }
@@ -39569,7 +39808,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "14:20",
               "aula": "H-303",
-              "cupos": 24
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39577,7 +39816,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "14:20",
               "aula": "H-303",
-              "cupos": 24
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39585,7 +39824,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "14:20",
               "aula": "H-303",
-              "cupos": 24
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -39593,7 +39832,7 @@
               "hora_inicio": "10:30",
               "hora_fin": "14:20",
               "aula": "H-303",
-              "cupos": 24
+              "cupos": 0
             }
           ]
         }
@@ -40257,23 +40496,32 @@
       "nombre": "Trabajo Final de Ingeniería de la Información I",
       "creditos": "4.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
+            "op": "AND",
             "items": [
               {
-                "code": "170043",
-                "name": "Analítica de la Web"
+                "items": [
+                  {
+                    "code": "170043",
+                    "name": "Analítica de la Web"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "170339",
+                    "name": "Inteligencia Computacional"
+                  }
+                ]
               }
             ]
           },
           {
-            "items": [
-              {
-                "code": "170339",
-                "name": "Inteligencia Computacional"
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -40428,79 +40676,88 @@
       "nombre": "Trabajo Final de Ingeniería Empresarial",
       "creditos": "4.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
+            "op": "AND",
             "items": [
               {
-                "code": "170336",
-                "name": "Fundamentos de Analítica"
+                "items": [
+                  {
+                    "code": "170336",
+                    "name": "Fundamentos de Analítica"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "170137",
+                    "name": "Física"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "170346",
+                    "name": "Tecnología para el Desarrollo Sostenible"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "170330",
+                    "name": "Emprendimiento Tecnológico"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "179062",
+                    "name": "Formulación y Evaluación de Proyectos"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "170352",
+                    "name": "Investigación de Operaciones"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "170337",
+                    "name": "Procesos de Suministros"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "170340",
+                    "name": "Procesos de Producción"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "170341",
+                    "name": "Procesos de Distribución"
+                  }
+                ]
               }
             ]
           },
           {
-            "items": [
-              {
-                "code": "170137",
-                "name": "Física"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "170346",
-                "name": "Tecnología para el Desarrollo Sostenible"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "170330",
-                "name": "Emprendimiento Tecnológico"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "179062",
-                "name": "Formulación y Evaluación de Proyectos"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "170352",
-                "name": "Investigación de Operaciones"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "170337",
-                "name": "Procesos de Suministros"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "170340",
-                "name": "Procesos de Producción"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "170341",
-                "name": "Procesos de Distribución"
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -41835,7 +42092,7 @@
               "hora_inicio": "19:30",
               "hora_fin": "21:20",
               "aula": "A-408",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PRÁCTICA",
@@ -41843,7 +42100,7 @@
               "hora_inicio": "19:30",
               "hora_fin": "21:20",
               "aula": "A-408",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "PARCIAL",
@@ -41851,7 +42108,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             },
             {
               "tipo": "FINAL",
@@ -41859,7 +42116,7 @@
               "hora_inicio": "13:30",
               "hora_fin": "15:30",
               "aula": "A-PEND",
-              "cupos": 35
+              "cupos": 34
             }
           ]
         }
@@ -43328,10 +43585,19 @@
       "nombre": "Derecho Procesal Penal",
       "creditos": "4.00",
       "prerequisitos": {
+        "op": "OR",
         "items": [
           {
-            "code": "181008",
-            "name": "Derecho Penal Económico"
+            "items": [
+              {
+                "code": "181008",
+                "name": "Derecho Penal Económico"
+              }
+            ]
+          },
+          {
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -44062,22 +44328,22 @@
           ],
           "docente_principal": "THORNDIKE PIEDRA, Thomas Alexander",
           "jps": [],
-          "observaciones": "Curso SOLO para estudiantes\ndel Plan de Estudios 2017",
+          "observaciones": "Curso SOLO para estudiantes\ndel Plan de Estudios 2017 /\nSolo las sesiones de los días\nlunes serán virtual. Virtual /\nPresencial",
           "sesiones": [
-            {
-              "tipo": "CLASE",
-              "dia": "LUN",
-              "hora_inicio": "12:30",
-              "hora_fin": "14:20",
-              "aula": "B-304",
-              "cupos": 30
-            },
             {
               "tipo": "CLASE",
               "dia": "MIE",
               "hora_inicio": "13:30",
               "hora_fin": "15:20",
               "aula": "B-304",
+              "cupos": 30
+            },
+            {
+              "tipo": "CLASE",
+              "dia": "LUN",
+              "hora_inicio": "12:30",
+              "hora_fin": "14:20",
+              "aula": "Virtual-Virtua",
               "cupos": 30
             },
             {
@@ -44278,7 +44544,7 @@
               "hora_inicio": "14:30",
               "hora_fin": "17:20",
               "aula": "B-504",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "CLASE",
@@ -44286,7 +44552,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "B-504",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "PARCIAL",
@@ -44294,7 +44560,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 29
             },
             {
               "tipo": "FINAL",
@@ -44302,7 +44568,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 29
             }
           ]
         },
@@ -44321,7 +44587,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "17:20",
               "aula": "A-501",
-              "cupos": 30
+              "cupos": 28
             },
             {
               "tipo": "CLASE",
@@ -44329,7 +44595,7 @@
               "hora_inicio": "15:30",
               "hora_fin": "18:20",
               "aula": "A-501",
-              "cupos": 30
+              "cupos": 28
             },
             {
               "tipo": "PARCIAL",
@@ -44337,7 +44603,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 28
             },
             {
               "tipo": "FINAL",
@@ -44345,7 +44611,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "09:30",
               "aula": "A-PEND",
-              "cupos": 30
+              "cupos": 28
             }
           ]
         }
@@ -45137,7 +45403,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 3
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -45145,7 +45411,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 3
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -45153,7 +45419,7 @@
               "hora_inicio": "08:30",
               "hora_fin": "11:20",
               "aula": "Virtual-Virtua",
-              "cupos": 3
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -45161,7 +45427,7 @@
               "hora_inicio": "08:30",
               "hora_fin": "12:20",
               "aula": "Virtual-Virtua",
-              "cupos": 3
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -45169,7 +45435,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 3
+              "cupos": 0
             }
           ]
         }
@@ -45274,7 +45540,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "15:20",
               "aula": "A-201",
-              "cupos": 19
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -45282,7 +45548,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "H-201",
-              "cupos": 19
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -45290,7 +45556,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "H-201",
-              "cupos": 19
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -45298,7 +45564,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "H-201",
-              "cupos": 19
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -45306,7 +45572,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "H-201",
-              "cupos": 19
+              "cupos": 0
             }
           ]
         }
@@ -45935,51 +46201,60 @@
             "op": "OR",
             "items": [
               {
+                "op": "OR",
                 "items": [
                   {
-                    "code": "1F0228",
-                    "name": "Economía Financiera I"
+                    "items": [
+                      {
+                        "code": "1F0228",
+                        "name": "Economía Financiera I"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "1F0109",
+                        "name": "Economía Financiera"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "op": "OR",
+                "items": [
+                  {
+                    "items": [
+                      {
+                        "code": "1F0120",
+                        "name": "Finanzas Corporativas I"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "1F0015",
+                        "name": "Finanzas Corporativas"
+                      }
+                    ]
                   }
                 ]
               },
               {
                 "items": [
                   {
-                    "code": "1F0109",
-                    "name": "Economía Financiera"
+                    "code": "1F0032",
+                    "name": "Teoría del Portafolio"
                   }
                 ]
               }
             ]
           },
           {
-            "op": "OR",
-            "items": [
-              {
-                "items": [
-                  {
-                    "code": "1F0120",
-                    "name": "Finanzas Corporativas I"
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "1F0015",
-                    "name": "Finanzas Corporativas"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "1F0032",
-                "name": "Teoría del Portafolio"
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -46486,12 +46761,12 @@
           "seccion": "G",
           "docentes": [
             "TELLO YZAGUIRRE, Andre Luis",
-            "TELLO AGUIRRE, CARLA SOFIA",
+            "TELLO AGUIRRE, Carla Sofia",
             "RISCO SANDOVAL, Kevin Omar"
           ],
           "docente_principal": "TELLO YZAGUIRRE, Andre Luis",
           "jps": [
-            "TELLO AGUIRRE, CARLA SOFIA",
+            "TELLO AGUIRRE, Carla Sofia",
             "RISCO SANDOVAL, Kevin Omar"
           ],
           "observaciones": "",
@@ -46605,31 +46880,40 @@
       "nombre": "Finanzas Cuantitativas",
       "creditos": "5.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
+            "op": "AND",
             "items": [
               {
-                "code": "130424",
-                "name": "Econometría I"
+                "items": [
+                  {
+                    "code": "130424",
+                    "name": "Econometría I"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "1F0114",
+                    "name": "Macroeconomía Financiera"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "1F0069",
+                    "name": "Microeconomía Financiera"
+                  }
+                ]
               }
             ]
           },
           {
-            "items": [
-              {
-                "code": "1F0114",
-                "name": "Macroeconomía Financiera"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "1F0069",
-                "name": "Microeconomía Financiera"
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -47332,10 +47616,12 @@
           "seccion": "J",
           "docentes": [
             "ZAMUDIO ESCUDERO, Maria Natalia",
+            "FLORES SANTANDER, Alejandra Regina",
             "MONTANO GÓMEZ, Diego Marcelo"
           ],
           "docente_principal": "ZAMUDIO ESCUDERO, Maria Natalia",
           "jps": [
+            "FLORES SANTANDER, Alejandra Regina",
             "MONTANO GÓMEZ, Diego Marcelo"
           ],
           "observaciones": "",
@@ -47379,12 +47665,12 @@
           "docentes": [
             "ARIAS VERNAL, Carlos Augusto",
             "MELQUIADES VELASQUEZ, Zahir Sebastian",
-            "Benito García, Joaquin Gonzalo"
+            "BENITO GARCIA, Joaquin Gonzalo"
           ],
           "docente_principal": "ARIAS VERNAL, Carlos Augusto",
           "jps": [
             "MELQUIADES VELASQUEZ, Zahir Sebastian",
-            "Benito García, Joaquin Gonzalo"
+            "BENITO GARCIA, Joaquin Gonzalo"
           ],
           "observaciones": "Dictado en Inglés",
           "sesiones": [
@@ -47425,10 +47711,15 @@
         {
           "seccion": "L",
           "docentes": [
-            "VARGAS VILCHEZ, Enver Enrique"
+            "VARGAS VILCHEZ, Enver Enrique",
+            "FEBRERO ZAPATA, Andres Eduardo",
+            "MIRANDA PELLA, Francisco Javier"
           ],
           "docente_principal": "VARGAS VILCHEZ, Enver Enrique",
-          "jps": [],
+          "jps": [
+            "FEBRERO ZAPATA, Andres Eduardo",
+            "MIRANDA PELLA, Francisco Javier"
+          ],
           "observaciones": "",
           "sesiones": [
             {
@@ -47809,7 +48100,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "11:30",
               "aula": "A-302",
-              "cupos": 4
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -47817,7 +48108,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-402",
-              "cupos": 4
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -47825,7 +48116,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-402",
-              "cupos": 4
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -47833,7 +48124,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-402",
-              "cupos": 4
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -47841,7 +48132,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-402",
-              "cupos": 4
+              "cupos": 0
             }
           ]
         }
@@ -48167,31 +48458,40 @@
       "nombre": "Investigación Financiera",
       "creditos": "2.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
+            "op": "AND",
             "items": [
               {
-                "code": "1F0111",
-                "name": "Finanzas Cuantitativas"
+                "items": [
+                  {
+                    "code": "1F0111",
+                    "name": "Finanzas Cuantitativas"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "1F0107",
+                    "name": "Análisis y Gestión de Riesgos"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "1F0117",
+                    "name": "Riesgo Crediticio"
+                  }
+                ]
               }
             ]
           },
           {
-            "items": [
-              {
-                "code": "1F0107",
-                "name": "Análisis y Gestión de Riesgos"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "1F0117",
-                "name": "Riesgo Crediticio"
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -48624,7 +48924,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "15:20",
               "aula": "A-305",
-              "cupos": 23
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -48632,7 +48932,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "H-403",
-              "cupos": 23
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -48640,7 +48940,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "H-403",
-              "cupos": 23
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -48648,7 +48948,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "H-403",
-              "cupos": 23
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -48656,7 +48956,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "H-403",
-              "cupos": 23
+              "cupos": 0
             }
           ]
         }
@@ -48987,7 +49287,7 @@
               "hora_inicio": "18:30",
               "hora_fin": "20:20",
               "aula": "Virtual-Virtua",
-              "cupos": 30
+              "cupos": 29
             }
           ]
         }
@@ -51001,7 +51301,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 5
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -51009,7 +51309,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 5
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -51017,7 +51317,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 5
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -51025,7 +51325,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "11:20",
               "aula": "Virtual-Virtua",
-              "cupos": 5
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -51033,7 +51333,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 5
+              "cupos": 0
             }
           ]
         }
@@ -52548,39 +52848,48 @@
       "nombre": "Gestión de Mercados Globales",
       "creditos": "4.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
+            "op": "AND",
             "items": [
               {
-                "code": "1MN020",
-                "name": "Investigación de Mercados"
+                "items": [
+                  {
+                    "code": "1MN020",
+                    "name": "Investigación de Mercados"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "1MN006",
+                    "name": "Dirección Internacional de Empresas"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "1MN005",
+                    "name": "Logística Internacional"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "code": "129198",
+                    "name": "Inglés 200"
+                  }
+                ]
               }
             ]
           },
           {
-            "items": [
-              {
-                "code": "1MN006",
-                "name": "Dirección Internacional de Empresas"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "1MN005",
-                "name": "Logística Internacional"
-              }
-            ]
-          },
-          {
-            "items": [
-              {
-                "code": "129198",
-                "name": "Inglés 200"
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -52903,49 +53212,58 @@
       "nombre": "Gestión Internacional de Empresas",
       "creditos": "4.00",
       "prerequisitos": {
-        "op": "AND",
+        "op": "OR",
         "items": [
           {
-            "op": "OR",
+            "op": "AND",
             "items": [
               {
+                "op": "OR",
                 "items": [
                   {
-                    "code": "148008",
-                    "name": "Gestión del Comercio Internacional"
+                    "items": [
+                      {
+                        "code": "148008",
+                        "name": "Gestión del Comercio Internacional"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "1MN015",
+                        "name": "Gestión del Comercio Internacional"
+                      }
+                    ]
                   }
                 ]
               },
               {
+                "op": "OR",
                 "items": [
                   {
-                    "code": "1MN015",
-                    "name": "Gestión del Comercio Internacional"
+                    "items": [
+                      {
+                        "code": "143344",
+                        "name": "Gerencia I"
+                      }
+                    ]
+                  },
+                  {
+                    "items": [
+                      {
+                        "code": "142081",
+                        "name": "Diseño Organizacional y Estrategia"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           },
           {
-            "op": "OR",
-            "items": [
-              {
-                "items": [
-                  {
-                    "code": "143344",
-                    "name": "Gerencia I"
-                  }
-                ]
-              },
-              {
-                "items": [
-                  {
-                    "code": "142081",
-                    "name": "Diseño Organizacional y Estrategia"
-                  }
-                ]
-              }
-            ]
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -53411,7 +53729,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "Virtual-Virtua",
-              "cupos": 19
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -53419,7 +53737,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "Virtual-Virtua",
-              "cupos": 19
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -53427,7 +53745,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "Virtual-Virtua",
-              "cupos": 19
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -53435,7 +53753,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "15:20",
               "aula": "Virtual-Virtua",
-              "cupos": 19
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -53443,7 +53761,7 @@
               "hora_inicio": "11:30",
               "hora_fin": "14:20",
               "aula": "Virtual-Virtua",
-              "cupos": 19
+              "cupos": 0
             }
           ]
         }
@@ -54456,9 +54774,9 @@
         {
           "seccion": "A",
           "docentes": [
-            "IBAÑEZ CAAMAÑO MARIA JOSÉ"
+            "IBAÑEZ CAAMAÑO, María José"
           ],
-          "docente_principal": "IBAÑEZ CAAMAÑO MARIA JOSÉ",
+          "docente_principal": "IBAÑEZ CAAMAÑO, María José",
           "jps": [],
           "observaciones": "",
           "sesiones": [
@@ -54585,9 +54903,9 @@
         {
           "seccion": "A",
           "docentes": [
-            "IBAÑEZ CAAMAÑO MARIA JOSÉ"
+            "IBAÑEZ CAAMAÑO, María José"
           ],
-          "docente_principal": "IBAÑEZ CAAMAÑO MARIA JOSÉ",
+          "docente_principal": "IBAÑEZ CAAMAÑO, María José",
           "jps": [],
           "observaciones": "Dirigido solo para alumnos de\nla carrera de Marketing",
           "sesiones": [
@@ -55120,10 +55438,19 @@
       "nombre": "Marketing Estratégico",
       "creditos": "4.00",
       "prerequisitos": {
+        "op": "OR",
         "items": [
           {
-            "type": "creditos_cursados",
-            "creditos": 60
+            "items": [
+              {
+                "type": "creditos_cursados",
+                "creditos": 60
+              }
+            ]
+          },
+          {
+            "raw": "Autorización de: Sr. Daniel GAMARRA PODBRSCEK",
+            "parsed": false
           }
         ]
       },
@@ -56139,7 +56466,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 17
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -56147,7 +56474,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 17
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -56155,7 +56482,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 17
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -56163,7 +56490,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "11:20",
               "aula": "Virtual-Virtua",
-              "cupos": 17
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -56171,7 +56498,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "Virtual-Virtua",
-              "cupos": 17
+              "cupos": 0
             }
           ]
         }
@@ -56412,7 +56739,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "11:20",
               "aula": "A-205",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -56420,7 +56747,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-203",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -56428,7 +56755,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-203",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -56436,7 +56763,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-203",
-              "cupos": 25
+              "cupos": 0
             },
             {
               "tipo": "CLASE",
@@ -56444,7 +56771,7 @@
               "hora_inicio": "07:30",
               "hora_fin": "10:20",
               "aula": "H-203",
-              "cupos": 25
+              "cupos": 0
             }
           ]
         }
@@ -56468,14 +56795,6 @@
             {
               "tipo": "CLASE",
               "dia": "JUE",
-              "hora_inicio": "17:00",
-              "hora_fin": "19:00",
-              "aula": "Virtual-Virtua",
-              "cupos": 0
-            },
-            {
-              "tipo": "CLASE",
-              "dia": "LUN",
               "hora_inicio": "17:00",
               "hora_fin": "19:00",
               "aula": "Virtual-Virtua",
