@@ -1,5 +1,4 @@
 // matriculaup_app/lib/ui/pages/home_page.dart
-import 'dart:js_interop';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -17,9 +16,7 @@ import 'package:matriculaup_app/ui/pages/fi_calculator_page.dart';
 import 'package:matriculaup_app/ui/pages/grade_calculator_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../utils/ics_exporter.dart';
-
-@JS('window.location.reload')
-external void _reloadPage();
+import '../../utils/page_reload.dart';
 
 // ── Community resources ───────────────────────────────────────────────────────
 // To add a new resource, just append an entry to this list.
@@ -61,7 +58,14 @@ class _Resource {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final bool isDarkMode;
+  final ValueChanged<bool> onThemeModeChanged;
+
+  const HomePage({
+    super.key,
+    required this.isDarkMode,
+    required this.onThemeModeChanged,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -103,9 +107,17 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void _openGitHub() {
+    launchUrl(
+      Uri.parse('https://github.com/johnbarraza/MatriculaUp'),
+      mode: LaunchMode.externalApplication,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ScheduleState>();
+    final colorScheme = Theme.of(context).colorScheme;
     final courses = state.allCourses;
     final credits = state.currentCredits;
     final maxCredits = state.maxCredits;
@@ -121,14 +133,14 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(vertical: 10),
-                      color: Colors.blue.shade700,
-                      child: const Text(
+                      color: colorScheme.primary,
+                      child: Text(
                         'Buscar cursos',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: colorScheme.onPrimary,
                         ),
                       ),
                     ),
@@ -140,35 +152,54 @@ class _HomePageState extends State<HomePage> {
           : null,
       // ── AppBar ───────────────────────────────────────────────────────────
       appBar: AppBar(
-        foregroundColor: Colors.black87,
+        foregroundColor: colorScheme.onSurface,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'MatriculaUp',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: colorScheme.onSurface,
               ),
             ),
             if (state.coursesLabel != null)
               Text(
                 'Regulares: ${state.coursesLabel!}',
-                style: const TextStyle(fontSize: 11, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 11,
+                  color: colorScheme.onSurfaceVariant,
+                ),
               ),
             if (state.efeCoursesLabel != null)
               Text(
                 'EFEs: ${state.efeCoursesLabel!}',
-                style: TextStyle(fontSize: 11, color: Colors.green.shade800),
+                style: TextStyle(fontSize: 11, color: colorScheme.tertiary),
               ),
           ],
         ),
         actions: [
+          IconButton(
+            icon: Icon(
+              widget.isDarkMode
+                  ? Icons.light_mode_outlined
+                  : Icons.dark_mode_outlined,
+            ),
+            tooltip: widget.isDarkMode
+                ? 'Cambiar a modo claro'
+                : 'Activar modo oscuro',
+            onPressed: () => widget.onThemeModeChanged(!widget.isDarkMode),
+          ),
+          IconButton(
+            icon: const Icon(Icons.code_outlined),
+            tooltip: 'GitHub · open source · gratis · privacidad',
+            onPressed: _openGitHub,
+          ),
           // Clear time slots
           if (hasFreeTime)
             IconButton(
-              icon: const Icon(Icons.filter_alt, color: Colors.greenAccent),
+              icon: Icon(Icons.filter_alt, color: colorScheme.secondary),
               tooltip: 'Limpiar selección de horario',
               onPressed: () => state.clearTimeSlots(),
             ),
@@ -186,7 +217,7 @@ class _HomePageState extends State<HomePage> {
                     '$credits / $maxCredits cr.',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: credits >= maxCredits ? Colors.red.shade200 : null,
+                      color: credits >= maxCredits ? colorScheme.error : null,
                     ),
                   ),
                 ],
@@ -215,16 +246,19 @@ class _HomePageState extends State<HomePage> {
               child: Tooltip(
                 message: 'Horas semanales de Clases y Prácticas',
                 child: Chip(
-                  avatar: const Icon(
+                  avatar: Icon(
                     Icons.schedule,
                     size: 14,
-                    color: Colors.white70,
+                    color: colorScheme.onPrimary.withValues(alpha: 0.75),
                   ),
                   label: Text(
                     '${state.weeklyHours.toStringAsFixed(1)} h/sem',
-                    style: const TextStyle(fontSize: 12, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: colorScheme.onPrimary,
+                    ),
                   ),
-                  backgroundColor: Colors.blue.shade700,
+                  backgroundColor: colorScheme.primary,
                   padding: EdgeInsets.zero,
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
@@ -310,16 +344,26 @@ class _HomePageState extends State<HomePage> {
               onSelected: (value) {
                 switch (value) {
                   case 'fi':
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const FiCalculatorPage()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const FiCalculatorPage(),
+                      ),
+                    );
                   case 'grade':
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const GradeCalculatorPage()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const GradeCalculatorPage(),
+                      ),
+                    );
                   case 'resources':
                     _showResourcesSheet(context);
                   case 'bug':
-                    launchUrl(Uri.parse('https://forms.gle/cag87CjtGhmDLaek6'),
-                        mode: LaunchMode.externalApplication);
+                    launchUrl(
+                      Uri.parse('https://forms.gle/cag87CjtGhmDLaek6'),
+                      mode: LaunchMode.externalApplication,
+                    );
                   case 'donate':
                     DonationDialog.show(context);
                   case 'calendar':
@@ -331,60 +375,74 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (_) => [
                 const PopupMenuItem(
                   value: 'fi',
-                  child: Row(children: [
-                    Icon(Icons.leaderboard_outlined, size: 18),
-                    SizedBox(width: 10),
-                    Text('Factor de Inscripción'),
-                  ]),
+                  child: Row(
+                    children: [
+                      Icon(Icons.leaderboard_outlined, size: 18),
+                      SizedBox(width: 10),
+                      Text('Factor de Inscripción'),
+                    ],
+                  ),
                 ),
                 const PopupMenuItem(
                   value: 'grade',
-                  child: Row(children: [
-                    Icon(Icons.quiz_outlined, size: 18),
-                    SizedBox(width: 10),
-                    Text('¿Cuánto me falta?'),
-                  ]),
+                  child: Row(
+                    children: [
+                      Icon(Icons.quiz_outlined, size: 18),
+                      SizedBox(width: 10),
+                      Text('¿Cuánto me falta?'),
+                    ],
+                  ),
                 ),
                 const PopupMenuItem(
                   value: 'resources',
-                  child: Row(children: [
-                    Icon(Icons.library_books_outlined, size: 18),
-                    SizedBox(width: 10),
-                    Text('Materiales comunidad'),
-                  ]),
+                  child: Row(
+                    children: [
+                      Icon(Icons.library_books_outlined, size: 18),
+                      SizedBox(width: 10),
+                      Text('Materiales comunidad'),
+                    ],
+                  ),
                 ),
                 if (state.calendar != null)
                   const PopupMenuItem(
                     value: 'calendar',
-                    child: Row(children: [
-                      Icon(Icons.calendar_month_outlined, size: 18),
-                      SizedBox(width: 10),
-                      Text('Calendario Académico'),
-                    ]),
+                    child: Row(
+                      children: [
+                        Icon(Icons.calendar_month_outlined, size: 18),
+                        SizedBox(width: 10),
+                        Text('Calendario Académico'),
+                      ],
+                    ),
                   ),
                 const PopupMenuItem(
                   value: 'donate',
-                  child: Row(children: [
-                    Icon(Icons.coffee_outlined, size: 18),
-                    SizedBox(width: 10),
-                    Text('Invítame un café ☕'),
-                  ]),
+                  child: Row(
+                    children: [
+                      Icon(Icons.coffee_outlined, size: 18),
+                      SizedBox(width: 10),
+                      Text('Invítame un café ☕'),
+                    ],
+                  ),
                 ),
                 const PopupMenuItem(
                   value: 'bug',
-                  child: Row(children: [
-                    Icon(Icons.bug_report_outlined, size: 18),
-                    SizedBox(width: 10),
-                    Text('Reportar bug'),
-                  ]),
+                  child: Row(
+                    children: [
+                      Icon(Icons.bug_report_outlined, size: 18),
+                      SizedBox(width: 10),
+                      Text('Reportar bug'),
+                    ],
+                  ),
                 ),
                 const PopupMenuItem(
                   value: 'settings',
-                  child: Row(children: [
-                    Icon(Icons.settings, size: 18),
-                    SizedBox(width: 10),
-                    Text('Configuración'),
-                  ]),
+                  child: Row(
+                    children: [
+                      Icon(Icons.settings, size: 18),
+                      SizedBox(width: 10),
+                      Text('Configuración'),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -399,97 +457,100 @@ class _HomePageState extends State<HomePage> {
               children: [
                 // ── Left Panel (hidden on mobile — use Drawer instead) ─────────
                 if (!isMobile)
-                Expanded(
-                  flex: 3,
-                  child: Container(
-                    color: Colors.grey[100],
-                    child: courses.isEmpty
-                        ? Center(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                ElevatedButton.icon(
-                                  icon: const Icon(Icons.upload_file),
-                                  onPressed: () async {
-                                    final result =
-                                        await DataLoader.pickAndLoadCourses();
-                                    if (result != null && context.mounted) {
-                                      context.read<ScheduleState>().setCourses(
-                                        result.courses,
-                                        label: result.label,
-                                      );
-                                    }
-                                  },
-                                  label: const Text('Cargar Horarios JSON'),
-                                ),
-                                const SizedBox(height: 16),
-                                OutlinedButton.icon(
-                                  icon: const Icon(Icons.school),
-                                  onPressed: () async {
-                                    final curriculum =
-                                        await DataLoader.pickAndLoadCurriculum();
-                                    if (curriculum != null && context.mounted) {
-                                      context
-                                          .read<ScheduleState>()
-                                          .setCurriculum(curriculum);
-                                      ScaffoldMessenger.of(
-                                        context,
-                                      ).showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Plan de estudios "${curriculum.title}" cargado (Opcional)',
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  label: const Text(
-                                    'Cargar Plan de Estudios (Opcional)',
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      color: colorScheme.surfaceContainerLowest,
+                      child: courses.isEmpty
+                          ? Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ElevatedButton.icon(
+                                    icon: const Icon(Icons.upload_file),
+                                    onPressed: () async {
+                                      final result =
+                                          await DataLoader.pickAndLoadCourses();
+                                      if (result != null && context.mounted) {
+                                        context
+                                            .read<ScheduleState>()
+                                            .setCourses(
+                                              result.courses,
+                                              label: result.label,
+                                            );
+                                      }
+                                    },
+                                    label: const Text('Cargar Horarios JSON'),
                                   ),
-                                ),
-                                if (state.curriculum != null)
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
-                                    child: Text(
-                                      'Plan activo: ${state.curriculum!.title}',
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.green,
-                                      ),
+                                  const SizedBox(height: 16),
+                                  OutlinedButton.icon(
+                                    icon: const Icon(Icons.school),
+                                    onPressed: () async {
+                                      final curriculum =
+                                          await DataLoader.pickAndLoadCurriculum();
+                                      if (curriculum != null &&
+                                          context.mounted) {
+                                        context
+                                            .read<ScheduleState>()
+                                            .setCurriculum(curriculum);
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Plan de estudios "${curriculum.title}" cargado (Opcional)',
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    label: const Text(
+                                      'Cargar Plan de Estudios (Opcional)',
                                     ),
                                   ),
-                              ],
-                            ),
-                          )
-                        : Column(
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                ),
-                                color: Colors.blue.shade700,
-                                child: const Text(
-                                  'Buscar cursos',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
+                                  if (state.curriculum != null)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Text(
+                                        'Plan activo: ${state.curriculum!.title}',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: colorScheme.tertiary,
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : Column(
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                  ),
+                                  color: colorScheme.primary,
+                                  child: Text(
+                                    'Buscar cursos',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: colorScheme.onPrimary,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const Expanded(child: CourseSearchList()),
-                            ],
-                          ),
+                                const Expanded(child: CourseSearchList()),
+                              ],
+                            ),
+                    ),
                   ),
-                ),
 
                 // ── Right Panel: Timetable ───────────────────────────────────
                 Expanded(
                   flex: isMobile ? 1 : 7,
                   child: Container(
-                    color: Colors.white,
+                    color: colorScheme.surface,
                     child: Column(
                       children: [
                         // ── Top controls row ────────────────────────────────────
@@ -596,8 +657,9 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           content: Text(
-            'La app ahora usa:\n\n$currentLabel\n\n'
-            'Los horarios reflejan la oferta académica más reciente.',
+            'La app ahora usa la oferta academica V3:\n\n$currentLabel\n\n'
+            'MatriculaUp es gratis y de codigo abierto. Tus horarios se guardan '
+            'solo en tu dispositivo; no los enviamos ni almacenamos en servidores.',
           ),
           actions: [
             ElevatedButton(
@@ -708,6 +770,21 @@ class _HomePageState extends State<HomePage> {
             const Text(
               'Configuración',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              secondary: Icon(
+                widget.isDarkMode
+                    ? Icons.dark_mode_outlined
+                    : Icons.light_mode_outlined,
+              ),
+              title: const Text('Modo oscuro'),
+              subtitle: const Text('Tema con contraste alto para leer mejor'),
+              value: widget.isDarkMode,
+              onChanged: (value) {
+                widget.onThemeModeChanged(value);
+                Navigator.pop(ctx);
+              },
             ),
             if (state.coursesLabel != null) ...[
               const SizedBox(height: 8),
@@ -898,9 +975,26 @@ class _HomePageState extends State<HomePage> {
                 );
                 if (confirm == true && context.mounted) {
                   await context.read<ScheduleState>().clearSession();
-                  _reloadPage();
+                  reloadPage();
                 }
               },
+            ),
+            const Divider(height: 24),
+            OutlinedButton.icon(
+              icon: const Icon(Icons.code_outlined),
+              label: const Text('Ver codigo en GitHub'),
+              onPressed: () {
+                Navigator.pop(ctx);
+                _openGitHub();
+              },
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 6),
+              child: Text(
+                'Open source, gratis y sin enviar tus horarios a servidores.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 12),
+              ),
             ),
             const Divider(height: 24),
             // ── Donation ─────────────────────────────────────────────────

@@ -110,6 +110,7 @@ class TestCoursePdfMetadata:
             ("Oferta-Academica-2026-I_v1.pdf", "2026-1", "v1", "courses_2026-1_v1.json"),
             ("Oferta-Academica-2026-I-V4.pdf", "2026-1", "v4", "courses_2026-1_v4.json"),
             ("Oferta-Academica-2026-II-V1.pdf", "2026-2", "v1", "courses_2026-2_v1.json"),
+            ("Oferta-Academica-2026-II-V3-22.07.pdf", "2026-2", "v3", "courses_2026-2_v3.json"),
             ("Oferta-Academica-2025-II_18.08_10.03am.pdf", "2025-2", "v1", "courses_2025-2_v1.json"),
         ],
     )

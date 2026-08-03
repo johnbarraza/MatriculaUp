@@ -10,7 +10,7 @@ param(
 $SetupPath = "dist\MatriculaUp_$($Tag)_Setup.exe"
 $ZipPath = "dist\MatriculaUp_$($Tag)_Portable.zip"
 $ReleaseDir = "matriculaup_app\build\windows\x64\runner\Release"
-$JsonPath = "input\courses_2026-2_v1.json"
+$JsonPath = "input\courses_2026-2_v3.json"
 $EfeJsonPath = "input\efe_courses_2026-2_v1.json"
 
 $Notes = @"
@@ -19,7 +19,7 @@ $Notes = @"
 Planificador de horarios universitarios para estudiantes de UP.
 
 ### Novedades en esta version
-- Oferta regular 2026-II V1 incluida.
+- Oferta regular 2026-II V3 incluida.
 - EFEs/SSU 2026-II V1 incluidos.
 - Calendario academico 2026-II incluido.
 - Profesor visible en cada bloque del horario semanal.
@@ -28,7 +28,7 @@ Planificador de horarios universitarios para estudiantes de UP.
 
 ### Instrucciones de instalacion
 1. Descarga y ejecuta el instalador.
-2. El instalador deja la app lista con `courses_2026-2_v1.json` y `efe_courses_2026-2_v1.json`.
+2. El instalador deja la app lista con `courses_2026-2_v3.json` y `efe_courses_2026-2_v1.json`.
 3. Abre MatriculaUp desde el acceso directo en tu Escritorio.
 
 El JSON puede actualizarse desde dentro de la app cuando salgan nuevos horarios.

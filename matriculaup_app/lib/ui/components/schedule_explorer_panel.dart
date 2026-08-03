@@ -39,6 +39,7 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ScheduleState>();
+    final colorScheme = Theme.of(context).colorScheme;
     final selectedCodes = state.selectedSections
         .map((s) => s.course.codigo)
         .toSet();
@@ -62,7 +63,7 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
                 child: DropdownButton<_GenerationMode>(
                   value: _generationMode,
                   isDense: true,
-                  style: const TextStyle(fontSize: 11, color: Colors.black87),
+                  style: TextStyle(fontSize: 11, color: colorScheme.onSurface),
                   onChanged: (v) {
                     if (v == null) return;
                     setState(() => _generationMode = v);
@@ -119,9 +120,9 @@ class _ScheduleExplorerPanelState extends State<ScheduleExplorerPanel> {
     return Container(
       margin: const EdgeInsets.fromLTRB(6, 4, 6, 6),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: colorScheme.surfaceContainerLow,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.blueGrey.shade100),
+        border: Border.all(color: colorScheme.outlineVariant),
       ),
       child: Column(
         children: [
