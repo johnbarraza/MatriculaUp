@@ -27,7 +27,7 @@ Python 3.10+ requerido. Dependencias principales: `pdfplumber`, `pandas`, `openp
 
 ### Obtener el PDF
 Descarga el PDF de oferta académica del portal de la UP.  
-Ejemplo: `Oferta-Academica-2026-II-V2.pdf`
+Ejemplo: `Oferta-Academica-2026-II-V3-22.07.pdf`
 
 Colócalo en:
 ```
@@ -38,14 +38,14 @@ pdfs/matricula/2026-2/regular/
 Desde la raíz del repositorio:
 ```bash
 python scripts/extract.py --type courses \
-  --pdf pdfs/matricula/2026-2/regular/Oferta-Academica-2026-II-V2.pdf
+  --pdf pdfs/matricula/2026-2/regular/Oferta-Academica-2026-II-V3-22.07.pdf
 ```
 
-El JSON se guarda en `input/courses_2026-2_v2.json` (o similar).
+El JSON se guarda en `input/courses_2026-2_v3.json` (o similar).
 
 ### Copiar al proyecto Flutter
 ```bash
-cp input/courses_2026-2_v2.json matriculaup_app/assets/default_courses.json
+cp input/courses_2026-2_v3.json matriculaup_app/assets/default_courses.json
 ```
 
 El nombre **siempre** es `default_courses.json` — no es necesario cambiar código.

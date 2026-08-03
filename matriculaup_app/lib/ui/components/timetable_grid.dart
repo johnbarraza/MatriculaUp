@@ -37,6 +37,7 @@ class _TimetableGridState extends State<TimetableGrid> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ScheduleState>();
+    final colorScheme = Theme.of(context).colorScheme;
     final selections = state.selectedSections
         .where((s) => !state.isCourseHidden(s.course.codigo))
         .toList();
@@ -48,8 +49,10 @@ class _TimetableGridState extends State<TimetableGrid> {
             : 780.0;
         final totalHours = (widget.endHour * 60 - widget.gridStartMins) / 60.0;
         const nonGridHeight = 58.0;
-        final fitted =
-            ((availableHeight - nonGridHeight) / totalHours).clamp(widget.minHourHeight, widget.maxHourHeight);
+        final fitted = ((availableHeight - nonGridHeight) / totalHours).clamp(
+          widget.minHourHeight,
+          widget.maxHourHeight,
+        );
         final hourHeight = (fitted as num).toDouble();
         final gridHeightPx = widget.gridHeightPx(hourHeight);
 
@@ -57,7 +60,7 @@ class _TimetableGridState extends State<TimetableGrid> {
           child: RepaintBoundary(
             key: widget.exportKey,
             child: Container(
-              color: Colors.white,
+              color: colorScheme.surface,
               padding: const EdgeInsets.only(bottom: 8),
               child: Column(
                 children: [
@@ -69,8 +72,10 @@ class _TimetableGridState extends State<TimetableGrid> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 6),
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              color: Colors.grey.shade100,
+                              border: Border.all(
+                                color: colorScheme.outlineVariant,
+                              ),
+                              color: colorScheme.surfaceContainerHighest,
                             ),
                             child: Center(
                               child: Text(
@@ -107,7 +112,7 @@ class _TimetableGridState extends State<TimetableGrid> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 10,
-                                    color: Colors.grey.shade600,
+                                    color: colorScheme.onSurfaceVariant,
                                   ),
                                 ),
                               );
@@ -120,7 +125,8 @@ class _TimetableGridState extends State<TimetableGrid> {
 
                         for (final selection in selections) {
                           for (final session in selection.section.sesiones) {
-                            if (session.dia != day || session.tipo == SessionType.cancelada) {
+                            if (session.dia != day ||
+                                session.tipo == SessionType.cancelada) {
                               continue;
                             }
 
@@ -148,18 +154,28 @@ class _TimetableGridState extends State<TimetableGrid> {
                         return Expanded(
                           child: GestureDetector(
                             onPanStart: (details) {
-                              final rowIndex = (details.localPosition.dy / hourHeight).floor();
+                              final rowIndex =
+                                  (details.localPosition.dy / hourHeight)
+                                      .floor();
                               final hour = widget.startHour + rowIndex;
-                              if (hour >= widget.startHour && hour < widget.endHour) {
-                                _isSelecting = !state.isTimeSlotSelected(day, hour);
+                              if (hour >= widget.startHour &&
+                                  hour < widget.endHour) {
+                                _isSelecting = !state.isTimeSlotSelected(
+                                  day,
+                                  hour,
+                                );
                                 state.toggleTimeSlot(day, hour, _isSelecting);
                               }
                             },
                             onPanUpdate: (details) {
-                              final rowIndex = (details.localPosition.dy / hourHeight).floor();
+                              final rowIndex =
+                                  (details.localPosition.dy / hourHeight)
+                                      .floor();
                               final hour = widget.startHour + rowIndex;
-                              if (hour >= widget.startHour && hour < widget.endHour) {
-                                if (state.isTimeSlotSelected(day, hour) != _isSelecting) {
+                              if (hour >= widget.startHour &&
+                                  hour < widget.endHour) {
+                                if (state.isTimeSlotSelected(day, hour) !=
+                                    _isSelecting) {
                                   state.toggleTimeSlot(day, hour, _isSelecting);
                                 }
                               }
@@ -168,8 +184,12 @@ class _TimetableGridState extends State<TimetableGrid> {
                               height: gridHeightPx,
                               decoration: BoxDecoration(
                                 border: Border(
-                                  left: BorderSide(color: Colors.grey.shade200),
-                                  right: BorderSide(color: Colors.grey.shade200),
+                                  left: BorderSide(
+                                    color: colorScheme.outlineVariant,
+                                  ),
+                                  right: BorderSide(
+                                    color: colorScheme.outlineVariant,
+                                  ),
                                 ),
                               ),
                               child: Stack(
@@ -183,11 +203,19 @@ class _TimetableGridState extends State<TimetableGrid> {
                                       height: hourHeight,
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: state.isTimeSlotSelected(day, widget.startHour + i)
-                                              ? Colors.greenAccent.withValues(alpha: 0.2)
+                                          color:
+                                              state.isTimeSlotSelected(
+                                                day,
+                                                widget.startHour + i,
+                                              )
+                                              ? Colors.greenAccent.withValues(
+                                                  alpha: 0.2,
+                                                )
                                               : Colors.transparent,
                                           border: Border(
-                                            top: BorderSide(color: Colors.grey.shade200),
+                                            top: BorderSide(
+                                              color: colorScheme.outlineVariant,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -197,11 +225,15 @@ class _TimetableGridState extends State<TimetableGrid> {
                                       top: widget.numFullSlots * hourHeight,
                                       left: 0,
                                       right: 0,
-                                      height: (widget.remainderMins / 60.0) * hourHeight,
+                                      height:
+                                          (widget.remainderMins / 60.0) *
+                                          hourHeight,
                                       child: Container(
                                         decoration: BoxDecoration(
                                           border: Border(
-                                            top: BorderSide(color: Colors.grey.shade200),
+                                            top: BorderSide(
+                                              color: colorScheme.outlineVariant,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -236,7 +268,9 @@ class _TimetableGridState extends State<TimetableGrid> {
 
     double topOffset = ((startMins - gridStartMins) / 60.0) * hourHeight;
     double blockHeight =
-        (TimeUtils.durationMinutes(session.horaInicio, session.horaFin) / 60.0) * hourHeight;
+        (TimeUtils.durationMinutes(session.horaInicio, session.horaFin) /
+            60.0) *
+        hourHeight;
 
     if (topOffset < 0) {
       blockHeight += topOffset;
@@ -282,7 +316,10 @@ class _TimetableGridState extends State<TimetableGrid> {
                         if (!compact)
                           Text(
                             'Sec ${selection.section.seccion} | ${session.tipo.value}',
-                            style: const TextStyle(fontSize: 8, color: Colors.white),
+                            style: const TextStyle(
+                              fontSize: 8,
+                              color: Colors.white,
+                            ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -301,7 +338,10 @@ class _TimetableGridState extends State<TimetableGrid> {
                             session.aula.toUpperCase().contains('VIRTUAL')
                                 ? 'Virtual'
                                 : session.aula,
-                            style: const TextStyle(fontSize: 7, color: Colors.white70),
+                            style: const TextStyle(
+                              fontSize: 7,
+                              color: Colors.white70,
+                            ),
                             overflow: TextOverflow.ellipsis,
                           ),
                         if (!medium && selection.section.docentes.isNotEmpty)
@@ -321,11 +361,17 @@ class _TimetableGridState extends State<TimetableGrid> {
                     top: 0,
                     right: 0,
                     child: IconButton(
-                      icon: const Icon(Icons.close, size: 12, color: Colors.white70),
+                      icon: const Icon(
+                        Icons.close,
+                        size: 12,
+                        color: Colors.white70,
+                      ),
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
-                      onPressed: () =>
-                          state.removeSection(selection.course, selection.section),
+                      onPressed: () => state.removeSection(
+                        selection.course,
+                        selection.section,
+                      ),
                     ),
                   ),
                 ],
@@ -340,12 +386,19 @@ class _TimetableGridState extends State<TimetableGrid> {
   String _formatProfName(List<String> docentes) {
     if (docentes.isEmpty) return '';
     final first = docentes.first;
-    final lastName =
-        first.contains(',') ? first.split(',').first.trim() : first.trim();
+    final lastName = first.contains(',')
+        ? first.split(',').first.trim()
+        : first.trim();
     final formatted = lastName
         .split(' ')
-        .map((w) => w.isNotEmpty ? w[0].toUpperCase() + w.substring(1).toLowerCase() : '')
+        .map(
+          (w) => w.isNotEmpty
+              ? w[0].toUpperCase() + w.substring(1).toLowerCase()
+              : '',
+        )
         .join(' ');
-    return docentes.length > 1 ? '$formatted +${docentes.length - 1}' : formatted;
+    return docentes.length > 1
+        ? '$formatted +${docentes.length - 1}'
+        : formatted;
   }
 }

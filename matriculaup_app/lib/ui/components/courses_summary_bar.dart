@@ -18,6 +18,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ScheduleState>();
+    final colorScheme = Theme.of(context).colorScheme;
     final selections = state.selectedSections;
     final hasSelections = selections.isNotEmpty;
 
@@ -32,10 +33,13 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: colorScheme.surface,
         border: Border(
-          top: BorderSide(color: Colors.blue.shade100, width: 1.5),
-          bottom: BorderSide(color: Colors.grey.shade200),
+          top: BorderSide(
+            color: colorScheme.primary.withValues(alpha: 0.35),
+            width: 1.5,
+          ),
+          bottom: BorderSide(color: colorScheme.outlineVariant),
         ),
       ),
       child: Column(
@@ -51,8 +55,8 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
               decoration: BoxDecoration(
                 color: hasSelections
-                    ? Colors.blue.shade50
-                    : Colors.grey.shade50,
+                    ? colorScheme.primaryContainer
+                    : colorScheme.surfaceContainerHighest,
               ),
               child: Row(
                 children: [
@@ -60,8 +64,8 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                     Icons.table_rows_outlined,
                     size: 14,
                     color: hasSelections
-                        ? Colors.blue.shade700
-                        : Colors.grey.shade400,
+                        ? colorScheme.onPrimaryContainer
+                        : colorScheme.onSurfaceVariant,
                   ),
                   const SizedBox(width: 7),
                   Expanded(
@@ -72,7 +76,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                                 : 'Sin cursos seleccionados - busca en el panel izquierdo',
                             style: TextStyle(
                               fontSize: 12,
-                              color: Colors.grey.shade400,
+                              color: colorScheme.onSurfaceVariant,
                               fontStyle: FontStyle.italic,
                             ),
                             overflow: TextOverflow.ellipsis,
@@ -87,7 +91,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.blue.shade800,
+                                  color: colorScheme.onPrimaryContainer,
                                 ),
                               ),
                               _chip('$totalCredits cr.', Colors.blue.shade700),
@@ -124,14 +128,14 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                           _expanded ? 'Ocultar' : 'Mostrar',
                           style: TextStyle(
                             fontSize: 11,
-                            color: Colors.blue.shade600,
+                            color: colorScheme.primary,
                           ),
                         ),
                         const SizedBox(width: 2),
                         Icon(
                           _expanded ? Icons.expand_less : Icons.expand_more,
                           size: 16,
-                          color: Colors.blue.shade600,
+                          color: colorScheme.primary,
                         ),
                       ],
                     ),

@@ -13,7 +13,6 @@ String _normalizeSearch(String input) {
   return out.toLowerCase().trim();
 }
 
-
 // ── EFE category helpers ──────────────────────────────────────────────────────
 
 /// Short display label for a raw `_tipo_efe` string.
@@ -25,9 +24,7 @@ String _efeShortLabel(String raw) {
   if (up.contains('INNOVACI')) return 'Innovación';
   if (up.contains('LIDERAZGO')) return 'Liderazgo';
   if (up.contains('COMPETENCIA')) return 'Comp. Prof.';
-  if (up.contains('ARTE') ||
-      up.contains('CULTURA') ||
-      up.contains('DEPORTE')) {
+  if (up.contains('ARTE') || up.contains('CULTURA') || up.contains('DEPORTE')) {
     return 'Arte | Cultura | Deporte';
   }
   // Generic fallback: strip parenthetical suffix and title-case
@@ -35,8 +32,9 @@ String _efeShortLabel(String raw) {
   return cleaned
       .split(' ')
       .map(
-        (w) =>
-            w.isNotEmpty ? w[0].toUpperCase() + w.substring(1).toLowerCase() : '',
+        (w) => w.isNotEmpty
+            ? w[0].toUpperCase() + w.substring(1).toLowerCase()
+            : '',
       )
       .join(' ');
 }
@@ -50,9 +48,7 @@ Color _efeCategoryColor(String raw) {
   if (up.contains('INNOVACI')) return Colors.purple.shade700;
   if (up.contains('LIDERAZGO')) return Colors.teal.shade700;
   if (up.contains('COMPETENCIA')) return Colors.indigo.shade700;
-  if (up.contains('ARTE') ||
-      up.contains('CULTURA') ||
-      up.contains('DEPORTE')) {
+  if (up.contains('ARTE') || up.contains('CULTURA') || up.contains('DEPORTE')) {
     return Colors.pink.shade700;
   }
   return Colors.grey.shade700;
@@ -63,9 +59,7 @@ int _efeCategoryOrder(String raw) {
   final up = raw.toUpperCase();
   if (up.contains('INTRAPERSONAL')) return 0;
   if (up.contains('INTERPERSONAL')) return 1;
-  if (up.contains('ARTE') ||
-      up.contains('CULTURA') ||
-      up.contains('DEPORTE')) {
+  if (up.contains('ARTE') || up.contains('CULTURA') || up.contains('DEPORTE')) {
     return 2; // Same block as intra+inter in newer plans
   }
   if (up.contains('SERVICIO SOCIAL')) return 3;
@@ -111,15 +105,14 @@ class _CourseSearchListState extends State<CourseSearchList> {
             .whereType<String>()
             .toSet()
             .toList()
-          ..sort((a, b) => _efeCategoryOrder(a).compareTo(_efeCategoryOrder(b)));
+          ..sort(
+            (a, b) => _efeCategoryOrder(a).compareTo(_efeCategoryOrder(b)),
+          );
 
     // Apply EFE category filter
-    final categoryFiltered =
-        (_showEfe && _selectedEfeCategory != null)
-            ? allCourses
-                .where((c) => c.tipoEfe == _selectedEfeCategory)
-                .toList()
-            : allCourses;
+    final categoryFiltered = (_showEfe && _selectedEfeCategory != null)
+        ? allCourses.where((c) => c.tipoEfe == _selectedEfeCategory).toList()
+        : allCourses;
 
     // Apply search + conflict filter
     final filteredCourses = categoryFiltered.where((c) {
@@ -153,12 +146,12 @@ class _CourseSearchListState extends State<CourseSearchList> {
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
           child: TextField(
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               hintText: 'Buscar por nombre, código, docente o JP...',
               prefixIcon: Icon(Icons.search),
               border: OutlineInputBorder(),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
             ),
             onChanged: (value) => setState(() => _searchQuery = value),
           ),
@@ -204,8 +197,7 @@ class _CourseSearchListState extends State<CourseSearchList> {
           _EfeCategoryChips(
             categories: efeCategories,
             selected: _selectedEfeCategory,
-            onSelected: (cat) =>
-                setState(() => _selectedEfeCategory = cat),
+            onSelected: (cat) => setState(() => _selectedEfeCategory = cat),
           ),
 
         // ── "Ocultar Cruces" toggle ──────────────────────────────────────
@@ -353,7 +345,9 @@ class _CourseSearchListState extends State<CourseSearchList> {
                                 s.course.codigo == course.codigo &&
                                 s.section.seccion == section.seccion,
                           );
-                          final hasOnlyZeroCupos = _sectionHasOnlyZeroCupos(section);
+                          final hasOnlyZeroCupos = _sectionHasOnlyZeroCupos(
+                            section,
+                          );
                           final conflictReason = state.getConflictReason(
                             section,
                           );
@@ -383,10 +377,8 @@ class _CourseSearchListState extends State<CourseSearchList> {
                                 final tipoLabel =
                                     s.tipo.value[0] +
                                     s.tipo.value.substring(1).toLowerCase();
-                                final diaStr =
-                                    s.dia.isNotEmpty ? s.dia : '—';
-                                final horaStr =
-                                    '${s.horaInicio}-${s.horaFin}';
+                                final diaStr = s.dia.isNotEmpty ? s.dia : '—';
+                                final horaStr = '${s.horaInicio}-${s.horaFin}';
                                 final cuposStr = s.cupos != null
                                     ? ' | cupos: ${s.cupos}'
                                     : '';
@@ -409,151 +401,167 @@ class _CourseSearchListState extends State<CourseSearchList> {
                           return Material(
                             color: tileColor ?? Colors.transparent,
                             child: ListTile(
-                            title: Text(
-                              'Seccion ${section.seccion} | Cupos: $cuposLabel${hasOnlyZeroCupos ? ' | SIN CUPO' : ''}',
-                              style: TextStyle(
-                                color: hasConflict
-                                    ? Colors.red.shade900
-                                    : (hasOnlyZeroCupos
-                                          ? Colors.orange.shade900
-                                          : null),
-                                fontWeight: hasConflict
-                                    ? FontWeight.bold
-                                    : (hasOnlyZeroCupos
-                                          ? FontWeight.w700
-                                          : FontWeight.normal),
-                              ),
-                            ),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                if (hasConflict)
-                                  Text(
-                                    'Cruce con: $conflictReason',
-                                    style: TextStyle(
-                                      color: Colors.red.shade700,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                if (hasFlexibleExam)
-                                  Text(
-                                    '⚠ Tiene examen sustitutorio/rezagado — horario provisional',
-                                    style: TextStyle(
-                                      color: Colors.orange.shade700,
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                Text(
-                                  sessionDetails,
-                                  style: TextStyle(
-                                    color: hasConflict
-                                        ? Colors.red.shade700
-                                        : null,
-                                  ),
+                              title: Text(
+                                'Seccion ${section.seccion} | Cupos: $cuposLabel${hasOnlyZeroCupos ? ' | SIN CUPO' : ''}',
+                                style: TextStyle(
+                                  color: hasConflict
+                                      ? Colors.red.shade900
+                                      : (hasOnlyZeroCupos
+                                            ? Colors.orange.shade900
+                                            : null),
+                                  fontWeight: hasConflict
+                                      ? FontWeight.bold
+                                      : (hasOnlyZeroCupos
+                                            ? FontWeight.w700
+                                            : FontWeight.normal),
                                 ),
-                                RichText(
-                                  text: TextSpan(
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  if (hasConflict)
+                                    Text(
+                                      'Cruce con: $conflictReason',
+                                      style: TextStyle(
+                                        color: Colors.red.shade700,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  if (hasFlexibleExam)
+                                    Text(
+                                      '⚠ Tiene examen sustitutorio/rezagado — horario provisional',
+                                      style: TextStyle(
+                                        color: Colors.orange.shade700,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  Text(
+                                    sessionDetails,
                                     style: TextStyle(
-                                      fontSize: 12,
                                       color: hasConflict
                                           ? Colors.red.shade700
-                                          : Colors.black87,
+                                          : null,
                                     ),
-                                    children: [
-                                      const TextSpan(
-                                        text: 'Docente: ',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                  ),
+                                  RichText(
+                                    text: TextSpan(
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: hasConflict
+                                            ? Colors.red.shade700
+                                            : Theme.of(
+                                                context,
+                                              ).colorScheme.onSurface,
                                       ),
-                                      TextSpan(text: docentePrincipalStr),
-                                      if (section.jps.isNotEmpty)
+                                      children: [
                                         const TextSpan(
-                                          text: ' | JPs: ',
+                                          text: 'Docente: ',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                      if (section.jps.isNotEmpty)
-                                        TextSpan(text: jpsStr),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            isThreeLine: true,
-                            trailing: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: hasConflict
-                                    ? Colors.red.shade100
-                                    : (hasOnlyZeroCupos
-                                          ? Colors.orange.shade100
-                                          : null),
-                                foregroundColor: hasConflict
-                                    ? Colors.red.shade900
-                                    : (hasOnlyZeroCupos
-                                          ? Colors.orange.shade900
-                                          : null),
-                              ),
-                              onPressed: (isSelected || hasConflict)
-                                  ? null
-                                  : () async {
-                                      if (hasOnlyZeroCupos) {
-                                        final proceed =
-                                            await showDialog<bool>(
-                                              context: context,
-                                              builder: (d) => AlertDialog(
-                                                title: const Text('Seccion sin cupo'),
-                                                content: const Text(
-                                                  'Esta seccion tiene cupo 0. Puedes agregarla como referencia, pero no hay vacantes por ahora.\n\nDeseas agregarla igual?',
-                                                ),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () => Navigator.pop(d, false),
-                                                    child: const Text('Cancelar'),
-                                                  ),
-                                                  ElevatedButton(
-                                                    onPressed: () => Navigator.pop(d, true),
-                                                    child: const Text('Agregar igual'),
-                                                  ),
-                                                ],
-                                              ),
-                                            ) ??
-                                            false;
-                                        if (!proceed || !context.mounted) {
-                                          return;
-                                        }
-                                      }
-                                      try {
-                                        state.addSection(course, section);
-                                      } catch (e) {
-                                        ScaffoldMessenger.of(
-                                          context,
-                                        ).showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              e
-                                                  .toString()
-                                                  .replaceAll(
-                                                    'Exception: ',
-                                                    '',
-                                                  ),
+                                        TextSpan(text: docentePrincipalStr),
+                                        if (section.jps.isNotEmpty)
+                                          const TextSpan(
+                                            text: ' | JPs: ',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                             ),
-                                            backgroundColor: Colors.red,
                                           ),
-                                        );
-                                      }
-                                    },
-                              child: Text(
-                                isSelected
-                                    ? 'Agregado'
-                                    : (hasConflict
-                                          ? 'Cruza'
-                                          : (hasOnlyZeroCupos ? 'Sin cupo' : 'Agregar')),
+                                        if (section.jps.isNotEmpty)
+                                          TextSpan(text: jpsStr),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              isThreeLine: true,
+                              trailing: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: hasConflict
+                                      ? Colors.red.shade100
+                                      : (hasOnlyZeroCupos
+                                            ? Colors.orange.shade100
+                                            : null),
+                                  foregroundColor: hasConflict
+                                      ? Colors.red.shade900
+                                      : (hasOnlyZeroCupos
+                                            ? Colors.orange.shade900
+                                            : null),
+                                ),
+                                onPressed: (isSelected || hasConflict)
+                                    ? null
+                                    : () async {
+                                        if (hasOnlyZeroCupos) {
+                                          final proceed =
+                                              await showDialog<bool>(
+                                                context: context,
+                                                builder: (d) => AlertDialog(
+                                                  title: const Text(
+                                                    'Seccion sin cupo',
+                                                  ),
+                                                  content: const Text(
+                                                    'Esta seccion tiene cupo 0. Puedes agregarla como referencia, pero no hay vacantes por ahora.\n\nDeseas agregarla igual?',
+                                                  ),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                            d,
+                                                            false,
+                                                          ),
+                                                      child: const Text(
+                                                        'Cancelar',
+                                                      ),
+                                                    ),
+                                                    ElevatedButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                            d,
+                                                            true,
+                                                          ),
+                                                      child: const Text(
+                                                        'Agregar igual',
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ) ??
+                                              false;
+                                          if (!proceed || !context.mounted) {
+                                            return;
+                                          }
+                                        }
+                                        try {
+                                          state.addSection(course, section);
+                                        } catch (e) {
+                                          ScaffoldMessenger.of(
+                                            context,
+                                          ).showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                e.toString().replaceAll(
+                                                  'Exception: ',
+                                                  '',
+                                                ),
+                                              ),
+                                              backgroundColor: Colors.red,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                child: Text(
+                                  isSelected
+                                      ? 'Agregado'
+                                      : (hasConflict
+                                            ? 'Cruza'
+                                            : (hasOnlyZeroCupos
+                                                  ? 'Sin cupo'
+                                                  : 'Agregar')),
+                                ),
                               ),
                             ),
-                          ),
                           );
                         }).toList(),
                       ),
@@ -566,7 +574,10 @@ class _CourseSearchListState extends State<CourseSearchList> {
   }
 
   bool _sectionHasOnlyZeroCupos(dynamic section) {
-    final cupos = section.sesiones.map((s) => s.cupos).whereType<int>().toList();
+    final cupos = section.sesiones
+        .map((s) => s.cupos)
+        .whereType<int>()
+        .toList();
     if (cupos.isEmpty) return false;
     return cupos.every((c) => c == 0);
   }
@@ -598,10 +609,7 @@ class _EfeCategoryChips extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 6),
               child: FilterChip(
-                label: const Text(
-                  'Todos',
-                  style: TextStyle(fontSize: 12),
-                ),
+                label: const Text('Todos', style: TextStyle(fontSize: 12)),
                 selected: selected == null,
                 onSelected: (_) => onSelected(null),
                 selectedColor: Colors.blueGrey.shade100,
@@ -636,14 +644,14 @@ class _EfeCategoryChips extends StatelessWidget {
                     style: const TextStyle(fontSize: 12),
                   ),
                   selected: isSelected,
-                  onSelected: (_) =>
-                      onSelected(isSelected ? null : cat),
+                  onSelected: (_) => onSelected(isSelected ? null : cat),
                   selectedColor: color.withValues(alpha: 0.15),
                   checkmarkColor: color,
                   labelStyle: TextStyle(
                     color: isSelected ? color : Colors.grey.shade700,
-                    fontWeight:
-                        isSelected ? FontWeight.w700 : FontWeight.normal,
+                    fontWeight: isSelected
+                        ? FontWeight.w700
+                        : FontWeight.normal,
                   ),
                   side: BorderSide(
                     color: isSelected
@@ -660,9 +668,4 @@ class _EfeCategoryChips extends StatelessWidget {
       ),
     );
   }
-
 }
-
-
-
-
