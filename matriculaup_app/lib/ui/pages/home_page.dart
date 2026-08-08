@@ -224,21 +224,22 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          // Plan A / B / C switcher
-          SegmentedButton<int>(
-            segments: const [
-              ButtonSegment<int>(value: 0, label: Text('A')),
-              ButtonSegment<int>(value: 1, label: Text('B')),
-              ButtonSegment<int>(value: 2, label: Text('C')),
-            ],
-            selected: <int>{state.activeScheduleIndex},
-            onSelectionChanged: (s) => state.switchSchedule(s.first),
-            style: ButtonStyle(
-              padding: WidgetStateProperty.all(
-                const EdgeInsets.symmetric(horizontal: 6),
+          // Plan A / B / C switcher (on a separate row on mobile)
+          if (!isMobile)
+            SegmentedButton<int>(
+              segments: const [
+                ButtonSegment<int>(value: 0, label: Text('A')),
+                ButtonSegment<int>(value: 1, label: Text('B')),
+                ButtonSegment<int>(value: 2, label: Text('C')),
+              ],
+              selected: <int>{state.activeScheduleIndex},
+              onSelectionChanged: (s) => state.switchSchedule(s.first),
+              style: ButtonStyle(
+                padding: WidgetStateProperty.all(
+                  const EdgeInsets.symmetric(horizontal: 6),
+                ),
               ),
             ),
-          ),
           // Weekly hours chip — desktop only
           if (!isMobile && state.selectedSections.isNotEmpty)
             Padding(
@@ -448,6 +449,31 @@ class _HomePageState extends State<HomePage> {
             ),
           const SizedBox(width: 4),
         ],
+        bottom: isMobile
+            ? PreferredSize(
+                preferredSize: const Size.fromHeight(44),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 44,
+                  child: Center(
+                    child: SegmentedButton<int>(
+                      segments: const [
+                        ButtonSegment<int>(value: 0, label: Text('A')),
+                        ButtonSegment<int>(value: 1, label: Text('B')),
+                        ButtonSegment<int>(value: 2, label: Text('C')),
+                      ],
+                      selected: <int>{state.activeScheduleIndex},
+                      onSelectionChanged: (s) => state.switchSchedule(s.first),
+                      style: ButtonStyle(
+                        padding: WidgetStateProperty.all(
+                          const EdgeInsets.symmetric(horizontal: 18),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            : null,
       ),
 
       body: Column(
@@ -657,7 +683,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           content: Text(
-            'La app ahora usa la oferta academica V3:\n\n$currentLabel\n\n'
+            'La app ahora usa la oferta academica V5:\n\n$currentLabel\n\n'
             'MatriculaUp es gratis y de codigo abierto. Tus horarios se guardan '
             'solo en tu dispositivo; no los enviamos ni almacenamos en servidores.',
           ),
