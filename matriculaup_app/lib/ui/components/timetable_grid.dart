@@ -13,8 +13,8 @@ class TimetableGrid extends StatefulWidget {
   final int startHour = 7;
   final int startMinute = 30;
   final int endHour = 23;
-  final double minHourHeight = 30.0;
-  final double maxHourHeight = 56.0;
+  final double minHourHeight = 34.0;
+  final double maxHourHeight = 68.0;
 
   final List<String> days = const [
     'LUN',
@@ -306,8 +306,8 @@ class _TimetableGridState extends State<TimetableGrid> {
           onTap: () {},
           child: LayoutBuilder(
             builder: (context, constraints) {
-              final compact = constraints.maxHeight < 52;
-              final medium = constraints.maxHeight < 72;
+              final compact = constraints.maxHeight < 58;
+              final medium = constraints.maxHeight < 82;
               return Stack(
                 children: [
                   Padding(
@@ -318,7 +318,7 @@ class _TimetableGridState extends State<TimetableGrid> {
                         Text(
                           selection.course.nombre,
                           style: const TextStyle(
-                            fontSize: 9,
+                            fontSize: 10,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -329,7 +329,7 @@ class _TimetableGridState extends State<TimetableGrid> {
                           Text(
                             'Sec ${selection.section.seccion} | ${session.tipo.value}',
                             style: const TextStyle(
-                              fontSize: 8,
+                              fontSize: 9,
                               color: Colors.white,
                             ),
                             maxLines: 1,
@@ -338,7 +338,7 @@ class _TimetableGridState extends State<TimetableGrid> {
                         Text(
                           '${session.horaInicio} - ${session.horaFin}',
                           style: const TextStyle(
-                            fontSize: 8,
+                            fontSize: 9,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
@@ -351,7 +351,7 @@ class _TimetableGridState extends State<TimetableGrid> {
                                 ? 'Virtual'
                                 : session.aula,
                             style: const TextStyle(
-                              fontSize: 7,
+                              fontSize: 8,
                               color: Colors.white70,
                             ),
                             overflow: TextOverflow.ellipsis,
@@ -360,7 +360,7 @@ class _TimetableGridState extends State<TimetableGrid> {
                           Text(
                             _formatProfName(selection.section.docentes),
                             style: const TextStyle(
-                              fontSize: 7,
+                              fontSize: 8,
                               color: Colors.white70,
                               fontStyle: FontStyle.italic,
                             ),

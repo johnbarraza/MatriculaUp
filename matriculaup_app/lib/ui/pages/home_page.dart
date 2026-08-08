@@ -2,6 +2,7 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:file_picker/file_picker.dart';
 import '../../data/data_loader.dart';
@@ -192,7 +193,15 @@ class _HomePageState extends State<HomePage> {
             onPressed: () => widget.onThemeModeChanged(!widget.isDarkMode),
           ),
           IconButton(
-            icon: const Icon(Icons.code_outlined),
+            icon: SvgPicture.asset(
+              'assets/github.svg',
+              width: 20,
+              height: 20,
+              colorFilter: ColorFilter.mode(
+                colorScheme.onSurface,
+                BlendMode.srcIn,
+              ),
+            ),
             tooltip: 'GitHub · open source · gratis · privacidad',
             onPressed: _openGitHub,
           ),
@@ -1007,7 +1016,15 @@ class _HomePageState extends State<HomePage> {
             ),
             const Divider(height: 24),
             OutlinedButton.icon(
-              icon: const Icon(Icons.code_outlined),
+              icon: SvgPicture.asset(
+                'assets/github.svg',
+                width: 18,
+                height: 18,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(ctx).colorScheme.onSurface,
+                  BlendMode.srcIn,
+                ),
+              ),
               label: const Text('Ver codigo en GitHub'),
               onPressed: () {
                 Navigator.pop(ctx);

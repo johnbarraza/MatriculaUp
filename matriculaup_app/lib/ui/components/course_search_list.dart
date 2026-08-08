@@ -89,6 +89,8 @@ class _CourseSearchListState extends State<CourseSearchList> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<ScheduleState>();
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     // Auto-switch to regular if EFEs were unloaded
     if (_showEfe && state.efeCourses.isEmpty) {
@@ -316,6 +318,16 @@ class _CourseSearchListState extends State<CourseSearchList> {
                     }
 
                     return Card(
+                      color: colorScheme.surfaceContainerLow,
+                      surfaceTintColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        side: BorderSide(
+                          color: colorScheme.outlineVariant.withValues(
+                            alpha: 0.7,
+                          ),
+                        ),
+                      ),
                       margin: const EdgeInsets.symmetric(
                         horizontal: 8,
                         vertical: 4,
@@ -394,21 +406,34 @@ class _CourseSearchListState extends State<CourseSearchList> {
                           final jpsStr = section.jps.join(', ');
 
                           final tileColor = hasConflict
-                              ? Colors.red.shade50
+                              ? (isDark
+                                    ? Colors.red.shade900.withValues(
+                                        alpha: 0.28,
+                                      )
+                                    : Colors.red.shade50)
                               : (hasOnlyZeroCupos
-                                    ? Colors.orange.shade50
+                                    ? (isDark
+                                          ? Colors.orange.shade900.withValues(
+                                              alpha: 0.28,
+                                            )
+                                          : Colors.orange.shade50)
                                     : null);
+                          final statusTextColor = hasConflict
+                              ? (isDark
+                                    ? Colors.red.shade100
+                                    : Colors.red.shade900)
+                              : (hasOnlyZeroCupos
+                                    ? (isDark
+                                          ? Colors.orange.shade100
+                                          : Colors.orange.shade900)
+                                    : colorScheme.onSurface);
                           return Material(
                             color: tileColor ?? Colors.transparent,
                             child: ListTile(
                               title: Text(
                                 'Seccion ${section.seccion} | Cupos: $cuposLabel${hasOnlyZeroCupos ? ' | SIN CUPO' : ''}',
                                 style: TextStyle(
-                                  color: hasConflict
-                                      ? Colors.red.shade900
-                                      : (hasOnlyZeroCupos
-                                            ? Colors.orange.shade900
-                                            : null),
+                                  color: statusTextColor,
                                   fontWeight: hasConflict
                                       ? FontWeight.bold
                                       : (hasOnlyZeroCupos
@@ -423,7 +448,9 @@ class _CourseSearchListState extends State<CourseSearchList> {
                                     Text(
                                       'Cruce con: $conflictReason',
                                       style: TextStyle(
-                                        color: Colors.red.shade700,
+                                        color: isDark
+                                            ? Colors.red.shade100
+                                            : Colors.red.shade700,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -440,7 +467,9 @@ class _CourseSearchListState extends State<CourseSearchList> {
                                     sessionDetails,
                                     style: TextStyle(
                                       color: hasConflict
-                                          ? Colors.red.shade700
+                                          ? (isDark
+                                                ? Colors.red.shade100
+                                                : Colors.red.shade700)
                                           : null,
                                     ),
                                   ),
@@ -449,10 +478,10 @@ class _CourseSearchListState extends State<CourseSearchList> {
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: hasConflict
-                                            ? Colors.red.shade700
-                                            : Theme.of(
-                                                context,
-                                              ).colorScheme.onSurface,
+                                            ? (isDark
+                                                  ? Colors.red.shade100
+                                                  : Colors.red.shade700)
+                                            : colorScheme.onSurface,
                                       ),
                                       children: [
                                         const TextSpan(
@@ -480,14 +509,25 @@ class _CourseSearchListState extends State<CourseSearchList> {
                               trailing: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: hasConflict
-                                      ? Colors.red.shade100
+                                      ? (isDark
+                                            ? Colors.red.shade900.withValues(
+                                                alpha: 0.45,
+                                              )
+                                            : Colors.red.shade100)
                                       : (hasOnlyZeroCupos
-                                            ? Colors.orange.shade100
+                                            ? (isDark
+                                                  ? Colors.orange.shade900
+                                                        .withValues(alpha: 0.45)
+                                                  : Colors.orange.shade100)
                                             : null),
                                   foregroundColor: hasConflict
-                                      ? Colors.red.shade900
+                                      ? (isDark
+                                            ? Colors.red.shade100
+                                            : Colors.red.shade900)
                                       : (hasOnlyZeroCupos
-                                            ? Colors.orange.shade900
+                                            ? (isDark
+                                                  ? Colors.orange.shade100
+                                                  : Colors.orange.shade900)
                                             : null),
                                 ),
                                 onPressed: (isSelected || hasConflict)
@@ -598,8 +638,10 @@ class _EfeCategoryChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      color: Colors.grey.shade50,
+      color: colorScheme.surfaceContainerHighest,
       padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -612,12 +654,18 @@ class _EfeCategoryChips extends StatelessWidget {
                 label: const Text('Todos', style: TextStyle(fontSize: 12)),
                 selected: selected == null,
                 onSelected: (_) => onSelected(null),
-                selectedColor: Colors.blueGrey.shade100,
-                checkmarkColor: Colors.blueGrey.shade700,
+                selectedColor: isDark
+                    ? colorScheme.primaryContainer
+                    : Colors.blueGrey.shade100,
+                checkmarkColor: isDark
+                    ? colorScheme.onPrimaryContainer
+                    : Colors.blueGrey.shade700,
                 labelStyle: TextStyle(
                   color: selected == null
-                      ? Colors.blueGrey.shade800
-                      : Colors.grey.shade600,
+                      ? (isDark
+                            ? colorScheme.onPrimaryContainer
+                            : Colors.blueGrey.shade800)
+                      : colorScheme.onSurfaceVariant,
                   fontWeight: selected == null
                       ? FontWeight.w700
                       : FontWeight.normal,
@@ -625,7 +673,7 @@ class _EfeCategoryChips extends StatelessWidget {
                 side: BorderSide(
                   color: selected == null
                       ? Colors.blueGrey.shade400
-                      : Colors.grey.shade300,
+                      : colorScheme.outline,
                 ),
                 visualDensity: VisualDensity.compact,
                 padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -639,16 +687,18 @@ class _EfeCategoryChips extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(right: 6),
                 child: FilterChip(
-                  label: Text(
-                    _efeShortLabel(cat),
-                    style: const TextStyle(fontSize: 12),
-                  ),
+                  label: Text(_efeShortLabel(cat)),
                   selected: isSelected,
                   onSelected: (_) => onSelected(isSelected ? null : cat),
                   selectedColor: color.withValues(alpha: 0.15),
                   checkmarkColor: color,
                   labelStyle: TextStyle(
-                    color: isSelected ? color : Colors.grey.shade700,
+                    color: isSelected
+                        ? (isDark
+                              ? Color.lerp(color, Colors.white, 0.35)!
+                              : color)
+                        : colorScheme.onSurfaceVariant,
+                    fontSize: 12,
                     fontWeight: isSelected
                         ? FontWeight.w700
                         : FontWeight.normal,
@@ -656,7 +706,7 @@ class _EfeCategoryChips extends StatelessWidget {
                   side: BorderSide(
                     color: isSelected
                         ? color.withValues(alpha: 0.7)
-                        : Colors.grey.shade300,
+                        : colorScheme.outline,
                   ),
                   visualDensity: VisualDensity.compact,
                   padding: const EdgeInsets.symmetric(horizontal: 4),

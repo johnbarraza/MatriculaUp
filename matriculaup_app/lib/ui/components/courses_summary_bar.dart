@@ -217,22 +217,24 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final colorScheme = Theme.of(context).colorScheme;
+        final tableWidth = constraints.maxWidth < 760
+            ? 760.0
+            : constraints.maxWidth;
         return ConstrainedBox(
-          constraints: const BoxConstraints(maxHeight: 190),
+          constraints: const BoxConstraints(maxHeight: 260),
           child: SingleChildScrollView(
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: ConstrainedBox(
-                // Ensure scroll area is at least as wide as the panel so that
-                // Center can actually push the DataTable to the middle.
-                constraints: BoxConstraints(minWidth: constraints.maxWidth),
-                child: Center(
+                constraints: BoxConstraints(minWidth: tableWidth),
+                child: SizedBox(
+                  width: tableWidth,
                   child: DataTable(
-                    headingRowHeight: 24,
-                    dataRowMinHeight: 34,
-                    dataRowMaxHeight: 34,
-                    columnSpacing: 12,
-                    horizontalMargin: 12,
+                    headingRowHeight: 30,
+                    dataRowMinHeight: 42,
+                    dataRowMaxHeight: 42,
+                    columnSpacing: 18,
+                    horizontalMargin: 16,
                     dividerThickness: 0.5,
                     headingRowColor: WidgetStateProperty.all(
                       colorScheme.surfaceContainerHighest,
@@ -244,7 +246,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                           child: Text(
                             '',
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 11,
                               color: colorScheme.onSurfaceVariant,
                             ),
                           ),
@@ -254,7 +256,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                         label: Text(
                           'CURSO',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: colorScheme.onSurfaceVariant,
                             letterSpacing: 0.5,
@@ -265,7 +267,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                         label: Text(
                           'SEC',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: colorScheme.onSurfaceVariant,
                             letterSpacing: 0.5,
@@ -276,7 +278,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                         label: Text(
                           'DOCENTE',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: colorScheme.onSurfaceVariant,
                             letterSpacing: 0.5,
@@ -288,7 +290,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                         label: Text(
                           'CR',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: colorScheme.onSurfaceVariant,
                             letterSpacing: 0.5,
@@ -300,7 +302,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                         label: Text(
                           'CUPOS',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: colorScheme.onSurfaceVariant,
                             letterSpacing: 0.5,
@@ -344,11 +346,11 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                           // Course name
                           DataCell(
                             ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 210),
+                              constraints: const BoxConstraints(maxWidth: 300),
                               child: Text(
                                 sel.course.nombre,
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: isHidden
                                       ? Colors.grey.shade400
@@ -400,11 +402,11 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                           // Professor
                           DataCell(
                             ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 140),
+                              constraints: const BoxConstraints(maxWidth: 220),
                               child: Text(
                                 _formatInstructorsSummary(sel.section),
                                 style: TextStyle(
-                                  fontSize: 11,
+                                  fontSize: 12,
                                   color: isHidden
                                       ? Colors.grey.shade400
                                       : colorScheme.onSurfaceVariant,
@@ -418,7 +420,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                             Text(
                               sel.course.creditos,
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w600,
                                 color: isHidden
                                     ? Colors.grey.shade400
@@ -431,7 +433,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                             Text(
                               _formatSectionCupos(sel.section),
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w600,
                                 color: isHidden
                                     ? Colors.grey.shade400
@@ -485,7 +487,7 @@ class _CoursesSummaryBarState extends State<CoursesSummaryBar> {
                       );
                     }).toList(),
                   ),
-                ), // Center
+                ), // SizedBox
               ), // ConstrainedBox minWidth
             ), // horizontal scroll
           ), // vertical scroll
